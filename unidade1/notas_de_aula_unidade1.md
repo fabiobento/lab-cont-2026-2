@@ -64,9 +64,9 @@ parede, a mola central e o amortecedor central."
   direção a $m_2$** (sentido positivo) ⇒ $+k_2(x_2-x_1)$.
 - Amortecedor $b$: mesma lógica, com velocidades ⇒ $+b(\dot x_2-\dot x_1)$.
 
-✍️ **Escreva no quadro:**
+✍️ **Escreva no quadro — equação (1):**
 
-$$m_1\ddot x_1 = -k_1x_1 + k_2(x_2-x_1) + b(\dot x_2-\dot x_1) \tag{1}$$
+$$m_1\ddot x_1 = -k_1x_1 + k_2(x_2-x_1) + b(\dot x_2-\dot x_1)$$
 
 ### Passo 2 — Forças sobre a massa 2
 
@@ -78,9 +78,9 @@ igual e contrário em $m_2$."
 - Mola central (reação): $-k_2(x_2-x_1)$.
 - Amortecedor central (reação): $-b(\dot x_2-\dot x_1)$.
 
-✍️ **Escreva no quadro:**
+✍️ **Escreva no quadro — equação (2):**
 
-$$m_2\ddot x_2 = f - k_2(x_2-x_1) - b(\dot x_2-\dot x_1) \tag{2}$$
+$$m_2\ddot x_2 = f - k_2(x_2-x_1) - b(\dot x_2-\dot x_1)$$
 
 ⚠️ **Armadilha nº 1 do aluno:** repetir em $m_2$ o **mesmo** sinal usado em $m_1$. Insista: os
 termos de acoplamento entram com sinais opostos nas duas massas. Teste rápido: se a expressão em
@@ -94,16 +94,16 @@ variável. Nada de física aqui — é arrumação."
 Distribuindo (1): $m_1\ddot x_1 = -k_1x_1 + k_2x_2 - k_2x_1 + b\dot x_2 - b\dot x_1$. Passando
 tudo para a esquerda e agrupando:
 
-✍️ **Escreva no quadro:**
+✍️ **Escreva no quadro — equação (1′):**
 
-$$m_1\ddot x_1 + b\dot x_1 + (k_1+k_2)x_1 \;-\; b\dot x_2 \;-\; k_2x_2 = 0 \tag{1'}$$
+$$m_1\ddot x_1 + b\dot x_1 + (k_1+k_2)x_1 \;-\; b\dot x_2 \;-\; k_2x_2 = 0$$
 
 Distribuindo (2): $m_2\ddot x_2 = f - k_2x_2 + k_2x_1 - b\dot x_2 + b\dot x_1$. Passando os termos
 de estado para a esquerda (e deixando $f$ à direita):
 
-✍️ **Escreva no quadro:**
+✍️ **Escreva no quadro — equação (2′):**
 
-$$m_2\ddot x_2 - b\dot x_1 - k_2x_1 + b\dot x_2 + k_2x_2 = f \tag{2'}$$
+$$m_2\ddot x_2 - b\dot x_1 - k_2x_1 + b\dot x_2 + k_2x_2 = f$$
 
 ### Passo 4 — Leitura (só falar)
 
@@ -163,9 +163,9 @@ no capacitor, **corrente é a derivada da carga**, então **tensão é a integra
 🗣️ **Fale.** "Uso $i=\dot q$. Então $di/dt=\ddot q$ e a integral da corrente é a própria carga
 $q$. A integral desaparece e sobra uma EDO limpa."
 
-✍️ **Escreva no quadro:**
+✍️ **Escreva no quadro — equação (3):**
 
-$$L\ddot q + R\dot q + \frac{1}{C}q = v(t) \tag{3}$$
+$$L\ddot q + R\dot q + \frac{1}{C}q = v(t)$$
 
 🗣️ **Fale (o momento-chave).** "Olhem para (3) e para a equação do carrinho $m\ddot x+b\dot
 x+kx=f$. **É a mesma equação.** $L$ faz o papel da massa, $R$ do amortecedor, $1/C$ da rigidez.
@@ -179,9 +179,9 @@ $q=Cv_C$, e substituo."
 $q=Cv_C \Rightarrow \dot q=C\dot v_C \Rightarrow \ddot q=C\ddot v_C$. Em (3):
 $L(C\ddot v_C)+R(C\dot v_C)+\tfrac1C(Cv_C)=v$, e $\tfrac1C\cdot C=1$.
 
-✍️ **Escreva no quadro:**
+✍️ **Escreva no quadro — equação (4):**
 
-$$LC\,\ddot v_C + RC\,\dot v_C + v_C = v(t) \tag{4}$$
+$$LC\,\ddot v_C + RC\,\dot v_C + v_C = v(t)$$
 
 ### Passo 5 (📌 prévia do §4, opcional) — de onde saem $\omega_n$ e $\zeta$
 
@@ -260,9 +260,9 @@ ordem vai ser o pão-com-manteiga da identificação (§6) e da sintonia de PID 
 🗣️ **Fale.** "O que acumula no tanque é o que entra menos o que sai. Como a restrição é
 laminar, o que sai é **proporcional** ao nível: $q_o=h/R_v$."
 
-✍️ **Escreva no quadro:**
+✍️ **Escreva no quadro — equação (5):**
 
-$$A\dot h = q_i - q_o,\qquad q_o=\frac{h}{R_v}\;\Longrightarrow\; A\dot h + \frac{1}{R_v}h = q_i \tag{5}$$
+$$A\dot h = q_i - q_o,\qquad q_o=\frac{h}{R_v}\;\Longrightarrow\; A\dot h + \frac{1}{R_v}h = q_i$$
 
 ### Passo 2 — Laplace (condições iniciais nulas)
 
