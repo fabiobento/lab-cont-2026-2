@@ -1,0 +1,6 @@
+bkp-do-repositorio
+venv
+**/.ipynb_checkpoints/
+*.tar.xz
+livros
+.vscode/
