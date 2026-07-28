@@ -104,7 +104,7 @@ tudo para a esquerda e agrupando:
 
 ✍️ **Escreva no quadro — equação (1′):**
 
-$$m_1\ddot x_1 + b\dot x_1 + (k_1+k_2)x_1 \;-\; b\dot x_2 \;-\; k_2x_2 = 0$$
+$$m_1\ddot x_1 + b\dot x_1 + (k_1+k_2)x_1 - b\dot x_2 - k_2x_2 = 0$$
 
 Distribuindo (2): $m_2\ddot x_2 = f - k_2x_2 + k_2x_1 - b\dot x_2 + b\dot x_1$. Passando os termos
 de estado para a esquerda (e deixando $f$ à direita):
