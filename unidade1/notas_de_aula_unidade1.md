@@ -54,6 +54,14 @@ de corpo livre por massa, e a 2ª lei de Newton em cada um. O único ponto que e
 ⚠️ Antes de tudo, desenhe os **dois** diagramas de corpo livre (DCL). Sem os DCLs, os alunos
 erram sinal.
 
+![Diagrama de corpo livre do sistema de duas massas](../imagens/dcl_duas_massas.svg)
+
+**Figura — DCL do sistema de duas massas.** (a) esquema do sistema; (b) cada massa isolada com
+as forças que agem sobre ela. Em azul, a força externa $f$; em preto, molas e amortecedor; em
+verde, o sentido positivo das coordenadas $x_1$ e $x_2$. Note que a mola e o amortecedor centrais
+aparecem **para a direita** em $m_1$ e **para a esquerda** (reação) em $m_2$ — é a leitura que
+gera os sinais das equações (1) e (2).
+
 ### Passo 1 — Forças sobre a massa 1
 
 🗣️ **Fale.** "Pergunte a si mesmo: o que empurra ou puxa $m_1$? São três coisas — a mola da
@@ -208,6 +216,12 @@ $$\omega_n=\frac{1}{\sqrt{LC}},\qquad \zeta=\frac{R}{2}\sqrt{\frac{C}{L}}$$
 já vai ser nossa cobaia no §4 e no §5."
 
 ### Passo 1 — Lei e forças (DCL)
+
+![Diagrama de corpo livre do carrinho](../imagens/dcl_carrinho.svg)
+
+**Figura — DCL do carrinho.** (a) esquema; (b) o carrinho isolado. A força aplicada $f$ (azul)
+puxa para a direita; a mola $kx$ e o amortecedor $b\dot x$ (preto) reagem para a esquerda,
+contra o deslocamento e a velocidade positivos.
 
 🗣️ **Fale.** "Newton: $m\ddot x$ = soma das forças. São três: a força aplicada, a mola que puxa
 de volta e o amortecedor que resiste à velocidade."
