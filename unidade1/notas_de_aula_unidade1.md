@@ -113,7 +113,22 @@ de estado para a esquerda (e deixando $f$ à direita):
 
 $$m_2\ddot x_2 - b\dot x_1 - k_2x_1 + b\dot x_2 + k_2x_2 = f$$
 
-### Passo 4 — Leitura (só falar)
+### Passo 4 — Normalizar (forma mônica)
+
+🗣️ **Fale.** "Último movimento de arrumação: divido cada equação pela massa que multiplica a
+aceleração, para o coeficiente de $\ddot x$ virar 1. É a forma que, na Seção 4, entrega
+$\omega_n$ e $\zeta$ de bandeja."
+
+✍️ **Escreva no quadro — forma mônica ($m_1$ na 1ª, $m_2$ na 2ª):**
+
+$$\ddot x_1 + \frac{b}{m_1}\dot x_1 + \frac{k_1+k_2}{m_1}x_1 - \frac{b}{m_1}\dot x_2 - \frac{k_2}{m_1}x_2 = 0$$
+
+$$\ddot x_2 - \frac{b}{m_2}\dot x_1 - \frac{k_2}{m_2}x_1 + \frac{b}{m_2}\dot x_2 + \frac{k_2}{m_2}x_2 = \frac{1}{m_2}f$$
+
+⚠️ **Cuidado:** a 1ª equação divide por $m_1$; a 2ª por $m_2$ — massas diferentes. Só a força
+externa vira $f/m_2$; o lado direito da 1ª continua $0$.
+
+### Passo 5 — Leitura (só falar)
 
 🗣️ **Fale.** "Três coisas para notar:"
 
@@ -191,14 +206,17 @@ $L(C\ddot v_C)+R(C\dot v_C)+\tfrac1C(Cv_C)=v$, e $\tfrac1C\cdot C=1$.
 
 $$LC\,\ddot v_C + RC\,\dot v_C + v_C = v(t)$$
 
-### Passo 5 (📌 prévia do §4, opcional) — de onde saem $\omega_n$ e $\zeta$
+### Passo 5 — Normalizar (forma mônica) → $\omega_n$ e $\zeta$ (📌 prévia do §4)
 
-🗣️ **Fale.** "Se sobrar tempo: dividindo por $LC$ chego à forma-padrão e leio a frequência
-natural e o amortecimento direto dos componentes."
+🗣️ **Fale.** "Último passo: divido a equação (4) por $LC$ para o coeficiente de $\ddot v_C$
+virar 1 — a forma mônica. Nessa forma leio a frequência natural e o amortecimento direto dos
+componentes."
 
-Dividir (4) por $LC$: $\ddot v_C + \tfrac{R}{L}\dot v_C + \tfrac{1}{LC}v_C = \tfrac{1}{LC}v$.
+✍️ **Escreva no quadro — forma mônica:**
 
-✍️ **Escreva no quadro (se for usar):**
+$$\ddot v_C + \frac{R}{L}\dot v_C + \frac{1}{LC}v_C = \frac{1}{LC}\,v$$
+
+✍️ **Escreva no quadro (se for usar o §4):**
 
 $$\omega_n=\frac{1}{\sqrt{LC}},\qquad \zeta=\frac{R}{2}\sqrt{\frac{C}{L}}$$
 
@@ -237,6 +255,10 @@ $$m\ddot x = f - kx - b\dot x$$
 ✍️ **Escreva no quadro:**
 
 $$1\cdot\ddot x = f - 5x - 2\dot x \;\Longrightarrow\; \ddot x + 2\dot x + 5x = f$$
+
+🗣️ **Fale.** "Como $m=1$, essa EDO **já está na forma mônica** (coeficiente de $\ddot x$ igual a
+1) — por isso já é uma forma padrão de 2ª ordem. Comparando com $\ddot y+2\zeta\omega_n\dot
+y+\omega_n^2 y$, saem $\omega_n^2=5$ e $2\zeta\omega_n=2$ na hora (contas fechadas no Passo 6)."
 
 ### Passo 3 — Leitura física (falar; escrever os rótulos se quiser)
 
@@ -277,6 +299,13 @@ laminar, o que sai é **proporcional** ao nível: $q_o=h/R_v$."
 ✍️ **Escreva no quadro — equação (5):**
 
 $$A\dot h = q_i - q_o,\qquad q_o=\frac{h}{R_v}\;\Longrightarrow\; A\dot h + \frac{1}{R_v}h = q_i$$
+
+🗣️ **Fale.** "Normalizo já no tempo para a forma padrão de 1ª ordem: divido pelo coeficiente de
+$h$ (que é $1/R_v$). Aí $\tau$ e $K$ aparecem sem precisar nem ir para Laplace."
+
+✍️ **Escreva no quadro — forma padrão de 1ª ordem:**
+
+$$AR_v\,\dot h + h = R_v\,q_i \quad(\tau\dot y + y = Ku),\qquad \tau=AR_v,\;\; K=R_v$$
 
 ### Passo 2 — Laplace (condições iniciais nulas)
 
@@ -337,6 +366,10 @@ convecção. O que escapa é proporcional à diferença de temperatura para o am
 ✍️ **Escreva no quadro:**
 
 $$C_t\,\frac{d\Delta\theta}{dt} = \Delta q_{in} - \frac{1}{R_t}\Delta\theta \;\Longrightarrow\; C_t\,\dot{\Delta\theta} + \frac{1}{R_t}\Delta\theta = \Delta q_{in}$$
+
+✍️ **Escreva no quadro — forma padrão de 1ª ordem:**
+
+$$R_tC_t\,\dot{\Delta\theta} + \Delta\theta = R_t\,\Delta q_{in} \quad(\tau\dot y + y = Ku),\qquad \tau=R_tC_t,\;\; K=R_t$$
 
 ### Passo 2 — Laplace e FT
 
@@ -683,11 +716,11 @@ apareceu no tempo (§2 e §6), agora na frequência. O Lab 03 faz esse ensaio po
 
 Para planejar o espaço do quadro, esta é a espinha de cada item (só os blocos ✍️, em ordem):
 
-- **Ex. 1.1:** (1) → (2) → (1′) → (2′).
-- **Ex. 1.2:** LKT → forma integro-diferencial → (3) → (4) [→ $\omega_n,\zeta$].
-- **Exerc. 1:** $m\ddot x=f-kx-b\dot x$ → $\ddot x+2\dot x+5x=f$.
-- **1.A:** balanço (5) → $(As+1/R_v)H=Q_i$ → FT → números.
-- **1.B:** balanço térmico → FT → números.
+- **Ex. 1.1:** (1) → (2) → (1′) → (2′) → **forma mônica** (÷$m_1$, ÷$m_2$).
+- **Ex. 1.2:** LKT → forma integro-diferencial → (3) → (4) → **forma mônica** [→ $\omega_n,\zeta$].
+- **Exerc. 1:** $m\ddot x=f-kx-b\dot x$ → $\ddot x+2\dot x+5x=f$ (já mônica).
+- **1.A:** balanço (5) → **forma $\tau$** ($AR_v\dot h+h=R_vq_i$) → $(As+1/R_v)H=Q_i$ → FT → números.
+- **1.B:** balanço térmico → **forma $\tau$** → FT → números.
 - **Ex. 2:** $Y=5/[s(2s+1)]$ → frações parciais → $y(t)=5(1-e^{-t/2})$ → $y(2)=3{,}16$.
 - **Ex. 3:** comparação → $\omega_n,\zeta$ → $G(0)$ → $M_p,t_s$ → polos.
 - **Ex. 4:** 2 equações → elimina $i_a$ → forma-padrão → números → $5/(2s+1)$ → EE.
