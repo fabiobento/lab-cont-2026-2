@@ -149,7 +149,7 @@ Os três elementos passivos e suas leis constitutivas:
 
 Duas técnicas de análise equivalentes:
 
-- **Malhas (LK tension)**: soma das tensões ao longo de cada malha fechada é zero.
+- **Malhas (LK tensão)**: soma das tensões ao longo de cada malha fechada é zero.
   Adequada para circuitos série. Para o RLC série com fonte $v(t)$:
   $$L\ddot{q} + R\dot{q} + \frac{1}{C}q = v(t).$$
 - **Nós (LK corrente)**: soma das correntes que saem de cada nó é zero. Adequada para
@@ -157,7 +157,7 @@ Duas técnicas de análise equivalentes:
   como variáveis, cada capacitor entre nós $i$ e $j$ contribui com
   $C(\dot{e}_i - \dot{e}_j)$ etc.
 
-**Exemplo 1.2 — RLC série.** Aplicando LK tension à malha única:
+**Exemplo 1.2 — RLC série.** Aplicando LK tensão à malha única:
 
 $$v_L + v_R + v_C = v(t)\;\Rightarrow\; L\frac{di}{dt} + Ri + \frac{1}{C}\int_0^t i\,d\tau = v(t).$$
 
@@ -188,7 +188,7 @@ Comparando as EDOs mecânicas e elétricas, obtemos duas analogias clássicas, q
 "pensar" um sistema de um domínio usando a intuição do outro:
 
 **Analogia força–tensão (massa–indutor)** — vem de comparar Newton ($m\ddot{x}+b\dot{x}+kx=f$)
-com LK tension do RLC série ($L\ddot{q}+R\dot{q}+q/C=v$):
+com LK tensão do RLC série ($L\ddot{q}+R\dot{q}+q/C=v$):
 
 | Mecânico translacional | Elétrico |
 |---|---|
@@ -1036,7 +1036,7 @@ deve saber refazer de memória.
 
 **Física (duas equações + dois acoplamentos):**
 
-1. **Circuito de armadura (LK tension):**
+1. **Circuito de armadura (LK tensão):**
    $$v_a = R_a i_a + L_a\frac{di_a}{dt} + e_b,$$
    com $R_a$ resistência e $L_a$ indutância de armadura, $e_b$ a força contraeletromotriz.
 2. **Conversão eletromecânica (dois lados do mesmo fenômeno):**
