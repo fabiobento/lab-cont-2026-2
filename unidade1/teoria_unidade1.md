@@ -119,13 +119,13 @@ Massa 2: $m_2\ddot{x}_2 = f - k_2(x_2 - x_1) - b(\dot{x}_2 - \dot{x}_1)$.
 Reagrupando (agrupado por variável):
 
 $$m_1\ddot{x}_1 + b\dot{x}_1 + (k_1+k_2)x_1 - b\dot{x}_2 - k_2x_2 = 0,$$
-$$m_2\ddot{x}_2 - b\dot{x}_1 - k_2x_1 + b\dot{x}_2 + k_2x_2 = f.$$
+$$m_2\ddot{x}_2 + b\dot{x}_2 + k_2x_2 - b\dot{x}_1 - k_2x_1  = f.$$
 
 Na **forma mônica** (normalizando cada equação pela massa que multiplica a maior derivada —
 $m_1$ na primeira, $m_2$ na segunda):
 
 $$\ddot{x}_1 + \frac{b}{m_1}\dot{x}_1 + \frac{k_1+k_2}{m_1}x_1 - \frac{b}{m_1}\dot{x}_2 - \frac{k_2}{m_1}x_2 = 0,$$
-$$\ddot{x}_2 - \frac{b}{m_2}\dot{x}_1 - \frac{k_2}{m_2}x_1 + \frac{b}{m_2}\dot{x}_2 + \frac{k_2}{m_2}x_2 = \frac{1}{m_2}f.$$
+$$\ddot{x}_2 + \frac{b}{m_2}\dot{x}_2 + \frac{k_2}{m_2}x_2 - \frac{b}{m_2}\dot{x}_1 - \frac{k_2}{m_2}x_1 = \frac{1}{m_2}f.$$
 
 Com o coeficiente de cada aceleração igual a 1, os agrupamentos $\tfrac{k}{m}$ e $\tfrac{b}{m}$
 são exatamente o que reaparece como $\omega_n^2$ e $2\zeta\omega_n$ na Seção 4.
