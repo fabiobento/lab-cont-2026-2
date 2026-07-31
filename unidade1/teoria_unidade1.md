@@ -159,7 +159,7 @@ Duas técnicas de análise equivalentes:
 
 **Exemplo 1.2 — RLC série.** Aplicando LK tensão à malha única:
 
-$$v_L + v_R + v_C = v(t)\;\Rightarrow\; L\frac{di}{dt} + Ri + \frac{1}{C}\int_0^t i\,d\tau = v(t).$$
+$$v_L + v_R + v_C = v(t)\;\Rightarrow\; L\frac{di}{dt} + Ri + \frac{1}{C}\int_0^t id\tau = v(t).$$
 
 Com $i = \dot{q}$: $L\ddot{q} + R\dot{q} + q/C = v$. Se a variável de interesse for a
 tensão no capacitor $v_C = q/C$, então:
