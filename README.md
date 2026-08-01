@@ -183,7 +183,7 @@ Apostila: [`unidade1/teoria_unidade1.md`](unidade1/teoria_unidade1.md)
 
 | Seção da apostila | Conceito | Onde pratica | Livro-âncora |
 |---|---|---|---|
-| **§1** (1.1–1.5) | Física → EDO → FT (mecânico, elétrico, fluídico, térmico); linearização em §1.4 | [Lab 01](unidade1/lab01_modelagem_edo.ipynb) | Ogata 3–4; Nise 2 |
+| **§1** (1.1–1.4) | Física → EDO → FT (mecânico, elétrico, fluídico); linearização em §1.4; térmico deduzido em §6.1 | [Lab 01](unidade1/lab01_modelagem_edo.ipynb) | Ogata 3–4; Nise 2 |
 | **§2** | Transformada de Laplace e frações parciais (os três casos) | [Lab 01](unidade1/lab01_modelagem_edo.ipynb) / [Lab 02](unidade1/lab02_resposta_temporal.ipynb), Lista 1 | Schaum 4 |
 | **§3** | Função de transferência, polos/zeros e redução de diagramas de blocos | [Labs 01–03](unidade1/) (e Lab 04) | Nise 2 e 5; Schaum 7 |
 | **§4** | Sistemas de 1ª e 2ª ordem: $M_p$, $t_s$, geometria do plano $s$ | [Lab 02](unidade1/lab02_resposta_temporal.ipynb) e [Lab 04](unidade2/lab04_sistemas_1a_2a_ordem.ipynb) | Nise 4; Penedo 4 |

@@ -277,44 +277,8 @@ Figura 4.1, Cap. 4)
 $\Delta q_i$ na entrada eleva o nível de $R_v\Delta q_i$) e a constante de tempo é o produto
 "capacitância × resistência", exatamente como o $RC$ elétrico.
 
----
-
-### 1.5 Sistemas térmicos
-
-*(Desenvolve Ogata, cap. 4, §4-3 — a dedução do sistema térmico usado no curso.)*
-
-Considere um corpo de massa $M$ e calor específico $c$, a temperatura $\theta$ (uniforme,
-modelo concentrado), trocando calor com o ambiente a $\theta_a$ por convecção através de
-uma superfície de área $S$ e coeficiente de convecção $h_c$, e recebendo potência térmica
-$q_{in}$ [W] de uma resistência elétrica.
-
-**Balanço de energia:** taxa de acumulação = potência entrando − potência saindo:
-
-$$Mc\frac{d\theta}{dt} = q_{in} - h_cS(\theta - \theta_a).$$
-
-Definindo a **resistência térmica** $R_t = 1/(h_cS)$ [K/W] e a **capacitância térmica**
-$C_t = Mc$ [J/K], em variáveis-desvio em torno do equilíbrio
-($\Delta\theta = \theta - \bar\theta$):
-
-$$C_t\frac{d\Delta\theta}{dt} + \frac{1}{R_t}\Delta\theta = \Delta q_{in}
-\;\Rightarrow\;
-\underbrace{R_tC_t}_{\tau}\frac{d\Delta\theta}{dt} + \Delta\theta = \underbrace{R_t}_{K}\Delta q_{in}
-\;\Rightarrow\;
-\frac{\Delta\Theta(s)}{\Delta Q_{in}(s)} = \frac{R_t}{R_tC_t\,s + 1}.$$
-
-De novo uma 1ª ordem com $\tau = R_tC_t$ e $K = R_t$: **o ganho estático de um sistema
-térmico é sua resistência térmica** (1 °C de aumento permanente exige $1/R_t$ watts
-adicionais). É essa estrutura — 1ª ordem, muitas vezes com tempo morto devido ao transporte
-do fluido/sensor — que faz do controle de temperatura o exemplo industrial por excelência
-do modelo FOPDT da Seção 6.
-
-![](https://github.com/fabiobento/lab-cont-2026-2/raw/main/imagens/fig-4-26-ogata.png)
-
-**Figura 1.5 — (a) Sistema térmico (tanque aquecido e misturado); (b) diagrama de blocos
-do sistema — repare a 1ª ordem $\frac{1}{RCs}$ dentro da malha.** (Fonte: OGATA,
-Figura 4.26, Cap. 4)
-
-**Analogia completa entre domínios:**
+**Analogia completa entre domínios** (fecha os domínios de modelagem desta seção; o domínio
+**térmico** é deduzido no §6.1, junto do modelo FOPDT, onde é o exemplo por excelência):
 
 | Grandeza | Elétrico | Mecânico transl. | Mecânico rotac. | Hidráulico | Térmico |
 |---|---|---|---|---|---|
@@ -326,7 +290,7 @@ Figura 4.26, Cap. 4)
 
 ---
 
-### 1.6 Exercícios resolvidos da Seção 1
+### 1.5 Exercícios resolvidos da Seção 1
 
 **Exercício resolvido 1 — do sistema físico à EDO.**
 
@@ -360,23 +324,6 @@ $$K = R_v = 0{,}5\ \text{s/m}^2,\qquad \tau = AR_v = 2 \times 0{,}5 = 1\ \text{s
 $$\boxed{\frac{H(s)}{Q_i(s)} = \frac{0{,}5}{s+1}}$$
 Leitura: dobrando permanentemente a vazão em $\Delta q_i$, o nível sobe em regime
 $0{,}5\,\Delta q_i$ metros, levando cerca de $4\tau = 4$ s para se acomodar.
-
-**Exercício adicional 1.B — tanque aquecido (térmico).**
-*Um corpo é aquecido por uma resistência elétrica que injeta potência $q_{in}$ [W] e troca calor
-com o ambiente por convecção. Valores didáticos: capacitância térmica $C_t = Mc = 200$ J/K e
-resistência térmica $R_t = 0{,}5$ K/W. A entrada é a potência $q_{in}$ e a saída, a temperatura
-$\theta$ (em desvio $\Delta\theta$ do ambiente). Ache a FT $\Delta\Theta(s)/\Delta Q_{in}(s)$ e
-interprete $K$ e $\tau$.*
-
-**Solução.** É a mesma 1ª ordem do §1.5, agora com números. Do balanço de energia, já na forma
-padrão $\tau\dot{y} + y = Ku$:
-$$R_tC_t\,\dot{\Delta\theta} + \Delta\theta = R_t\,\Delta q_{in}
-\;\Rightarrow\; K = R_t = 0{,}5\ \text{K/W},\quad \tau = R_tC_t = 0{,}5 \times 200 = 100\ \text{s}.$$
-$$\boxed{\frac{\Delta\Theta(s)}{\Delta Q_{in}(s)} = \frac{0{,}5}{100\,s+1}}$$
-Leitura: 1 W permanente a mais eleva a temperatura, em regime, $0{,}5$ K, e a acomodação leva
-$\approx 4\tau = 400$ s. É a **mesma estrutura** do tanque de nível (1.A) — muda só o significado
-físico das grandezas e a escala de tempo (sistemas térmicos são lentos), exatamente a analogia
-do §1.3.
 
 > 📖 **Referências originais desta seção (para conferência):** Ogata, cap. 3 (sistemas
 > mecânicos e elétricos, analogias força–tensão e força–corrente) e cap. 4 (sistemas
@@ -637,7 +584,7 @@ Unidade II vive dentro dessa fórmula. Caso particular frequente: realimentaçã
 
 ![](https://github.com/fabiobento/lab-cont-2026-2/raw/main/imagens/fig-5-6-nise.png)
 
-**Figura 1.6 — (a) Sistema de controle com realimentação típico; (b) modelo simplificado;
+**Figura 1.5 — (a) Sistema de controle com realimentação típico; (b) modelo simplificado;
 (c) função de transferência equivalente de malha fechada.** (Fonte: NISE, Figura 5.6,
 Cap. 5)
 
@@ -655,13 +602,13 @@ cada uma seguindo os sinais da entrada até a saída nos dois lados do sinal "$\
 
 ![](https://github.com/fabiobento/lab-cont-2026-2/raw/main/imagens/fig-5-7-nise.png)
 
-**Figura 1.7 — Álgebra de diagramas de blocos para junções de soma: formas equivalentes
+**Figura 1.6 — Álgebra de diagramas de blocos para junções de soma: formas equivalentes
 para mover um bloco (a) para a esquerda e (b) para a direita, passando uma junção de
 soma.** (Fonte: NISE, Figura 5.7, Cap. 5)
 
 ![](https://github.com/fabiobento/lab-cont-2026-2/raw/main/imagens/fig-5-8-nise.png)
 
-**Figura 1.8 — Álgebra de diagramas de blocos para pontos de ramificação: formas
+**Figura 1.7 — Álgebra de diagramas de blocos para pontos de ramificação: formas
 equivalentes para mover um bloco (a) para a esquerda e (b) para a direita, passando um
 ponto de derivação.** (Fonte: NISE, Figura 5.8, Cap. 5)
 
@@ -738,13 +685,13 @@ que motivará o controle integral na Unidade II.
 
 ![](https://github.com/fabiobento/lab-cont-2026-2/raw/main/imagens/fig-5-1-ogata.png)
 
-**Figura 1.9 — Diagramas de blocos do sistema de 1ª ordem. (a) Diagrama de blocos de um
+**Figura 1.8 — Diagramas de blocos do sistema de 1ª ordem. (a) Diagrama de blocos de um
 sistema de primeira ordem; (b) diagrama de blocos simplificado.** (Fonte: OGATA, Figura 5.1,
 Cap. 5, p. 147)
 
 ![](https://github.com/fabiobento/lab-cont-2026-2/raw/main/imagens/fig-5-2-ogata.png)
 
-**Figura 1.10 — Curva de resposta exponencial ao degrau, com a tangente inicial e as marcas
+**Figura 1.9 — Curva de resposta exponencial ao degrau, com a tangente inicial e as marcas
 em T, 2T, 3T, 4T.** (Fonte: OGATA, Figura 5.2, Cap. 5, p. 147)
 
 > **Nota — de onde vem a forma $1/(\tau s + 1)$?** Um integrador puro realimentado
@@ -771,13 +718,13 @@ $$G(s) = \frac{K\,\omega_n^2}{s^2 + 2\zeta\omega_n s + \omega_n^2}$$
 | $\zeta = 0$: não amortecido | $\pm j\omega_n$ | oscilação permanente |
 | $\zeta < 0$ | polos no semiplano direito | oscilação crescente — **instável** |
 
-A Figura 1.11 mostra a família de respostas subamortecidas com o eixo do tempo normalizado
+A Figura 1.10 mostra a família de respostas subamortecidas com o eixo do tempo normalizado
 por $\omega_n$: repare que $\zeta$ controla **a forma** (quanto oscila) enquanto $\omega_n$
 apenas **estica ou comprime o tempo** — a mesma curva serve para qualquer $\omega_n$.
 
 ![](https://github.com/fabiobento/lab-cont-2026-2/raw/main/imagens/fig-4-13-nise.png)
 
-**Figura 1.11 — Respostas de segunda ordem subamortecidas para diferentes valores do fator
+**Figura 1.10 — Respostas de segunda ordem subamortecidas para diferentes valores do fator
 de amortecimento $\zeta$ (eixo do tempo normalizado, $\omega_n t$).** (Fonte: NISE,
 Figura 4.13, Cap. 4)
 
@@ -826,12 +773,12 @@ e sua inversa (usada em projeto — "dado o $M_p$ desejado, qual $\zeta$?"):
 
 $$\zeta = \frac{|\ln(M_p/100)|}{\sqrt{\pi^2 + \ln^2(M_p/100)}}.$$
 
-A curva $M_p \times \zeta$ (Figura 1.12) é uma das mais consultadas do curso: lendo na
+A curva $M_p \times \zeta$ (Figura 1.11) é uma das mais consultadas do curso: lendo na
 horizontal o sobressinal desejado, obtém-se verticalmente o $\zeta$ necessário — e vice-versa.
 
 ![](https://github.com/fabiobento/lab-cont-2026-2/raw/main/imagens/fig-4-15-nise.png)
 
-**Figura 1.12 — Ultrapassagem (sobressinal) percentual em função do fator de
+**Figura 1.11 — Ultrapassagem (sobressinal) percentual em função do fator de
 amortecimento.** (Fonte: NISE, Figura 4.15, Cap. 4)
 
 **Tempo de acomodação $t_s$** — instante a partir do qual a resposta permanece dentro de
@@ -879,39 +826,39 @@ malha fechada para dentro da região permitida.
 
 ![](https://github.com/fabiobento/lab-cont-2026-2/raw/main/imagens/fig-4-17-nise.png)
 
-**Figura 1.13 — Diagrama de polos de um sistema de segunda ordem subamortecido: a
+**Figura 1.12 — Diagrama de polos de um sistema de segunda ordem subamortecido: a
 distância radial é $\omega_n$, $\cos\theta = \zeta$, a parte real $-\zeta\omega_n = -\sigma_d$
 manda no tempo de acomodação e a parte imaginária $\pm j\omega_d$ manda no tempo de
 pico.** (Fonte: NISE, Figura 4.17, Cap. 4)
 
 ![](https://github.com/fabiobento/lab-cont-2026-2/raw/main/imagens/fig-5-2-ogata.png)
 
-**Figura 1.14 — Especificações de resposta transitória ($t_d, t_r, t_p, M_p, t_s$) sobre a
+**Figura 1.13 — Especificações de resposta transitória ($t_d, t_r, t_p, M_p, t_s$) sobre a
 curva ao degrau.** (Fonte: OGATA, Figura 5.2, Cap. 5, p. 154)
 
 ![](https://github.com/fabiobento/lab-cont-2026-2/raw/main/imagens/fig-5-22-ogata.png)
 
-**Figura 1.15 — Família de respostas ao degrau unitário para $\zeta = 0; 0{,}2; \dots; 1$
+**Figura 1.14 — Família de respostas ao degrau unitário para $\zeta = 0; 0{,}2; \dots; 1$
 ($\omega_n = 1$).** (Fonte: OGATA, Figura 5.22, Cap. 5, p. 174)
 
 ![](https://github.com/fabiobento/lab-cont-2026-2/raw/main/imagens/fig-4-10-nise.png)
 
-**Figura 1.16 — Respostas ao degrau superpostas dos quatro casos de amortecimento.** (Fonte:
+**Figura 1.15 — Respostas ao degrau superpostas dos quatro casos de amortecimento.** (Fonte:
 NISE, Figura 4.10, Cap. 4)
 
 ![](https://github.com/fabiobento/lab-cont-2026-2/raw/main/imagens/fig-4-14-nise.png)
 
-**Figura 1.17 — Especificações da resposta subamortecida de 2ª ordem ($T_r, T_p, \%UP,
+**Figura 1.16 — Especificações da resposta subamortecida de 2ª ordem ($T_r, T_p, \%UP,
 T_s$).** (Fonte: NISE, Figura 4.14, Cap. 4)
 
 ![](https://github.com/fabiobento/lab-cont-2026-2/raw/main/imagens/fig-4-1-penedo.png)
 
-**Figura 1.18 — Especificações de desempenho caracterizadas graficamente.** (Fonte: PENEDO,
+**Figura 1.17 — Especificações de desempenho caracterizadas graficamente.** (Fonte: PENEDO,
 Figura 4.1, Cap. 4)
 
 ![](https://github.com/fabiobento/lab-cont-2026-2/raw/main/imagens/fig-4-4-penedo.png)
 
-**Figura 1.19 — Localização dos polos complexos conjugados de 2ª ordem no plano complexo.**
+**Figura 1.18 — Localização dos polos complexos conjugados de 2ª ordem no plano complexo.**
 (Fonte: PENEDO, Figura 4.4, Cap. 4)
 
 ### 4.6 Aproximação de sistemas de ordem superior (Nise, §4.7–4.8)
@@ -988,7 +935,7 @@ dois capacitores em paralelo contam como um só.
 
 ![](https://github.com/fabiobento/lab-cont-2026-2/raw/main/imagens/fig-3-5-nise.png)
 
-**Figura 1.20 — Circuito elétrico para representação em espaço de estados: dois
+**Figura 1.19 — Circuito elétrico para representação em espaço de estados: dois
 armazenadores independentes ($L$ e $C$) ⟹ duas variáveis de estado, $i_L$ e $v_C$ —
 as grandezas que aparecem derivadas nas leis constitutivas.** (Fonte: NISE, Figura 3.5,
 Cap. 3)
@@ -1005,13 +952,13 @@ B = \begin{bmatrix}0\\ 1/m\end{bmatrix},\quad C = [1\ \ 0],\quad D = 0.$$
 
 Note o padrão: a primeira linha de $A$ é $[0\ \ 1]$ (cadeia de integradores), e a última
 linha traz os coeficientes da EDO com sinais trocados — essa é a **forma companheira**,
-que generaliza para qualquer ordem. A Figura 1.21 mostra a mesma ideia em diagrama de
+que generaliza para qualquer ordem. A Figura 1.20 mostra a mesma ideia em diagrama de
 blocos para o sistema massa–amortecedor $M\dot v + Dv = f$: cada variável de estado é a
 **saída de um integrador**.
 
 ![](https://github.com/fabiobento/lab-cont-2026-2/raw/main/imagens/fig-3-4-nise.png)
 
-**Figura 1.21 — Diagrama de blocos de uma massa e amortecedor: o segundo bloco integra a
+**Figura 1.20 — Diagrama de blocos de uma massa e amortecedor: o segundo bloco integra a
 velocidade para produzir o deslocamento — incluir a posição como variável adicional
 aumenta a ordem do sistema de 1 para 2.** (Fonte: NISE, Figura 3.4, Cap. 3)
 
@@ -1115,7 +1062,7 @@ $K_m$ e $\tau_m$ do **seu** kit serão identificados por ensaio (§6), não calc
 
 ![](https://github.com/fabiobento/lab-cont-2026-2/raw/main/imagens/fig-2-35-nise.png)
 
-**Figura 1.22 — Servomotor CC controlado pela armadura: esquema e diagrama para a dedução
+**Figura 1.21 — Servomotor CC controlado pela armadura: esquema e diagrama para a dedução
 da FT.** (Fonte: NISE, Figura 2.35, Cap. 2)
 
 ### 5.6 No computador
@@ -1162,6 +1109,26 @@ Sua resposta ao degrau de amplitude $\Delta u$, partindo de $y_0$:
 
 $$y(t) = y_0 + K\Delta u\left(1 - e^{-(t-\theta)/\tau}\right)\,1(t-\theta).$$
 
+**O arquétipo físico do FOPDT — o sistema térmico.** O exemplo industrial por excelência do FOPDT é o controle de temperatura. Considere um corpo de massa $M$ e calor específico $c$, a temperatura $\theta$ (uniforme, modelo concentrado), trocando calor com o ambiente a $\theta_a$ por convecção (superfície $S$, coeficiente $h_c$) e recebendo potência $q_{in}$ [W] de uma resistência elétrica. O balanço de energia (acúmulo = entra − sai) é
+
+$$Mc\frac{d\theta}{dt} = q_{in} - h_cS(\theta - \theta_a).$$
+
+Definindo a **resistência térmica** $R_t = 1/(h_cS)$ [K/W] e a **capacitância térmica** $C_t = Mc$ [J/K], em variáveis-desvio ($\Delta\theta = \theta-\bar\theta$), já na forma padrão de 1ª ordem $\tau\dot{y} + y = Ku$:
+
+$$C_t\frac{d\Delta\theta}{dt} + \frac{1}{R_t}\Delta\theta = \Delta q_{in}
+\;\Rightarrow\;
+\underbrace{R_tC_t}_{\tau}\frac{d\Delta\theta}{dt} + \Delta\theta = \underbrace{R_t}_{K}\Delta q_{in}
+\;\Rightarrow\;
+\frac{\Delta\Theta(s)}{\Delta Q_{in}(s)} = \frac{R_t}{R_tC_t\,s + 1}.$$
+
+O ganho estático **é a resistência térmica** ($1$ °C permanente exige $1/R_t$ watts a mais) e $\tau = R_tC_t$. O **tempo morto** $\theta$ surge aqui do transporte do fluido e do atraso do sensor — é o que torna o sistema térmico o retrato fiel do modelo $Ke^{-\theta s}/(\tau s+1)$.
+
+*Exemplo numérico (valores didáticos):* com $C_t = Mc = 200$ J/K e $R_t = 0{,}5$ K/W,
+
+$$K = R_t = 0{,}5\ \text{K/W},\qquad \tau = R_tC_t = 100\ \text{s},\qquad \frac{\Delta\Theta(s)}{\Delta Q_{in}(s)} = \frac{0{,}5}{100\,s+1}.$$
+
+Um watt permanente a mais eleva a temperatura $0{,}5$ K em regime, com acomodação em $\approx 4\tau = 400$ s (sistemas térmicos são lentos).
+
 ### 6.2 Método da tangente no ponto de inflexão (Ziegler–Nichols, Ogata cap. 8)
 
 O método clássico sobre a curva de reação:
@@ -1196,12 +1163,12 @@ com um ponto só e a tangente inicial, os dois parâmetros se confundem.
 
 ![](https://github.com/fabiobento/lab-cont-2026-2/raw/main/imagens/fig-8-2-ogata.png)
 
-**Figura 1.23 — Ensaio de resposta ao degrau unitário da planta (1º método de
+**Figura 1.22 — Ensaio de resposta ao degrau unitário da planta (1º método de
 Ziegler–Nichols).** (Fonte: OGATA, Figura 8.2, Cap. 8, p. 523)
 
 ![](https://github.com/fabiobento/lab-cont-2026-2/raw/main/imagens/fig-8-3-ogata.png)
 
-**Figura 1.24 — Curva de resposta em forma de S, com a tangente no ponto de inflexão
+**Figura 1.23 — Curva de resposta em forma de S, com a tangente no ponto de inflexão
 definindo o atraso L e a constante T.** (Fonte: OGATA, Figura 8.3, Cap. 8, p. 523)
 
 ### 6.4 Boas práticas de ensaio (essenciais na bancada)
@@ -1284,7 +1251,7 @@ Referências rápidas de dB: ganho 2 → +6 dB; 10 → +20 dB; $1/\sqrt2 \approx
 
 ![](https://github.com/fabiobento/lab-cont-2026-2/raw/main/imagens/fig-10-4-nise.png)
 
-**Figura 1.25 — Diagramas de resposta em frequência para $G(s) = 1/(s+2)$: magnitude
+**Figura 1.24 — Diagramas de resposta em frequência para $G(s) = 1/(s+2)$: magnitude
 (superior) e fase (inferior), ambos contra $\log\omega$.** (Fonte: NISE, Figura 10.4,
 Cap. 10)
 
@@ -1316,12 +1283,12 @@ mesmo módulo do zero normal, mas fase **negativa** como se fosse um polo — da
 assíntotas 0 dB e **−40 dB/década** após $\omega_n$; fase de 0° a −180° (−90° em
 $\omega_n$). Mas perto do canto a curva real **depende fortemente de $\zeta$**: quanto
 menor o amortecimento, maior o **pico de ressonância** — as assíntotas podem errar por
-mais de 10 dB se $\zeta$ for pequeno. A Figura 1.26 mostra as assíntotas normalizadas e a
-Figura 1.27, adiante, mostra o quanto a curva real se afasta delas para cada $\zeta$.
+mais de 10 dB se $\zeta$ for pequeno. A Figura 1.25 mostra as assíntotas normalizadas e a
+Figura 1.26, adiante, mostra o quanto a curva real se afasta delas para cada $\zeta$.
 
 ![](https://github.com/fabiobento/lab-cont-2026-2/raw/main/imagens/fig-10-13-nise.png)
 
-**Figura 1.26 — Assíntotas de Bode para o polinômio de segunda ordem normalizado e
+**Figura 1.25 — Assíntotas de Bode para o polinômio de segunda ordem normalizado e
 escalonado ($\omega/\omega_n$): (a) magnitude; (b) fase.** (Fonte: NISE, Figura 10.13,
 Cap. 10)
 
@@ -1341,7 +1308,7 @@ $\zeta$ (faixa usual de projeto).
 
 ![](https://github.com/fabiobento/lab-cont-2026-2/raw/main/imagens/fig-10-14-nise.png)
 
-**Figura 1.27 — Magnitude da resposta normalizada e escalonada para
+**Figura 1.26 — Magnitude da resposta normalizada e escalonada para
 $s^2 + 2\zeta\omega_n s + \omega_n^2$, para diversos valores de $\zeta$: os vales/picos
 perto de $\omega/\omega_n = 1$ crescem à medida que $\zeta$ diminui — é o pico de
 ressonância $M_r$ aparecendo.** (Fonte: NISE, Figura 10.14, Cap. 10)
@@ -1410,7 +1377,7 @@ pico de ressonância.
 
 ![](https://github.com/fabiobento/lab-cont-2026-2/raw/main/imagens/fig-15-3-distefano.png)
 
-**Figura 1.28 — Exemplo de diagrama de Bode (módulo e fase).** (Fonte: DISTEFANO,
+**Figura 1.27 — Exemplo de diagrama de Bode (módulo e fase).** (Fonte: DISTEFANO,
 Figura 15.3, Cap. 15)
 
 > 📖 **Referências originais desta seção (para conferência):** Ogata, cap. 7, primeira
@@ -1425,7 +1392,7 @@ Figura 15.3, Cap. 15)
 
 | Conceito | Onde está nesta apostila | Onde pratica | Livro-âncora |
 |---|---|---|---|
-| Física → EDO → FT | §1 (1.1–1.5, todos os domínios) | Lab 01 | Ogata 3–4; Nise 2 |
+| Física → EDO → FT | §1 (1.1–1.4) + §6.1 (térmico) | Lab 01 | Ogata 3–4; Nise 2 |
 | Laplace e frações parciais | §2 (inclui os 3 casos resolvidos) | Lab 01/02, Lista 1 | Schaum 4 |
 | FT, polos/zeros, blocos | §3 (regras de redução 1–5) | Labs 01–04 | Nise 2 e 5; Schaum 7 |
 | 1ª/2ª ordem, $M_p$, $t_s$ | §4 (deduções completas + geometria) | Labs 02 e 04 | Nise 4; Penedo 4 |
