@@ -260,12 +260,11 @@ Normalizando para a **forma padrão ideal de 1ª ordem** (dividindo pelo coefici
 isto é, por $1/R_v$):
 
 $$\underbrace{AR_v}_{\tau}\,\frac{d\Delta h}{dt} + \Delta h = \underbrace{R_v}_{K}\,\Delta q_i
-\qquad(\text{forma }\tau\dot{y} + y = Ku),$$
+\qquad(\text{forma }\tau\dot{y} + y = Ku),\qquad K = R_v,\ \ \tau = AR_v.$$
 
-que, aplicando Laplace (Seção 2), produz a FT de 1ª ordem
-
-$$\frac{\Delta H(s)}{\Delta Q_i(s)} = \frac{R_v}{AR_v s + 1} = \frac{K}{\tau s + 1},
-\qquad K = R_v,\ \ \tau = AR_v.$$
+Nessa forma padrão já se leem o ganho estático $K = R_v$ e a constante de tempo $\tau = AR_v$.
+A **função de transferência** correspondente sai ao aplicar a transformada de Laplace a esta
+EDO — ferramenta da Seção 2, formalizada como FT na Seção 3.
 
 ![](https://github.com/fabiobento/lab-cont-2026-2/raw/main/imagens/fig-4-1-ogata.png)
 
@@ -316,14 +315,15 @@ $\omega_n$ e $\zeta$.
 
 **Exercício adicional 1.A — tanque aquecido.**
 *Um tanque perfeitamente misturado, de seção $A = 2$ m², recebe vazão $q_i$ e perde por uma
-restrição laminar $R_v = 0{,}5$ s/m². Encontre a FT entre vazão de entrada e nível, e
-interprete $K$ e $\tau$ fisicamente.*
+restrição laminar $R_v = 0{,}5$ s/m². Escreva a EDO na forma padrão de 1ª ordem
+($\tau\dot{y} + y = Ku$) e interprete $K$ e $\tau$ fisicamente.*
 
-**Solução.** Direto das fórmulas do §1.4:
-$$K = R_v = 0{,}5\ \text{s/m}^2,\qquad \tau = AR_v = 2 \times 0{,}5 = 1\ \text{s}.$$
-$$\boxed{\frac{H(s)}{Q_i(s)} = \frac{0{,}5}{s+1}}$$
+**Solução.** Direto das fórmulas do §1.4, o modelo já sai na forma padrão de 1ª ordem:
+$$AR_v\,\dot{h} + h = R_v\,q_i \;\Longrightarrow\; \tau\dot{h} + h = K q_i,\qquad
+K = R_v = 0{,}5\ \text{s/m}^2,\qquad \tau = AR_v = 2 \times 0{,}5 = 1\ \text{s}.$$
 Leitura: dobrando permanentemente a vazão em $\Delta q_i$, o nível sobe em regime
-$0{,}5\,\Delta q_i$ metros, levando cerca de $4\tau = 4$ s para se acomodar.
+$0{,}5\,\Delta q_i$ metros, levando cerca de $4\tau = 4$ s para se acomodar. (A FT
+$H(s)/Q_i(s)$ sai desta EDO ao aplicar Laplace, no §2/§3.)
 
 > 📖 **Referências originais desta seção (para conferência):** Ogata, cap. 3 (sistemas
 > mecânicos e elétricos, analogias força–tensão e força–corrente) e cap. 4 (sistemas
@@ -1405,7 +1405,7 @@ Figura 15.3, Cap. 15)
 
 | Conceito | Onde está nesta apostila | Onde pratica | Livro-âncora |
 |---|---|---|---|
-| Física → EDO → FT | §1 (1.1–1.4) + §6.1 (térmico) | Lab 01 | Ogata 3–4; Nise 2 |
+| Física → EDO | §1 (1.1–1.4) + §6.1 (arquétipo térmico) | Lab 01 | Ogata 3–4; Nise 2 |
 | Laplace e frações parciais | §2 (inclui os 3 casos resolvidos) | Lab 01/02, Lista 1 | Schaum 4 |
 | FT, polos/zeros, blocos | §3 (regras de redução 1–5) | Labs 01–04 | Nise 2 e 5; Schaum 7 |
 | 1ª/2ª ordem, $M_p$, $t_s$ | §4 (deduções completas + geometria) | Labs 02 e 04 | Nise 4; Penedo 4 |
