@@ -1109,11 +1109,17 @@ Sua resposta ao degrau de amplitude $\Delta u$, partindo de $y_0$:
 
 $$y(t) = y_0 + K\Delta u\left(1 - e^{-(t-\theta)/\tau}\right)\,1(t-\theta).$$
 
-**O arquétipo físico do FOPDT — o sistema térmico.** O exemplo industrial por excelência do FOPDT é o controle de temperatura. Considere um corpo de massa $M$ e calor específico $c$, a temperatura $\theta$ (uniforme, modelo concentrado), trocando calor com o ambiente a $\theta_a$ por convecção (superfície $S$, coeficiente $h_c$) e recebendo potência $q_{in}$ [W] de uma resistência elétrica. O balanço de energia (acúmulo = entra − sai) é
+**O arquétipo físico do FOPDT — o sistema térmico.** O exemplo industrial por excelência do
+FOPDT é o controle de temperatura. Considere um corpo de massa $M$ e calor específico $c$, à
+temperatura $\theta$ (uniforme, modelo concentrado), trocando calor com o ambiente a $\theta_a$
+por convecção (superfície $S$, coeficiente $h_c$) e recebendo potência $q_{in}$ [W] de uma
+resistência elétrica. O balanço de energia (acúmulo = entra − sai) é
 
 $$Mc\frac{d\theta}{dt} = q_{in} - h_cS(\theta - \theta_a).$$
 
-Definindo a **resistência térmica** $R_t = 1/(h_cS)$ [K/W] e a **capacitância térmica** $C_t = Mc$ [J/K], em variáveis-desvio ($\Delta\theta = \theta-\bar\theta$), já na forma padrão de 1ª ordem $\tau\dot{y} + y = Ku$:
+Definindo a **resistência térmica** $R_t = 1/(h_cS)$ [K/W] e a **capacitância térmica**
+$C_t = Mc$ [J/K], em variáveis-desvio ($\Delta\theta = \theta-\bar\theta$), já na forma padrão
+de 1ª ordem $\tau\dot{y} + y = Ku$:
 
 $$C_t\frac{d\Delta\theta}{dt} + \frac{1}{R_t}\Delta\theta = \Delta q_{in}
 \;\Rightarrow\;
@@ -1121,13 +1127,20 @@ $$C_t\frac{d\Delta\theta}{dt} + \frac{1}{R_t}\Delta\theta = \Delta q_{in}
 \;\Rightarrow\;
 \frac{\Delta\Theta(s)}{\Delta Q_{in}(s)} = \frac{R_t}{R_tC_t\,s + 1}.$$
 
-O ganho estático **é a resistência térmica** ($1$ °C permanente exige $1/R_t$ watts a mais) e $\tau = R_tC_t$. O **tempo morto** $\theta$ surge aqui do transporte do fluido e do atraso do sensor — é o que torna o sistema térmico o retrato fiel do modelo $Ke^{-\theta s}/(\tau s+1)$.
+O ganho estático **é a resistência térmica** ($1$ K permanente a mais exige $1/R_t$ watts) e a
+constante de tempo é $\tau = R_tC_t$. Note que o modelo concentrado dá uma **1ª ordem pura, sem
+tempo morto**. O tempo morto do FOPDT — o $\theta$ do fator $e^{-\theta s}$, que não se confunde
+com a temperatura $\theta$ desta dedução — entra na prática pelos atrasos já citados (transporte
+do fluido, resposta do sensor). É essa soma, 1ª ordem lenta + atraso, que faz do controle de
+temperatura o retrato fiel de $Ke^{-\theta s}/(\tau s+1)$.
 
 *Exemplo numérico (valores didáticos):* com $C_t = Mc = 200$ J/K e $R_t = 0{,}5$ K/W,
 
-$$K = R_t = 0{,}5\ \text{K/W},\qquad \tau = R_tC_t = 100\ \text{s},\qquad \frac{\Delta\Theta(s)}{\Delta Q_{in}(s)} = \frac{0{,}5}{100\,s+1}.$$
+$$K = R_t = 0{,}5\ \text{K/W},\qquad \tau = R_tC_t = 100\ \text{s},\qquad
+\frac{\Delta\Theta(s)}{\Delta Q_{in}(s)} = \frac{0{,}5}{100\,s+1}.$$
 
-Um watt permanente a mais eleva a temperatura $0{,}5$ K em regime, com acomodação em $\approx 4\tau = 400$ s (sistemas térmicos são lentos).
+Um watt permanente a mais eleva a temperatura $0{,}5$ K em regime, com acomodação em
+$\approx 4\tau = 400$ s — sistemas térmicos são lentos.
 
 ### 6.2 Método da tangente no ponto de inflexão (Ziegler–Nichols, Ogata cap. 8)
 
