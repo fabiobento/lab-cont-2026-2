@@ -361,6 +361,23 @@ $$\boxed{\frac{H(s)}{Q_i(s)} = \frac{0{,}5}{s+1}}$$
 Leitura: dobrando permanentemente a vazão em $\Delta q_i$, o nível sobe em regime
 $0{,}5\,\Delta q_i$ metros, levando cerca de $4\tau = 4$ s para se acomodar.
 
+**Exercício adicional 1.B — tanque aquecido (térmico).**
+*Um corpo é aquecido por uma resistência elétrica que injeta potência $q_{in}$ [W] e troca calor
+com o ambiente por convecção. Valores didáticos: capacitância térmica $C_t = Mc = 200$ J/K e
+resistência térmica $R_t = 0{,}5$ K/W. A entrada é a potência $q_{in}$ e a saída, a temperatura
+$\theta$ (em desvio $\Delta\theta$ do ambiente). Ache a FT $\Delta\Theta(s)/\Delta Q_{in}(s)$ e
+interprete $K$ e $\tau$.*
+
+**Solução.** É a mesma 1ª ordem do §1.5, agora com números. Do balanço de energia, já na forma
+padrão $\tau\dot{y} + y = Ku$:
+$$R_tC_t\,\dot{\Delta\theta} + \Delta\theta = R_t\,\Delta q_{in}
+\;\Rightarrow\; K = R_t = 0{,}5\ \text{K/W},\quad \tau = R_tC_t = 0{,}5 \times 200 = 100\ \text{s}.$$
+$$\boxed{\frac{\Delta\Theta(s)}{\Delta Q_{in}(s)} = \frac{0{,}5}{100\,s+1}}$$
+Leitura: 1 W permanente a mais eleva a temperatura, em regime, $0{,}5$ K, e a acomodação leva
+$\approx 4\tau = 400$ s. É a **mesma estrutura** do tanque de nível (1.A) — muda só o significado
+físico das grandezas e a escala de tempo (sistemas térmicos são lentos), exatamente a analogia
+do §1.3.
+
 > 📖 **Referências originais desta seção (para conferência):** Ogata, cap. 3 (sistemas
 > mecânicos e elétricos, analogias força–tensão e força–corrente) e cap. 4 (sistemas
 > fluídicos e térmicos). Nise, cap. 2 (modelagem no domínio da frequência, com exemplos
