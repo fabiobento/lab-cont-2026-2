@@ -1,0 +1,482 @@
+1
+[MÚSICA] Após esse vídeo você será
+2
+capaz de aplicar a Transformada de Laplace
+para obter a função de transferência
+3
+de sistema e de explicar o que são polos
+e zeros de uma função de transferência.
+4
+Você já sabe que pode obter uma
+representação matemática de
+5
+sistema na forma de uma equação
+diferencial e já conhece a Transformada de
+6
+Laplace e suas principais propriedades.
+7
+Mas como isso nos ajuda
+na análise no projeto?
+8
+Bem, dada uma equação diferencial
+que rege o comportamento de
+9
+sistema e que deve ser respeitada
+para toda e qualquer entrada,
+10
+por exemplo y 2 pontos mais a1y
+ponto mais a0y é igual a b0u.
+11
+Podemos aplicar a Transformada de
+Laplace aos dois lados da igualdade,
+12
+seguida usamos a propriedade da
+linearidade e a propriedade da
+13
+transformada da derivada considerando
+condições iniciais nulas,
+14
+ou seja,
+y de 0 igual a 0 e y ponto de 0 igual a 0.
+15
+Podemos colocar Y(s)
+evidência e podemos escrever
+16
+a relação entre a Transformada de
+Laplace da saída e a Transformada
+17
+de Laplace da entrada e essa relação é
+válida para toda e qualquer entrada.
+18
+Essa relação entre a Transformada
+de Laplace da saída do sistema e
+19
+a Transformada de Laplace da entrada
+do sistema para condições iniciais
+20
+nulas é chamada de Função de Transferência
+e normalmente é denotada por G(s).
+21
+Como essa relação é válida
+para qualquer entrada,
+22
+podemos usar a Função de
+Transferência do sistema para
+23
+obter a Transformada de Laplace da
+saída para uma entrada específica.
+24
+Daqui a pouco voltaremos a isso, mas antes
+de usar a Função de Transferência para
+25
+obter a saída de sistema para uma entrada
+específica, vamos ver alguns exemplos da
+26
+obtenção da Função de Transferência
+a partir da equação diferencial ordinária.
+27
+Por exemplo se a equação
+diferencial do sistema for
+28
+y 2 pontos mais 2 y ponto
+mais 3 y igual a 1,
+29
+aplicando a Transformada de Laplace
+para condições iniciais nulas,
+30
+obtemos s ao quadrado Y(s) mais 2
+s Y(s) mais 3 Y(s) igual a U(s).
+31
+Colocando Y(s) evidência e
+rearranjando os fatores,
+32
+chegamos a G(s) igual a 1 sobre
+s ao quadrado mais 2 s mais 3.
+33
+Outro exemplo: y 3 pontos mais
+8y 2 pontos mais 4y igual a 2u.
+34
+Podemos aplicar a Transformada
+de Laplace e colocar
+35
+Y(s) evidência de uma vez e seguida
+escrever a Função de Transferência.
+36
+G(s) vai ser igual 2 sobre s ao
+cubo mais 8s quadrado mais 4s.
+37
+Mais exemplo: y 2 pontos mais 3y ponto
+mais 5y igual a 2u ponto mais u.
+38
+Novamente aplicamos a Transformada
+de Laplace e colocamos Y(s) e U(s)
+39
+evidência apenas 1 passo e
+depois escrevemos G(s) é
+40
+igual a 2 vezes s mais 1 sobre
+s quadrado mais 3s mais 5.
+41
+Você já deve ter notado que podemos
+escrever a Função de Transferência de
+42
+sistema apenas copiando os coeficientes
+da equação diferencial, não notou?
+43
+No numerador da Função de Transferência
+temos os coeficientes das
+44
+derivadas da entrada e no denominador da
+Função de Transferência os coeficientes
+45
+das derivadas da saída e o número de
+derivadas corresponde ao expoente de s.
+46
+Desse modo, a partir da equação
+diferencial ordinária podemos
+47
+escrever diretamente a Função
+de Transferência e vice-versa.
+48
+Por exemplo,
+dada a Função de Transferência G(s)
+49
+igual a s mais 1 sobre s
+quadrado mais 5s mais 10.
+50
+Qual é a equação
+diferencial correspondente?
+51
+Simples, a equação diferencial é
+52
+y 2 pontos mais 5 y ponto mais
+10y igual a u ponto mais u.
+53
+Lembrando então que a Função
+de Transferência de sistema,
+54
+normalmente denotada por G(s)
+por definição é a razão entre
+55
+a Transformada de Laplace da saída
+do sistema e a Transformada de
+56
+Laplace da entrada para condições iniciais
+nulas e podemos obtê-la facilmente
+57
+apenas copiando os coeficientes da
+equação diferencial do sistema,
+58
+desde que a equação diferencial seja
+linear e tenha coeficientes constantes.
+59
+E é isso mesmo o que você está pensando.
+60
+A equação diferencial, que não é muito
+simpática e é difícil de se tratar,
+61
+vai se transformar uma
+simpática razão de polinômio.
+62
+Está, a razão de polinômios pode
+não ser tão simpática assim,
+63
+mas já é bem mais simpática
+que a equação diferencial,
+64
+embora a equação diferencial
+tenha seu charme.
+65
+Lembra que eu falei que você
+66
+poderia considerar que a Transformada de
+Laplace apenas empacota o nosso sinal?
+67
+Então, o que temos aqui é a Transformada
+de Laplace empacotando a entrada,
+68
+a saída e suas derivadas e é mais simples
+trabalhar com esse conjunto de pacotes,
+69
+que são as transformadas,
+do que com a equação diferencial original.
+70
+Antes de vermos como usar
+71
+a Função de Transferência na
+análise de sistema, vamos ver duas
+72
+definições de características da Função
+de Transferência: os polos e os zeros.
+73
+Os polos de uma Função de
+Transferência nada mais são do que as
+74
+raízes do denominador da Função de
+Transferência, ou os valores de s para
+75
+os quais o denominador da Função
+de Transferência se anula.
+76
+Lembrando que os coeficientes do
+denominador da Função de Transferência
+77
+são os coeficientes que multiplicam as
+derivadas da saída na equação diferencial
+78
+do sistema, os polos são as raízes do
+polinômio obtido com esses coeficientes.
+79
+Os zeros de uma Função de
+Transferência nada mais são do
+80
+que as raízes do numerador da Função de
+Transferência ou os valores de s para os
+81
+quais o numerador da Função
+de Transferência se anula.
+82
+Lembrando que os coeficientes do numerador
+da Função de Transferência são os
+83
+coeficientes que multiplicam as derivadas
+da entrada na equação diferencial do
+84
+sistema, os polos são as raízes do
+polinômio obtido com esses coeficientes.
+85
+Por falta de nome melhor,
+também chamamos de polos
+86
+e zeros às raízes do denominador e do
+numerador de transformadas de Laplace.
+87
+Vamos fazer parênteses e falar
+sobre raízes de polinômios com
+88
+coeficientes reais.
+89
+Mesmo que você já saiba tudo
+sobre raízes e números complexos,
+90
+sempre é bom refrescar a memória.
+91
+Se você ainda não sabe tudo,
+vai ficar mais perto disso.
+92
+Dado polinômio de grau n, s elevado a n
+mais a n menos 1 s elevado a n menos mais,
+93
+mais, mais, mais, mais, mais a 2 s
+ao quadrado mais a 1 s mais a 0,
+94
+com todos os coeficientes reais, ou seja,
+a n menos 1, a n menos 2, a n menos 3,
+95
+tarararararará, a 2, a 1,
+a 0 são todos números reais.
+96
+Se você preferir e se
+sentir mais confortável,
+97
+podemos trocar o s por x ou por y,
+mas isso não muda as raízes do polinômio.
+98
+Vamos chamar o nosso
+polinômio de P(s) ou P(x) ou
+99
+P(y) ou P de qualquer variável
+que você queira usar.
+100
+Afinal de contas essa variável será
+substituída por números para o cálculo do
+101
+valor do polinômio.
+102
+As raízes do polinômio são os valores
+para os quais P desse valor é 0.
+103
+Vamos chamar esses valores,
+ou as raízes, de quadradinho,
+104
+então p de quadradinho é 0,
+ou seja, se no lugar do s, do x,
+105
+do y eu colocar este valor do quadradinho,
+não é, o P do quadradinho vai ser 0.
+106
+Se os coeficientes são reais,
+107
+as raízes do polinômio são números
+reais ou pares complexos conjugados.
+108
+Pares complexos conjugados?
+109
+Muito bem!
+110
+Vamos usar alguns exemplos
+numéricos de 2º grau.
+111
+Comecemos com s ao
+quadrado mais 3s mais 2.
+112
+Lembra da Fórmula de Bhaskara?
+113
+Delta é igual a b ao quadrado menos 4ac.
+114
+E as raízes são menos b mais ou
+menos raiz de delta sobre 2a.
+115
+Achou que nunca mais ia ver essa fórmula,
+não é?
+116
+Bom, está aí ela de novo.
+117
+Para o nosso polinômio temos: a é
+igual a 1, b igual a 3 e c igual a 2.
+118
+Substituindo os valores de a,
+119
+b e c na Fórmula de Bhaskara chegamos
+a 2 raízes reais: menos 1 e menos 2.
+120
+Podemos verificar o nosso
+resultado substituindo as raízes
+121
+encontradas no polinômio original e
+verificando se ele realmente se anula.
+122
+Note também que, uma vez conhecidas
+as raízes do polinômio, podemos
+123
+escrevê-la na forma fatorada: produto
+de fatores s menos cada uma das raízes.
+124
+Mas e se delta for menor do que 0?
+125
+Por exemplo, se o nosso polinômio for
+s ao quadrado mais 2s mais 2?
+126
+Nesse caso,
+delta vai ser igual a 4 menos 8,
+127
+que é menos 4,
+que podemos escrever como 4 vezes menos 1.
+128
+E na hora de calcular as raízes
+nos deparamos com problema:
+129
+temos a raiz quadrada de número negativo,
+que a princípio não existe.
+130
+Pelo menos não existe número real que
+seja raiz quadrada de número negativo.
+131
+Mas expandindo o nosso conjunto de
+números, dos números reais para
+132
+os números complexos, onde existe número
+denotado por i ou às vezes por j,
+133
+tal que i ao quadrado é igual a menos 1,
+podemos obter as
+134
+raízes do polinômio e essas raízes
+são menos 1 mais i e menos 1 menos i.
+135
+Sua parte real é menos 1 e sua
+parte imaginária é mais ou menos i.
+136
+Os números com mesma parte real e
+parte imaginária oposta são chamados
+137
+de complexos conjugados.
+138
+Podemos agora substituir
+as 2 raízes complexas
+139
+conjugadas no polinômio original e
+verificar se ele se anula e também podemos
+140
+escrever esse polinômio na forma fatorada.
+141
+Então se os coeficientes são reais,
+142
+as raízes do polinômio são números reais
+ou pares complexos conjugados e uma vez
+143
+determinadas essas raízes podemos
+escrever o polinômio na forma fatorada.
+144
+Desse modo,
+145
+dada uma Função de Transferência na forma
+de uma razão de polinômios, também podemos
+146
+escrevê-la na forma fatorada usando os
+polos e zeros da Função de Transferência.
+147
+Por exemplo,
+se a Função de Transferência for
+148
+s mais 3 sobre s ao quadrado mais
+3s mais 2, podemos escrevê-la
+149
+na forma fatorada como s mais 3
+sobre s mais 1 vezes s mais 2.
+150
+De forma geral então, se temos numerador
+de ordem m e denominador de ordem n,
+151
+temos m zeros e n polos e
+podemos escrever a Função de
+152
+Transferência como produto de fatores de
+zeros sobre produto de fatores de polos.
+153
+Denotando os zeros por z1,
+z2 até zm e os polos por p1,
+154
+p2 até pn, temos: G(s) é igual a bm
+vezes s menos z1 vezes s menos z2
+155
+vezes s menos z3 tarararararará s
+menos m menos 1 vezes s menos zm,
+156
+isso tudo sobre s menos p1,
+s menos p2, s menos p3,
+157
+s menos p4 tarararararará s
+menos p1 vezes s menos pn.
+158
+Normalmente será útil termos
+o denominador da Função de
+159
+Transferência na forma fatorada, mas não
+será necessário fatorar o numerador.
+160
+O procedimento mais comum é: a partir
+de uma descrição do sistema,
+161
+que pode ser diagrama,
+obtemos a equação diferencial,
+162
+a partir da equação diferencial, obtemos
+a Função de Transferência, calculamos
+163
+os polos da Função de Transferência e
+escrevemos ela com o denominador fatorado.
+164
+Mas porquê ou para quê isso
+veremos no próximo vídeo.
+165
+Agora você já deve ser capaz
+de aplicar a Transformada de
+166
+Laplace para obter a Função
+de Transferência de
+167
+sistema e de explicar o que são polos e
+zeros de uma Função de Transferência.
+168
+[MÚSICA] [SOM]

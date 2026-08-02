@@ -1,0 +1,213 @@
+1
+[MÚSICA] Após
+2
+esse vídeo você será capaz de projetar
+3
+controle proporcional para
+atender requisito de overshoot.
+4
+Muito bem.
+5
+Finalmente chegamos ao projeto
+do controlador proporcional.
+6
+Seja a seguinte função de transferência de
+sistema malha aberta: 1 sobre s s mais 1,
+7
+e digamos que queremos sistema
+malha fechada com a maior
+8
+rejeição a perturbações possível
+e overshoot de no máximo 10%.
+9
+Qual deve ser o ganho k utilizado para
+atendermos esses requisitos de desempenho?
+10
+Lembrando que a função de transferência
+malha fechada para o controle
+11
+proporcional é T de s é igual
+a kG sobre 1 mais kG ou T de s
+12
+é k numerador de G sobre denominador
+de G mais k numerador de G,
+13
+temos: T de s igual a k sobre
+s quadrado mais s mais k.
+14
+Usando a parametrização de 2ª ordem,
+temos: ômega n quadrado igual a k,
+15
+ou seja, ômega n é a raiz
+quadrada de k e 2 csi ômega n
+16
+igual a 1 ou csi é meio
+sobre raiz quadrada de k.
+17
+Lembre que quanto maior o ganho k,
+18
+maior a rejeição a distúrbios
+e quanto menor o valor de csi,
+19
+maior é o overshoot,
+já que o sistema fica menos amortecido.
+20
+Então precisamos encontrar
+o valor de ganho
+21
+k que corresponde a 10% de overshoot.
+22
+Se usarmos valor maior que esse,
+teremos overshoot maior do que 10%,
+23
+e se usarmos valor menor do que esse,
+teremos menos rejeição a perturbações.
+24
+Podemos chutar valores de csi até
+encontrarmos o csi que corresponde
+25
+ao valor de 10% ou podemos inverter
+a equação de overshoot função de csi.
+26
+Temos que o overshoot é
+a exponencial de menos csi pi sobre
+27
+a raiz de 1 menos csi ao quadrado.
+28
+Tiramos o logaritmo natural
+dos 2 lados e temos: logaritmo
+29
+no overshoot é igual a menos csi pi sobre
+raiz quadrada de 1 menos csi quadrado.
+30
+Elevamos ao quadrado para nos
+livrarmos da raiz, multiplicamos por 1
+31
+menos csi ao quadrado,
+isolamos o csi e tiramos a raiz.
+32
+Temos então que o csi vai ser
+a raiz quadrada do log do overshoot
+33
+ao quadrado dividido por pi ao quadrado
+mais o log do overshoot ao quadrado.
+34
+Usando 0,1 no lugar do overshoot,
+obtemos csi igual a 0 5 9.
+35
+Dica importante: o overshoot na
+fórmula é número entre 0 e 1.
+36
+É preciso converter a porcentagem
+número real, ou seja,
+37
+tem que dividir a porcentagem por 100.
+38
+Uma sugestão: monte uma
+tabela com os principais
+39
+valores de csi e de overshoot,
+assim você não precisará usar a fórmula.
+40
+Alguns valores interessantes
+de overshoot são 5%,
+41
+10%, 15%, 20% e 25%.
+42
+E alguns valores
+interessantes de csi são 0 4,
+43
+0 4 5, 0 5, 0 6 e 0 7.
+44
+Então 0,59 vai ser igual a 0 5 sobre
+45
+a raiz quadrada de k ou o k
+vai ser 0 5 dividido por 0
+46
+5 9 ao quadrado e temos k igual a 0,718.
+47
+Nossa função de transferência
+malha fechada fica T de s igual
+48
+0,718 sobre s quadrado mais s mais 0,718.
+49
+Simulando a resposta ao
+degrau desse sistema,
+50
+obtemos overshoot de
+aproximadamente 10% como desejado.
+51
+Podemos fazer projeto literal considerando
+que nossa função de transferência malha
+52
+aberta seja uma função de 2ª ordem do
+tipo 1, isto é, ela tem 1 polo na origem.
+53
+Desse modo, sua resposta ao degrau
+terá erro nulo regime permanente.
+54
+G de s é então dado por
+1 sobre s s mais a e
+55
+a função de transferência malha
+fechada será T de s é igual a kG
+56
+sobre 1 mais kG ou k numerador
+sobre denominador mais k numerador.
+57
+Temos então T de s igual a k sobre
+s ao quadrado mais a s mais k.
+58
+Usando nossa parametrização,
+nós temos ômega n quadrado igual a k,
+59
+ou seja, ômega n é a raiz quadrada
+de k e 2 csi ômega n igual
+60
+a a ou csi igual a a sobre
+2 vezes a raiz de k.
+61
+Podemos escrever k função de csi como k
+62
+igual a a ao quadrado dividido
+por 4 csi ao quadrado.
+63
+E dado requisito de overshoot,
+podemos usar a fórmula: csi
+64
+é a raiz quadrada do logaritmo natural
+do overshoot ao quadrado dividido por pi
+65
+ao quadrado mais o logaritmo
+natural do overshoot ao quadrado,
+66
+ou podemos pegar o valor de
+csi direto de uma tabela.
+67
+Mas note que vamos precisar de csi ao
+quadrado e não de csi para calcular k.
+68
+Então podemos usar csi ao quadrado
+vai ser igual ao logaritmo natural do
+69
+overshoot ao quadrado
+dividido por pi ao quadrado
+70
+mais o logaritmo natural
+do overshoot ao quadrado e
+71
+podemos substituir essa expressão
+de csi ao quadrado na fórmula de k.
+72
+Então, dado sistema do tipo 1 malha
+aberta e requisito de overshoot,
+73
+podemos facilmente determinar o ganho
+k para atender a esse requisito.
+74
+E agora você já deve ser capaz de projetar
+75
+controle proporcional para
+atender a requisito de overshoot.
+76
+[MÚSICA] [RUÍDO]

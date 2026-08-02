@@ -1,0 +1,362 @@
+1
+[MÚSICA] Após esse vídeo,
+2
+dada a função de transferência de sistema
+com ou mais parâmetros indeterminados,
+3
+você será capaz de determinar que
+condições o sistema será BIBO estável.
+4
+Como já vimos, a estabilidade de sistema é
+determinada pela parte real de seus polos,
+5
+que são as raízes do denominador
+da função de transferência.
+6
+Caso tenhamos o denominador de
+uma função de transferência,
+7
+podemos verificar a estabilidade
+usando o critério de Routh-Hurwitz.
+8
+Mas e se o denominador da função de
+transferência tiver algum parâmetro que
+9
+pode ser modificado?
+10
+Ganho, por exemplo?
+11
+Saber para que valores do parâmetro
+nosso sistema é estável é uma informação
+12
+muito útil.
+13
+Com isso podemos podemos projetar o nosso
+controlador de modo a ficar longe da
+14
+instabilidade e caso seja
+necessário testar o sistema real,
+15
+saberemos que valores evitar
+para não termos problemas.
+16
+Mas voltando ao assunto desse vídeo,
+podemos construir a tabela de
+17
+Routh como se o parâmetro variável
+fosse número real e impor condições
+18
+sobre os valores desse parâmetro
+para que o sistema seja estável,
+19
+como fizemos nos exemplos literais
+de segunda e terceira ordem.
+20
+Por exemplo, coeficientes 1, 6,
+21
+11 e 6 mais k, multiplicação cruzada
+das duas linhas anteriores dividida
+22
+pelo pivô e podemos copiar diretamente o
+último elemento da linha para a anterior.
+23
+Os elementos da primeira coluna são 1, 6,
+24
+60 k dividido por 6 e 6 mais k e
+para que o sistema seja estável
+25
+precisamos ter k menor que
+60 e k maior que menos 6.
+26
+O que acontece quando k é igual
+a 60 e k é igual a menos 6?
+27
+Para k igual a 60 o
+polinômio fica s ao cubo
+28
+mais 6s ao quadrado mais
+11s mais 60 e as raízes
+29
+são menos 6 e mais ou
+menos raiz de 11 vezes i.
+30
+Podemos verificar fazendo o
+produto quadrado do primeiro menos
+31
+o quadrado do segundo.
+32
+O quadrado da raiz quadrada é o próprio
+número e i ao quadrado é menos 1.
+33
+E fazendo o produto final,
+34
+chegamos ao nosso polinômio
+que tem par de polos complexos
+35
+conjugados sobre o eixo imaginário
+e o sistema portanto é instável.
+36
+Para k igual a menos 6,
+o polinômio fica s ao cubo mais 6s ao
+37
+quadrado mais 11s e podemos
+colocar s evidência e verificamos
+38
+facilmente que uma das raízes é
+zero e o sistema também é instável.
+39
+Se k for maior que 60 a primeira
+coluna da tabela de Routh tem duas
+40
+trocas de sinal e o polinômio tem
+duas raízes com parte real positiva.
+41
+Se k for menor do que menos 6
+a tabela de Routh tem uma troca
+42
+de sinal e o polinômio
+tem uma raiz positiva.
+43
+No vídeo passado eu disse que uma
+das vantagens da realimentação é
+44
+poder estabilizar sistema
+instável malha aberta,
+45
+mas eu também disse que uma desvantagem é
+a possibilidade de instabilizar sistema
+46
+estável malha aberta e alguns casos
+ganho adequado pode estabilizar
+47
+sistema instável malha aberta e ganho
+inadequado pode voltar a instabilizá-lo.
+48
+Vamos ver esses três exemplos
+usando Routh-Hurwitz.
+49
+Por exemplo, vamos usar G de s igual a 1
+sobre s ao quadrado mais 2s menos 3.
+50
+Os polos são 1 e menos 3 e o
+sistema é instável malha aberta.
+51
+E ganho malha aberta não modifica os
+polos, não alterando a estabilidade.
+52
+A função de transferência
+malha fechada será k
+53
+sobre s ao quadrado
+mais 2s menos 3 mais k.
+54
+Podemos usar a Fórmula de Bhaskara
+para escrever as raízes do denominador
+55
+função de k,
+mas é mais simples usarmos Routh-Hurwitz.
+56
+Construindo a tabela de Routh temos 1,
+2 e menos
+57
+3 mais k e para que o sistema seja
+estável, precisamos ter k maior que 3.
+58
+Quando k for igual a 3,
+59
+temos polo na origem e para k
+menor que 3 temos polo positivo.
+60
+Este é então exemplo de sistema instável
+malha aberta que pode ser estabilizado
+61
+com controle proporcional malha fechada,
+desde que o ganho seja maior do que 3.
+62
+Para nosso segundo exemplo
+temos: G de s é igual a 10
+63
+sobre s ao cubo mais 8s ao
+quadrado mais 12s mais 10.
+64
+Malha fechada temos 10k sobre s ao
+65
+cubo mais 8s ao quadrado
+mais 12s mais 10 mais 10k.
+66
+Vamos verificar o denominador
+da função de transferência
+67
+malha aberta: s ao cubo mais 8
+s ao quadrado mais 12s mais 10.
+68
+Construindo a tabela de Routh,
+verificamos que não há troca de sinal na
+69
+primeira coluna e o sistema
+é estável malha aberta.
+70
+Verificamos agora o denominador da
+função de transferência malha fechada:
+71
+s ao cubo mais 8s ao quadrado
+mais 12s mais 10 mais 10k.
+72
+Construindo a tabela de Routh,
+73
+verificamos que para k maior ou
+igual a 8,6 o sistema é instável.
+74
+Então este é exemplo de sistema
+estável malha aberta que
+75
+pode ficar instável malha fechada
+se usarmos ganho inadequado.
+76
+Nesse caso ganho maior ou igual a 8,6.
+77
+Para nosso terceiro exemplo
+temos: G de s igual a 10
+78
+sobre s ao cubo mais 11s ao quadrado
+mais 8s menos 20 e o denominador
+79
+malha fechada será s ao cubo mais 11s
+ao quadrado mais 8s menos 20 mais 10k.
+80
+Nem precisamos verificar o sistema
+malha aberta, a presença de sinal
+81
+negativo indica que há pelo menos
+uma raiz com parte real positiva.
+82
+Construímos a tabela de Routh para
+a malha fechada e verificamos que
+83
+o sistema será estável para k
+maior que 2 e k menos que 10,8.
+84
+Note que para k igual a 0 o sistema é
+instável e com k igual a 0 o denominador
+85
+do sistema malha fechada coincide com
+o denominador do sistema malha aberta.
+86
+Este é então exemplo de sistema
+instável malha aberta que pode
+87
+ficar estável malha fechada, mas apenas
+para uma determinada faixa de ganhos.
+88
+E se a função de transferência
+tiver mais de parâmetro variável?
+89
+Ganho e ajuste de mais algum
+componente do sistema,
+90
+resistor e circuito ou amortecedor
+de sistema mecânico por exemplo.
+91
+Construímos a tabela de Routh
+normalmente carregando as variáveis
+92
+literais e ao final impomos que todos
+os elementos da primeira coluna
+93
+tenham o mesmo sinal, isto é,
+sejam todos positivos ou todos negativos.
+94
+Por exemplo se a função de transferência
+do sistema malha fechada for
+95
+k sobre s ao quadrado menos
+s menos 2 mais k t s mais k,
+96
+construímos a tabela de Routh
+e verificamos que nesse caso
+97
+precisamos ter k t maior que 1 e k maior
+que 2, para que o sistema seja estável.
+98
+Seja agora T de s igual a as mais
+99
+b sobre s ao cubo mais 3s quadrado
+mais 2s menos 1 mais as mais b.
+100
+Construímos a tabela de Routh
+e verificamos que nesse caso
+101
+precisamos ter b maior que 1 e
+a maior que b menos 7 dividido por 3.
+102
+Ou seja, diferente do caso anterior,
+103
+a escolha de uma das variáveis
+afeta a escolha da outra.
+104
+Último exemplo: T de s é
+igual a k s mais a sobre s ao
+105
+cubo mais 3s ao quadrado
+mais 2s mais k s mais a.
+106
+Construímos a tabela de Routh
+e verificamos que nesse caso
+107
+precisamos ter ka maior que 0 e
+3k menos ka maior que menos 6.
+108
+Novamente dos valores afeta o outro.
+109
+Se tivermos por exemplo a igual a 2,
+110
+precisamos ter k maior que 0 para
+garantir a estabilidade, mas se a for
+111
+igual a 4 precisaremos ter k entre 0 e 6.
+112
+Então não tem segredo nenhum para
+achar as condições de estabilidade.
+113
+No caso de uma única variável, montamos
+a tabela de Routh e impondo que todos os
+114
+elementos da primeira coluna
+tenham o mesmo sinal,
+115
+descobrimos para que valores da
+variável o sistema é estável.
+116
+Se tivermos mais de uma variável no
+denominador da função de transferência de
+117
+interesse, o procedimento é o mesmo.
+118
+Ao impormos que todos os elementos da
+primeira coluna tenham o mesmo sinal,
+119
+obteremos restrições sobre as
+variáveis isoladamente ou conjunto.
+120
+Convém notar que nem sempre é
+possível estabilizar o sistema.
+121
+Por exemplo, tente achar o valor de k
+que deixe o seguinte sistema estável:
+122
+T de s igual a k sobre s ao quadrado
+menos s menos 6 mais ks menos 1.
+123
+Muito bem.
+124
+Agora dada a função de transferência de
+125
+sistema com ou mais
+parâmetros indeterminados,
+126
+você já deve ser capaz de determinar
+que condições o sistema será estável.
+127
+[MÚSICA] [SOM]
+128
+[SOM]

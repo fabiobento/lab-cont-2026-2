@@ -1,0 +1,308 @@
+1
+[MÚSICA] Após
+2
+esse vídeo você será capaz
+de citar e aplicar as
+3
+fórmulas da resposta ao degrau
+de sistemas de segunda ordem.
+4
+Nossa função de transferência
+de segunda ordem,
+5
+devidamente parametrizada,
+tem a forma ômega n ao quadrado sobre s ao
+6
+quadrado mais 2 csi ômega n
+s mais ômega n ao quadrado.
+7
+E temos que o y de t é 1 menos
+a exponencial de menos sigma
+8
+t sobre a raiz de 1 menos csi quadrado
+vezes o seno de ômega dt mais
+9
+fi onde sigma é csi ômega n e
+ômega d é ômega n raiz quadrada
+10
+de 1 menos csi quadrado e o
+fi é o arco cuja tangente é
+11
+a raiz quadrada de 1 menos
+csi ao quadrado sobre csi.
+12
+E no quê isso nos ajuda?
+13
+Você pode apenas acreditar no que
+eu vou falar ou pode verificar
+14
+se isso realmente é verdade
+efetuando os cálculos.
+15
+Se derivarmos a expressão de y de
+t relação ao tempo e igualarmos
+16
+essa derivada a zero, encontraremos os
+instantes de máximos e mínimos da saída.
+17
+E o primeiro instante de máximo ou o
+primeiro valor de t que zerar essa
+18
+derivada é instante de pico.
+19
+E fazendo essa derivada
+literal e igualando ela a 0,
+20
+obtemos tp igual a pi sobre ômega d ou
+21
+tp igual a pi sobre ômega n raiz
+quadrada de 1 menos csi quadrado.
+22
+Substituindo esse valor de
+tp na fórmula de y de t,
+23
+obtemos o valor de pico
+da reposta ao degrau.
+24
+Subtraindo o valor final deste valor de
+pico e dividindo o resultado pelo valor
+25
+final, obtemos o valor do overshoot
+função de nossos parâmetros e temos mp
+26
+igual a exponencial de menos csi pi sobre
+raiz quadrada de 1 menos csi quadrado.
+27
+E note que o overshoot só depende de csi.
+28
+O parâmetro csi recebe o nome
+de fator de amortecimento.
+29
+Se o fator de amortecimento for
+muito pequeno, próximo de 0,
+30
+o sistema é pouco amortecido
+e temos overshoot grande,
+31
+mas se o fator de amortecimento for
+grande, próximo de 1,
+32
+o sistema é muito amortecido,
+apresentando overshoot pequeno.
+33
+Se csi for menor que 0,
+não temos mais uma resposta subamortecida,
+34
+teremos uma resposta que diverge,
+já que os pólos terão parte real positiva.
+35
+E se csi for maior do que 1,
+teremos uma resposta superamortecida.
+36
+Já que, ao invés de pólos complexos
+conjugados, teremos par de pólos reais.
+37
+Então, o fator de amortecimento csi para
+sistemas subamortecidos fica entre 0 e 1.
+38
+Quanto mais próximo de 1, mais amortecida
+a resposta e menor é o overshoot.
+39
+No limite, quando csi igual a 1,
+40
+temos sistema criticamente amortecido,
+sem overshoot.
+41
+Quanto mais próximo de 0 menor é o
+amortecimento e maior é o overshoot.
+42
+No limite, quando csi igual a 0,
+temos sistema não amortecido e
+43
+a resposta ao degrau apresenta uma
+oscilação que não diminui com o tempo.
+44
+Note que, para csi igual a 0 temos
+45
+par de pólos complexos
+conjugados com parte real nula.
+46
+Continuando, se igualarmos y de t ao
+valor final, que no nosso caso é 1,
+47
+o primeiro valor de t para o qual s
+igualdade é válida é o tempo de subida de
+48
+0 a 100% e obtemos tr de 0 a 100%
+igual a pi menos beta sobre ômega d,
+49
+onde beta é o arco cujo cosseno é csi,
+que também é o arco cuja
+50
+tangente é raiz quadrada de 1
+menos csi quadrado sobre csi,
+51
+ou seja,
+o beta é igual ao fi que nós vimos antes.
+52
+Até hoje, não entendi por que usamos
+beta na fórmula do tempo de subida
+53
+e fi na expressão de y de t,
+já que os dois são a mesma coisa.
+54
+Eu acho que é por que, caso, estamos
+falando de uma diferença de fase no seno,
+55
+o fi, e no outro, estamos falando
+de ângulo no plano complexo,
+56
+no caso de beta, mas eu não tenho certeza.
+57
+Se você souber, com certeza,
+por favor me avise.
+58
+A fórmula de tempo de acomodação
+59
+não é exata como as 3 fórmulas
+que já foram apresentadas,
+60
+ela é uma aproximação e leva
+conta a envoltória da oscilação.
+61
+Note que na expressão de y de t,
+62
+temos seno multiplicando uma
+exponencial decrescente.
+63
+Para a fórmula do tempo de acomodação,
+usamos apenas o valor da exponencial como
+64
+se a saída fosse apenas essa exponencial,
+ao invés de ser seno multiplicando ela.
+65
+Quando o valor da exponencial chegar
+a determinado valor percentual,
+66
+a oscilação do seno estará
+confinada a este valor percentual.
+67
+E, garantidamente, o valor da saída
+não oscilará além desse valor,
+68
+desse instante diante.
+69
+Então, a fórmula de tempo de
+acomodação é uma fórmula pessimista.
+70
+No pior caso, o tempo de acomodação será
+o tempo calculado com a fórmula, mas,
+71
+normalmente, o tempo de acomodação real
+será menor que o calculado e a fórmula
+72
+para o tempo de acomodação para 5%
+do valor final é 3 sobre sigma.
+73
+Então, dada a função de transferência
+de segunda ordem, 25 sobre
+74
+s ao quadrado mais 4s mais 25, vamos
+calcular o overshoot, o instante de pico,
+75
+o tempo de subida de 0 a 100% e o tempo
+de acomodação para 5% do valor final.
+76
+Temos a0 igual a 25 e a1 igual a 4,
+então o nosso ômega n,
+77
+que é a raiz quadrada do a0,
+é a raiz quadrada de 25,
+78
+que é 5 e o csi é 4 dividido
+por 2 vezes 5 que é 0,4.
+79
+Lembrando que o valor de pi é 3,141592.
+80
+3,14 para a gente tá muito bom,
+parcimonioso.
+81
+O overshoot então vai ser a exponencial
+82
+de menos 0,4 vezes 3,14
+dividido por 1 menos
+83
+0,4 ao quadrado que dá 25,4%.
+84
+O instante de pico será 3,14
+85
+dividido por 5 vezes a raiz
+quadrada de 1 menos 0,4
+86
+elevado ao quadrado,
+o que dá 0,69 segundos.
+87
+O tempo de subida de 0
+a 100% vai ser: 3,14
+88
+menos arcocosseno 0,4
+dividido por 5 vezes a raiz
+89
+quadrada de 1 menos 0,4 ao quadrado,
+o que dá 0,43 segundos.
+90
+Aqui, uma observação,
+o ângulo beta deve ser usado radianos.
+91
+E, finalmente, o tempo de acomodação
+vai ser 3 sobre 2, que dá 1,5 segundos.
+92
+Que são exatamente os valores que obtemos
+93
+simulando a resposta ao
+degrau desse sistema.
+94
+Você já sabe que o csi é
+o fator de amortecimento
+95
+do sistema e que ele varia de 0,
+menos amortecido, a 1, mais amortecido.
+96
+Csi pode ser chamado também de
+coeficiente de amortecimento ou até de
+97
+razão de amortecimento.
+98
+Vamos dar nomes aos outros 3 parâmetros
+da função de transferência de segunda
+99
+ordem: ômega n, ômega d e sigma.
+100
+Ômega n é a frequência
+natural não amortecida.
+101
+Pois seria frequência da
+saída senoidal do sistema,
+102
+se ele não tivesse amortecimento,
+ou seja, se o csi fosse 0.
+103
+Ômega d é a frequência amortecida,
+104
+pois é a frequência das oscilações com
+fator de amortecimento maior do que 0.
+105
+E sigma é o decaimento exponencial,
+106
+por determinar o decaimento
+da amplitude de oscilação.
+107
+Agora você já deve ser
+capaz de citar e aplicar as
+108
+fórmulas da resposta ao degrau
+de sistemas de segunda ordem.
+109
+[MÚSICA] [SOM]
+110
+[SOM]

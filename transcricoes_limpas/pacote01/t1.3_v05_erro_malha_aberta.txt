@@ -1,0 +1,597 @@
+1
+[MÚSICA] Após esse vídeo,
+2
+dada a função de
+transferência de sistema você
+3
+será capaz de calcular o erro regime
+permanente para entradas degrau,
+4
+rampa e parábola sem a necessidade de
+calcular a resposta completa do sistema.
+5
+Você já viu que dos requisitos
+do sistema está relacionado com
+6
+a referência ou com o sinal de erro.
+7
+Normalmente vamos querer que
+o sinal de saída acompanhe
+8
+a referência perfeitamente ou,
+pelo menos, com erro muito pequeno.
+9
+Por isso,
+10
+tanto para a análise quanto para o projeto
+é preciso saber calcular rapidamente
+11
+o valor do erro regime função dos
+parâmetros do sistema e do controlador.
+12
+E por quê nos interessamos pelo erro
+para entradas degrau, rampa e parábola?
+13
+Simples, porque essas são as
+referências mais comuns quando temos
+14
+requisito de erro regime permanente.
+15
+A entrada degrau representa valor
+constante que se quer atingir,
+16
+por exemplo, a altura para avião,
+helicóptero ou drone,
+17
+ou uma temperatura para corpo,
+ou a direção de apontamento para radar.
+18
+Essas são todas entradas degrau,
+19
+valor constante a ser atingido e é
+muito comum querermos que a saída
+20
+do sistema chegue a esse valor sem
+erro ou com erro muito pequeno.
+21
+A entrada rampa representa perfil com
+velocidade constante a ser seguido.
+22
+Por exemplo, para o pouso de aeronave
+ou para radar acompanhar satélite com
+23
+velocidade angular constante,
+ou ainda se temos perfil muito específico
+24
+de temperatura ou de resfriamento de
+material, ou ainda para uma câmera
+25
+acompanhar uma bola ou jogador
+correndo a uma velocidade constante.
+26
+Sempre que temos uma velocidade
+constante e queremos
+27
+acompanhar a posição temos entrada rampa.
+28
+A entrada parábola é menos comum,
+mas também temos bom exemplo para ela.
+29
+Uma parábola corresponde a uma
+aceleração constante como,
+30
+por exemplo, no lançamento de foguete.
+31
+Seguir uma entrada parábola significa
+seguir perfil de aceleração
+32
+ou desaceleração constante atingindo
+a posição desejada sem erro.
+33
+Mas vamos ao que interessa, calcular
+o erro regime para essas entradas.
+34
+Por exemplo, dada a seguinte função de
+transferência 1 sobre s mais 1 s mais 2.
+35
+Qual o erro regime permanente
+para uma entrada degrau unitário?
+36
+Podemos obter a transformada
+de Laplace da saída
+37
+multiplicando a Função de Transferência
+pela transformada da entrada e a 1 sobre s
+38
+e então subtraímos a saída da
+entrada para obter o erro.
+39
+Tirando o mínimo e fazendo a subtração
+obtemos a Transformada de Laplace do erro.
+40
+Expandimos a transformada
+do erro frações parciais,
+41
+achamos os resíduos A,
+42
+B e C e obtemos e de t usando uma
+tabela de Transformadas de Laplace.
+43
+E para t grande o suficiente,
+44
+como as duas exponenciais tendem a 0,
+o erro tende a 0,5.
+45
+Vamos denotar o valor final
+por e de infinito ou e ss
+46
+de steady state,
+que significa estado estacionário inglês.
+47
+Note que não precisávamos ter calculado
+os resíduos das outras frações,
+48
+só precisamos calcular o resíduo
+referente à fração com denominador s uma
+49
+vez que a transformada inversa das outras
+frações tende a 0 com o passar do tempo.
+50
+Ou seja, uma vez tendo a expressão para
+a transformada de Laplace do erro,
+51
+o valor final será o resíduo da fração
+com denominador s, que podemos obter
+52
+multiplicando a transformada do
+erro por s e fazendo s igual a 0.
+53
+Note, no entanto, que os denominadores
+das outras frações parciais
+54
+precisam ter parte real negativa,
+caso contrário as transformadas inversas
+55
+dessas frações não tenderão a 0 e
+não teremos valor final para o erro,
+56
+ele aumentará indefinidamente
+ou ficará oscilando.
+57
+Lembra do Teorema do Valor Final
+da Transformada de Laplace?
+58
+Ele diz que se existir valor final este
+valor final pode ser calculado como
+59
+o limite quando s tende a 0 e s vezes
+a Transformada de Laplace do sinal.
+60
+Então, no fundo,
+ao calcularmos apenas o resíduo da fração
+61
+com denominador s estamos aplicando
+o Teorema do Valor Final.
+62
+Vamos fazer a mesma coisa para uma
+função de transferência pouco diferente.
+63
+G de s será 2 sobre s mais 1 s mais 2.
+64
+A transformada do erro é a transformada
+da entrada menos a transformada da saída.
+65
+Fazendo a subtração das frações e
+simplificando chegamos a resultado
+66
+interessante, o s do denominador
+foi cancelado com o s do
+67
+numerador e não temos uma fração
+parcial com denominador s.
+68
+Creio que você já sabe que
+a transformada inversa de
+69
+A sobre s mais 1 é A vezes
+a exponencial de -t e que
+70
+a transformada inversa de B sobre s
+mais 2 é B vezes a exponencial de -2 t.
+71
+Não sabe?
+72
+Nem precisa olhar na tabela.
+73
+Como as exponenciais tendem a 0 com
+o passar do tempo, o erro tende a 0.
+74
+Ao invés de obter a transformada do
+erro e depois o valor final do erro,
+75
+podemos obter o valor final da saída
+e subtraí-lo do valor da entrada.
+76
+Voltando ao primeiro exemplo e
+usando o teorema do valor final,
+77
+chegamos à conclusão de que
+o valor final da saída é
+78
+meio e o erro regime será meio.
+79
+No segundo exemplo, o valor final
+de y será 1 e o erro regime será 0.
+80
+Então, você acha mais fácil
+obter a transformada do erro e
+81
+depois o valor final do erro?
+82
+Ou é melhor achar o valor final
+da saída e depois o erro?
+83
+Vamos ver mais exemplo: e se
+a função de transferência for
+84
+essa aqui G de s igual a s ao
+quadrado mais 6 s mais 9 sobre
+85
+s ao cubo mais 8 s ao
+quadrado mais 17 s mais 10.
+86
+O valor regime de y é 0,9 e o
+erro regime para uma entrada
+87
+degrau unitário é 0,1, mas como?
+88
+Na verdade, é bastante simples.
+89
+Y de s é G de s, u de s e como
+temos uma entrada degrau u de s é
+90
+1 sobre s e por causa do Teorema do Valor
+Final vamos multiplicar Y de s por s.
+91
+O s do Teorema do Valor Final se cancela
+com o 1 sobre s do degrau e para
+92
+achar o valor da saída regime permanente
+basta fazer todos os s iguais a 0,
+93
+o que equivale a sumir com
+todos os termos com s G de s.
+94
+E pronto,
+o valor regime da saída é 9 décimos.
+95
+Simples, não?
+96
+Então, só precisamos olhar para os termos
+que não têm s na função de transferência,
+97
+mas isso se estivermos interessados
+no erro para uma entrada degrau.
+98
+E se o degrau não for unitário?
+99
+Se, por exemplo, o degrau tiver valor 5.
+100
+Lembre-se, o sistema é linear
+então a saída para 5 vezes
+101
+a entrada é simplesmente 5
+vezes a saída e o erro para
+102
+degrau de amplitude 5 será 5 vezes
+o erro para degrau unitário.
+103
+Vamos ver mais exemplo.
+104
+Função de Transferência s ao
+quadrado mais 29 s mais 208 sobre
+105
+s ao cubo mais 6 s ao
+quadrado mais 10 s mais 208.
+106
+Qual o erro regime para entrada
+degrau de amplitude 10?
+107
+Erro regime 0?
+108
+Não!
+109
+Pegadinha!
+110
+Yeah, yeah!
+111
+Jazinga!
+112
+A saída diverge e não tem valor final.
+113
+O sistema é BIBO instável.
+114
+Confira no replay.
+115
+Pode isso, Arnaldo?
+116
+Então, verifique usando a Routh-Hurwitz
+que esse sistema não é estável.
+117
+Então, não existe uma valor
+final para uma entrada degrau.
+118
+No caso de uma entrada rampa,
+a saída do sistema
+119
+não tem valor final, então não
+podemos calcular o y de infinito.
+120
+Nesse caso realmente precisamos
+obter a expressão para e de s e
+121
+aplicar o Teorema do Valor Final
+e de s para obter e de infinito,
+122
+mas também precisamos verificar se e de
+t realmente está indo para valor final.
+123
+Vamos usar novamente o primeiro exemplo
+de Função de Transferência 1 sobre
+124
+s mais 1 s mais 2 e agora nossa
+entrada é uma rampa unitária.
+125
+Qual é o erro regime?
+126
+O erro é U- Y e Y é G vezes U e podemos
+127
+escrever E de s é igual a 1
+menos G de s vezes U de s.
+128
+Calculando 1 menos G de s para o
+nosso exemplo obtemos s ao quadrado
+129
+mais 3 s mais 1 sobre s mais 1 s mais 2.
+130
+Multiplicando esse resultado
+pela transformada da na entrada,
+131
+que é 1 sobre s quadrado,
+obtemos a expressão para i de s.
+132
+Note que na expansão frações
+parciais temos agora uma fração
+133
+com denominador s ao quadrado, e
+a inversa dessa fração resulta uma rampa.
+134
+Para que o erro tenda a valor finito
+precisamos ter o resíduo b igual a 0.
+135
+Se b for maior que 0,
+o erro está aumentando indefinidamente.
+136
+Infelizmente nesse caso b é
+igual a meio e teremos fator 0,5
+137
+vezes t no sinal do erro, que aumenta
+indefinidamente conforme o tempo passa.
+138
+Analisando apenas o resíduo de 1 sobre
+s ao quadrado não podemos dizer muita
+139
+coisa sobre o que acontece nos instantes
+logo após a aplicação da entrada rampa,
+140
+mas podemos dizer que,
+depois de algum tempo,
+141
+a saída não consegue acompanhar a entrada
+e o erro aumenta indefinidamente,
+142
+como ilustrado nesse gráfico.
+143
+Vamos calcular agora o e "iii"
+para aumentar a entrada rampa para
+144
+a função de transferência que apresenta
+erro 0 para uma entrada integral.
+145
+2 sobre s mais 1 s mais 2,
+a fórmula do erro é a mesma:
+146
+E de s é igual 1 menos G de
+s vezes U de s, mas agora,
+147
+1 menos G de s é igual a s ao quadrado
+mais 3s sobre s mais 1, s mais 2.
+148
+Multiplicamos 1 menos G de s por 1 sobre s
+ao quadrado que é a transformada da rampa
+149
+e verificamos que podemos simplificar
+s no numerador e no denominador.
+150
+E agora a expansão frações
+parciais não tem mais uma fração
+151
+com denominador s ao quadrado,
+calculando o resíduo a,
+152
+chegamos a a igual a 1,5 e
+a expressão para o erro é:
+153
+1,5 mais b vezes e a menos t,
+mais c vezes z a menos 2t,
+154
+ou seja,
+o erro para uma entrada rampa tende a 1,5.
+155
+Novamente não podemos precisar
+os instantes iniciais sem
+156
+calcular os outros resíduos,
+mas sabemos que depois de algum
+157
+tempo a saída irá acompanhar
+a entrada com erro que tende a 1,5.
+158
+Vamos agora usar uma função de
+transferência literal e calcular o
+159
+erro para uma entrada parábola.
+160
+A fórmula do erro é a mesma: E de s é
+igual a 1 menos G de s vezes U de s,
+161
+mas agora temos uma expressão literal
+para 1 menos G de s, e multiplicamos
+162
+1 menos G de s, por 1 sobre s ao cubo,
+que é a transformada da parábola.
+163
+A expansão frações parciais teria
+então termos 1 sobre s ao quadrado e
+164
+1 sobre s ao cubo,
+além dos termos referentes aos polos da
+165
+função de transferência que
+consideramos ser instável.
+166
+Se b ou c forem diferentes de 0,
+o erro difere.
+167
+Note que, para que c seja igual a 0,
+precisamos ter f igual a c.
+168
+Se isso acontecer, a expressão
+de E de s pode ser simplificada,
+169
+uma vez que podemos cancelar fator s
+comum no numerador e no denominador.
+170
+Agora, para que B também seja 0,
+171
+precisamos ter E igual a B e novamente
+podemos simplificar a expressão de E de s.
+172
+E agora podemos calcular o E "iii",
+que é d menos a, sobre f.
+173
+Para termos erro finito para uma
+entrada parábola precisamos ter
+174
+então: c igual a f e b igual a e,
+e o erro será d menos a sobre f.
+175
+Note que se a é igual a d, teremos erro
+nulo regime para uma entrada parábola.
+176
+Note também que c e f,
+e b e, são os coeficientes
+177
+de mesma potência de s no numerador e no
+denominador da função de transferência.
+178
+Se fizermos a mesma análise
+literal para a entrada rampa,
+179
+chegaremos à conclusão de que precisamos
+ter c igual a f, para que o erro
+180
+não divirja e que nesse caso o erro para
+entrada rampa será e menos b sobre f.
+181
+E fazendo a análise literal
+para a entrada integral,
+182
+chegamos à conclusão de que o e "iii" para
+uma entrada integral é f menos c sobre f.
+183
+Note que todos os casos estamos
+fazendo uma divisão por f,
+184
+então a função de transferência
+não pode ter polos na origem,
+185
+na verdade, mais que isso,
+o sistema precisa ser estável.
+186
+Então, se os coeficientes de
+s elevado a 0 são diferentes,
+187
+temos erro finito para a entrada de grau,
+dado por f menos c sobre f,
+188
+e erro infinito para
+entradas rampa e parábola.
+189
+Se os coeficientes de s
+elevado a 0 são iguais,
+190
+temos erro 0 para a entrada degrau.
+191
+Se tivermos erro 0 para
+degrau e os coeficientes de s
+192
+elevado a 1 forem diferentes,
+temos erro finito para entrada rampa,
+193
+dado por e menos b sobre f e erro
+infinito para entrada parábola.
+194
+Se tivermos erro 0 para
+entrada degrau e os
+195
+coeficientes de s elevado a 1 forem
+iguais, temos erro 0 para entrada rampa.
+196
+Se tivermos erro 0 para entrada
+197
+rampa e os coeficientes de s
+ao quadrado forem diferentes,
+198
+temos erro finito para entrada
+parábola dado por d menos a sobre f.
+199
+Se tivermos erro 0 para entrada
+rampa e os coeficientes de s
+200
+elevado ao quadrado forem iguais,
+temos erro 0 para entrada parábola.
+201
+Caso você utilize entradas diferentes,
+202
+você pode usar o mesmo procedimento
+que acabamos de usar para determinar o
+203
+valor do erro função dos coeficientes
+da função de transferência.
+204
+O teorema do valor final pode
+ser aplicado desde que o sinal
+205
+realmente tenda a valor
+constante quando tem aumento.
+206
+O fato de acharmos valor finito quando
+usamos o teorema não garante que o erro
+207
+tenda a valor constante uma vez que
+ele pode conter outras componentes
+208
+que vão divergir ou
+oscilar indefinidamente.
+209
+Agora, dada a função de
+transferência do sistema,
+210
+você já deve ser capaz de calcular o e
+regime permanente para entradas degrau,
+211
+rampa e parábola sem a necessidade de
+calcular a resposta completa do sistema.
+212
+[MÚSICA] [RUÍDO]

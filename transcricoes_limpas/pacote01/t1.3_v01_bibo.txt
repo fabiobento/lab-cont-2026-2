@@ -1,0 +1,417 @@
+1
+[MÚSICA] Após
+2
+este vídeo você será capaz
+de explicar e ilustrar
+3
+a BIBO estabilidade e será capaz
+também de citar que condições
+4
+são necessárias e suficientes para
+que sistema seja BIBO estável.
+5
+Primeiro vamos definir o que
+entendemos por estabilidade.
+6
+Intuitivamente, você pode
+achar que sistema estável é
+7
+aquele no qual a saída é
+limitada ou não diverge.
+8
+Essa realmente é uma boa noção mas
+precisamos ser pouco mais rigorosos,
+9
+mesmo porque existem diferentes
+definições de estabilidade.
+10
+Nesse curso estamos interessados na
+BIBO estabilidade ou estabilidade BIBO.
+11
+BIBO vem do inglês
+Bounded Input Bounded Output
+12
+e significa
+Entrada Limitada Saída Limitada.
+13
+e sistema é BIBO estável se e somente se,
+14
+para toda e qualquer entrada
+limitada a saída for limitada.
+15
+Isso quer dizer que,
+se existir pelo menos uma entrada limitada
+16
+para a qual a saída do sistema divirja
+esse sistema não é BIBO estável.
+17
+Vale ressaltar que a BIBO
+estabilidade é do sistema e não de
+18
+uma saída e nem para
+uma entrada específica.
+19
+A saída ser limitada para uma entrada
+não quer dizer nada sobre a BIBO
+20
+estabilidade do sistema.
+21
+Reforçando: sistema é BIBO estável
+se e somente se a saída for
+22
+limitada para toda e
+qualquer entrada limitada.
+23
+E quando a saída será limitada para
+toda e qualquer entrada limitada?
+24
+Primeiro vamos ver como seria uma entrada
+limitada e uma entrada ilimitada.
+25
+Na verdade ao invés de chamar à
+chamada ilimitada de ilimitada,
+26
+vou-me referir a ela
+como entrada que diverge.
+27
+A mesma coisa para a saída.
+28
+Então como seria
+a Transformada de Laplace de
+29
+entrada limitada e de
+uma entrada que diverge?
+30
+Vamos voltar à tabela de
+Transformadas de Laplace.
+31
+Nessa parte da tabela temos
+sinal limitado o degrau,
+32
+2 sinais que divergem,
+a rampa e a parábola e sinal que
+33
+pode ser limitado ou pode divergir
+dependendo do valor de a.
+34
+Se a for maior que 0, a exponencial
+diverge, caso contrário ela é limitada.
+35
+Na segunda parte da tabela
+temos 2 sinais limitados,
+36
+o seno e o cosseno, e 2 sinais que
+podem ser limitados ou podem divergir,
+37
+novamente dependendo do valor de a.
+38
+Se a for positivo, a exponencial
+vezes o seno, ou o cosseno, diverge,
+39
+se a for negativo, ou nulo, a exponencial
+vezes o seno ou o cosseno é limitada.
+40
+Vamos acrescentar alguns pares de
+Transformada à nossa tabela: t vezes seno,
+41
+t vezes cosseno e t vezes exponencial.
+42
+Os 2 primeiros sinais divergem
+e o terceiro vai depender
+43
+novamente do valor de a Com a positivo
+t vezes a exponencial diverge,
+44
+com a negativo t vezes
+a exponencial é limitada.
+45
+Vamos ver se descobrimos algo
+46
+comum entre os sinais limitados
+e os sinais que divergem.
+47
+Vamos começar dividindo os
+sinais nesses 2 grupos.
+48
+No grupo de sinais limitados temos
+o degrau, a exponencial negativa,
+49
+o seno, o cosseno,
+a exponencial negativa vezes seno,
+50
+a exponencial negativa vezes cosseno
+e t vezes a exponencial negativa.
+51
+No grupo dos sinais que divergem temos a
+rampa, a parábola, a exponencial positiva,
+52
+a exponencial positiva vezes o seno,
+a exponencial positiva vezes o cosseno,
+53
+t vezes seno, t vezes cosseno e
+t vezes a exponencial positiva.
+54
+Vamos dar uma olhada nas
+Transformadas de Laplace desses
+55
+sinais e tentar descobrir algum padrão.
+56
+Alguma semelhança entre os sinais
+limitados e alguma diferença entre
+57
+os sinais limitados e
+os sinais que divergem.
+58
+Vamos reorganizar as
+Transformadas de Laplace e vamos
+59
+analisar as primeiras
+Transformadas que correspondem
+60
+a exponenciais negativas e positivas
+e t vezes essas exponenciais.
+61
+Note que se o polo da Transformada
+de Laplace é negativo,
+62
+o sinal é limitado.
+63
+Note agora que se tivermos único
+polo na origem o sinal é limitado,
+64
+mas se tivermos 2 ou mais polos
+na origem o sinal diverge.
+65
+Vamos analisar agora as
+Transformadas do seno e do cosseno
+66
+multiplicadas por exponenciais
+negativas e positivas.
+67
+Talvez as coisas fiquem mais
+claras se expressarmos as
+68
+Transformadas de Laplace de maneira
+diferente, explicitando os polos.
+69
+Podemos expandir o denominador e
+usar a fórmula de Bhaskara para
+70
+encontrar as raízes ou os pólos.
+71
+e notamos que se os polos
+complexos conjugados têm parte
+72
+real negativa o sinal é limitado.
+73
+Se a parte real for
+positiva o sinal diverge.
+74
+Note também que se tivermos também único
+par de polos complexos conjugados,
+75
+com parte real nula, o sinal é
+limitado mas se esse par de polos for
+76
+repetido, o sinal vai divergir.
+77
+Então, a que conclusão
+podemos chegar com relação
+78
+ao sinal ser limitado ou divergir
+e a sua Transformada de Laplace?
+79
+Se os polos da Transformada de
+Laplace tiverem parte real negativa,
+80
+o sinal será limitado, mas se eles tiverem
+parte real positiva o sinal vai divergir.
+81
+Polo simples na origem ou par simples
+de polos complexos conjugados
+82
+com parte real nula, sinal limitado.
+83
+Polo duplo, triplo ou com multiplicidade
+maior na origem, o sinal diverge.
+84
+Par de polos complexos com parte
+real nula e multiplicidade maior que
+85
+o sinal diverge também.
+86
+Muito bem, o sinal de entrada deve então
+ter polos reais negativos ou polos
+87
+complexos conjugados com parte real
+negativa ou ter único polo na origem ou
+88
+ter pares de polos complexos conjugados
+com parte real nula, não repetidos.
+89
+E para que a saída seja limitada,
+90
+a Transformada de Laplace da saída deve
+ter as mesmas características: polos
+91
+com parte real negativa ou nula e sem
+multiplicidade se a parte real for nula.
+92
+Agora como deve ser a Função de
+Transferência para que isso aconteça?
+93
+Vamos usar uma Função de Transferência
+e uma Transformada do sinal de
+94
+entrada literais,
+ambas com denominador fatorado.
+95
+A função de Transferência tem n polos e
+a Transformada da entrada mais m polos.
+96
+A Transformada de Laplace da saída é o
+produto da função de transferência e da
+97
+Transformada da entrada e você lembra
+que podemos expandir a Transformada
+98
+frações parciais.
+99
+Vamos separar as frações parciais
+2 grupos: referente aos polos da
+100
+Função de Transferência e outro referente
+aos polos da Transformada da entrada.
+101
+Os denominadores das frações
+parciais de Y(s) são
+102
+exatamente os mesmos das frações
+parciais de U(s) e se u(t)
+103
+é limitado então yU(t)
+também será limitado.
+104
+Ou seja para saber se a saída é limitada
+ou não podemos analisar apenas yG(t).
+105
+Ou melhor yG(s),
+todas as frações parciais de yG(s)
+106
+precisam corresponder a sinais limitados
+para que a saída seja limitada.
+107
+Se apenas uma das frações parciais
+de yG(s) tiver a Transformada
+108
+inversa ilimitada,
+yG(t) será ilimitada e y(t) também.
+109
+Então não podemos ter nenhum polo da
+Função de Transferência com parte
+110
+real positiva.
+111
+Mas isso é suficiente?
+112
+A Função de Transferência
+pode ter polo na origem ou
+113
+par de polos complexos
+conjugados com parte real nula?
+114
+A resposta é não.
+115
+Vamos ver exemplo numérico simples.
+116
+A Função de Transferência será 1
+sobre s e a entrada degrau unitário,
+117
+que é uma entrada limitada.
+118
+A Transformada da saída será 1 sobre
+s ao quadrado e a saída é uma rampa
+119
+que diverge.
+120
+Ou seja se o sistema tiver polo na
+origem existe uma entrada limitada
+121
+que gera uma saída que vai divergir.
+122
+Quando temos mesmo polo na Função de
+Transferência e na Transformada da
+123
+entrada, não podemos fazer a separação
+total das frações parciais
+124
+porque uma das frações terá
+o denominador ao quadrado.
+125
+Vamos ver exemplo com par de polos
+complexos conjugados com parte real nula.
+126
+A Função de Transferência será
+1 sobre s ao quadrado mais 1,
+127
+e a entrada será cosseno de t.
+128
+Então a Função de Transferência
+tem par de polos mais ou menos i.
+129
+Multiplicando G(s) por U(s) e
+fazendo a Transformada inversa
+130
+obtemos y(t) que é meio de t vezes
+seno de t, uma saída que diverge.
+131
+Concluímos então que para sistema
+seja BIBO estável todos os
+132
+polos da função de transferência
+devem ter parte real negativa.
+133
+Se eles forem polos reais, devem ser
+negativos e se forem complexos conjugados,
+134
+devem ter parte real negativa.
+135
+Se dos polos tiver parte real positiva,
+a fração parcial
+136
+correspondente a esse polo irá
+resultar termo que diverge na saída.
+137
+Se o sistema tiver polo na origem,
+138
+uma entrada degrau irá resultar
+uma saída que diverge.
+139
+Se o sistema tiver par de polos complexos
+conjugados com parte real nula,
+140
+uma entrada senoidal específica irá
+resultar uma saída que diverge.
+141
+E como para ser BIBO estável sistema
+precisa ter a saída limitada para
+142
+toda e qualquer entrada limitada, essas
+duas situações precisam ser evitadas.
+143
+Agora você já deve ser capaz
+de explicar e ilustrar
+144
+a BIBO estabilidade e de
+citar que condições são
+145
+necessárias e suficientes para
+que sistema seja BIBO estável.
+146
+No próximo vídeo você verá que é possível
+verificar a BIBO estabilidade sem ter
+147
+que calcular todos os polos do sistema,
+mais de nossos truques matemáticos.
+148
+[MÚSICA] [SOM] [SOM]

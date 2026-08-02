@@ -1,0 +1,159 @@
+1
+[MÚSICA] [MÚSICA]
+2
+Após esse vídeo,
+você será capaz de projetar
+3
+controle proporcional para atender
+a requisito de instante de pico.
+4
+No vídeo anterior você viu como
+projetar controlador para obter
+5
+determinado overshoot.
+6
+Vamos ver agora como projetar o
+ganho para obter instante de pico,
+7
+o procedimento é bem parecido,
+só vamos usar uma fórmula diferente.
+8
+Ao invés da fórmula de overshoot vamos
+usar a fórmula do instante de pico, que é
+9
+pi sobre ômega d ou pi sobre ômega n vezes
+a raiz quadrada de 1 menos csi quadrado.
+10
+Então dado requisito de instante de pico,
+11
+por exemplo 3,14 segundos,
+usamos a fórmula para calcular ômega d.
+12
+O instante de pico é pi
+sobre ômega d então ômega
+13
+d é pi sobre o instante de
+pico e para o nosso exemplo
+14
+ômega d é 3,14 dividido por 3,14 que é 1.
+15
+Precisamos então ter ômega
+d igual a 1 para termos
+16
+instante de pico de 3,14 segundos.
+17
+Vamos usar a mesma função de
+transferência do vídeo anterior,
+18
+isto é G de s é 1 sobre
+s s mais 1 e portanto T
+19
+de s é igual a k sobre s
+ao quadrado mais s mais k.
+20
+Como já vimos no vídeo anterior,
+temos ômega n igual a raiz quadrada de k e
+21
+csi é 0,5 sobre a raiz quadrada de k.
+22
+Mas e o ômega d?
+23
+Podemos escrever ômega d como
+ômega n vezes a raiz quadrada
+24
+de 1- csi quadrado e temos
+ômega d é a raiz quadrada
+25
+de k vezes a raiz quadrada
+de 1 menos 0,25 sobre k,
+26
+que é igual à raiz
+quadrada de k menos 0,25.
+27
+Substituímos ômega d igual a 1 na
+equação obtendo raiz quadrada de k
+28
+menos 0,25 igual a 1,
+o que nos leva a k igual a 1,25.
+29
+Simulando o sistema malha
+fechada com k igual a 1,25,
+30
+obtemos o instante de pico por volta
+de 3,15 segundos e overshoot de 20,8%.
+31
+Note que se tivéssemos requisito
+de overshoot de 10% e instante de
+32
+pico de 3,14 segundos, não seria possível
+atender aos 2 requisitos ao mesmo tempo,
+33
+pelo menos não com simples
+controlador proporcional.
+34
+Com controlador mais elaborado
+poderíamos atender simultaneamente
+35
+a esses 2 requisitos e outros requisitos
+conflitantes que não podem ser
+36
+atendidos com simples
+controlador proporcional.
+37
+Por exemplo, com o controle
+proporcional não conseguimos alterar o
+38
+tempo de acomodação do
+sistema uma vez que sigma,
+39
+que é igual a csi ômega n,
+é 0,5 independentemente do valor do ganho.
+40
+Podemos também fazer o projeto para
+41
+sistema literal do tipo 1,
+que G de s é igual a 1 sobre
+42
+s s mais a e T de s é igual a k
+sobre s ao quadrado mais as mais k.
+43
+Temos então ômega n é igual a raiz
+quadrada de k e csi é igual
+44
+a a sobre 2 raiz quadrada de k e
+o ômega d vai ser raiz quadrada
+45
+de k vezes a raiz quadrada 1
+menos a ao quadrado sobre 4k,
+46
+que é igual a raiz quadrada de
+k menos a ao quadrado sobre 4.
+47
+E como o ômega d é pi sobre o
+instante de pico, temos raiz quadrada
+48
+de k menos a ao quadrado sobre 4
+igual a pi sobre o instante de pico,
+49
+ou ainda k a ao quadrado sobre 4
+é igual a pi ao quadrado sobre
+50
+o instante de pico ao quadrado
+ou k igual a pi ao quadrado
+51
+dividido pelo instante de pico ao
+quadrado mais a ao quadrado sobre 4.
+52
+E agora você já deve ser capaz de projetar
+53
+controle proporcional para atender
+a requisito de instante de pico.
+54
+Ficou muito simples com a parametrização e
+as fórmulas da resposta de segunda ordem,
+55
+não ficou?
+56
+[MÚSICA] [SOM]
+57
+[SOM]

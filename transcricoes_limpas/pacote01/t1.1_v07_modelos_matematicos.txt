@@ -1,0 +1,553 @@
+1
+[MÚSICA] Após esse video,
+2
+você será capaz de interpretar,
+diagramas elétricos e mecânicos
+3
+simples e de obter a equação diferencial
+do sistema a partir desses diagramas.
+4
+Muito bem, queremos analizar sistema e,
+5
+caso necessário,
+projetar controlador para ele.
+6
+E para realizar esta análise e esse
+projeto de forma mais eficiente,
+7
+sem gastar recursos desnecessariamente
+e sem correr riscos,
+8
+podemos usar: Modelos Matemáticos!
+9
+Mas o que são modelos matemáticos?
+10
+Ou melhor, o que são modelos?
+11
+"É uma tarde quente de verão na
+Grécia Antiga." Não, voltando.
+12
+Modelo, nada mais é, do que uma
+representação parcimoniosa da realidade.
+13
+Parcimoniosa?
+14
+Parcimoniosa!
+15
+Parcimoniosa, econômica,
+que há parcimônia, economia,
+16
+característica de parco ou econômico,
+que usa de parcimônia,
+17
+que tem o hábito de economizar, de poupar.
+18
+Modelo então é uma
+representação econômica da
+19
+realidade e que serve
+a propósito específico.
+20
+Uma figura, diagrama, uma maquete,
+são alguns exemplos de modelos.
+21
+Podemos ter também modelos
+descritivos textuais e modelos
+22
+matemáticos que representam os sistemas
+através de equações matemáticas,
+23
+entre outros tipos de modelos.
+24
+Modelos matemáticos então,
+são uma representação
+25
+parcimoniosa da realidade na
+forma de equações matemáticas.
+26
+E de onde vem o modelo
+matemático do sistema?
+27
+Para fins de controle de sistemas,
+28
+modelo matemático pode ser constituído
+de equações diferenciais e essas
+29
+equações diferenciais, podem ser
+obtidas a partir de leis físicas que
+30
+modelam o comportamento do
+sistema e de seus componentes.
+31
+Equações diferenciais!
+32
+Que "meda"!
+33
+Não sabe ou não lembra o que
+são equações diferenciais?
+34
+Não se preocupe,
+vou explicar isso com alguns exemplos.
+35
+As equações diferenciais nada
+mais são do que equações onde
+36
+aparecem as derivadas de uma variável
+com relação ao tempo e elas surgem
+37
+naturalmente ao modelarmos a relação
+entre a entrada e a saída de sistema.
+38
+Derivada de uma variável relação ao tempo?
+39
+A derivada de uma variável
+ou função relação ao tempo,
+40
+nada mais é do que a taxa de variação
+instantânea desta variável ou função,
+41
+ou quanto o seu valor muda
+a cada instante de tempo.
+42
+Por exemplo se a variável questão for
+43
+a velocidade de carro sua
+derivada será a aceleração,
+44
+se a variável for
+a posição sua derivada é a velocidade.
+45
+Mas não precisa se preocupar
+a muito com a derivada,
+46
+graças ao atalho que vamos pegar,
+isso não irá nos incomodar.
+47
+Preguiça!
+48
+Vamos ver três exemplos
+simples da obtenção da equação
+49
+diferencial de sistema, e depois
+desses exemplos, nós vamos considerar
+50
+que já temos modelo de sistema a ser
+estudado na forma de equação diferencial.
+51
+Nosso primeiro exemplo,
+é de sistema mecânico translacional,
+52
+o já tradicional sistema massa,
+mola, amortecedor.
+53
+A saída é o deslocamento da massa e
+a entrada é a força aplicada à massa.
+54
+De forma simplificada,
+a segunda lei de Newton nos diz que a soma
+55
+das forças aplicadas a corpo é igual
+a sua massa vezes a sua aceleração.
+56
+No nosso sistema particular,
+força externa aplicada mais força da mola,
+57
+mais força do amortecedor,
+vai ser igual a massa vezes aceleração.
+58
+Além disso temos que a força de uma
+59
+mola é proporcional ao seu deslocamento,
+60
+mas no sentido oposto a esse deslocamento.
+61
+Temos também, que a força de amortecedor
+é proporcional a sua velocidade,
+62
+mas também na direção oposta, ou melhor,
+63
+no sentido oposto ao da velocidade,
+por isso os sinais negativos.
+64
+Substituindo as forças na nossa soma,
+chegamos
+65
+a equação: u menos a constante de mola
+vezes o deslocamento menos a constante
+66
+do amortecedor vezes a velocidade é
+igual a massa vezes a aceleração.
+67
+Como uma das extremidades da
+mola e do amortecedor está presa
+68
+a parede e a outra extremidade está presa
+a massa, o deslocamento da massa é igual
+69
+ao deslocamento da mola e a velocidade da
+massa é igual a velocidade do amortecedor.
+70
+E a aceleração da massa é
+a derivada de sua velocidade,
+71
+que por sua vez é
+a derivada de sua posição,
+72
+então a aceleração é
+a derivada segunda da posição.
+73
+Assim podemos reescrever
+a equação proveniente da segunda
+74
+lei de Newton como u
+menos ky menos b dy dt
+75
+igual a m d2y dt2",
+onde u é a força aplicada,
+76
+k é a constante de mola, b é
+a constante do amortecedor e m a massa.
+77
+E temos uma equação diferencial
+relacionando a entrada u de t, que
+78
+é a força aplicada, e a saída y de t que
+é a posição ou o deslocamento da massa.
+79
+Para termos uma menor poluição
+visual podemos escrever as equações
+80
+diferenciais de uma forma mais compacta.
+81
+Adotamos a seguinte representação:
+a primeira derivada é denotada por ponto,
+82
+a segunda derivada por dois
+pontos e assim por diante, então,
+83
+se você encontrar u quatro pontos, essa é
+a quarta derivada do sinal de entrada u.
+84
+Assim temos u menos
+85
+ky menos by ponto é
+igual a m y dois pontos.
+86
+Normalmente vamos preferir a equação
+87
+diferencial com todos os termos
+referentes a saída do lado esquerdo
+88
+da equação e todos os termos referentes
+a entrada do lado direito e ordenamos da
+89
+maior derivada ou maior quantidade
+de pontos para a menor derivada.
+90
+Além disso, é comum, mas não necessário,
+91
+dividirmos a equação diferencial
+pelo coeficiente da maior derivada,
+92
+nesse caso m, então nossa equação
+diferencial fica y dois pontos
+93
+mais b sobre m y ponto mais k
+sobre m y igual a u sobre m.
+94
+Podemos ainda, por comodidade,
+definir novas constantes
+95
+função das existentes e nossa
+equação diferencial fica y dois
+96
+pontos mais a1 y ponto
+mais a0 y igual a b0u.
+97
+[SEM ÁUDIO] Vamos
+98
+agora fazer a mesma coisa
+para circuito RLC série.
+99
+Temos uma fonte de tensão,
+que é a entrada do sistema,
+100
+resistor de resistência R,
+indutor de indutância L e capacitor
+101
+de capacitância C e a saída do sistema
+é a tensão sobre esse capacitor.
+102
+Primeiro vamos anotar
+a corrente e as tensões.
+103
+Componentes passivos como resistores,
+indutores e capacitores,
+104
+a direção da corrente é contrária
+a variação da tensão, ou seja,
+105
+se a corrente vai sentido,
+a tensão aumenta no sentido oposto.
+106
+O símbolo do terra nos indica
+o referencial de tensão
+107
+ou a tensão de 0 volt,
+então anotamos uma corrente no sentido
+108
+horário e as tensões dos componentes
+passivos no sentido oposto.
+109
+Normalmente nos componentes
+ativos as fontes de energia, como
+110
+a fonte tensão nesse circuito, o sentido
+da corrente acompanha o aumento da tensão.
+111
+A lei de Kirchoff das malhas nos diz que
+a soma das tensões uma malha é nula,
+112
+o que nesse caso resulta em: tensão
+da fonte igual a tensão no resistor,
+113
+mais tensão no indutor,
+mais tensão no capacitor.
+114
+Para o resistor temos tensão no
+resistor igual a resistência
+115
+vezes a corrente, para o indutor
+temos tensão no indutor igual
+116
+a indutância vezes a derivada da
+corrente e para o capacitor temos
+117
+corrente igual a capacitância
+vezes a derivada da tensão.
+118
+E como temos apenas uma
+malha todas as correntes
+119
+são iguais e podemos escrever
+vr igual a r vezes i,
+120
+vl igual a l di/dt e i igual a c dvc/dt.
+121
+Substituindo a equação
+da corrente nas equações
+122
+das tensões sobre o resistor e sobre
+o indutor obtemos vR igual a R C
+123
+dvc/dt e vL igual a L C d2vc/dt2.
+124
+Substituindo as tensões na
+equação obtida a partir da lei de
+125
+Kirchoff das malhas chegamos
+a u igual a R C dvc/dt
+126
+mais L C d2vc/dt2 mais vc.
+127
+usando nossa notação de pontos,
+reorganizando e
+128
+dividindo por LC chegamos
+a vC dois pontos mais R sobre
+129
+L vezes vC ponto mais vC sobre
+LC é igual a u sobre LC.
+130
+Substituindo vC por y
+temos y dois pontos mais
+131
+R sobre L y ponto mais y sobre
+LC é igual a u sobre LC.
+132
+Podemos ainda, por comodidade,
+definir novas constantes
+133
+função das existentes e nossa
+equação diferencial fica y
+134
+dois pontos mais a1 y ponto
+mais a0y igual a b0u.
+135
+Parece algo que você já viu?
+136
+Como terceiro exemplo vamos obter
+agora a equação diferencial de
+137
+sistema electromecânico
+rotacional formado por
+138
+motor eléctrico ligado ao eixo de uma
+carga mecânica que deve ser girado.
+139
+A saída inicialmente será
+a velocidade de rotação.
+140
+Esse é o modelo simplificado de
+vários sistemas de direcionamento,
+141
+ou apontamento como radares, câmaras
+de TV e braços robóticos, entre outros.
+142
+Para a parte eléctrica temos
+u igual a vR mais vL mais vM.
+143
+As equações do resistor e do
+indutor continuam as mesmas: v
+144
+igual a Ri para o resistor e v
+igual a L di dt para o indutor.
+145
+Para o motor temos 2 equações: uma do
+146
+torque função da corrente e outra da
+tensão função da velocidade de rotação.
+147
+Para simplificar vamos usar uma única
+constante k para as duas equações.
+148
+Temos então torque igual à constante
+do motor vezes a corrente e tensão no
+149
+motor igual à constante no motor vezes
+a velocidade de rotação do motor.
+150
+As equações ficam T igual a k
+vezes i e vM igual a k vezes
+151
+y e sim a tensão no motor é
+a força contra electromotriz.
+152
+Se você não tem a mínima ideia do
+que seja isso não se preocupe basta
+153
+acreditar que essas equações são válidas.
+154
+Finalmente para a parte mecânica temos
+que a somatória dos torques é igual
+155
+ao momento de inércia vezes a aceleração
+angular, que é a derivada da velocidade.
+156
+Nesse modelo simplificado
+temos apenas o torque do motor
+157
+então a equação mecânica é
+simplesmente T igual a j y ponto.
+158
+A partir das duas equações
+do torque chegamos a i
+159
+igual a J sobre k vezes y ponto.
+160
+Substituindo a corrente nas equações
+das tensões chegamos a vR igual
+161
+a R vezes J sobre k vezes y ponto e vL
+igual a L vezes J sobre k y dois pontos.
+162
+Substituindo as tensões na
+equação do circuito temos u
+163
+igual a R vezes J sobre
+k vezes y ponto mais L
+164
+vezes J sobre k vezes
+y dois pontos mais ky.
+165
+Reorganizando e dividindo
+tudo por LJ sobre k
+166
+chegamos a y dois pontos
+mais R sobre L y ponto mais
+167
+k ao quadrado sobre LJ y é
+igual a k sobre LJ vezes u.
+168
+Definindo novas constantes função das
+existentes, nossa equação diferencial
+169
+fica y dois pontos mais a1y
+ponto mais a0y igual a b0u.
+170
+Familiar?
+171
+Como exercício tente obter
+a equação diferencial
+172
+considerando que a saída é a posição
+angular e não a velocidade,
+173
+ou seja temos T igual a J y dois pontos.
+174
+Você deve chegar a y três pontos mais
+175
+a2y dois pontos mais
+a1y ponto igual a b0u.
+176
+Agora você já deve ser capaz
+de interpretar diagramas
+177
+eléctricos e mecânicos simples e de
+obter a equação diferencial do sistema
+178
+a partir desses diagramas.
+179
+Mas se você ainda não se sentir
+capaz de obter a equação diferencial
+180
+não se preocupe, daqui diante a equação
+diferencial do sistema já será fornecida.
+181
+Quando você precisar modelar
+sistema diferente ou mais complexo,
+182
+você só precisará estudar as
+leis físicas referentes ao
+183
+sistema específico e as
+equações de seus componentes.
+184
+Por enquanto você já tem a segunda
+Lei de Newton que vale para sistemas
+185
+mecânicos translacionais e para
+sistemas mecânicos rotacionais.
+186
+Basta trocar o somatório das forças
+pelo somatório dos torques e a massa
+187
+vezes a aceleração pelo momento de
+inércia vezes a aceleração angular.
+188
+Você também tem as equações
+da mola e do amortecedor.
+189
+Você tem também a Lei de Kirchoff das
+malhas e as equações do resistor,
+190
+do capacitor e indutor,
+além das equações do
+191
+motor elétrico que une o mundo
+eletrónico com o mundo mecânico.
+192
+E agora que já temos uma equação
+diferencial, o que fazemos com ela?
+193
+Usamos cálculo para resolvê-la?
+194
+No nosso caso não, mas vamos usar
+uma outra ferramenta matemática
+195
+a Transformada de Laplace,
+que veremos no próximo vídeo.
+196
+[MÚSICA] [SOM]
+197
+[SOM]

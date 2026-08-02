@@ -1,0 +1,141 @@
+1
+[MÚSICA] [MÚSICA]
+2
+Bem vindo à Introdução
+ao Controle de Sistemas!
+3
+O que é sistema?
+4
+Sistema vem da antiga
+palavra grega synistanai e
+5
+synistanai significa
+"fazer funcionar junto".
+6
+E é lá na Grécia Antiga
+que a nossa jornada
+7
+começa: é anoitecer quente de Verão,
+8
+cerca de 270 antes de Cristo o
+jovem Ktesibius está ajudando o seu
+9
+pai na barbearia quando tem uma ideia.
+10
+Jazinga!
+11
+Ok, não vamos falar da Grécia antiga,
+12
+mas vamos falar sobre dos inventos
+atribuídos a Ktesibius que,
+13
+pelos relatos históricos e pela Wikipedia,
+foi matemático,
+14
+físico e inventor grego que viveu
+Alexandria entre 285 e 222 a.C.
+15
+Segundo esses relatos Ktesibius
+inventou dos primeiros sistemas de
+16
+controlo automático de nível de água
+similar aos utilizados atualmente
+17
+caixas de descarga e caixas
+de água mais simples.
+18
+O problema de Ktesibius era
+manter nível constante de água
+19
+reservatório com furo na parte inferior.
+20
+Este reservatório era usado para
+encher relógio de água Se a altura
+21
+da água no reservatório for constante,
+a quantidade de água que sai pelo furo é
+22
+constante e a altura da água no
+relógio é uma boa indicação do tempo.
+23
+Mas à medida que a água escoa
+para o relógio o nível da água
+24
+do reservatório vai diminuindo
+e a água precisa ser reposta.
+25
+É claro que alguém podia ficar o tempo
+todo do lado do reservatório completando
+26
+o nível à medida que a água
+ia escoando para o relógio.
+27
+Ou então o reservatório poderia
+receber fluxo constante de
+28
+água e o excesso de água poderia
+escorrer e ser jogado fora.
+29
+Mas não seria possível termos dispositivo
+que completasse o nível da água
+30
+automaticamente e sem desperdício de água?
+31
+Ktesibius resolveu esse problema usando
+uma boia que fechava ou liberava
+32
+a entrada de água no reservatório.
+33
+Vamos dar uma olhada modelo
+simplificado de uma caixa de descarga
+34
+acoplada e entender
+a solução de Ktesibius.
+35
+A boia está ligada a uma válvula
+por uma espécie de gangorra,
+36
+quando a boia desce a válvula sobe e
+quando a válvula desce e a válvula
+37
+funciona basicamente como uma torneira,
+liberando ou fechando o fluxo de água.
+38
+Então quando o nível de água está baixo
+39
+a boia fica baixa e libera
+a entrada de bom fluxo de água.
+40
+À medida que o nível da
+água vai aumentando,
+41
+a boia vai subindo, a válvula vai
+descendo fechando o entrada da água.
+42
+Quando a água chega no nível desejado,
+43
+a boia fica alta e a válvula desce,
+fechando completamente a entrada de água.
+44
+Se a quantidade de água diminuir
+evaporando ou quando alguém
+45
+acionar a descarga, a boia desce
+liberando a entrada de água novamente.
+46
+E essa é uma versão moderna simplificada
+de dos primeiros sistemas de
+47
+controlo automático de que
+se tem registo histórico.
+48
+Neste curso você verá outros exemplos
+de sistema, se familiarizará com
+49
+os principais termos da área e entenderá
+como o controlo com realimentação funciona
+50
+e verá como projetar controlador
+proporcional para sistema simples.
+51
+[MÚSICA] [SOM] [SOM]

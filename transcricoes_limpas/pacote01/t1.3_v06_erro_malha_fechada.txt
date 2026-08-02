@@ -1,0 +1,354 @@
+1
+[MÚSICA] [MÚSICA] Após esse vídeo,
+2
+dada a Função de Transferência
+do sistema malha aberta,
+3
+você será capaz de calcular o erro
+regime permanente para entradas degrau,
+4
+rampa e parábola para
+sistema malha fechada,
+5
+sem a necessidade de calcular a Função
+de Transferência malha fechada.
+6
+No vídeo anterior você aprendeu como
+calcular o erro regime para entradas
+7
+degrau, rampa e parábola a partir da
+Função de Transferência do sistema.
+8
+Mas você fez isso considerando que
+o sistema estava malha aberta ou
+9
+outras palavras que o degrau,
+10
+a rampa ou a parábola eram as
+entradas do sistema malha aberta.
+11
+Na verdade, isso não é problema
+tão grande já que a malha aberta e
+12
+a malha fechada são conceitos relativos.
+13
+Se você considerar que a entrada do
+sistema é R de s e a saída é Y de s,
+14
+T de s é a Função de Transferência
+malha aberta de R para Y.
+15
+Então se você já tiver o T de
+s você já sabe como calcular o
+16
+erro regime para as entradas mais comuns.
+17
+Mas é possível, e até mais fácil,
+calcular o erro regime de T
+18
+de s para entradas degrau,
+rampa e parábola sem ter que obter T de s.
+19
+Nesse vídeo veremos então
+como calcular o erro
+20
+regime malha fechada a partir da
+Função de Transferência malha aberta.
+21
+Para isso então lembre que
+com controlo proporcional,
+22
+isso é ganho k, a Função de
+Transferência malha fechada fica T de s
+23
+igual a kG de s sobre 1 mais kG de s.
+24
+Por comodidade vamos definir novo
+elemento: a Função de Transferência
+25
+de malha denotada por L de s,
+que no nosso caso é simplesmente kG de s.
+26
+No momento a Função de Transferência
+de malha não parece ser muito útil,
+27
+mas no futuro, quando você usar
+controladores mais elaborados que o ganho
+28
+k, você verá que ela pode
+facilitar muito as coisas.
+29
+Parte do controle remoto, lembra?
+30
+Então, a expressão do erro que é R
+31
+menos Y função da Função de
+Transferência de malha fica R de s
+32
+menos L de s sobre 1
+mais L de s vezes R de s.
+33
+Fazendo a subtração chegamos à conclusão
+que a Transformada de Laplace do
+34
+erro é dada por R de s vezes 1
+sobre 1 mais L de s e podemos
+35
+usar o Teorema do Valor Final
+para obter o erro regime.
+36
+Se a entrada for degrau unitário,
+R de s é igual a 1 sobre s,
+37
+a expressão do erro fica: e
+de infinito igual a 1 sobre 1
+38
+mais limite quando s tende a 0 de L de s.
+39
+Então se o limite de L de s quando s tende
+a 0 existir e o erro realmente convergir
+40
+para valor constante,
+o erro regime para a entrada degrau é dado
+41
+por 1 sobre 1 mais esse limite e esse
+limite é definido como sendo a constante
+42
+de erro de posição do sistema,
+a qual denotamos por kp e podemos escrever
+43
+que o erro regime para uma entrada
+degrau é simplesmente 1 sobre 1 mais kp.
+44
+Podemos fazer a mesma coisa
+para uma entrada rampa,
+45
+com R de s igual a 1 sobre s ao quadrado.
+46
+A diferença é que ficamos apenas com
+o limite s L de s quando s tende
+47
+a 0 no denominador já que o limite
+de s quando s tende a 0 é 0.
+48
+E definindo a constante de erro de
+velocidade kv como esse limite,
+49
+o erro regime para uma entrada rampa,
+se ele existir fica 1 sobre kv.
+50
+Podemos fazer a mesma coisa para
+a entrada parábola e definimos
+51
+ka como o limite de s ao quadrado
+L de s quando s tende a 0.
+52
+Muito bem,
+agora já temos expressões para o erro
+53
+regime para as 3 entradas
+função das constantes de erro,
+54
+que por sua vez são funções da
+Função de Transferência de malha.
+55
+Vamos agora tentar descobrir
+alguma relação entre
+56
+a Função de Transferência de malha
+aberta e essas constantes de erro.
+57
+Vamos partir da Função de Transferência
+malha aberta com o denominador
+58
+fatorado e escrever nossas
+constantes de erro.
+59
+Note que se a Função de
+Transferência malha aberta não tiver
+60
+polos na origem temos kp
+igual a k vezes G de 0,
+61
+kv igual a 0 e ka igual a 0.
+62
+Se a Função de Transferência
+malha aberta tiver polo
+63
+na origem temos kp igual
+a infinito e ka igual a 0.
+64
+Daqui a pouco voltamos
+ao kv para esse caso.
+65
+Finalmente se a Função de Transferência
+malha aberta tiver 2 polos
+66
+na origem temos kp igual a infinito,
+kv igual a infinito e podemos calcular ka.
+67
+Vamos resumir nossas
+descobertas uma tabela.
+68
+Então se o sistema malha aberta
+não tem polos na origem kv e
+69
+ka são 0 e se o sistema tem 2 polos
+na origem kp e kv são infinito.
+70
+Definimos o que chamamos de
+tipo numérico do sistema como
+71
+a quantidade de polos que a Função
+de Transferência tem na origem.
+72
+Então sistema do tipo 0 não
+tem nenhum polo na origem,
+73
+sistema do tipo 1 tem 1 polo
+na origem e assim por diante.
+74
+Então trocamos a quantidade de polos
+na origem pelo tipo numérico do sistema
+75
+e ao invés dos valores
+das constantes de erro,
+76
+podemos escrever o erro regime
+permanente para cada entrada,
+77
+lembrando que o erro para
+degrau é 1 sobre 1 mais kp,
+78
+o erro para a rampa é sobre kv e o
+erro para a parábola é 1 sobre ka.
+79
+E verificamos que sistema
+do tipo 0 malha aberta
+80
+apresenta erro regime infinito para
+uma entrada degrau malha fechada,
+81
+mas erro que diverge para
+entradas rampa e parábola.
+82
+Sistema do tipo 1 malha
+aberta apresenta erro
+83
+regime nulo para entrada
+degrau malha fechada,
+84
+erro finito para uma entrada rampa e erro
+que diverge para uma entrada parábola.
+85
+Finalmente sistema do tipo 2 malha
+aberta apresenta erro regime nulo
+86
+para entradas degrau e rampa malha fechada
+e erro finito para entrada parábola.
+87
+Se tivermos sistema do tipo
+3 ele apresentará erro
+88
+regime nulo para a entrada degrau,
+rampa e parábola malha fechada.
+89
+Bem, falta agora vermos como obter kv para
+sistema do tipo 1 e como obter ka para
+90
+sistema do tipo 2 e até mesmo
+kp para sistema do tipo 0.
+91
+Sabemos que kp é k vezes G de 0,
+92
+mas como obter esse valor rapidamente?
+93
+Isso fica mais fácil se os polinômios
+do numerador e do denominador estiverem
+94
+na forma expandida ou apenas com
+os polos na origem evidência e
+95
+nesse caso G de 0 é apenas b0 sobre a0
+96
+e a constante de erro de
+posição é k vezes b0 sobre a0.
+97
+Se o sistema for do tipo 1 não
+temos o elemento a0 no denominador.
+98
+Normalmente o polo na origem fica
+99
+evidência e podemos obter facilmente
+a constante de erro de velocidade.
+100
+A constante de erro de aceleração
+é obtida de forma similar.
+101
+Então a construção de nosso
+atalho pode ter dado algum
+102
+trabalho mas agora ficou
+muito simples calcular o erro
+103
+regime permanente a partir da Função
+de Transferência malha aberta.
+104
+Só tome cuidado para usar a coluna
+correta, verificando quantos polos o
+105
+sistema malha aberta tem na origem e
+certifique-se de que o sinal não diverge.
+106
+Além disso, essas fórmulas só valem para
+o controlo proporcional com realimentação
+107
+unitária, o que pode não ser o
+caso outros cursos e na vida real.
+108
+Note também que se aumentarmos o
+109
+ganho k estaremos diminuindo o erro regime
+para a entrada correspondente uma vez que
+110
+todas as fórmulas de erro
+têm o ganho no denominador.
+111
+Além disso lembra do vídeo sobre
+as vantagens da realimentação?
+112
+Quanto maior o ganho menor é
+a sensibilidade do sistema a erros na
+113
+modelagem e a perturbações.
+114
+Mais lembre também que já
+vimos alguns casos onde
+115
+ganho elevado demais deixa o
+sistema instável malha fechada,
+116
+então não ache que você sempre poderá
+aumentar o ganho indefinidamente
+117
+para rejeitar perturbações e
+atender requisitos de regime,
+118
+você pode acabar deixando
+o sistema instável.
+119
+Muito bem, agora dada a Função
+de Transferência do sistema
+120
+malha aberta você já deve ser
+capaz de calcular o erro regime
+121
+permanente para entradas degrau,
+rampa e parábola malha fechada,
+122
+sem a necessidade de calcular a Função
+de Transferência malha fechada.
+123
+[MÚSICA] [SOM]
+124
+[SOM]

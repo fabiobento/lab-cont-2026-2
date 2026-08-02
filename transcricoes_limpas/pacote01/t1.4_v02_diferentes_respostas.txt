@@ -1,0 +1,133 @@
+1
+[MÚSICA] Após
+2
+esse vídeo você será capaz de citar e
+3
+explicar as diferentes repostas
+ao degrau de sistema de 2ª ordem.
+4
+Dependendo dos polos da
+função de transferência,
+5
+podemos ter 3 tipos de resposta
+ao degrau de sistema de 2ª ordem.
+6
+2 desses tipos de respostas ainda
+podem ser subdivididos mais tipos.
+7
+Mas para nós essa divisão
+3 respostas é suficiente.
+8
+Se o sistema tiver polos complexos
+conjugados com parte real positiva ou
+9
+polo real positivo ou 2
+polos reais positivos,
+10
+a saída do sistema para uma
+entrada degrau vai divergir.
+11
+Se for o caso de polos complexos,
+a saída vai divergir oscilando,
+12
+caso contrário ela divergirá
+monotonicamente sem oscilar.
+13
+De qualque forma,
+14
+a saída vai divergir e não estamos
+interessados nesse tipo de resposta.
+15
+Se o sistema tiver par de
+polos reais negativos,
+16
+a saída irá convergir para valor
+final assintoticamente sem oscilar,
+17
+isto é,
+a saída irá variar cada vez mais devagar,
+18
+tendendo a valor constante
+sem nunca passar desse valor.
+19
+Muito parecido com a resposta ao
+degrau de sistema de 1ª ordem.
+20
+Chamamos essa resposta de
+resposta superamortecida e o
+21
+sistema que apresenta essa resposta
+de sistema superamortecido.
+22
+No caso particular desses 2
+polos reais serem iguais,
+23
+a resposta é chamada de criticamente
+amortecida e o sistema de
+24
+criticamente amortecido,
+mas visualmente a resposta criticamente
+25
+amortecida não é muito diferente
+da resposta superamortecida.
+26
+E finalmente chegamos ao
+caso mais interessante:
+27
+a resposta subamortecida,
+que acontece quando o sistema tem
+28
+par de polos complexos conjugados
+com parte real negativa.
+29
+A resposta subamortecida é
+caracterizada por uma oscilação
+30
+torno do valor final, que vai diminuindo
+de amplitude com o passar do tempo.
+31
+E o sistema de 2ª ordem que
+apresenta uma resposta ao degrau
+32
+subamortecida é chamado
+de sistema subamortecido.
+33
+Recapitulando: a resposta ao
+degrau pode ser instável,
+34
+superamortecida ou subamortecida.
+35
+Consideramos o caso
+criticamente amortecido como
+36
+caso particular da
+resposta superamortecida.
+37
+A resposta será superamortecida
+quando a função de transferência do
+38
+sistema tiver 2 polos reais negativos
+e será subamortecida quando ela
+39
+tiver par de polos complexos
+conjugados com parte real negativa.
+40
+E é nesse último tipo de resposta ou nesse
+tipo de sistema que estamos interessados,
+41
+uma vez que a resposta vai mais
+rápido para o valor final.
+42
+Só não vamos querer que as oscilações
+sejam grandes demais e que elas durem
+43
+muito tempo.
+44
+Agora você já é capaz de citar e de
+explicar as diferentes respostas
+45
+ao degrau de sistema de 2ª ordem.
+46
+[MÚSICA] [RUÍDO]
+47
+[BARULHO_DE_CAMPAINHA]

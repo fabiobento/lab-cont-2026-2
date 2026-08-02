@@ -1,0 +1,165 @@
+1
+Após esse vídeo você
+será capaz de descrever
+2
+o objetivo do controle de sistemas.
+3
+Muito bem,
+agora que você já sabe o que é sistema,
+4
+poderá entender o que é
+o controle de sistemas.
+5
+O objetivo do controle de sistemas
+é modificar o comportamento de
+6
+sistemas de forma eficiente.
+7
+Sistema é parte do universo
+de interesse para o estudo.
+8
+Modificar o comportamento
+significa alterar a relação
+9
+entre a entrada e a saída do sistema de
+modo a atender requisitos de desempenho.
+10
+De forma eficiente quer dizer: com
+a menor complexidade possível,
+11
+o menor custo possível e a menor
+intervenção humana possível.
+12
+Vou te contar segredo: controle de
+sistemas é coisa de preguiçoso.
+13
+Estamos o tempo todo procurando
+atalhos para facilitar ou
+14
+minimizar nosso trabalho.
+15
+O problema é que às vezes
+ou quase sempre temos
+16
+certo trabalho para encontrar ou
+até mesmo criar esses atalhos.
+17
+Pense no controle remoto,
+sem dúvida uma invenção de preguiçoso que
+18
+não queria ter o trabalho de se levantar
+para mudar o canal ou o volume da TV.
+19
+Agora, pense no trabalho que ele teve
+para desenvolver o controle remoto.
+20
+Só que uma vez desenvolvido o primeiro
+controle remoto ficou fácil replicar o
+21
+processo e fabricar controles para
+facilitar a vida de muitos preguiçosos.
+22
+O controle de sistemas
+é mais ou menos assim.
+23
+Queremos facilitar nossa
+vida mas para isso temos
+24
+certo trabalho desenvolvendo as
+ferramentas que vão nos auxiliar.
+25
+E uma vez que elas tenham sido
+desenvolvidas é só usá-las novamente.
+26
+Tenha isso mente quando você se deparar
+com uma nova técnica ou ferramenta
+27
+que pareça complicada ou trabalhosa
+demais ou até mesmo, pareça inútil.
+28
+Estaremos desenvolvendo nosso controle
+remoto, ou uma parte do controle remoto.
+29
+E depois disso não precisaremos mais
+levantar do nosso confortável sofá
+30
+para mudar o canal ou o volume da TV.
+31
+Mas voltando ao assunto,
+o que são os requisitos de desempenho?
+32
+Os requisitos de desempenho são
+características desejáveis da relação
+33
+entrada-saída do sistema.
+34
+ou da resposta do sistema
+para uma determinada entrada.
+35
+Termos mais leigos,
+os requisitos de desempenho são o
+36
+que você deseja que o sistema faça,
+e como você deseja que ele faça.
+37
+Normalmente os requisitos estão associados
+à velocidade de resposta do sistema,
+38
+à presença ou não de oscilações e à quão
+bem a saída acompanha valor desejado,
+39
+valor esse comumente
+chamado de referência.
+40
+Normalmente você vai querer que
+o sistema seja rápido isso é,
+41
+que a saída se modifique rapidamente
+quando a entrada for modificada.
+42
+É comum também que você não queria
+que a saída fique oscilando,
+43
+você pode até tolerar uma leve oscilação
+mas você não vai querer que essa oscilação
+44
+dure muito tempo.
+45
+Pense por exemplo elevador.
+46
+Você vai querer que ele se desloque
+rapidamente de andar para outro,
+47
+mas não vai querer que ele fique
+oscilando torno do andar desejado,
+48
+isso pode ser muito desconfortável.
+49
+Normalmente você vai querer também
+que depois de algum tempo a saída
+50
+seja exatamente igual ou ao menos,
+fique próxima de valor desejado.
+51
+Pense novamente no elevador.
+52
+Você não vai querer que ele pare
+nem muito acima nem muito abaixo
+53
+do nível do andar desejado.
+54
+Não seria muito agradável ter que subir
+55
+degrau ou pular do elevador
+para o piso do andar.
+56
+Daqui a pouco vamos falar mais sobre
+o valor desejado ou a referência,
+57
+mas antes disso vamos dar uma olhada
+no gráfico da saída função do tempo.
+58
+Por enquanto você já deve ser
+capaz de descrever o objetivo do
+59
+controle de sistemas.

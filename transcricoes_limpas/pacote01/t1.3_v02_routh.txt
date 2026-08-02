@@ -1,0 +1,533 @@
+1
+[MÚSICA] [MÚSICA] Após esse vídeo,
+2
+dada a Função de Transferência de sistema,
+3
+você será capaz de verificar se
+o sistema é ou não BIBO estável,
+4
+sem a necessidade de calcular
+ou explicitar os polos.
+5
+Como vimos, a BIBO estabilidade de
+sistema é determinada pela parte
+6
+real de seus polos, que são as raízes do
+denominador da Função de Transferência.
+7
+Para que o sistema seja BIBO estável todos
+os polos devem ter parte real negativa.
+8
+Uma forma bastante simples de determinar
+se sistema é ou não BIBO estável
+9
+seria calcular todos os polos e verificar
+se todos têm parte real negativa.
+10
+Mas não haveria modo mais eficiente
+ou menos trabalhoso de fazer isso?
+11
+Sim existe e ele é chamado de Método
+ou Critério de Routh-Hurwitz,
+12
+às vezes abreviado para Método ou
+Critério de Routh ou simplesmente RH.
+13
+Primeiro vou exemplificar o método
+com denominadores mais simples.
+14
+de segunda, terceira e até quarta
+ordem e depois generalizarei o método.
+15
+Se o denominador for de primeira ordem
+o polo já está evidente no denominador
+16
+e é fácil verificar se ele tem
+parte real negativa ou não.
+17
+Lembre-se que os fatores são s menos o
+polo então s mais 1 corresponde a polo
+18
+menos 1 e s menos 1
+corresponde a polo mais 1.
+19
+Se a Função de Transferência de
+segunda ordem denominador do
+20
+segundo grau já estiver fatorada
+também só precisa precisamos
+21
+verificar o sinal dos fatores,
+todos devem ser positivos.
+22
+Se o denominador da Função de
+Transferência não estiver fatorado,
+23
+podemos usar a fórmula de Bhaskara para
+calcular os polos, ou podemos verificar
+24
+se todos os polos têm parte real
+negativa construindo a Tabela de Routh.
+25
+A Tabela de Routh tem n mais 1 linhas
+onde n é o grau do polinômio do
+26
+denominador ou a ordem do sistema,
+nesse caso n é igual a 2 e temos 3 linhas.
+27
+As duas primeiras linhas são preenchidas
+com os coeficientes do polinômio da
+28
+esquerda para a direita, alternando entre
+as linha e começando com a primeira linha.
+29
+Nesse caso colocamos o
+coeficiente 1 de s ao quadrado na
+30
+primeira linha depois o
+coeficiente 3 de s na segunda
+31
+linha e o coeficiente 2 de s elevado
+a 0 na primeira linha novamente.
+32
+Quando o grau do polinômio for
+maior continuamos alternando entre as
+33
+linhas até que todos os
+coeficientes tenham sido usados.
+34
+Agora para preencher a linha s0
+usamos as duas linhas anteriores.
+35
+Fazemos uma multiplicação cruzada
+e dividimos pelo primeiro
+36
+elemento da linha s1 que chamamos,
+carinhosamente, de pivô.
+37
+Os elementos inexistentes
+são considerados 0.
+38
+O Critério de Routh-Hurwitz nos
+diz que se todos os elementos da
+39
+primeira coluna da tabela tiverem o mesmo
+sinal, isto é, se todos forem positivos ou
+40
+se todos forem negativos, todas as raízes
+do polinômio tem parte real negativa.
+41
+Nesse caso temos 1, 3 e 2, todos os
+positivos e o polinômio é Hurwitz,
+42
+isto é, todas as suas raízes têm
+parte real negativa e se ele for
+43
+o denominador de uma Função de
+Transferência o sistema é BIBO estável.
+44
+Vamos ver outro exemplo mas desta vez
+eu já vou mostrar a tabela construída.
+45
+Coeficientes 1, 1 e menos 2,
+elemento da linha s0 igual a menos 2.
+46
+Nesse caso temos uma troca de
+sinal e o polinômio não é Hurwitz,
+47
+o sistema não é estável.
+48
+Vamos ver exemplo literal:
+a construção da tabela é a mesma,
+49
+coeficientes 1,
+a e b e na primeira coluna temos 1,
+50
+a e b e para que o polinômio
+seja Hurwitz precisamo ter
+51
+a maior que 0 e b maior que 0.
+52
+Mas acho que você já sabia disso,
+se todas as raízes do polinômio tiverem
+53
+parte real negativa, todos os
+coeficientes precisam ser positivos.
+54
+Vamos para exemplo de terceira ordem.
+55
+Você pode usar o Método de
+Cardano Tartaglia para achar as raízes mas
+56
+vamos ver como a análise fica
+simples usando Routh-Hurwitz.
+57
+Terceira ordem, 4 linhas,
+de s ao cubo até s a 0,
+58
+coeficientes 1, 6, 11 e 6,
+59
+multiplicação cruzada das duas linhas
+anteriores dividido pelo pivô,
+60
+para calcular o elemento da linha s0
+usamos as duas linhas anteriores, s1
+61
+e s2 e novamente fazemos a multiplicação
+cruzada e dividimos pelo pivô.
+62
+Os elementos da primeira coluna são 1, 6,
+63
+10 e 6,
+todos positivos e o polinômio é Hurwitz.
+64
+Outro exemplo de terceira ordem: vamos
+mudar apenas o último coeficiente.
+65
+Duas primeiras linhas da tabela de
+Routh só copiar os coeficientes,
+66
+multiplicação cruzada das duas linhas
+anteriores dividido pelo pivô e novamente
+67
+fazemos a multiplicação cruzada
+e dividimos pelo novo pivô.
+68
+Os elementos da primeira coluna são 1,
+6, -1 e 72.
+69
+Temos troca de sinal e o polinômio não é
+Hurwitz, ou seja se esse polinômio for o
+70
+denominador de uma Função de Transferência
+o sistema não é BIBO estável.
+71
+Podemos fazer exemplo literal
+de terceira ordem também,
+72
+duas primeiras linhas copiar os
+coeficientes, multiplicação cruzada e
+73
+dividir pelo pivô, multiplicar
+novamente e dividir pelo novo pivô.
+74
+E para que o polinômio seja Hurwitz
+precisamos ter a maior que 0,
+75
+c maior que 0 e a vezes b maior do que c.
+76
+Só mais exemplo de quarta
+ordem antes de generalizarmos
+77
+a análise via Routh-Hurwitz.
+78
+Quarta ordem, 5 linhas,
+de s à quarta até s a 0.
+79
+Copiamos os coeficientes
+nas duas primeiras linhas,
+80
+começando pela primeira linha
+e alternando as linhas.
+81
+Obtemos os elementos da linha s2
+82
+fazendo a multiplicação
+cruzada e dividindo pelo pivô.
+83
+Aqui detalhe muito importante:
+84
+a multiplicação cruzada é
+sempre os elementos da primeira
+85
+coluna e os elementos da coluna seguinte
+ao elemento que estamos calculando e o
+86
+pivô é sempre o elemento
+da primeira coluna.
+87
+O mesmo procedimento para a linha s1,
+multiplicação cruzada entre os
+88
+elementos da primeira coluna e da coluna
+seguinte das duas linhas anteriores
+89
+e divisão pelo pivô, que é o elemento
+da primeira coluna da linha anterior.
+90
+E para a linha s0 os elementos
+da primeira coluna são 1,
+91
+2, menos 1,
+20 e 5 e o polinômio não é Hurwitz.
+92
+Além disso podemos afirmar que ele possui
+duas raízes com parte real positiva.
+93
+Calcule as raízes e confirme isso.
+94
+Muito bem, os exemplos que vimos
+até agora devem ter te dado
+95
+uma boa ideia de como
+construir a Tabela de Routh.
+96
+Vamos agora generalizar essa construção
+usando coeficientes literais.
+97
+A Tabela de Routh terá n mais uma linhas,
+de s elevado a n a s elevado a 0.
+98
+Copiamos os coeficientes do
+polinômio nas duas primeiras linhas
+99
+começando com a linha s elevado
+a n e alternando entre as linhas.
+100
+Se n for ímpar o coeficiente
+0 fica na segunda linha,
+101
+se n for par o coeficiente
+0 fica na primeira linha.
+102
+O raciocínio é exatamente o mesmo
+103
+para os dois casos mais
+vamos usar o caso de n par.
+104
+Por comodismo vamos renomear
+os elementos da linha s n a1,
+105
+a2 a3 e assim por diante até a n sobre 2.
+106
+Os elementos da linha s n menos
+1 nós renomeamos para b1,
+107
+b2, b3 e assim por diante
+até b n sobre 2 menos 1.
+108
+Muito bem,
+o elemento c1 é calculado como b1
+109
+vezes a2 menos a1 vezes b2 sobre o b1.
+110
+O elemento c2 é calculado como
+111
+b1 vezes a3 menos a1 vezes b3 sobre b1.
+112
+Note que usamos sempre os elementos
+a1 e b1 para calcular os elementos c.
+113
+O elemento c3 é calculado como b1
+vezes a4 menos a1 vezes b4 sobre b1.
+114
+Novamente note que sempre
+estamos usando os elementos da
+115
+primeira coluna e os elementos
+das duas linhas anteriores.
+116
+E assim por diante até
+que c n sobre 2 menos 2
+117
+seja igual a b1 vezes a n
+sobre 2 menos 1 menos a1
+118
+vezes b n sobre 2 menos 1,
+isso tudo sobre b1.
+119
+E finalmente se a n sobre
+2 menos 1 igual a b1 vezes
+120
+a n sobre 2 menos a1 vezes 0 sobre b1,
+que é o próprio a n sobre 2.
+121
+Poderemos até tentar cacular elemento
+c n sobre 2, mas ele seria 0.
+122
+Se você se sentir mais confortável,
+123
+pode acabar de preencher
+a tabela de Routh com zeros,
+124
+para que ela fique uma tabela cheia,
+mas isso realmente não é necessário.
+125
+Continuando, agora fazemos exatamente
+a mesma coisa para alinhar
+126
+a c n menos 3, só que ao invés de
+usar as duas primeiras linhas,
+127
+usamos as linhas s n menos 1 e s n menos
+2, ou seja, as duas linhas anteriores.
+128
+E o pivô agora é o elemento da
+primeira coluna da linha s n menos 2.
+129
+O primeiro elemento é a multiplicação
+cruzada entre os elementos da primeira
+130
+coluna e da segunda coluna das duas
+linhas anteriores, dividido pelo pivô.
+131
+Segundo elemento da linha: multiplicação
+cruzada da primeira coluna e da
+132
+coluna seguinte das duas linhas
+anteriores, dividido pelo pivô.
+133
+Mesma coisa para o elemento d3,
+até o elemento d n sobre 2 menos 2.
+134
+E o elemento d n sobre 2 menos 1 será 0.
+135
+Eu prefiro a tabela sem os zeros à
+direita, assim fica fácil observar que,
+136
+de uma linha par para uma linha ímpar,
+a tabela perde uma coluna.
+137
+Note, também, que o último elemento
+de uma linha par acaba sendo o último
+138
+elemento da linha par seguinte.
+139
+E assim prosseguimos a construção
+da tabela de Routh até
+140
+chegar à linha s0 e se todos os elementos
+da primeira coluna forem positivos,
+141
+temos o denominador de uma função
+de transferência BIBO-estável.
+142
+O critério de Routh-Hurwitz não nos diz
+apenas se todas as raízes do polinômio
+143
+têm parte real negativa, ele nos diz
+quantas raízes têm parte real positiva.
+144
+O número de raízes com parte real positiva
+corresponde ao número de trocas de
+145
+sinal na primeira coluna
+da tabela de Routh.
+146
+Por isso, se todos os elementos da
+primeira coluna forem positivos,
+147
+não temos troca de sinal e nem
+polos com parte real positiva.
+148
+Se apenas o último ou apenas o
+primeiro elemento da primeira coluna
+149
+tiverem sinal diferente dos demais,
+temos uma raíz com parte real positiva.
+150
+Se tivermos duas trocas de sinal,
+como no nosso exemplo de quarta ordem,
+151
+temos duas raízes com parte real
+positiva e assim por diante.
+152
+Como para ter sistema
+BIBO-estável precisamos ter
+153
+todas as raízes do denominador da função
+de transferência com parte real negativa,
+154
+não podemos ter nenhuma troca de sinal.
+155
+Então, caso você esteja interessado
+apenas verificar a estabilidade e
+156
+não na quantidades de polos com parte real
+positiva e se deparar com uma troca de
+157
+sinal na primeira coluna, não precisa
+continuar construindo a tabela.
+158
+Você já pode concluir que o
+sistema não será BIBO-estável,
+159
+uma vez que ele terá pelo menos
+polo com parte real positiva.
+160
+Você deve ter notado que podemos ter
+problemas na construção da tabela,
+161
+caso algum elemento da
+primeira coluna seja 0,
+162
+uma vez que não podemos
+efetuar uma divisão por 0.
+163
+Elemento nulo na primeira coluna da
+tabela de Routh indica que temos raízes
+164
+sobre o eixo imaginário, raíz na origem
+ou par de raízes complexas conjugadas
+165
+com parte real nula ou raízes simétricas
+com relação ao eixo imaginário, isto é,
+166
+raízes com mesma parte imaginária, que
+pode ser nula, e com parte real oposta.
+167
+Por exemplo: +1 e -1, +5 e -5, +10 e -10.
+168
+De qualquer forma,
+169
+elemento nulo na primeira coluna indica
+que o sistema não é BIBO-estável.
+170
+Então, se ao construirmos a tabela
+de Routh nos depararmos com elemento
+171
+nulo ou com sinal trocado na primeira
+coluna, podemos concluir imediatamente
+172
+que o polinômio não é Hurwitz e o
+sistema não vai ser BIBO-estável.
+173
+No entanto, saiba que há uma
+maneira de contornar o problema do
+174
+elemento 0 na primeira coluna e finalizar
+a construção da tabela de Routh,
+175
+descobrindo, assim, quantas raízes têm
+parte real positiva, negativa ou nula.
+176
+Mas, por enquanto,
+não precisa se preocupar com isso.
+177
+Para esse curso precisamos ter todos
+os elementos da primeira coluna
+178
+positivos ou todos negativos.
+179
+Então, se aparecer elemento 0,
+pode parar a construção da tabela.
+180
+Se estiver curioso, você vai encontrar
+facilmente o tratamento do 0 na
+181
+primeira coluna qualquer livro de
+controle de sistemas lineares.
+182
+Agora crie alguns polinômios e exercite
+a construção da tabela de Routh.
+183
+Agora, dada a função de
+transferência de sistema,
+184
+você já é capaz de verificar se o
+sistema é ou não BIBO-estável sem
+185
+a necessidade de calcular
+ou explicitar os polos.
+186
+[MÚSICA] [BARULHO]

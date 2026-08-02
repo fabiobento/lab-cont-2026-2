@@ -1,0 +1,621 @@
+1
+[MÚSICA] Após esse vídeo você
+2
+será capaz de citar os principais pares da
+transformada de Laplace, usar a expansão
+3
+frações parciais e calcular a saída
+de sistema para uma entrada qualquer.
+4
+Você já sabe como obter
+a função de transferência de
+5
+sistema a partir de sua
+equação diferencial.
+6
+E como a função de transferência é
+válida para toda e qualquer entrada,
+7
+podemos usá-la para obter uma saída
+específica para uma entrada específica.
+8
+Para tanto, precisamos da função
+de transferência e da transformada
+9
+de Laplace da entrada para obtermos
+a transformada de Laplace da saída.
+10
+Só lembrando: a partir da equação
+diferencial podemos escrever diretamente
+11
+a função de transferência,
+apenas copiando os coeficientes
+12
+que multiplicam as derivadas da
+saída e as derivadas da entrada.
+13
+E como é entrada podemos calcular
+a sua transformada de Laplace usando
+14
+a definição da transformada de Laplace.
+15
+U1(s) vai ser igual à integral
+de 0 ao infinito de e
+16
+elevado a menos st u1 de t dt.
+17
+Jazinga!
+18
+Não, não vamos calcular essa integral,
+19
+eu já tinha dito que calcular essa
+integral para diversas funções seria uma
+20
+desperdício de tempo, nós vamos usar
+uma tabela de transformadas de Laplace.
+21
+Os principais pares da transformada de
+Laplace estão disponíveis na forma de
+22
+tabela.
+23
+Então ao invés de calcularmos a integral,
+24
+basta procurar pela linha
+correspondente na tabela.
+25
+Por exemplo, a transformada de
+Laplace de degrau unitário é 1 / s,
+26
+de uma rampa unitária 1 / s ao quadrado,
+27
+de uma parábola 1 / s ao cubo e de
+uma exponencial de at é 1 / (s- a).
+28
+Vamos dar uma rápida olhada e nos
+familiarizar com esses sinais ou funções.
+29
+O degrau unitário é 0 para t menor
+que 0 e 1 para t maior ou igual a 0.
+30
+Esse é sinal de entrada muito comum
+que pode indicar por exemplo uma
+31
+altura desejada.
+32
+A rampa unitária,
+que é a integral do degrau unitário,
+33
+é 0 para t menor que 0 e t
+para t maior ou igual a 0.
+34
+Ela representa uma variação constante
+da entrada ou uma velocidade constante.
+35
+A parábola,
+que é a integral da rampa é 0 para t menor
+36
+que 0 e meio t ao quadrado
+para t maior ou igual a 0.
+37
+Ela representa uma aceleração constante.
+38
+Aqui temos 3 exponenciais com
+expoente positivo: exponencial de t,
+39
+exponencial de 1,5t e exponencial de 2t.
+40
+Elas começam 1 e aumentam
+indefinidamente à medida que t aumenta.
+41
+Quanto maior o expoente,
+mais rápido a exponencial aumenta.
+42
+E aqui temos 4 exponenciais com expoente
+negativo: exponencial de menos t,
+43
+de menos 2t, de menos 4t e de menos 10t.
+44
+As exponenciais negativas
+começam 1 e tendem a 0 e quanto
+45
+maior o módulo do expoente,
+mais rápido elas tendem a 0.
+46
+Aqui temos mais alguns pares de
+transformadas de Laplace: seno,
+47
+cosseno, exponencial vezes seno
+e exponencial vezes cosseno.
+48
+Apenas se estivermos usando
+uma entrada muito diferente e
+49
+que ainda não foi tabelada, precisaremos
+calcular a integral, mas se estivermos
+50
+usando entradas mais comuns, realmente
+não precisamos nos preocupar com isso.
+51
+Você vai encontrar várias
+tabelas da transformada de
+52
+Laplace na internet e qualquer
+livro de controle de sistemas.
+53
+É sempre bom ter uma tabela de
+transformadas à mão e decorar os
+54
+principais pares da
+transformada de Laplace.
+55
+Vamos dar uma rápida olhada nos sinais ou
+funções dessa segunda parte da tabela.
+56
+O seno e o cosseno são
+sinais periódicos e a grande
+57
+diferença entre os dois é
+o valor para t igual a 0.
+58
+O seno de 0 é 0 e o cosseno de 0 é 1.
+59
+Quanto maior valor de ômega,
+mais rápida é a oscilação.
+60
+Uma exponencial positiva faz
+a amplitude das oscilações aumentar
+61
+e uma exponencial negativa faz a amplitude
+das oscilações diminuir tendendo a 0.
+62
+Quanto maior o módulo do expoente, mais
+rápido a amplitude aumenta ou diminui.
+63
+E quando maior dáblio,
+mais rápida a oscilação.
+64
+Muito bem,
+agora você já sabe como obter a função
+65
+de transferência de sistema e como obter
+a transformada de Laplace da entrada.
+66
+Basta multiplicá-las para obter
+a transformada de Laplace da saída.
+67
+Vamos ver exemplo.
+68
+Por exemplo,
+se a equação diferencial do sistema for
+69
+y 2 pontos + 3y ponto + 2y
+igual a 2u e a entrada for
+70
+degrau unitário, isto é, 0 para t menor
+que 0 e 1 para t maior ou igual a 0,
+71
+a função de transferência
+é 2 / s quadrado + 3s +
+72
+2 e a transformada de Laplace
+do degrau unitário é 1 / s.
+73
+Então a transformada de
+Laplace da saída será 2
+74
+/ s quadrado + 3s + 2 x (1 / s) e podemos
+75
+escrever como 2 / (s x
+(s quadrado + 3s + 2)
+76
+ou ainda como 2 / (s ao
+cubo + 3s quadrado + 2s).
+77
+Ou ainda fatorando o denominador temos
+78
+Y(s) = 2 / s (s + 1) (s + 2).
+79
+E agora bastaria obter
+a transformada inversa de Y1.
+80
+O problema é que não encontramos essa
+transformada uma tabela de transformadas.
+81
+Existe uma fórmula para obter
+a transformada inversa de Laplace,
+82
+mas eu nem vou mostrar
+essa fórmula para vocês,
+83
+ao invés disso vamos usar pequeno truque
+matemático: a expansão frações parciais.
+84
+Vamos usar esse mesmo exemplo numérico e
+vamos partir da transformada de Laplace
+85
+com denominador fatorado.
+86
+2 / s (s + 1) (s + 2).
+87
+Podemos escrever essa razão de
+polinômios como uma soma de
+88
+frações cujos denominadores
+são os fatores do denominador.
+89
+Para ver isso basta fazermos a soma dessas
+90
+frações e para somar frações
+precisamos do mínimo múltiplo
+91
+comum dos denominadores que
+nesse caso é s (s + 1) (s + 2).
+92
+Multiplicamos cada uma das frações pelos
+fatores que estão faltando no denominador,
+93
+fazemos as multiplicações nos numeradores,
+94
+somamos as frações e verificamos que temos
+o mesmo denominador da fração original.
+95
+E para que a igualdade seja verdadeira,
+precisamos calcular os valores de A,
+96
+B e C de modo que os numeradores
+também sejam iguais.
+97
+Vamos colocar as potências
+de s evidência no numerador
+98
+e agora vemos facilmente que
+precisamos ter A igual a 1,
+99
+A + B + C = 0 e 3A + 2B + C = 0.
+100
+Substituímos A igual a 1 nas
+outras duas equações e chegamos
+101
+a B mais C igual a menos 1 e
+2B mais C igual a menos 3.
+102
+Podemos subtrair uma equação da
+outra ou substituir C igual a menos
+103
+1 menos B na segunda equação e chegamos a
+B igual a menos 2 e depois a C igual a 1.
+104
+Vamos conferir o nosso resultado.
+105
+As frações parciais são: 1 / s,
+-2 / (s + 1) e 1 / (s + 2).
+106
+Realizando as multiplicações
+e depois as somas,
+107
+chegamos a 2 / s (s + 1) (s + 2),
+que era a nossa fração original.
+108
+E agora podemos encontrar facilmente cada
+uma dessas frações parciais uma tabela de
+109
+transformadas de Laplace basta lembrarmos
+que a transformada de Laplace é linear.
+110
+Na tabela vemos que a transformada
+do degrau unitário é 1 / s,
+111
+então a transformada inversa
+de 1 / s é o degrau unitário e
+112
+a transformada de Laplace da
+exponencial de at é 1 / (s- a).
+113
+Então a transformada inversa
+de 1 / (s- a) é a exponencial
+114
+de at e a transformada
+inversa de 1 / (s + 1),
+115
+que podemos escrever como 1 / (s-
+(- 1)) é a exponencial de menos 1t.
+116
+E a transformada inversa de 1 / (s
++ 2) é a exponencial de menos 2t.
+117
+Mas e a transformada
+inversa de- 2 / (s + 1)?
+118
+Como transformada de Laplace e
+consequentemente a transformada inversa
+119
+são lineares,
+basta multiplicar por menos 2.
+120
+E agora temos a expressão matemática
+para o sinal de saída, Y1 de t vai
+121
+ser igual a 1 menos 2 vezes o exponencial
+de menos t mais o exponencial de menos 2t.
+122
+Vamos ver mais exemplo,
+mas dessa vez vamos usar truque
+123
+para calcular os numeradores das frações
+parciais, que chamamos de resíduos.
+124
+A equação diferencial do sistema
+é y 2 pontos + 11 y ponto
+125
++ 10y igual a 20u e a entrada
+será novamente degrau unitário.
+126
+A função de transferência é
+20 / (s ao quadrado + 11s +
+127
+10) e a transformada da entrada é 1 / s.
+128
+A transformada da saída é
+então 20 / s (s + 1) (s + 10).
+129
+Expandindo frações parciais
+temos: A / s + B / (s
+130
++ 1) + C / (s + 10) e o
+truque para calcular cada
+131
+dos resíduos é multiplicar a transformada
+de Laplace pelo denominador da
+132
+fração correspondente e então fazer
+s igual ao polo correspondente.
+133
+Vamos ver como isso funciona no exemplo.
+134
+Vamos começar calculando A, o denominador
+da fração parcial correspondente é s,
+135
+então multiplicamos
+a igualdade toda por s.
+136
+Seguida cancelamos os ss comum
+no numerador e no denominador,
+137
+fazemos s igual ao polo correspondente,
+que é 0 e chegamos a A igual a 2.
+138
+Vamos fazer a mesma coisa
+para o segundo resíduo, B.
+139
+Começamos multiplicando por s mais 1,
+simplificamos as frações
+140
+e fazemos s igual a menos 1, que é o
+polo correspondente à fração parcial.
+141
+Então B é igual a menos 20 nonos.
+142
+Acho que você já percebeu que as
+outras frações parciais são anuladas
+143
+no processo e que o resíduo que procuramos
+ficará sozinho no lado direito da equação.
+144
+Então podemos simplificar o processo
+e usar apenas a fração original.
+145
+Vamos fazer isso para calcular
+o terceiro resíduo, C.
+146
+C vai ser igual a s mais
+10 vezes 20 sobre s,
+147
+s mais 1 s mais 10 calculado
+para s igual a menos 10.
+148
+Fazendo a simplificação e a substituição,
+chegamos a C igual a 2 nonos.
+149
+A expansão frações parciais
+fica então: 2 sobre
+150
+s menos 20 nonos vezes 1 sobre s mais 1
+mais 2 nonos vezes 1 sobre s mais 10.
+151
+Tire o mínimo e some as frações
+para conferir a igualdade.
+152
+Usando a tabela de transformadas de
+Laplace, chegamos a y 1 de t é igual
+153
+a 2 menos 20 nonos exponencial de menos
+t mais 2 nonos exponencial de menos 10t.
+154
+Podemos generalizar a fórmula para
+a obtenção de cada dos resíduos.
+155
+O resíduo é igual ao denominador da fração
+correspondente vezes a Transformada
+156
+de Laplace completa calculado para
+s igual ao polo correspondente.
+157
+Vamos aplicar a fórmula ao
+nosso primeiro exemplo: Y(s)
+158
+é igual a 2 sobre s s mais 1s mais 2.
+159
+Temos 3 frações parciais: A sobre s,
+B sobre s mais 1 e C sobre s mais 2.
+160
+A é igual a Y de s vezes s
+calculado para s igual a 0,
+161
+o que dá 2 sobre 2 que é igual a 1.
+162
+B é igual a Y de s vezes s mais
+1 calculado para s igual a menos
+163
+1 que dá 2 sobre menos 1
+que é igual a menos 2.
+164
+C é igual a Y de s vezes s mais 2
+calculado para s igual a menos 2,
+165
+que dá 2 sobre menos 2 vezes 1 que é
+igual a 2 sobre 2 que é igual a 1.
+166
+Note ainda que não precisamos
+ficar reescrevendo a Transformada,
+167
+podemos apenas sumir com o fator
+correspondente no denominador.
+168
+Por exemplo para calcular A,
+cobrimos o s do denominador
+169
+e fazemos s igual a 0; para calcular B,
+cobrimos o s mais 1 do
+170
+denominador e fazemos o s igual
+a menos 1; para calcular C,
+171
+cobrimos o s menos 2 do denominador
+e fazemos s igual a menos 2.
+172
+Esse cálculo rápido só não vai
+resolver todos os nossos problemas se
+173
+a Transformada da saída tiver
+polos repetidos ou múltiplos.
+174
+Vamos ver exemplo, a função de
+transferência do sistema é 2 sobre
+175
+s mais 1 s mais 2 e a transformada
+da entrada é 1 sobre s mais 1.
+176
+Ou seja, a entrada é uma exponencial
+decrescente e elevado a menos t.
+177
+Então a Transformada de
+Laplace da saída é G de s
+178
+que é 2 sobre s mais 1
+ao quadrado s mais 2.
+179
+Podemos expandir essa Transformada
+de Laplace frações parciais
+180
+de 2 modos: com apenas duas
+frações parciais com denominadores
+181
+s mais 1 ao quadrado e s mais
+2 ou com 3 frações parciais
+182
+com denominadores s mais 1 s
+mais 1 ao quadrado e s mais 2.
+183
+Eu prefiro essa segunda expansão
+por 2 motivos: primeiro, porque
+184
+é mais fácil encontrar correspondência
+tabelas de transformadas e segundo,
+185
+porque podemos usar o truque para calcular
+o resíduo de 2 das 3 frações parciais.
+186
+Vamos fazer isso: multiplicamos por s
+mais 1 ao quadrado e seguida fazemos
+187
+as simplificações e depois fazemos s
+igual a menos 1 e chegamos a E igual a 2.
+188
+Nosso truque também funciona
+para o cálculo de F.
+189
+E agora só precisamos determinar D,
+190
+o que pode ser feito facilmente se
+substituirmos E e F na equação.
+191
+Vou deixar que você faça as contas,
+o resultado deve ser D igual a menos 2.
+192
+Existe uma fórmula para calcular D
+diretamente, mas como ela envolve uma
+193
+derivada e como não é muito comum
+encontrarmos polos múltiplos,
+194
+eu acho melhor obter esse último
+resíduo fazendo a soma das frações.
+195
+Isso é modo de verificar se os outros
+resíduos foram calculados corretamente.
+196
+Se você não for
+capaz de encontrar o último resíduo,
+197
+é porque pelo menos dos
+outros foi calculado errado.
+198
+Se optarmos por expandir Y de
+s apenas 2 frações parciais,
+199
+podemos usar o nosso truque para calcular
+C que é igual ao F que já calculamos,
+200
+mas não conseguimos calcular
+nem A nem B diretamente.
+201
+No máximo o que conseguimos multiplicando
+a equação por s mais 1 ao quadrado,
+202
+simplificando e fazendo s igual a menos 1,
+é chegar a B menos A igual a 2,
+203
+o que não resolve o nosso problema.
+204
+Então para determinar A e B precisamos
+tirar o mínimo múltiplo comum
+205
+e somar as frações, mas podemos já usar
+C igual a 2, que já foi calculado,
+206
+e precisaremos ter A igual
+a menos 2 e B igual a 0.
+207
+Note que menos 2 sobre s mais
+1 mais 2 sobre s mais 1 ao
+208
+quadrado é igual a menos 2s
+sobre s mais 1 ao quadrado.
+209
+E lembre-se: você sempre pode
+obter as frações parciais
+210
+escrevendo os numeradores literais
+com os resíduos A, B, C, D, etc.
+211
+calculando o mínimo múltiplo
+comum dos denominadores,
+212
+realizando a soma e
+igualando os numeradores.
+213
+O truque apenas facilita esse processo.
+214
+Agora você já deve ser capaz
+de citar os principais pares
+215
+da Transformada de Laplace,
+usar a expansão
+216
+frações parciais e calcular a saída
+do sistema para uma entrada qualquer.
+217
+[MÚSICA] [SOM]
+218
+[SOM]
