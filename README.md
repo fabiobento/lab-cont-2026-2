@@ -17,29 +17,25 @@ lab-controle-automatico/
 │
 ├── modulo1_introducao/                ← semanas 1–5 · modelagem, Laplace, estabilidade, 2ª ordem, P
 │   ├── teoria_modulo1.md
-│   ├── exercicios_resolvidos_modulo1.md
 │   ├── lista1_modulo1.md
 │   ├── labs/      lab01…lab04 (.ipynb)
 │   └── slides/          (aulas 01–04)
 │
 ├── modulo2_plano_s/                   ← semanas 6–9 · plano-s, LGR, avanço, atraso/PI, PID, Padé
 │   ├── teoria_modulo2.md
-│   ├── exercicios_resolvidos_modulo2.md
 │   ├── lista2_modulo2.md
-│   ├── labs/      lab05…lab09 (.ipynb)
+│   └── labs/      lab05…lab09 (.ipynb)
 │
 ├── modulo3_frequencia/                ← semanas 10–14 · Bode, Nichols-Black, Nyquist, projeto
 │   ├── teoria_modulo3.md
-│   ├── exercicios_resolvidos_modulo3.md
 │   ├── lista3_modulo3.md
-│   ├── labs/      lab10…lab14 (.ipynb)
+│   └── labs/      lab10…lab14 (.ipynb)
 │
 ├── modulo4_nao_linearidades/          ← semana 15 · MÓDULO AUTÔNOMO (Unidade III do PPC)
 │   ├── teoria_modulo4.md              ← saturação, zona morta, histerese; windup/anti-windup;
 │   │                                    ciclos-limite, função descritiva, experimento do relé
-│   ├── exercicios_resolvidos_modulo4.md
 │   ├── lista4_modulo4.md
-│   ├── labs/      lab15, lab16 (.ipynb)
+│   └── labs/      lab15, lab16 (.ipynb)
 │
 ├── trabalhos/
 │   ├── trabalho1_identificacao_prbs_fopdt.md    (semanas 5–7 · 15 pts)
