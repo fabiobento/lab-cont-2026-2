@@ -15,13 +15,6 @@ Repositório completo da disciplina: teoria, laboratórios em Python (python-con
 lab-controle-automatico/
 ├── README.md                          ← este arquivo
 │
-firmware/
-├── pid_motor
-│   └── pid_motor.ino
-├── prbs_aquisicao
-│   └── prbs_aquisicao.ino
-└── telemetry.py
-│
 ├── modulo1_introducao/                ← semanas 1–5 · modelagem, Laplace, estabilidade, 2ª ordem, P
 │   ├── teoria_modulo1.md
 │   ├── lista1_modulo1.md
@@ -51,6 +44,13 @@ firmware/
 ├── projeto_final/
 │   └── projeto_final_motor_cc.md      ← integra T1+T3; especificações, rubrica, cronograma
 │
+├── firmware/
+│   ├── pid_motor
+│   │   └── pid_motor.ino
+│   ├── prbs_aquisicao
+│   │   └── prbs_aquisicao.ino
+│   └── telemetry.py
+│
 └── imagens/                           ← figuras geradas (m1_*, m2_*, m3_*, m4_*), usadas pela teoria
 ```
 
@@ -78,3 +78,4 @@ Cada notebook é autocontido: a primeira célula instala/verifica as dependênci
 2. Ajuste pinos e constantes no topo de cada sketch (`Tb_ms`, ganhos PID, `CONTAS_POR_GRAU`…);
 3. Colete os dados: `python firmware/telemetry.py --porta /dev/ttyUSB0 --saida dados.csv`;
 4. Analise o CSV seguindo o roteiro do trabalho correspondente.
+
