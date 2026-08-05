@@ -78,13 +78,3 @@ Cada notebook é autocontido: a primeira célula instala/verifica as dependênci
 2. Ajuste pinos e constantes no topo de cada sketch (`Tb_ms`, ganhos PID, `CONTAS_POR_GRAU`…);
 3. Colete os dados: `python firmware/telemetry.py --porta /dev/ttyUSB0 --saida dados.csv`;
 4. Analise o CSV seguindo o roteiro do trabalho correspondente.
-
-## Convenções
-
-- **Vírgula decimal** em textos, tabelas e figuras (pt-BR);
-- Figuras referenciadas por URL absoluta do GitHub (`github.com/fabiobento/lab-cont-2026-2`);
-- Diagramas de blocos em Mermaid dentro dos próprios `.md`;
-
-## Licença / uso
-
-Material didático da disciplina. Uso livre para fins educacionais, citando a fonte.
