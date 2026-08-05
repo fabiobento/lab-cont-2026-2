@@ -84,7 +84,6 @@ Cada notebook é autocontido: a primeira célula instala/verifica as dependênci
 - **Vírgula decimal** em textos, tabelas e figuras (pt-BR);
 - Figuras referenciadas por URL absoluta do GitHub (`github.com/fabiobento/lab-cont-2026-2`);
 - Diagramas de blocos em Mermaid dentro dos próprios `.md`;
-- `notas_de_aula/` e `00_planejamento/` são de **uso do professor** (contêm planejamento e roteiros); todo o restante é material do aluno.
 
 ## Licença / uso
 
