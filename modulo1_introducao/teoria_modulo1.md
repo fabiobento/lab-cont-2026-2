@@ -1,6 +1,6 @@
 # Módulo 01 — Introdução ao Controle de Sistemas (Teoria)
 
-> Texto teórico completo e autossuficiente dos tópicos 1.1 a 1.4.
+> Texto teórico dos tópicos 1.1 a 1.4.
 > Convenções do curso: sistemas **SISO** (uma entrada, uma saída); estabilidade = **BIBO**; derivadas em notação de pontos ($\dot y$, $\ddot y$); malha padrão com **controle proporcional e realimentação unitária**.
 > Fórmulas oficiais do curso: $t_p = \pi/\omega_d$; $M_p = e^{-\zeta\pi/\sqrt{1-\zeta^2}}$; $t_r = (\pi-\beta)/\omega_d$ com $\beta = \arccos\zeta$; $t_s \approx 3/\sigma$ (critério de ±5 %).
 

@@ -1,6 +1,6 @@
 # Módulo 04 — Análise de Não Linearidades em Malhas de Controle (Teoria)
 
-> Texto teórico completo e autossuficiente dos tópicos 4.1 a 4.3 — **módulo autônomo** que cobre a Unidade III do PPC (análise de não linearidades em malhas de controle: zona morta, histerese, saturação).
+> Texto teórico dos tópicos 4.1 a 4.3 — **módulo autônomo** que cobre a Unidade III do PPC (análise de não linearidades em malhas de controle: zona morta, histerese, saturação).
 > Convenções do curso (Módulos 01–03): sistemas **SISO**; estabilidade = **BIBO**; malha padrão com realimentação unitária; $M_p = e^{-\zeta\pi/\sqrt{1-\zeta^2}}$; $t_s(5\,\%) = 3/\sigma$; $dB = 20\log_{10}|G|$; $\mathrm{PM} \approx 100\,\zeta$.
 > **Novidades deste módulo:** as **não linearidades estáticas** clássicas (saturação, zona morta, histerese) e seus efeitos na malha; o **windup** do integrador e as estratégias de **anti-windup**; os **ciclos-limite**; o método da **função descritiva** $N(A)$; e o **experimento do relé** para sintonia de PID ($K_u = 4d/\pi a$) — a ponte entre este módulo e o projeto final.
 

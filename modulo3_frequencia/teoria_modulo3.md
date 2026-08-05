@@ -1,6 +1,6 @@
 # Módulo 03 — Controle Usando a Resposta em Frequência (Teoria)
 
-> Texto teórico completo e autossuficiente dos tópicos 3.1 a 3.5.
+> Texto teórico dos tópicos 3.1 a 3.5.
 > Convenções do curso (Módulos 01 e 02): sistemas **SISO**; estabilidade = **BIBO**; malha padrão com realimentação unitária; $M_p = e^{-\zeta\pi/\sqrt{1-\zeta^2}}$; $t_p = \pi/\omega_d$; $t_r = (\pi - \arccos\zeta)/\omega_d$; $t_s(5\,\%) = 3/\sigma$.
 > **Novidades deste módulo:** a **resposta em frequência** como dado experimental do sistema; o **diagrama de Bode** e seus esboços assintóticos; as margens de **fase (PM)** e de **ganho (GM)**; a **carta de Nichols-Black**; o **critério de Nyquist**; o **atraso de transporte** na frequência; e o projeto de **P**, **avanço**, **atraso**, **PD**, **PI** e **PID** diretamente no domínio da frequência — inclusive **sem conhecer a função de transferência**.
 > **Convenção de esboço do curso:** quebras de módulo de ±20 dB/déc por polo/zero; fase interpolada por **reta de $\omega_q/5$ a $5\,\omega_q$** em torno de cada quebra (erro máximo ≈ **11°** = 0,19 rad); erro máximo de módulo de **3 dB** na quebra.
