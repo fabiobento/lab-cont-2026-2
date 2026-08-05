@@ -15,6 +15,13 @@ Repositório completo da disciplina: teoria, laboratórios em Python (python-con
 lab-controle-automatico/
 ├── README.md                          ← este arquivo
 │
+firmware/
+├── pid_motor
+│   └── pid_motor.ino
+├── prbs_aquisicao
+│   └── prbs_aquisicao.ino
+└── telemetry.py
+│
 ├── modulo1_introducao/                ← semanas 1–5 · modelagem, Laplace, estabilidade, 2ª ordem, P
 │   ├── teoria_modulo1.md
 │   ├── lista1_modulo1.md
