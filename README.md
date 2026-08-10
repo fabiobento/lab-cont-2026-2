@@ -216,10 +216,10 @@ A composição da nota semestral segue o plano de ensino da turma:
 
 | Instrumento | Peso |
 |---|---|
-| Listas de exercícios | _a definir_ |
-| Trabalho 1 | _a definir_ |
-| Trabalho 2 | _a definir_ |
-| Projeto final | _a definir_ |
+| Listas de exercícios | 30% |
+| Trabalho 1 | 20% |
+| Trabalho 2 | 20% |
+| Projeto final | 30% |
 | **Total** | **100 %** |
 
 Dentro do **projeto final**, a distribuição já está definida em sua rubrica: identificação e
