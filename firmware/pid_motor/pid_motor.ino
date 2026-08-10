@@ -1,6 +1,6 @@
 /*
  * pid_motor.ino — Laboratório de Controle Automático (Ifes Guarapari)
- * Trabalho 3 / Projeto final — PID de posição angular no motor CC
+ * Trabalho 2 / Projeto final — PID de posição angular no motor CC
  *
  * Realização digital (forma ISA, 2 graus de liberdade):
  *   - derivada FILTRADA sobre a MEDIÇÃO:  xf' = N*(-y - xf);  uD = kd*xf'
@@ -21,7 +21,7 @@ const int PIN_IN2   = 8;
 const int PIN_ENC_A = 2;
 const int PIN_ENC_B = 3;
 
-// ---------------- Ganhos do PID (AJUSTAR com a sua sintonia — Trabalho 3) ----------------
+// ---------------- Ganhos do PID (AJUSTAR com a sua sintonia — Trabalho 2) ----------------
 float kp = 2.0;
 float ki = 0.5;
 float kd = 1.0;
@@ -32,7 +32,7 @@ const float Ts_ms  = 20.0;        // período de amostragem [ms]
 const int   PWM_MAX = 255;
 const bool  ANTI_WINDUP = true;   // false para demonstrar o windup (M4 §4.2)
 
-// Conversão ângulo <-> contas (medir no Passo 2 do Trabalho 3)
+// Conversão ângulo <-> contas (medir no Passo 2 do Trabalho 2)
 // ex.: encoder de 12 pulsos/volta x quadratura 2x x redução -> contas_por_grau
 const float CONTAS_POR_GRAU = 1.0;   // AJUSTAR para a sua bancada
 

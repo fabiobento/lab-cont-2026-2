@@ -1,7 +1,7 @@
 # Projeto Final — Servo de Posição com Motor CC: da Identificação à Malha Fechada Real
 
 **Laboratório de Controle Automático — Engenharia Elétrica — Ifes Campus Guarapari**
-**Lançamento:** semana 14 (junto ao Trabalho 3) · **Apresentações:** semana 15 (semana de seminários, conforme calendário) · **Grupos:** até 2 integrantes
+**Lançamento:** semana 14 (junto ao Trabalho 2) · **Apresentações:** semana 15 (semana de seminários, conforme calendário) · **Grupos:** até 2 integrantes
 
 ---
 
@@ -14,7 +14,7 @@ identificação (PRBS/FOPDT)  →  projeto do controlador (plano-s e/ou frequên
      Trabalho 1                    Módulos 2 e 3
                                    ↓
      validação final  ←  implementação embarcada (PID digital + anti-windup)
-     semana 15                 Trabalho 3 + Módulo 4
+     semana 15                 Trabalho 2 + Módulo 4
 ```
 
 Cada grupo deverá projetar, implementar e validar um **servo de posição angular**: dado um perfil de referências (degraus 0° → 90° → −90° → 0°), a posição do eixo deve segui-lo atendendo às especificações da Seção 3, com o controlador **rodando no Arduino** (firmware `firmware/pid_motor/`).
@@ -24,7 +24,7 @@ Cada grupo deverá projetar, implementar e validar um **servo de posição angul
 | Entrega anterior | O que entra no projeto |
 |---|---|
 | Trabalho 1 | Modelo FOPDT de velocidade $G_v(s) = Ke^{-Ls}/(\tau s+1)$, dados e código de identificação |
-| Trabalho 3 | Modelo de posição $G_p(s) = Kk'/[s(\tau s+1)]$, sintonia do PID e primeiros ensaios |
+| Trabalho 2 | Modelo de posição $G_p(s) = Kk'/[s(\tau s+1)]$, sintonia do PID e primeiros ensaios |
 | **Projeto final** | **Versão final** de ambos + atendimento às especificações + análise de robustez + demonstração ao vivo |
 
 Quem já entregou os Trabalhos 1 e 3 **reutiliza** os resultados (corrigindo o que foi apontado); quem não entregou deve executar os roteiros completos dos dois trabalhos.
@@ -54,7 +54,7 @@ As especificações 1–3 devem ser mostradas **em simulação** (modelo identif
 
 | Semana | Marco |
 |---|---|
-| 14 | Lançamento (com o Trabalho 3); revisão do modelo e projeto do controlador |
+| 14 | Lançamento (com o Trabalho 2); revisão do modelo e projeto do controlador |
 | 15 | Ensaios finais, ajustes e **apresentação** (10 min + 5 min de arguição) |
 
 **Avaliação (rubrica):**

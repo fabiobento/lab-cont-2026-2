@@ -1,4 +1,4 @@
-# Trabalho 3 — Controle PID de Posição Angular em Motor CC
+# Trabalho 2 — Controle PID de Posição Angular em Motor CC
 
 **Laboratório de Controle Automático — Engenharia Elétrica — Ifes Campus Guarapari**
 **Lançamento:** semana 14 · **Apresentações:** semana 15 · **Valor:** 28 pontos · **Grupos:** até 2 integrantes

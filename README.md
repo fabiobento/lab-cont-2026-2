@@ -89,7 +89,7 @@ Detalhando cada item:
   com referência ao ponto exato da teoria em cada questão ("Consulte: teoria §X.Y");
 - `moduloN/labs/` — **16 notebooks** computacionais (Lab 01–16), autocontidos e executados com 0 erros;
 - `trabalhos/` — [Trabalho 1](trabalhos/trabalho1_identificacao_prbs_fopdt.md) (identificação
-  PRBS/FOPDT, semanas 5–7) e [Trabalho 3](trabalhos/trabalho3_pid_posicao_motor_cc.md) (PID de
+  PRBS/FOPDT, semanas 5–7) e [Trabalho 2](trabalhos/trabalho3_pid_posicao_motor_cc.md) (PID de
   posição, semanas 14–15);
 - `projeto_final/` — [enunciado do projeto final](projeto_final/projeto_final_motor_cc.md):
   servo de posição que integra os Trabalhos 1 e 3, com especificações, rubrica e cronograma;
@@ -143,7 +143,7 @@ jupyter notebook modulo1_introducao/labs/lab01_sistemas_e_modelos.ipynb
 | 11 | Carta de Nichols-Black (§3.2) | [Lab 11 — Nichols-Black](modulo3_frequencia/labs/lab11_carta_de_nichols_black.ipynb) |
 | 12 | Nyquist e efeito do atraso (§3.3) | [Lab 12 — Nyquist](modulo3_frequencia/labs/lab12_nyquist_e_atraso.ipynb) |
 | 13 | Projeto de avanço e atraso na frequência (§3.4) | [Lab 13 — projeto na frequência](modulo3_frequencia/labs/lab13_projeto_avanco_e_atraso.ipynb) |
-| 14 | PD, PI e PID na frequência (§3.5) — **lançamento do Trabalho 3 / projeto final** | [Lab 14 — PD/PI/PID na frequência](modulo3_frequencia/labs/lab14_pd_pi_pid_na_frequencia.ipynb) |
+| 14 | PD, PI e PID na frequência (§3.5) — **lançamento do Trabalho 2 / projeto final** | [Lab 14 — PD/PI/PID na frequência](modulo3_frequencia/labs/lab14_pd_pi_pid_na_frequencia.ipynb) |
 
 **Módulo 4 — Não linearidades em malhas de controle (semana 15, módulo autônomo)**
 
@@ -184,7 +184,7 @@ As unidades (U1–U4) seguem o PPC da disciplina.
 | 11 | U4 | Pico de ressonância e carta de Nichols-Black — Lab 11 |
 | 12 | U4 | Critério de Nyquist e efeito do atraso — Lab 12 |
 | 13 | U4 | Projeto de avanço e atraso na frequência — Lab 13 |
-| 14 | U4 | PD, PI e PID na frequência — Lab 14 · **Trabalho 3 / projeto final lançados** |
+| 14 | U4 | PD, PI e PID na frequência — Lab 14 · ** Trabalho 2/ projeto final lançados** |
 | 15 | U3/U4 | Não linearidades: saturação, zona morta, histerese; windup/anti-windup; ciclos-limite, função descritiva e experimento do relé — Labs 15–16 · **Lista 4** · **apresentações do projeto final** |
 
 ## Estratégias de aprendizagem
@@ -207,8 +207,8 @@ apresentação de trabalhos. Neste curso, tomam a forma:
 |---|---|---|
 | Listas de exercícios (4) | Módulos 1–4 | Individuais, nos prazos indicados em aula; gabarito disponível para revisão |
 | Trabalho 1 — identificação PRBS/FOPDT | Unidade I | Em grupo (até 3), apresentação presencial, semana 7 — 15 pontos |
-| Trabalho 3 — PID de posição no motor CC | Unidade IV | Em grupo (até 2), apresentação presencial, semana 15 — 28 pontos |
-| Projeto final — servo de posição | Unidades I–IV | Em grupo; integra os Trabalhos 1 e 3; rubrica em `projeto_final/` |
+| Trabalho 2 — PID de posição no motor CC | Unidade IV | Em grupo (até 2), apresentação presencial, semana 15 — 28 pontos |
+| Projeto final — servo de posição | Unidades I–IV | Em grupo; integra os Trabalhos 1 e 2; rubrica em `projeto_final/` |
 
 ### Pesos dos instrumentos
 
@@ -218,7 +218,7 @@ A composição da nota semestral segue o plano de ensino da turma:
 |---|---|
 | Listas de exercícios | _a definir_ |
 | Trabalho 1 | _a definir_ |
-| Trabalho 3 | _a definir_ |
+| Trabalho 2 | _a definir_ |
 | Projeto final | _a definir_ |
 | **Total** | **100 %** |
 
