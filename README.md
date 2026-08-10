@@ -2,7 +2,7 @@
 
 Repositório da disciplina Laboratório de Controle Automático (7º período, 30 h, 2 aulas/semana). Pré-requisito: Controle Automático.
 
-Este repositório está organizado como uma apostila de laboratório: cada módulo traz a teoria completa (conceitos do zero, para quem não tem os livros), os laboratórios computacionais em Python (notebooks executados e validados), as listas de exercícios com gabaritos detalhados e os exercícios resolvidos. Slides acompanham todas as aulas, e os trabalhos de bancada usam o kit Arduino + motor CC.
+Este repositório está organizado como uma apostila de laboratório: cada módulo traz a teoria completa (conceitos do zero, para quem não tem os livros), os laboratórios computacionais em Python (notebooks executados e validados), as listas de exercícios e os exercícios resolvidos. Slides acompanham todas as aulas, e os trabalhos de bancada usam o kit Arduino + motor CC.
 
 **Curso:** Engenharia Elétrica — 7º período — Ifes — campus Guarapari
 
@@ -70,7 +70,7 @@ lab-cont-2026-2/
 │    (cada módulo contém:)
 │    ├── teoria_moduloN.md             ← teoria completa, autossuficiente
 │    ├── exercicios_resolvidos_moduloN.md
-│    ├── listaN_moduloN.md + gabarito_listaN_moduloN.md
+│    ├── listaN_moduloN.md
 │    ├── labs/                         ← notebooks Jupyter (.ipynb)
 │    └── slides/                       ← apresentação da aula
 ├── trabalhos/                         ← Trabalhos 1 e 3 (bancada motor CC)
@@ -85,7 +85,7 @@ Detalhando cada item:
   diagramas de blocos (Mermaid), figuras e exemplos numéricos resolvidos;
 - `moduloN/exercicios_resolvidos_moduloN.md` — exercícios resolvidos passo a passo, no mesmo estilo
   das questões das listas (conta feita, unidade, conclusão);
-- `moduloN/listaN_*.md` + `gabarito_listaN_*.md` — lista de exercícios e **gabarito detalhado**,
+- `moduloN/listaN_*.md` — lista de exercícios,
   com referência ao ponto exato da teoria em cada questão ("Consulte: teoria §X.Y");
 - `moduloN/labs/` — **16 notebooks** computacionais (Lab 01–16), autocontidos e executados com 0 erros;
 - `trabalhos/` — [Trabalho 1](trabalhos/trabalho1_identificacao_prbs_fopdt.md) (identificação
@@ -151,7 +151,7 @@ jupyter notebook modulo1_introducao/labs/lab01_sistemas_e_modelos.ipynb
 |---|---|---|
 | 15 | [Não linearidades estáticas; windup e anti-windup; ciclos-limite, função descritiva e experimento do relé](modulo4_nao_linearidades/teoria_modulo4.md) (§4.1–4.3) — **apresentações do projeto final** | [Lab 15 — não linearidades em malha](modulo4_nao_linearidades/labs/lab15_nao_linearidades_em_malha.ipynb) · [Lab 16 — windup, ciclos-limite e relé](modulo4_nao_linearidades/labs/lab16_windup_ciclos_limite_e_rele.ipynb) |
 
-**Listas de exercícios** (com gabarito detalhado, passo a passo)
+**Listas de exercícios**
 
 | Lista | Conteúdo | Enunciado |
 |---|---|---|
@@ -194,8 +194,7 @@ de caso; trabalhos em grupo; resolução de situações-problema.
 
 Cada semana segue o ciclo: **(i)** exposição teórica pelo deck da aula (com exemplos resolvidos em
 destaque); **(ii)** laboratório computacional em notebook (simulação guiada, com perguntas de
-análise); **(iii)** discussão dos resultados; **(iv)** lista de exercícios do módulo, cujo
-gabarito detalhado serve de revisão. Nos trabalhos de bancada, o ciclo se estende à planta real:
+análise); **(iii)** discussão dos resultados; **(iv)** lista de exercícios do módulo. Nos trabalhos de bancada, o ciclo se estende à planta real:
 identificação → projeto → implementação embarcada → validação.
 
 ## Avaliação da aprendizagem
@@ -205,7 +204,7 @@ apresentação de trabalhos. Neste curso, tomam a forma:
 
 | Instrumento | Cobre | Como é entregue |
 |---|---|---|
-| Listas de exercícios (4) | Módulos 1–4 | Individuais, nos prazos indicados em aula; gabarito disponível para revisão |
+| Listas de exercícios (4) | Módulos 1–4 | Individuais, nos prazos indicados em aula|
 | Trabalho 1 — identificação PRBS/FOPDT | Unidade I | Em grupo (até 3), apresentação presencial, semana 7 — 15 pontos |
 | Trabalho 2 — PID de posição no motor CC | Unidade IV | Em grupo (até 2), apresentação presencial, semana 15 — 28 pontos |
 | Projeto final — servo de posição | Unidades I–IV | Em grupo; integra os Trabalhos 1 e 2; rubrica em `projeto_final/` |
@@ -231,7 +230,7 @@ real 30 %, demonstração do anti-windup/não linearidades 15 % e apresentação
 
 - **Exercício resolvido N.M** — contas e raciocínios completos, no mesmo estilo das questões das
   listas. Refazer sem olhar é a melhor preparação.
-- **"Consulte: teoria §X.Y"** — nos gabaritos, cada questão indica o ponto exato da teoria onde o
+- **"Consulte: teoria §X.Y"** — cada questão indica o ponto exato da teoria onde o
   tema é desenvolvido.
 - **Vírgula decimal** em textos, tabelas e figuras (padrão pt-BR).
 - Diagramas de blocos em **Mermaid**, dentro dos próprios arquivos de teoria.
