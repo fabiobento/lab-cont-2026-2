@@ -785,7 +785,7 @@ $$
 **Tempo de acomodação.** Esta fórmula **não é exata** — é uma aproximação pela **envoltória** exponencial $e^{-\sigma t}$ que multiplica o seno: quando a envoltória entra na faixa de ±5 %, a oscilação está **garantidamente** confinada a ela. Por isso a fórmula é **pessimista** (o $t_s$ real costuma ser menor — ou ligeiramente diferente):
 
 $$
-t_s^{5\%} \approx \frac{3}{\sigma} = \frac{3}{\zeta\omega_n}
+t_s^{5\\\%} \approx \frac{3}{\sigma} = \frac{3}{\zeta\omega_n}
 $$
 
 **Os nomes dos parâmetros:**
@@ -802,7 +802,7 @@ $$
 $$
 
 $$M_p = e^{-0{,}4\pi/\sqrt{1-0{,}4^2}} = 25{,}4\% \qquad t_p = \frac{\pi}{5\sqrt{1-0{,}4^2}} = 0{,}69\ \text{s}$$
-$$t_r = \frac{\pi - \arccos 0{,}4}{5\sqrt{1-0{,}4^2}} = 0{,}43\ \text{s} \qquad t_s^{5\%} \approx \frac{3}{0{,}4 \cdot 5} = 1{,}5\ \text{s}$$
+$$t_r = \frac{\pi - \arccos 0{,}4}{5\sqrt{1-0{,}4^2}} = 0{,}43\ \text{s} \qquad t_s^{5\\\%} \approx \frac{3}{0{,}4 \cdot 5} = 1{,}5\ \text{s}$$
 
 (com $\pi \approx 3{,}14$ — parcimonioso.) Simulando a resposta ao degrau, obtemos exatamente esses valores ($M_p \approx 25\%$, $t_p \approx 0{,}7$ s, $t_r \approx 0{,}45$ s; o $t_s$ medido fica em torno de 1,5–1,7 s — lembre, a fórmula é uma aproximação pessimista).
 
