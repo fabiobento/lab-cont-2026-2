@@ -172,9 +172,9 @@ Veremos três exemplos de obtenção da equação diferencial. **Daqui em diante
 ![Sistema massa-mola-amortecedor](https://github.com/fabiobento/lab-cont-2026-2/blob/main/imagens/m1_fig07_massa_mola.png)
 
 - **Saída**: deslocamento $y(t)$ da massa; **entrada**: força aplicada $u(t)$;
-- **2ª Lei de Newton**: a soma das forças sobre o corpo é massa × aceleração: $u - k\,y - b\,\dot y = m\,\ddot y$;
-  - força da **mola**: proporcional ao deslocamento, no sentido oposto → $-k\,y$;
-  - força do **amortecedor**: proporcional à velocidade, no sentido oposto → $-b\,\dot y$;
+- **2ª Lei de Newton**: a soma das forças sobre o corpo é massa × aceleração: $u - ky - b\dot y = m\ddot y$;
+  - força da **mola**: proporcional ao deslocamento, no sentido oposto → $-ky$;
+  - força do **amortecedor**: proporcional à velocidade, no sentido oposto → $-b\dot y$;
   - (como uma extremidade da mola e do amortecedor está presa à parede e a outra à massa, o deslocamento da mola é o da massa, e a velocidade do amortecedor é a da massa).
 
 **Notação de pontos:** denotamos derivadas por pontos — $\dot y$ é a primeira derivada, $\ddot y$ a segunda, e se você encontrar $u^{(4)}$ ("u quatro pontos"), é a quarta derivada de $u$.
@@ -194,9 +194,9 @@ $$\ddot y + a_1\dot y + a_0y = b_0u$$
 - **Entrada**: tensão da fonte $u(t)$; **saída**: tensão no capacitor $v_C(t)$;
 - **Convenção de sinais**: nos componentes **passivos** (R, L, C), a corrente tem sentido contrário ao da variação de tensão; o símbolo de terra marca o referencial de 0 V; anotamos uma corrente horária e as tensões dos passivos no sentido oposto. Na **fonte** (componente ativo), o sentido da corrente acompanha o aumento da tensão;
 - **Lei de Kirchhoff das malhas** (a soma das tensões na malha é nula): $u = v_R + v_L + v_C$;
-- Equações dos componentes: $v_R = R\,i$; $v_L = L\,\frac{di}{dt}$; $i = C\,\frac{dv_C}{dt}$ (malha única → uma só corrente);
-- Substituindo a corrente nas tensões: $v_R = RC\,\dot v_C$ e $v_L = LC\,\ddot v_C$;
-- Substituindo na LKM: $u = RC\,\dot v_C + LC\,\ddot v_C + v_C$;
+- Equações dos componentes: $v_R = Ri$; $v_L = L\frac{di}{dt}$; $i = C\frac{dv_C}{dt}$ (malha única → uma só corrente);
+- Substituindo a corrente nas tensões: $v_R = RC\dot v_C$ e $v_L = LC\ddot v_C$;
+- Substituindo na LKM: $u = RC\dot v_C + LC\ddot v_C + v_C$;
 - Dividindo por $LC$, reorganizando e chamando $v_C = y$:
 
 $$\ddot y + \frac{R}{L}\dot y + \frac{1}{LC}y = \frac{1}{LC}u \quad\Longrightarrow\quad \ddot y + a_1\dot y + a_0y = b_0u$$
@@ -208,28 +208,28 @@ $$\ddot y + \frac{R}{L}\dot y + \frac{1}{LC}y = \frac{1}{LC}u \quad\Longrightarr
 ![Motor CC acionando carga rotacional](https://github.com/fabiobento/lab-cont-2026-2/blob/main/imagens/m1_fig09_motor_cc.png)
 
 - **Saída**: velocidade de rotação $y(t)$; **entrada**: tensão $u(t)$. É o modelo simplificado de vários sistemas de direcionamento e apontamento: radares, câmeras, braços robóticos;
-- **Parte elétrica** (LKM): $u = v_R + v_L + v_M$, com $v_R = R\,i$ e $v_L = L\,\frac{di}{dt}$;
+- **Parte elétrica** (LKM): $u = v_R + v_L + v_M$, com $v_R = Ri$ e $v_L = L\frac{di}{dt}$;
 - **Motor** — duas equações, com **uma única constante $k$** para simplificar:
-  - torque proporcional à corrente: $T = k\,i$;
-  - tensão no motor (**força contraeletromotriz**) proporcional à velocidade: $v_M = k\,y$;
-- **Parte mecânica**: soma dos torques = momento de inércia × aceleração angular. Neste modelo simplificado só há o torque do motor: $T = J\,\dot y$;
+  - torque proporcional à corrente: $T = ki$;
+  - tensão no motor (**força contraeletromotriz**) proporcional à velocidade: $v_M = ky$;
+- **Parte mecânica**: soma dos torques = momento de inércia × aceleração angular. Neste modelo simplificado só há o torque do motor: $T = J\dot y$;
 - Das duas equações do torque: $i = \dfrac{J}{k}\dot y$;
 - Substituindo nas tensões: $v_R = \dfrac{RJ}{k}\dot y$ e $v_L = \dfrac{LJ}{k}\ddot y$;
-- Substituindo na LKM: $u = \dfrac{RJ}{k}\dot y + \dfrac{LJ}{k}\ddot y + k\,y$;
+- Substituindo na LKM: $u = \dfrac{RJ}{k}\dot y + \dfrac{LJ}{k}\ddot y + ky$;
 - Dividindo por $LJ/k$:
 
 $$\ddot y + \frac{R}{L}\dot y + \frac{k^2}{LJ}y = \frac{k}{LJ}u \quad\Longrightarrow\quad \ddot y + a_1\dot y + a_0y = b_0u$$
 
 **Familiar?** Três sistemas completamente diferentes — mecânico, elétrico, eletromecânico — com **a mesma estrutura de equação diferencial**. É por isso que as ferramentas que desenvolveremos valem para todos eles.
 
-> ✏️ **Exercício proposto:** obtenha a equação diferencial do motor considerando como saída a **posição angular** (e não a velocidade), ou seja, $T = J\,\ddot y$. Você deve chegar a $\dddot y + a_2\ddot y + a_1\dot y = b_0u$ — uma equação de **3ª ordem**. (Resolução no exercício 1.3 do caderno de exercícios resolvidos.)
+> ✏️ **Exercício proposto:** obtenha a equação diferencial do motor considerando como saída a **posição angular** (e não a velocidade), ou seja, $T = J\ddot y$. Você deve chegar a $\dddot y + a_2\ddot y + a_1\dot y = b_0u$ — uma equação de **3ª ordem**. (Resolução no exercício 1.3 do caderno de exercícios resolvidos.)
 
 **Seu kit de modelagem** (para quando precisar modelar um sistema novo):
 
-- 2ª Lei de Newton translacional: $\sum F = m\,\ddot y$; rotacional: $\sum T = J\,\ddot\theta$;
-- Mola: $-k\,y$; amortecedor: $-b\,\dot y$;
-- LKM: soma das tensões na malha é nula; $v_R = Ri$, $v_L = L\,di/dt$, $i = C\,dv_C/dt$;
-- Motor CC: $T = k\,i$ e $v_M = k\,y$ — a ponte entre o mundo elétrico e o mecânico.
+- 2ª Lei de Newton translacional: $\sum F = m\ddot y$; rotacional: $\sum T = J\ddot\theta$;
+- Mola: $-ky$; amortecedor: $-b\dot y$;
+- LKM: soma das tensões na malha é nula; $v_R = Ri$, $v_L = Ldi/dt$, $i = Cdv_C/dt$;
+- Motor CC: $T = ki$ e $v_M = ky$ — a ponte entre o mundo elétrico e o mecânico.
 
 > 📖 **Apoio bibliográfico:** Ogata, *Engenharia de Controle Moderno*, 5ª ed., cap. 2 (modelagem) e cap. 3 (Laplace); Nise, *Engenharia de Sistemas de Controle*, 7ª ed., caps. 1–2; Schaum, *Sinais e Sistemas* / *Controle Realimentado* (exercícios resolvidos).
 
@@ -241,7 +241,7 @@ $$\ddot y + \frac{R}{L}\dot y + \frac{k^2}{LJ}y = \frac{k}{LJ}u \quad\Longrighta
 
 Antes da Transformada de Laplace, precisamos de duas propriedades que o sistema deve ter para que possamos usá-la: **linearidade** e **invariância no tempo**.
 
-**Combinação linear** é apenas uma **soma ponderada**, com fatores de ponderação reais. Por exemplo, para três sinais $u_1$, $u_2$, $u_3$: $\;1\cdot u_1 + 2u_2 + 2u_3$; $\;21u_1 - 7u_2 + \sqrt{3}\,u_3$; $\;0\cdot u_1 + 0{,}4\,u_2 - \sqrt{2}\,u_3$.
+**Combinação linear** é apenas uma **soma ponderada**, com fatores de ponderação reais. Por exemplo, para três sinais $u_1$, $u_2$, $u_3$: $\;1\cdot u_1 + 2u_2 + 2u_3$; $\;21u_1 - 7u_2 + \sqrt{3}u_3$; $\;0\cdot u_1 + 0{,}4u_2 - \sqrt{2}u_3$.
 
 **Sistema linear:** se para a entrada $u_1$ temos a saída $y_1$ e para $u_2$ temos $y_2$, então para qualquer **combinação linear** de $u_1$ e $u_2$ a saída deve ser **a mesma combinação linear** de $y_1$ e $y_2$. Se isso vale sempre, o sistema é linear.
 
@@ -259,14 +259,14 @@ Se a equação não for assim, podemos aproximá-la por um modelo LIT ou usar t�
 
 **A Transformada de Laplace.** A Transformada de Laplace unilateral (à direita) de um sinal $f(t)$, denotada por $F(s)$, é **por definição**:
 
-$$F(s) = \int_0^{\infty} e^{-st}\,f(t)\,dt, \qquad s \in \mathbb{C}$$
+$$F(s) = \int_0^{\infty} e^{-st}f(t)dt, \qquad s \in \mathbb{C}$$
 
 Uma integral imprópria com número complexo — que meda! **Não precisa ter medo: não vamos calcular essa integral.** Se preferir, imagine que a Transformada de Laplace apenas **"empacota"** uma função. Estamos interessados nas **propriedades** desse empacotamento, não no processo:
 
 1. **Linearidade**: a transformada de uma combinação linear é a combinação linear das transformadas;
-2. **Derivada (condições iniciais nulas)**: se $f(0) = 0$, então $\mathcal{L}\{\dot f\} = s\,F(s)$.
+2. **Derivada (condições iniciais nulas)**: se $f(0) = 0$, então $\mathcal{L}\{\dot f\} = sF(s)$.
 
-Da propriedade da derivada obtemos as derivadas de ordem maior. Chamando $\dot f = g$: como $\ddot f = \dot g$, temos $\mathcal{L}\{\ddot f\} = \mathcal{L}\{\dot g\} = s\,G(s)$ (desde que $g(0) = \dot f(0) = 0$), e $G(s) = \mathcal{L}\{\dot f\} = sF(s)$. Substituindo:
+Da propriedade da derivada obtemos as derivadas de ordem maior. Chamando $\dot f = g$: como $\ddot f = \dot g$, temos $\mathcal{L}\{\ddot f\} = \mathcal{L}\{\dot g\} = sG(s)$ (desde que $g(0) = \dot f(0) = 0$), e $G(s) = \mathcal{L}\{\dot f\} = sF(s)$. Substituindo:
 
 $$\mathcal{L}\{\ddot f\} = s^2 F(s)$$
 
@@ -274,7 +274,7 @@ O mesmo raciocínio dá $\mathcal{L}\{f^{(n)}\} = s^n F(s)$: **com condições i
 
 3. **Teorema do Valor Final (TVF)**: se $f(t)$ converge para um valor constante quando $t \to \infty$, então
 
-$$\lim_{t\to\infty} f(t) = \lim_{s\to 0} s\,F(s)$$
+$$\lim_{t\to\infty} f(t) = \lim_{s\to 0} sF(s)$$
 
 Você pode apenas aceitar essas propriedades ou procurar as demonstrações em qualquer livro de controle.
 
@@ -282,13 +282,13 @@ Você pode apenas aceitar essas propriedades ou procurar as demonstrações em q
 
 Dada a equação diferencial do sistema — por exemplo $\ddot y + a_1\dot y + a_0y = b_0u$, que vale **para toda e qualquer entrada** — aplicamos a Transformada de Laplace aos dois lados, usamos a linearidade e a propriedade da derivada **com condições iniciais nulas** ($y(0) = \dot y(0) = 0$), e colocamos $Y(s)$ em evidência:
 
-$$s^2Y(s) + a_1 s Y(s) + a_0 Y(s) = b_0 U(s) \;\Longrightarrow\; Y(s)\,(s^2 + a_1 s + a_0) = b_0\,U(s)$$
+$$s^2Y(s) + a_1 s Y(s) + a_0 Y(s) = b_0 U(s) \;\Longrightarrow\; Y(s)(s^2 + a_1 s + a_0) = b_0U(s)$$
 
 A relação entre a transformada da saída e a da entrada, para condições iniciais nulas, é a **Função de Transferência**:
 
 $$G(s) = \frac{Y(s)}{U(s)} = \frac{b_0}{s^2 + a_1 s + a_0}$$
 
-Como vale para qualquer entrada, conhecida $G(s)$ obtemos $Y(s) = G(s)\,U(s)$ para qualquer entrada específica.
+Como vale para qualquer entrada, conhecida $G(s)$ obtemos $Y(s) = G(s)U(s)$ para qualquer entrada específica.
 
 **Exemplos** (aplicando Laplace e isolando $G(s)$):
 
@@ -320,13 +320,13 @@ $$G(s) = \frac{s+3}{s^2+3s+2} = \frac{s+3}{(s+1)(s+2)}$$
 
 De forma geral, com numerador de ordem $m$ (zeros $z_1,\dots,z_m$) e denominador de ordem $n$ (polos $p_1,\dots,p_n$):
 
-$$G(s) = b_m\,\frac{(s - z_1)(s - z_2)\cdots(s - z_m)}{(s - p_1)(s - p_2)\cdots(s - p_n)}$$
+$$G(s) = b_m\frac{(s - z_1)(s - z_2)\cdots(s - z_m)}{(s - p_1)(s - p_2)\cdots(s - p_n)}$$
 
 **Procedimento padrão do curso:** descrição do sistema (diagrama) → equação diferencial → Função de Transferência → polos → denominador fatorado. (Normalmente só o denominador precisa estar fatorado.)
 
 ### 1.2.3 Calculando a saída: tabela, frações parciais e resíduos
 
-Como $G(s)$ vale para toda entrada, obtemos a saída para uma entrada específica por $Y(s) = G(s)\,U(s)$. E $U(s)$? Pela definição, $U(s) = \int_0^\infty e^{-st}u(t)\,dt$ — **Jazinga! Não vamos calcular essa integral**: usamos uma **tabela de Transformadas de Laplace**.
+Como $G(s)$ vale para toda entrada, obtemos a saída para uma entrada específica por $Y(s) = G(s)U(s)$. E $U(s)$? Pela definição, $U(s) = \int_0^\infty e^{-st}u(t)dt$ — **Jazinga! Não vamos calcular essa integral**: usamos uma **tabela de Transformadas de Laplace**.
 
 **Principais pares:**
 
@@ -371,15 +371,15 @@ $$Y(s) = \frac{20}{s(s+1)(s+10)} = \frac{A}{s} + \frac{B}{s+1} + \frac{C}{s+10}$
 
 O truque para cada **resíduo**: **multiplique $Y(s)$ pelo denominador da fração e faça $s$ igual ao polo correspondente**:
 
-$$A = \left. s\,Y(s)\right|_{s=0} = \frac{20}{(0+1)(0+10)} = 2$$
-$$B = \left. (s+1)\,Y(s)\right|_{s=-1} = \frac{20}{(-1)(-1+10)} = -\frac{20}{9}$$
-$$C = \left. (s+10)\,Y(s)\right|_{s=-10} = \frac{20}{(-10)(-10+1)} = \frac{2}{9}$$
+$$A = \left. sY(s)\right|_{s=0} = \frac{20}{(0+1)(0+10)} = 2$$
+$$B = \left. (s+1)Y(s)\right|_{s=-1} = \frac{20}{(-1)(-1+10)} = -\frac{20}{9}$$
+$$C = \left. (s+10)Y(s)\right|_{s=-10} = \frac{20}{(-10)(-10+1)} = \frac{2}{9}$$
 
 Na prática, nem precisamos reescrever: basta **"cobrir" o fator correspondente** no denominador e substituir $s$ pelo polo. Resultado:
 
 $$Y(s) = \frac{2}{s} - \frac{20/9}{s+1} + \frac{2/9}{s+10} \;\Longrightarrow\; y(t) = 2 - \frac{20}{9}e^{-t} + \frac{2}{9}e^{-10t}$$
 
-**Fórmula geral do resíduo** (polo simples $p_i$): $\;R_i = \left.(s - p_i)\,Y(s)\right|_{s = p_i}$.
+**Fórmula geral do resíduo** (polo simples $p_i$): $\;R_i = \left.(s - p_i)Y(s)\right|_{s = p_i}$.
 
 **Exemplo 3 — polos repetidos.** $G(s) = \dfrac{2}{(s+1)(s+2)}$, entrada $u(t) = e^{-t}$ (exponencial decrescente, $U(s) = \frac{1}{s+1}$):
 
@@ -393,7 +393,7 @@ $$E = \left. (s+1)^2 Y(s)\right|_{s=-1} = \frac{2}{-1+2} = 2, \qquad F = \left. 
 
 Para $D$, substituímos $E$ e $F$ na igualdade e comparamos os numeradores (faça as contas!): $D = -2$. Existe uma fórmula direta para $D$, mas ela envolve derivada e polos múltiplos não são tão comuns — preferimos fechar pela soma, o que ainda **verifica** os outros resíduos (se não conseguir fechar as contas, algum resíduo está errado). Portanto:
 
-$$Y(s) = \frac{-2}{s+1} + \frac{2}{(s+1)^2} + \frac{2}{s+2} \;\Longrightarrow\; y(t) = -2e^{-t} + 2t\,e^{-t} + 2e^{-2t}$$
+$$Y(s) = \frac{-2}{s+1} + \frac{2}{(s+1)^2} + \frac{2}{s+2} \;\Longrightarrow\; y(t) = -2e^{-t} + 2te^{-t} + 2e^{-2t}$$
 
 (Se optássemos pela expansão em 2 frações, $\frac{A s + B}{(s+1)^2} + \frac{C}{s+2}$, o truque daria apenas $C = F = 2$; multiplicando por $(s+1)^2$ e fazendo $s = -1$ chegaríamos só a $B - A = 2$ — insuficiente. Seria preciso o MMC mesmo, chegando a $A = -2$, $B = 0$. Note a identidade: $-\frac{2}{s+1} + \frac{2}{(s+1)^2} = -\frac{2s}{(s+1)^2}$.)
 
@@ -415,11 +415,11 @@ Intuitivamente, "sistema estável" sugere saída limitada — mas existem difere
 
 Duas consequências importantes: (i) se existir **pelo menos uma** entrada limitada para a qual a saída diverge, o sistema **não** é BIBO estável; (ii) a BIBO estabilidade é uma propriedade **do sistema**, não de uma saída nem de uma entrada específica — uma saída limitada para uma entrada particular não diz nada sobre a estabilidade.
 
-**Quando um sinal é limitado?** Voltando à tabela de transformadas e acrescentando os pares $t\,\mathrm{sen}(\omega t)$, $t\cos(\omega t)$ e $t\,e^{at}$:
+**Quando um sinal é limitado?** Voltando à tabela de transformadas e acrescentando os pares $t\mathrm{sen}(\omega t)$, $t\cos(\omega t)$ e $te^{at}$:
 
 | Limitados | Divergem |
 |---|---|
-| degrau; $e^{at}$ com $a<0$; seno; cosseno; $e^{at}\mathrm{sen}$, $e^{at}\cos$ com $a \leq 0$; $t\,e^{at}$ com $a<0$ | rampa; parábola; $e^{at}$ com $a>0$; $e^{at}\mathrm{sen}$, $e^{at}\cos$ com $a>0$; $t\,\mathrm{sen}$; $t\cos$; $t\,e^{at}$ com $a \geq 0$ |
+| degrau; $e^{at}$ com $a<0$; seno; cosseno; $e^{at}\mathrm{sen}$, $e^{at}\cos$ com $a \leq 0$; $te^{at}$ com $a<0$ | rampa; parábola; $e^{at}$ com $a>0$; $e^{at}\mathrm{sen}$, $e^{at}\cos$ com $a>0$; $t\mathrm{sen}$; $t\cos$; $te^{at}$ com $a \geq 0$ |
 
 Analisando os **polos das transformadas** desses sinais (fatorando os denominadores, com Bhaskara quando necessário), o padrão emerge:
 
@@ -433,7 +433,7 @@ Analisando os **polos das transformadas** desses sinais (fatorando os denominado
 Portanto, não pode haver polo de $G$ com parte real positiva. Mas isso basta? **Polo na origem ou par complexo no eixo imaginário também não podem**:
 
 - **Polo na origem:** $G(s) = 1/s$, entrada degrau (limitada) → $Y(s) = 1/s^2$ → $y(t) = t$, uma **rampa que diverge**. (Com o mesmo polo em $G$ e em $U$, a separação limpa das frações parciais falha — uma fração fica com denominador ao quadrado.)
-- **Par $\pm i$:** $G(s) = 1/(s^2+1)$, entrada $u(t) = \cos t$ (limitada) → $y(t) = \frac{1}{2}t\,\mathrm{sen} t$, que **diverge**.
+- **Par $\pm i$:** $G(s) = 1/(s^2+1)$, entrada $u(t) = \cos t$ (limitada) → $y(t) = \frac{1}{2}t\mathrm{sen} t$, que **diverge**.
 
 ![Entradas limitadas que geram saídas divergentes](https://github.com/fabiobento/lab-cont-2026-2/blob/main/imagens/m1_fig12_bibo.png)
 
@@ -478,7 +478,7 @@ Coluna $(1, 6, 10, 6)$, todos positivos → Hurwitz ✓.
 
 **Exemplo 4 (3ª ordem):** mudando só o último coeficiente — $s^3 + 6s^2 + 11s + 72$: linha $s^1$: $\frac{6\cdot 11 - 72}{6} = -1$; linha $s^0$: $72$. Coluna $(1, 6, -1, 72)$ → troca de sinal → **não é Hurwitz**.
 
-**Literal 3ª ordem** ($s^3 + as^2 + bs + c$): coluna $\left(1,\; a,\; \frac{ab - c}{a},\; c\right)$ → Hurwitz ⟺ $a > 0$, $c > 0$ e $a\,b > c$.
+**Literal 3ª ordem** ($s^3 + as^2 + bs + c$): coluna $\left(1,\; a,\; \frac{ab - c}{a},\; c\right)$ → Hurwitz ⟺ $a > 0$, $c > 0$ e $ab > c$.
 
 **Exemplo 5 (4ª ordem):** tabela com 5 linhas; detalhe importante — a multiplicação cruzada usa sempre os elementos da **primeira coluna** e da **coluna seguinte** ao elemento calculado, e o pivô é sempre o elemento da primeira coluna. Neste exemplo a primeira coluna resulta $(1, 2, -1, 20, 5)$ → **duas trocas de sinal** → o polinômio tem **duas raízes com parte real positiva** (calcule as raízes e confirme!).
 
@@ -506,11 +506,11 @@ flowchart LR
     Y -.-> S
 ```
 
-Das equações do diagrama: $U = kE$, $Y = G\,U$ e $E = R - Y$. Substituindo:
+Das equações do diagrama: $U = kE$, $Y = GU$ e $E = R - Y$. Substituindo:
 
-$$Y = kG\,(R - Y) \;\Longrightarrow\; Y + kGY = kGR \;\Longrightarrow\; Y(1 + kG) = kG\,R$$
+$$Y = kG(R - Y) \;\Longrightarrow\; Y + kGY = kGR \;\Longrightarrow\; Y(1 + kG) = kGR$$
 
-$$T(s) = \frac{Y(s)}{R(s)} = \frac{k\,G(s)}{1 + k\,G(s)} = \frac{k\,N(s)}{D(s) + k\,N(s)}$$
+$$T(s) = \frac{Y(s)}{R(s)} = \frac{kG(s)}{1 + kG(s)} = \frac{kN(s)}{D(s) + kN(s)}$$
 
 onde $G(s) = N(s)/D(s)$. A função de transferência de malha fechada é comumente denotada por $T(s)$.
 
@@ -526,8 +526,8 @@ O erro de malha fechada é o de malha aberta **multiplicado por $\dfrac{1}{1+kA}
 
 **Vantagem 3 — rejeição de perturbações.** A **perturbação** $N(s)$ representa as entradas não manipuladas (rajada de vento, temperatura ambiente) e entra somada à saída do controlador. Com $G(s) = A$:
 
-- Malha aberta: a variação da saída devido à perturbação é $\Delta Y = A\,N$;
-- Malha fechada: $\Delta Y = \dfrac{1}{1 + kA}\,A\,N$ — atenuada pelo mesmo fator, e **quanto maior o ganho, menor o efeito** da perturbação.
+- Malha aberta: a variação da saída devido à perturbação é $\Delta Y = AN$;
+- Malha fechada: $\Delta Y = \dfrac{1}{1 + kA}AN$ — atenuada pelo mesmo fator, e **quanto maior o ganho, menor o efeito** da perturbação.
 
 ```mermaid
 flowchart LR
@@ -553,7 +553,7 @@ Se o denominador tiver um **parâmetro ajustável** (um ganho, por exemplo), con
 
 Primeira coluna positiva ⟺ $60 - k > 0$ e $6 + k > 0$ ⟺ $\boxed{-6 < k < 60}$.
 
-Casos-limite: **$k = 60$** → polinômio $s^3 + 6s^2 + 11s + 60 = (s + 6)(s^2 + 11)$ → raízes $-6$ e $\pm\sqrt{11}\,i$ — par sobre o eixo imaginário → **instável** (verifique expandindo o produto!). **$k = -6$** → $s^3 + 6s^2 + 11s = s(s^2 + 6s + 11)$ → **raiz na origem** → instável. Para $k > 60$: duas trocas de sinal (duas raízes RHP); para $k < -6$: uma troca (uma raiz RHP).
+Casos-limite: **$k = 60$** → polinômio $s^3 + 6s^2 + 11s + 60 = (s + 6)(s^2 + 11)$ → raízes $-6$ e $\pm\sqrt{11}i$ — par sobre o eixo imaginário → **instável** (verifique expandindo o produto!). **$k = -6$** → $s^3 + 6s^2 + 11s = s(s^2 + 6s + 11)$ → **raiz na origem** → instável. Para $k > 60$: duas trocas de sinal (duas raízes RHP); para $k < -6$: uma troca (uma raiz RHP).
 
 **Três exemplos de (des)estabilização pelo ganho:**
 
@@ -563,7 +563,7 @@ Casos-limite: **$k = 60$** → polinômio $s^3 + 6s^2 + 11s + 60 = (s + 6)(s^2 +
 
 **Mais de um parâmetro.** O procedimento é o mesmo: monte a tabela carregando os literais e imponha mesmo sinal na primeira coluna:
 
-- Denominador $s^2 - s - 2 + k_t\,s + k$: condições **$k_t > 1$ e $k > 2$** — independentes;
+- Denominador $s^2 - s - 2 + k_ts + k$: condições **$k_t > 1$ e $k > 2$** — independentes;
 - $T(s) = \dfrac{as + b}{s^3 + 3s^2 + 2s - 1 + as + b}$: **$b > 1$ e $a > (b - 7)/3$** — a escolha de uma variável **afeta** a da outra;
 - $T(s) = \dfrac{ks + a}{s^3 + 3s^2 + 2s + ks + a}$: **$ka > 0$ e $3k - ka > -6$** → se $a = 2$: $k > 0$; se $a = 4$: $0 < k < 6$.
 
@@ -577,7 +577,7 @@ Um dos requisitos clássicos é o **erro em regime permanente** ($e_{ss}$, de *s
 - **Rampa** — perfil com velocidade constante: pouso de aeronave, radar seguindo satélite, perfil de resfriamento de material, câmera acompanhando um jogador;
 - **Parábola** — aceleração constante: lançamento de foguete.
 
-**Exemplo 1:** $G(s) = \dfrac{1}{(s+1)(s+2)}$, degrau unitário. O erro é $E(s) = U(s) - Y(s) = (1 - G)\,U$:
+**Exemplo 1:** $G(s) = \dfrac{1}{(s+1)(s+2)}$, degrau unitário. O erro é $E(s) = U(s) - Y(s) = (1 - G)U$:
 
 $$E(s) = \frac{s^2 + 3s + 1}{(s+1)(s+2)}\cdot\frac{1}{s} = \frac{A}{s} + \frac{B}{s+1} + \frac{C}{s+2}$$
 
@@ -593,9 +593,9 @@ Para $t$ grande, as exponenciais de $B$ e $C$ morrem e o erro tende a $A = \left
 
 > ⚠️ **Pegadinha:** $G(s) = \dfrac{s^2 + 29s + 208}{s^3 + 6s^2 + 10s + 208}$, degrau de amplitude 10. "Apagando" os termos com $s$: $\frac{208}{208} = 1$ → $e_{ss} = 0$? **Não!** Verifique por Routh: o sistema é **instável** — a saída diverge e **não existe valor final**. O TVF só vale se o sinal realmente convergir. Pode isso, Arnaldo?
 
-**Entrada rampa.** A saída não tem valor final; trabalhamos diretamente com $E(s) = (1 - G)\,U$, $U(s) = 1/s^2$:
+**Entrada rampa.** A saída não tem valor final; trabalhamos diretamente com $E(s) = (1 - G)U$, $U(s) = 1/s^2$:
 
-- Exemplo 1 com rampa: $E(s) = \dfrac{s^2 + 3s + 1}{(s+1)(s+2)}\cdot\dfrac{1}{s^2}$. Na expansão surge fração com denominador $s^2$ — cuja inversa é uma rampa: se o resíduo $b \neq 0$, o erro **diverge**. Aqui $b = 0{,}5$: o erro cresce como $0{,}5\,t$ — depois de algum tempo, a saída não acompanha a entrada.
+- Exemplo 1 com rampa: $E(s) = \dfrac{s^2 + 3s + 1}{(s+1)(s+2)}\cdot\dfrac{1}{s^2}$. Na expansão surge fração com denominador $s^2$ — cuja inversa é uma rampa: se o resíduo $b \neq 0$, o erro **diverge**. Aqui $b = 0{,}5$: o erro cresce como $0{,}5t$ — depois de algum tempo, a saída não acompanha a entrada.
 - Exemplo 2 com rampa: $1 - G = \dfrac{s(s+3)}{(s+1)(s+2)}$ → um $s$ cancela, sobra fração $1/s$ com resíduo $a = 1{,}5$ → **o erro tende a 1,5**.
 
 **Análise literal (3ª ordem)** — numerador $\dots + b_1 s + b_0$, denominador $\dots + a_1 s + a_0$ (sem polo na origem e estável):
@@ -614,23 +614,23 @@ Em cascata: coeficientes de $s^0$ iguais ⇒ erro nulo ao degrau; coeficientes d
 
 Malha aberta e malha fechada são conceitos relativos: se você já tem $T(s)$, sabe calcular o erro (ela é "a malha aberta" entre $R$ e $Y$). Mas dá para ir direto da **FT de malha aberta**, sem calcular $T(s)$. Com controle proporcional, defina a **Função de Transferência de Malha**:
 
-$$L(s) = k\,G(s)$$
+$$L(s) = kG(s)$$
 
 O erro $E(s) = R(s) - Y(s)$, com $Y = \dfrac{L}{1 + L}R$, fica:
 
-$$E(s) = \frac{1}{1 + L(s)}\,R(s)$$
+$$E(s) = \frac{1}{1 + L(s)}R(s)$$
 
 Aplicando o TVF às três entradas clássicas, nascem as **constantes de erro**:
 
 | Entrada | $R(s)$ | Constante | $e_{ss}$ |
 |---|---|---|---|
 | degrau unitário | $1/s$ | **constante de erro de posição** $k_p = \lim_{s\to 0} L(s)$ | $\dfrac{1}{1 + k_p}$ |
-| rampa unitária | $1/s^2$ | **constante de erro de velocidade** $k_v = \lim_{s\to 0} s\,L(s)$ | $\dfrac{1}{k_v}$ |
+| rampa unitária | $1/s^2$ | **constante de erro de velocidade** $k_v = \lim_{s\to 0} sL(s)$ | $\dfrac{1}{k_v}$ |
 | parábola unitária | $1/s^3$ | **constante de erro de aceleração** $k_a = \lim_{s\to 0} s^2 L(s)$ | $\dfrac{1}{k_a}$ |
 
 **O tipo numérico do sistema.** Quantos polos na origem tem $L(s)$ (ou $G(s)$)?
 
-- **0 polos na origem** (tipo 0): $k_p = k\,G(0)$ (finito), $k_v = k_a = 0$;
+- **0 polos na origem** (tipo 0): $k_p = kG(0)$ (finito), $k_v = k_a = 0$;
 - **1 polo na origem** (tipo 1): $k_p = \infty$, $k_v$ finito, $k_a = 0$;
 - **2 polos na origem** (tipo 2): $k_p = k_v = \infty$, $k_a$ finito.
 
@@ -645,9 +645,9 @@ Resumindo na tabela clássica (erro em regime, malha fechada):
 
 **Obtenção rápida das constantes** (polinômios expandidos, polos na origem em evidência):
 
-- tipo 0: $G(s) = \dfrac{\dots + b_0}{\dots + a_0} \Rightarrow k_p = k\,\dfrac{b_0}{a_0}$;
-- tipo 1: $G(s) = \dfrac{\dots + b_0}{s(\dots + a_1)} \Rightarrow k_v = k\,\dfrac{b_0}{a_1}$;
-- tipo 2: $G(s) = \dfrac{\dots + b_0}{s^2(\dots + a_2)} \Rightarrow k_a = k\,\dfrac{b_0}{a_2}$.
+- tipo 0: $G(s) = \dfrac{\dots + b_0}{\dots + a_0} \Rightarrow k_p = k\dfrac{b_0}{a_0}$;
+- tipo 1: $G(s) = \dfrac{\dots + b_0}{s(\dots + a_1)} \Rightarrow k_v = k\dfrac{b_0}{a_1}$;
+- tipo 2: $G(s) = \dfrac{\dots + b_0}{s^2(\dots + a_2)} \Rightarrow k_a = k\dfrac{b_0}{a_2}$.
 
 **Ressalvas importantes:**
 1. Use a **coluna correta** — verifique quantos polos o sistema tem na origem;
@@ -740,9 +740,9 @@ $$\omega_n = \sqrt{a_0}, \qquad \zeta = \frac{a_1}{2\sqrt{a_0}}$$
 
 Com isso, a saída fica (um pouco) mais tratável:
 
-$$y(t) = 1 - \frac{e^{-\sigma t}}{\sqrt{1-\zeta^2}}\,\mathrm{sen}(\omega_d\,t + \varphi)$$
+$$y(t) = 1 - \frac{e^{-\sigma t}}{\sqrt{1-\zeta^2}}\mathrm{sen}(\omega_dt + \varphi)$$
 
-$$\sigma = \zeta\omega_n, \qquad \omega_d = \omega_n\sqrt{1-\zeta^2}, \qquad \mathrm{tg}\,\varphi = \frac{\sqrt{1-\zeta^2}}{\zeta}$$
+$$\sigma = \zeta\omega_n, \qquad \omega_d = \omega_n\sqrt{1-\zeta^2}, \qquad \mathrm{tg}\varphi = \frac{\sqrt{1-\zeta^2}}{\zeta}$$
 
 Podemos ainda escrever a FT em função de $\sigma$ e $\omega_d$:
 
@@ -795,7 +795,7 @@ $$t_s^{5\%} \approx \frac{3}{\sigma} = \frac{3}{\zeta\omega_n}$$
 
 $$\omega_n = \sqrt{25} = 5, \qquad \zeta = \frac{4}{2 \cdot 5} = 0{,}4$$
 
-$$M_p = e^{-0{,}4\pi/\sqrt{1-0{,}4^2}} = 25{,}4\,\% \qquad t_p = \frac{\pi}{5\sqrt{1-0{,}4^2}} = 0{,}69\ \text{s}$$
+$$M_p = e^{-0{,}4\pi/\sqrt{1-0{,}4^2}} = 25{,}4\% \qquad t_p = \frac{\pi}{5\sqrt{1-0{,}4^2}} = 0{,}69\ \text{s}$$
 $$t_r = \frac{\pi - \arccos 0{,}4}{5\sqrt{1-0{,}4^2}} = 0{,}43\ \text{s} \qquad t_s^{5\%} \approx \frac{3}{0{,}4 \cdot 5} = 1{,}5\ \text{s}$$
 
 (com $\pi \approx 3{,}14$ — parcimonioso.) Simulando a resposta ao degrau, obtemos exatamente esses valores ($M_p \approx 25\%$, $t_p \approx 0{,}7$ s, $t_r \approx 0{,}45$ s; o $t_s$ medido fica em torno de 1,5–1,7 s — lembre, a fórmula é uma aproximação pessimista).
