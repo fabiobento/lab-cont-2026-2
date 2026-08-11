@@ -241,7 +241,10 @@ $$\ddot y + \frac{R}{L}\dot y + \frac{k^2}{LJ}y = \frac{k}{LJ}u \quad\Longrighta
 
 Antes da Transformada de Laplace, precisamos de duas propriedades que o sistema deve ter para que possamos usá-la: **linearidade** e **invariância no tempo**.
 
-**Combinação linear** é apenas uma **soma ponderada**, com fatores de ponderação reais. Por exemplo, para três sinais $u_1$, $u_2$, $u_3$: $\;1\cdot u_1 + 2u_2 + 2u_3$; $\;21u_1 - 7u_2 + \sqrt{3}u_3$; $\;0\cdot u_1 + 0{,}4u_2 - \sqrt{2}u_3$.
+**Combinação linear** é apenas uma **soma ponderada**, com fatores de ponderação reais. Por exemplo, para três sinais $u_1$, $u_2$, $u_3$:
+- $\;1\cdot u_1 + 2u_2 + 2u_3$
+- $\;21u_1 - 7u_2 + \sqrt{3}u_3$
+- $\;0\cdot u_1 + 0{,}4u_2 - \sqrt{2}u_3$
 
 **Sistema linear:** se para a entrada $u_1$ temos a saída $y_1$ e para $u_2$ temos $y_2$, então para qualquer **combinação linear** de $u_1$ e $u_2$ a saída deve ser **a mesma combinação linear** de $y_1$ e $y_2$. Se isso vale sempre, o sistema é linear.
 
@@ -264,13 +267,13 @@ $$F(s) = \int_0^{\infty} e^{-st}f(t)dt, \qquad s \in \mathbb{C}$$
 Uma integral imprópria com número complexo **Não precisa ter medo: não vamos calcular essa integral.** Se preferir, imagine que a Transformada de Laplace apenas **"empacota"** uma função. Estamos interessados nas **propriedades** desse empacotamento, não no processo:
 
 1. **Linearidade**: a transformada de uma combinação linear é a combinação linear das transformadas;
-2. **Derivada (condições iniciais nulas)**: se $f(0) = 0$, então $\mathcal{L}\{\dot f\} = sF(s)$.
+2. **Derivada (condições iniciais nulas)**: se $f(0) = 0$, então $\mathcal{L}\lbrace\dot f \rbrace = sF(s)$.
 
-Da propriedade da derivada obtemos as derivadas de ordem maior. Chamando $\dot f = g$: como $\ddot f = \dot g$, temos $\mathcal{L}\{\ddot f\} = \mathcal{L}\{\dot g\} = sG(s)$ (desde que $g(0) = \dot f(0) = 0$), e $G(s) = \mathcal{L}\{\dot f\} = sF(s)$. Substituindo:
+Da propriedade da derivada obtemos as derivadas de ordem maior. Chamando $\dot f = g$: como $\ddot f = \dot g$, temos $\mathcal{L}\lbrace\ddot f \rbrace = \mathcal{L}\lbrace\dot g \rbrace = sG(s)$ (desde que $g(0) = \dot f(0) = 0$), e $G(s) = \mathcal{L}\lbrace\dot f \rbrace = sF(s)$. Substituindo:
 
-$$\mathcal{L}\{\ddot f\} = s^2 F(s)$$
+$$\mathcal{L}\lbrace\ddot f \rbrace = s^2 F(s)$$
 
-O mesmo raciocínio dá $\mathcal{L}\{f^{(n)}\} = s^n F(s)$: **com condições iniciais nulas, cada derivada vira um fator $s$ multiplicando a transformada**.
+O mesmo raciocínio dá $\mathcal{L} \lbrace f^{(n)} \rbrace = s^n F(s)$: **com condições iniciais nulas, cada derivada vira um fator $s$ multiplicando a transformada**.
 
 3. **Teorema do Valor Final (TVF)**: se $f(t)$ converge para um valor constante quando $t \to \infty$, então
 

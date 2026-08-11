@@ -563,7 +563,7 @@ $$C(s) = P + \frac{I}{s} + D\frac{N}{1 + N/s}$$
 
 Lembra das propriedades da Transformada de Laplace? Uma delas diz:
 
-$$\mathcal{L}\{x(t-\tau)\} = e^{-s\tau}X(s)$$
+$$\mathcal{L} \lbrace x(t-\tau) \rbrace = e^{-s\tau}X(s)$$
 
 E por que precisamos disso? Porque vários sistemas apresentam **atraso de transporte**. Exemplo clássico: o **aquecedor de água a gás**. Sua mãe está lavando louça e pede para você aumentar a temperatura em 5 °C. Você vai lá e ajusta — mas toda a água **que já está nos canos**, entre o aquecedor e a torneira, ainda está na temperatura antiga. Ela só vai saber que você realmente ajustou depois que a água velha sair e a água nova **for transportada** até a torneira.
 
