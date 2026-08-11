@@ -81,8 +81,7 @@ lab-cont-2026-2/
 
 Detalhando cada item:
 
-- `moduloN/teoria_moduloN.md` — **aula completa em texto**: conceitos explicados do zero, deduções,
-  diagramas de blocos (Mermaid), figuras e exemplos numéricos resolvidos;
+- `moduloN/teoria_moduloN.md` — **aula completa em texto**: conceitos explicados do zero, deduções, figuras e exemplos numéricos resolvidos;
 - `moduloN/exercicios_resolvidos_moduloN.md` — exercícios resolvidos passo a passo, no mesmo estilo
   das questões das listas (conta feita, unidade, conclusão);
 - `moduloN/listaN_*.md` — lista de exercícios,
