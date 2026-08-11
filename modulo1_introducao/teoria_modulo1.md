@@ -261,7 +261,7 @@ Se a equação não for assim, podemos aproximá-la por um modelo LIT ou usar t�
 
 $$F(s) = \int_0^{\infty} e^{-st}f(t)dt, \qquad s \in \mathbb{C}$$
 
-Uma integral imprópria com número complexo — que meda! **Não precisa ter medo: não vamos calcular essa integral.** Se preferir, imagine que a Transformada de Laplace apenas **"empacota"** uma função. Estamos interessados nas **propriedades** desse empacotamento, não no processo:
+Uma integral imprópria com número complexo **Não precisa ter medo: não vamos calcular essa integral.** Se preferir, imagine que a Transformada de Laplace apenas **"empacota"** uma função. Estamos interessados nas **propriedades** desse empacotamento, não no processo:
 
 1. **Linearidade**: a transformada de uma combinação linear é a combinação linear das transformadas;
 2. **Derivada (condições iniciais nulas)**: se $f(0) = 0$, então $\mathcal{L}\{\dot f\} = sF(s)$.
