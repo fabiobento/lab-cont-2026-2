@@ -242,9 +242,9 @@ $$\ddot y + \frac{R}{L}\dot y + \frac{k^2}{LJ}y = \frac{k}{LJ}u \quad\Longrighta
 Antes da Transformada de Laplace, precisamos de duas propriedades que o sistema deve ter para que possamos usá-la: **linearidade** e **invariância no tempo**.
 
 **Combinação linear** é apenas uma **soma ponderada**, com fatores de ponderação reais. Por exemplo, para três sinais $u_1$, $u_2$, $u_3$:
-- $\;1\cdot u_1 + 2u_2 + 2u_3$
-- $\;21u_1 - 7u_2 + \sqrt{3}u_3$
-- $\;0\cdot u_1 + 0{,}4u_2 - \sqrt{2}u_3$
+- $1\cdot u_1 + 2u_2 + 2u_3$
+- $21u_1 - 7u_2 + \sqrt{3}u_3$
+- $0\cdot u_1 + 0{,}4u_2 - \sqrt{2}u_3$
 
 **Sistema linear:** se para a entrada $u_1$ temos a saída $y_1$ e para $u_2$ temos $y_2$, então para qualquer **combinação linear** de $u_1$ e $u_2$ a saída deve ser **a mesma combinação linear** de $y_1$ e $y_2$. Se isso vale sempre, o sistema é linear.
 
@@ -285,7 +285,7 @@ Você pode apenas aceitar essas propriedades ou procurar as demonstrações em q
 
 Dada a equação diferencial do sistema — por exemplo $\ddot y + a_1\dot y + a_0y = b_0u$, que vale **para toda e qualquer entrada** — aplicamos a Transformada de Laplace aos dois lados, usamos a linearidade e a propriedade da derivada **com condições iniciais nulas** ($y(0) = \dot y(0) = 0$), e colocamos $Y(s)$ em evidência:
 
-$$s^2Y(s) + a_1 s Y(s) + a_0 Y(s) = b_0 U(s) \;\Longrightarrow\; Y(s)(s^2 + a_1 s + a_0) = b_0U(s)$$
+$$s^2Y(s) + a_1 s Y(s) + a_0 Y(s) = b_0 U(s) \Longrightarrow Y(s)(s^2 + a_1 s + a_0) = b_0U(s)$$
 
 A relação entre a transformada da saída e a da entrada, para condições iniciais nulas, é a **Função de Transferência**:
 
@@ -295,9 +295,9 @@ Como vale para qualquer entrada, conhecida $G(s)$ obtemos $Y(s) = G(s)U(s)$ para
 
 **Exemplos** (aplicando Laplace e isolando $`G(s)`$):
 
-1. $\ddot y + 2\dot y + 3y = u \;\Rightarrow\; G(s) = \dfrac{1}{s^2 + 2s + 3}$
-2. $\dddot y + 8\ddot y + 4\dot y = 2u \;\Rightarrow\; G(s) = \dfrac{2}{s^3 + 8s^2 + 4s}$
-3. $\ddot y + 3\dot y + 5y = 2\dot u + u \;\Rightarrow\; G(s) = \dfrac{2s + 1}{s^2 + 3s + 5}$
+1. $\ddot y + 2\dot y + 3y = u \Rightarrow G(s) = \dfrac{1}{s^2 + 2s + 3}$
+2. $\dddot y + 8\ddot y + 4\dot y = 2u \Rightarrow G(s) = \dfrac{2}{s^3 + 8s^2 + 4s}$
+3. $\ddot y + 3\dot y + 5y = 2\dot u + u \Rightarrow G(s) = \dfrac{2s + 1}{s^2 + 3s + 5}$
 
 **O atalho:** dá para escrever $G(s)$ **apenas copiando os coeficientes** da equação diferencial — no **numerador**, os coeficientes das derivadas da **entrada**; no **denominador**, os das derivadas da **saída**; o número de derivadas vira o expoente de $s$. E o caminho inverso também vale: $G(s) = \dfrac{s+1}{s^2+5s+10} \Rightarrow \ddot y + 5\dot y + 10y = \dot u + u$.
 
@@ -350,7 +350,7 @@ Na figura: exponenciais positivas ($e^{t}$, $e^{1{,}5t}$, $e^{2t}$) partem de 1 
 
 **Exemplo 1 — frações parciais pelo MMC.** Sistema $\ddot y + 3\dot y + 2y = 2u$, entrada degrau unitário:
 
-$$G(s) = \frac{2}{s^2+3s+2}, \quad U(s) = \frac{1}{s} \;\Longrightarrow\; Y(s) = \frac{2}{s(s+1)(s+2)}$$
+$$G(s) = \frac{2}{s^2+3s+2}, \quad U(s) = \frac{1}{s} \Longrightarrow Y(s) = \frac{2}{s(s+1)(s+2)}$$
 
 Essa transformada não está na tabela. Existe uma fórmula para a transformada inversa, mas nem vamos mostrá-la: usamos um truque matemático, a **expansão em frações parciais**. Escrevemos a razão de polinômios como soma de frações cujos denominadores são os fatores:
 
@@ -360,7 +360,7 @@ Somando as frações (MMC $= s(s+1)(s+2)$) e igualando os numeradores:
 
 $$2 = A(s+1)(s+2) + Bs(s+2) + Cs(s+1) = (A+B+C)s^2 + (3A+2B+C)s + 2A$$
 
-$$\Rightarrow\ 2A = 2,\quad A+B+C = 0,\quad 3A+2B+C = 0 \Rightarrow\; A = 1,\; B = -2,\; C = 1$$
+$$\Rightarrow\ 2A = 2,\quad A+B+C = 0,\quad 3A+2B+C = 0 \Rightarrow A = 1, B = -2, C = 1$$
 
 **Conferindo** (sempre confira!): $\dfrac{1}{s} - \dfrac{2}{s+1} + \dfrac{1}{s+2} = \dfrac{2}{s(s+1)(s+2)}$ ✓
 
@@ -380,9 +380,9 @@ $$C = \left. (s+10)Y(s)\right|_{s=-10} = \frac{20}{(-10)(-10+1)} = \frac{2}{9}$$
 
 Na prática, nem precisamos reescrever: basta **"cobrir" o fator correspondente** no denominador e substituir $s$ pelo polo. Resultado:
 
-$$Y(s) = \frac{2}{s} - \frac{20/9}{s+1} + \frac{2/9}{s+10} \;\Longrightarrow\; y(t) = 2 - \frac{20}{9}e^{-t} + \frac{2}{9}e^{-10t}$$
+$$Y(s) = \frac{2}{s} - \frac{20/9}{s+1} + \frac{2/9}{s+10} \Longrightarrow y(t) = 2 - \frac{20}{9}e^{-t} + \frac{2}{9}e^{-10t}$$
 
-**Fórmula geral do resíduo** (polo simples $p_i$): $\;R_i = \left.(s - p_i)Y(s)\right|_{s = p_i}$.
+**Fórmula geral do resíduo** (polo simples $p_i$): $R_i = \left.(s - p_i)Y(s)\right|_{s = p_i}$.
 
 **Exemplo 3 — polos repetidos.** $G(s) = \dfrac{2}{(s+1)(s+2)}$, entrada $u(t) = e^{-t}$ (exponencial decrescente, $U(s) = \frac{1}{s+1}$):
 
@@ -396,7 +396,7 @@ $$E = \left. (s+1)^2 Y(s)\right|_{s=-1} = \frac{2}{-1+2} = 2, \qquad F = \left. 
 
 Para $D$, substituímos $E$ e $F$ na igualdade e comparamos os numeradores (faça as contas!): $D = -2$. Existe uma fórmula direta para $D$, mas ela envolve derivada e polos múltiplos não são tão comuns — preferimos fechar pela soma, o que ainda **verifica** os outros resíduos (se não conseguir fechar as contas, algum resíduo está errado). Portanto:
 
-$$Y(s) = \frac{-2}{s+1} + \frac{2}{(s+1)^2} + \frac{2}{s+2} \;\Longrightarrow\; y(t) = -2e^{-t} + 2te^{-t} + 2e^{-2t}$$
+$$Y(s) = \frac{-2}{s+1} + \frac{2}{(s+1)^2} + \frac{2}{s+2} \Longrightarrow y(t) = -2e^{-t} + 2te^{-t} + 2e^{-2t}$$
 
 (Se optássemos pela expansão em 2 frações, $\frac{A s + B}{(s+1)^2} + \frac{C}{s+2}$, o truque daria apenas $C = F = 2$; multiplicando por $(s+1)^2$ e fazendo $s = -1$ chegaríamos só a $B - A = 2$ — insuficiente. Seria preciso o MMC mesmo, chegando a $A = -2$, $B = 0$. Note a identidade: $-\frac{2}{s+1} + \frac{2}{(s+1)^2} = -\frac{2s}{(s+1)^2}$.)
 
@@ -481,13 +481,13 @@ Coluna $(1, 6, 10, 6)$, todos positivos → Hurwitz ✓.
 
 **Exemplo 4 (3ª ordem):** mudando só o último coeficiente — $s^3 + 6s^2 + 11s + 72$: linha $s^1$: $\frac{6\cdot 11 - 72}{6} = -1$; linha $s^0$: $72$. Coluna $(1, 6, -1, 72)$ → troca de sinal → **não é Hurwitz**.
 
-**Literal 3ª ordem** ($s^3 + as^2 + bs + c$): coluna $\left(1,\; a,\; \frac{ab - c}{a},\; c\right)$ → Hurwitz ⟺ $a > 0$, $c > 0$ e $ab > c$.
+**Literal 3ª ordem** ($s^3 + as^2 + bs + c$): coluna $\left(1, a, \frac{ab - c}{a}, c\right)$ → Hurwitz ⟺ $a > 0$, $c > 0$ e $ab > c$.
 
 **Exemplo 5 (4ª ordem):** tabela com 5 linhas; detalhe importante — a multiplicação cruzada usa sempre os elementos da **primeira coluna** e da **coluna seguinte** ao elemento calculado, e o pivô é sempre o elemento da primeira coluna. Neste exemplo a primeira coluna resulta $(1, 2, -1, 20, 5)$ → **duas trocas de sinal** → o polinômio tem **duas raízes com parte real positiva** (calcule as raízes e confirme!).
 
 **Generalização** (coeficientes literais, $n$ par — o raciocínio para $n$ ímpar é idêntico): renomeando as linhas $s^n \to (a_1, a_2, a_3, \dots)$ e $s^{n-1} \to (b_1, b_2, b_3, \dots)$:
 
-$$c_1 = \frac{b_1 a_2 - a_1 b_2}{b_1}, \qquad c_2 = \frac{b_1 a_3 - a_1 b_3}{b_1}, \qquad c_3 = \frac{b_1 a_4 - a_1 b_4}{b_1}, \; \dots$$
+$$c_1 = \frac{b_1 a_2 - a_1 b_2}{b_1}, \qquad c_2 = \frac{b_1 a_3 - a_1 b_3}{b_1}, \qquad c_3 = \frac{b_1 a_4 - a_1 b_4}{b_1},  \dots$$
 
 Sempre os elementos da primeira coluna ($a_1$, $b_1$) cruzados com a coluna seguinte, dividido pelo pivô $b_1$. A linha seguinte repete o processo com as duas linhas anteriores. Propriedades úteis: de uma linha par para uma ímpar a tabela **perde uma coluna**; o **último elemento de uma linha par reaparece** na linha par seguinte; os zeros à direita são opcionais.
 
@@ -511,7 +511,7 @@ flowchart LR
 
 Das equações do diagrama: $U = kE$, $Y = GU$ e $E = R - Y$. Substituindo:
 
-$$Y = kG(R - Y) \;\Longrightarrow\; Y + kGY = kGR \;\Longrightarrow\; Y(1 + kG) = kGR$$
+$$Y = kG(R - Y) \Longrightarrow Y + kGY = kGR \Longrightarrow Y(1 + kG) = kGR$$
 
 $$T(s) = \frac{Y(s)}{R(s)} = \frac{kG(s)}{1 + kG(s)} = \frac{kN(s)}{D(s) + kN(s)}$$
 
@@ -584,7 +584,7 @@ Um dos requisitos clássicos é o **erro em regime permanente** ($e_{ss}$, de *s
 
 $$E(s) = \frac{s^2 + 3s + 1}{(s+1)(s+2)}\cdot\frac{1}{s} = \frac{A}{s} + \frac{B}{s+1} + \frac{C}{s+2}$$
 
-Para $t$ grande, as exponenciais de $B$ e $C$ morrem e o erro tende a $A = \left. sE(s)\right|_{s=0} = \frac{1}{2}$: $\;e_{ss} = 0{,}5$.
+Para $t$ grande, as exponenciais de $B$ e $C$ morrem e o erro tende a $A = \left. sE(s)\right|_{s=0} = \frac{1}{2}$: $e_{ss} = 0{,}5$.
 
 **Observação-chave:** só precisamos do **resíduo da fração com denominador $s$** — multiplicar $E(s)$ por $s$ e fazer $s \to 0$ — **desde que os demais polos tenham parte real negativa** (senão não há valor final). Mas isso é exatamente o **Teorema do Valor Final**: ao calcular só esse resíduo, estamos aplicando o TVF.
 
@@ -733,11 +733,11 @@ Os requisitos costumam ser dados — ou traduzidos da linguagem do usuário — 
 
 Considere a FT de 2ª ordem **sem zeros** e com **erro nulo em regime** para o degrau (se houver zeros — outros cursos; se o erro não for nulo, pouco muda: as características são relativas ao valor final):
 
-$$G(s) = \frac{a_0}{s^2 + a_1 s + a_0} \;\Longrightarrow\; Y(s) = \frac{a_0}{s(s^2 + a_1 s + a_0)}$$
+$$G(s) = \frac{a_0}{s^2 + a_1 s + a_0} \Longrightarrow Y(s) = \frac{a_0}{s(s^2 + a_1 s + a_0)}$$
 
 A transformada inversa $y(t)$ dessa forma literal é "uma coisa que eu nem vou me entreter a falar" — pouco promissora. Por isso fazemos uma **mudança de variáveis** (parametrização):
 
-$$a_0 = \omega_n^2, \qquad a_1 = 2\zeta\omega_n \;\Longrightarrow\; G(s) = \frac{\omega_n^2}{s^2 + 2\zeta\omega_n s + \omega_n^2}$$
+$$a_0 = \omega_n^2, \qquad a_1 = 2\zeta\omega_n \Longrightarrow G(s) = \frac{\omega_n^2}{s^2 + 2\zeta\omega_n s + \omega_n^2}$$
 
 $$\omega_n = \sqrt{a_0}, \qquad \zeta = \frac{a_1}{2\sqrt{a_0}}$$
 
@@ -825,7 +825,7 @@ Lembre: quanto **maior** o ganho, **maior** a rejeição a perturbações (§1.3
 
 Duas rotas: chutar valores de $\zeta$ até acertar 10 % — ou **inverter a fórmula**. De $M_p = e^{-\zeta\pi/\sqrt{1-\zeta^2}}$, tirando o logaritmo natural dos dois lados, elevando ao quadrado para eliminar a raiz e isolando $\zeta$:
 
-$$\ln M_p = -\frac{\zeta\pi}{\sqrt{1-\zeta^2}} \;\Longrightarrow\; \boxed{\zeta = \sqrt{\frac{\ln^2 M_p}{\pi^2 + \ln^2 M_p}}}$$
+$$\ln M_p = -\frac{\zeta\pi}{\sqrt{1-\zeta^2}} \Longrightarrow \boxed{\zeta = \sqrt{\frac{\ln^2 M_p}{\pi^2 + \ln^2 M_p}}}$$
 
 > ⚠️ **Dica importante:** o $M_p$ da fórmula é um número entre 0 e 1 — **converta a porcentagem dividindo por 100** ($M_p = 0{,}1$, não 10).
 
@@ -835,7 +835,7 @@ Com $M_p = 0{,}1$: $\zeta = \sqrt{\dfrac{\ln^2 0{,}1}{\pi^2 + \ln^2 0{,}1}} = 0{
 
 Da parametrização: $0{,}59 = \dfrac{0{,}5}{\sqrt{k}} \Rightarrow \sqrt{k} = \dfrac{0{,}5}{0{,}59}$:
 
-$$k = \left(\frac{0{,}5}{0{,}59}\right)^2 = 0{,}718 \;\Longrightarrow\; T(s) = \frac{0{,}718}{s^2 + s + 0{,}718}$$
+$$k = \left(\frac{0{,}5}{0{,}59}\right)^2 = 0{,}718 \Longrightarrow T(s) = \frac{0{,}718}{s^2 + s + 0{,}718}$$
 
 ![Resposta ao degrau com k = 0,718 — overshoot de 10 %](https://github.com/fabiobento/lab-cont-2026-2/blob/main/imagens/m1_fig19_projeto_mp.png)
 
@@ -843,7 +843,7 @@ Simulando: overshoot de aproximadamente **10 %**, como desejado.
 
 **Projeto literal.** Generalizando para uma planta de 2ª ordem do **tipo 1** (1 polo na origem → erro nulo ao degrau):
 
-$$G(s) = \frac{1}{s(s+a)} \;\Longrightarrow\; T(s) = \frac{k}{s^2 + as + k} \;\Longrightarrow\; \omega_n = \sqrt{k},\quad \zeta = \frac{a}{2\sqrt{k}}$$
+$$G(s) = \frac{1}{s(s+a)} \Longrightarrow T(s) = \frac{k}{s^2 + as + k} \Longrightarrow \omega_n = \sqrt{k},\quad \zeta = \frac{a}{2\sqrt{k}}$$
 
 $$\boxed{k = \frac{a^2}{4\zeta^2}} \qquad \text{com} \qquad \zeta^2 = \frac{\ln^2 M_p}{\pi^2 + \ln^2 M_p}$$
 
@@ -857,7 +857,7 @@ De $t_p = \pi/\omega_d$: $\omega_d = \dfrac{\pi}{t_p} = \dfrac{3{,}14}{3{,}14} =
 
 $$\omega_d = \omega_n\sqrt{1-\zeta^2} = \sqrt{k}\sqrt{1 - \frac{0{,}25}{k}} = \sqrt{k - 0{,}25}$$
 
-$$\sqrt{k - 0{,}25} = 1 \;\Longrightarrow\; k = 1{,}25 \;\Longrightarrow\; T(s) = \frac{1{,}25}{s^2 + s + 1{,}25}$$
+$$\sqrt{k - 0{,}25} = 1 \Longrightarrow k = 1{,}25 \Longrightarrow T(s) = \frac{1{,}25}{s^2 + s + 1{,}25}$$
 
 ![Resposta ao degrau com k = 1,25 — tp = 3,14 s e Mp = 20,8 %](https://github.com/fabiobento/lab-cont-2026-2/blob/main/imagens/m1_fig20_projeto_tp.png)
 
@@ -867,7 +867,7 @@ Simulando: **$t_p \approx 3{,}15$ s** ✓ — e **overshoot de 20,8 %**.
 
 **Projeto literal.** Para $G(s) = \dfrac{1}{s(s+a)}$:
 
-$$\omega_d = \sqrt{k - \frac{a^2}{4}} = \frac{\pi}{t_p} \;\Longrightarrow\; \boxed{k = \frac{\pi^2}{t_p^2} + \frac{a^2}{4}}$$
+$$\omega_d = \sqrt{k - \frac{a^2}{4}} = \frac{\pi}{t_p} \Longrightarrow \boxed{k = \frac{\pi^2}{t_p^2} + \frac{a^2}{4}}$$
 
 Ficou muito simples com a parametrização e as fórmulas da resposta de 2ª ordem, não ficou?
 
