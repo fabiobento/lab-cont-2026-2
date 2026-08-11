@@ -329,7 +329,7 @@ $$G(s) = b_m\frac{(s - z_1)(s - z_2)\cdots(s - z_m)}{(s - p_1)(s - p_2)\cdots(s 
 
 ### 1.2.3 Calculando a saída: tabela, frações parciais e resíduos
 
-Como $G(s)$ vale para toda entrada, obtemos a saída para uma entrada específica por $Y(s) = G(s)U(s)$. E $U(s)$? Pela definição, $U(s) = \int_0^\infty e^{-st}u(t)dt$ — ** Peraê: não se assute! Na verdade, não vamos calcular essa integral**: usamos uma **tabela de Transformadas de Laplace**.
+Como $G(s)$ vale para toda entrada, obtemos a saída para uma entrada específica por $Y(s) = G(s)U(s)$. E $U(s)$? Pela definição, $U(s) = \int_0^\infty e^{-st}u(t)dt$ — **Peraê: não se assute! Na verdade, não vamos calcular essa integral**: usamos uma **tabela de Transformadas de Laplace**.
 
 **Principais pares:**
 
