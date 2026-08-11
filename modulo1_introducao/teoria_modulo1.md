@@ -224,7 +224,7 @@ $$\ddot y + \frac{R}{L}\dot y + \frac{k^2}{LJ}y = \frac{k}{LJ}u \quad\Longrighta
 
 > ✏️ **Exercício proposto:** obtenha a equação diferencial do motor considerando como saída a **posição angular** (e não a velocidade), ou seja, $T = J\ddot y$. Você deve chegar a $\dddot y + a_2\ddot y + a_1\dot y = b_0u$ — uma equação de **3ª ordem**.
 
-**Seu kit de modelagem** (para quando precisar modelar um sistema novo):
+**Seu conjunto de equações para quando precisar modelar um sistema novo**:
 
 - 2ª Lei de Newton translacional: $\sum F = m\ddot y$; rotacional: $\sum T = J\ddot\theta$;
 - Mola: $-ky$; amortecedor: $-b\dot y$;
