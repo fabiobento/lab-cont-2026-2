@@ -293,7 +293,7 @@ $$G(s) = \frac{Y(s)}{U(s)} = \frac{b_0}{s^2 + a_1 s + a_0}$$
 
 Como vale para qualquer entrada, conhecida $G(s)$ obtemos $Y(s) = G(s)U(s)$ para qualquer entrada específica.
 
-**Exemplos** (aplicando Laplace e isolando $G(s)$):
+**Exemplos** (aplicando Laplace e isolando $`G(s)`$):
 
 1. $\ddot y + 2\dot y + 3y = u \;\Rightarrow\; G(s) = \dfrac{1}{s^2 + 2s + 3}$
 2. $\dddot y + 8\ddot y + 4\dot y = 2u \;\Rightarrow\; G(s) = \dfrac{2}{s^3 + 8s^2 + 4s}$
