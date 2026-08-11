@@ -776,9 +776,9 @@ $$M_p = e^{-\zeta\pi/\sqrt{1-\zeta^2}}$$
 
 **Tempo de subida.** Igualando $`y(t)`$ ao valor final (1) e tomando o primeiro instante:
 
-$$t_r^{0-100\%} = \frac{\pi - \beta}{\omega_d}, \qquad \beta = \arccos\zeta$$
+$$`t_r^{0-100\%} = \frac{\pi - \beta}{\omega_d}, \qquad \beta = \arccos\zeta`$$
 
-($\beta$ é o mesmo ângulo $\varphi$ da expressão de $y(t)$: $\mathrm{tg}\beta = \sqrt{1-\zeta^2}/\zeta$, $\cos\beta = \zeta$. **Use β em radianos!**)
+($`\beta`$ é o mesmo ângulo $`\varphi`$ da expressão de $`y(t)`$: $`\mathrm{tg}\beta = \sqrt{1-\zeta^2}/\zeta`$, $`\cos\beta = \zeta`$. **Use β em radianos!**)
 
 **Tempo de acomodação.** Esta fórmula **não é exata** — é uma aproximação pela **envoltória** exponencial $e^{-\sigma t}$ que multiplica o seno: quando a envoltória entra na faixa de ±5 %, a oscilação está **garantidamente** confinada a ela. Por isso a fórmula é **pessimista** (o $t_s$ real costuma ser menor — ou ligeiramente diferente):
 
