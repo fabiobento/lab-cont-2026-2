@@ -360,7 +360,7 @@ Somando as frações (MMC $= s(s+1)(s+2)$) e igualando os numeradores:
 
 $$2 = A(s+1)(s+2) + Bs(s+2) + Cs(s+1) = (A+B+C)s^2 + (3A+2B+C)s + 2A$$
 
-$$\Rightarrow\; 2A = 2,\quad A+B+C = 0,\quad 3A+2B+C = 0 \;\Rightarrow\; A = 1,\; B = -2,\; C = 1$$
+$$\Rightarrow\ 2A = 2,\quad A+B+C = 0,\quad 3A+2B+C = 0 \Rightarrow\; A = 1,\; B = -2,\; C = 1$$
 
 **Conferindo** (sempre confira!): $\dfrac{1}{s} - \dfrac{2}{s+1} + \dfrac{1}{s+2} = \dfrac{2}{s(s+1)(s+2)}$ ✓
 
