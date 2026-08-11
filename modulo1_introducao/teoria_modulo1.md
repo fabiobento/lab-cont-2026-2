@@ -776,7 +776,7 @@ $$M_p = e^{-\zeta\pi/\sqrt{1-\zeta^2}}$$
 
 **Tempo de subida.** Igualando $`y(t)`$ ao valor final (1) e tomando o primeiro instante:
 
-$t_r^{0-100\%} = \frac{\pi - \beta}{\omega_d}, \qquad \beta = \arccos\zeta$
+$$t_r^{0-100\%} = \frac{\pi - \beta}{\omega_d}\, \qquad \beta = \arccos\zeta$$
 
 ($`\beta`$ é o mesmo ângulo $`\varphi`$ da expressão de $`y(t)`$: $`\mathrm{tg}\beta = \sqrt{1-\zeta^2}/\zeta`$, $`\cos\beta = \zeta`$. **Use β em radianos!**)
 
