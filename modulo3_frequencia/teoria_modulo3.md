@@ -1,10 +1,10 @@
 # Módulo 03 — Controle Usando a Resposta em Frequência (Teoria)
 
 > Texto teórico dos tópicos 3.1 a 3.5.
-> Convenções do curso (Módulos 01 e 02): sistemas **SISO**; estabilidade = **BIBO**; malha padrão com realimentação unitária; $M_p = e^{-\zeta\pi/\sqrt{1-\zeta^2}}$; $t_p = \pi/\omega_d$; $t_r = (\pi - \arccos\zeta)/\omega_d$; $t_s(5\,\%) = 3/\sigma$.
+> Convenções do curso (Módulos 01 e 02): sistemas **SISO**; estabilidade = **BIBO**; malha padrão com realimentação unitária; $M_p = e^{-\zeta\pi/\sqrt{1-\zeta^2}}$; $t_p = \pi/\omega_d$; $t_r = (\pi - \arccos\zeta)/\omega_d$; $t_s(5\%) = 3/\sigma$.
 > **Novidades deste módulo:** a **resposta em frequência** como dado experimental do sistema; o **diagrama de Bode** e seus esboços assintóticos; as margens de **fase (PM)** e de **ganho (GM)**; a **carta de Nichols-Black**; o **critério de Nyquist**; o **atraso de transporte** na frequência; e o projeto de **P**, **avanço**, **atraso**, **PD**, **PI** e **PID** diretamente no domínio da frequência — inclusive **sem conhecer a função de transferência**.
-> **Convenção de esboço do curso:** quebras de módulo de ±20 dB/déc por polo/zero; fase interpolada por **reta de $\omega_q/5$ a $5\,\omega_q$** em torno de cada quebra (erro máximo ≈ **11°** = 0,19 rad); erro máximo de módulo de **3 dB** na quebra.
-> **Ponte frequência ↔ tempo:** $\mathrm{PM} \approx 100\,\zeta$ (boa até $\zeta \approx 0{,}65$); $\omega_n \approx \omega_r \approx \omega_c$; e **sempre** uma folga de **5–10°** na PM para absorver as aproximações.
+> **Convenção de esboço do curso:** quebras de módulo de ±20 dB/déc por polo/zero; fase interpolada por **reta de $\omega_q/5$ a $5\omega_q$** em torno de cada quebra (erro máximo ≈ **11°** = 0,19 rad); erro máximo de módulo de **3 dB** na quebra.
+> **Ponte frequência ↔ tempo:** $\mathrm{PM} \approx 100\zeta$ (boa até $\zeta \approx 0{,}65$); $\omega_n \approx \omega_r \approx \omega_c$; e **sempre** uma folga de **5–10°** na PM para absorver as aproximações.
 
 ---
 
@@ -22,17 +22,17 @@ A pergunta que guia o módulo: **o que podemos aprender sobre um sistema medindo
 
 Considere um sistema **linear e invariante no tempo (LIT)**, estável, com função de transferência
 
-$$G(s) = \frac{K\,N(s)}{\prod_i (s - p_i)}, \qquad \mathrm{Re}(p_i) < 0,$$
+$$G(s) = \frac{KN(s)}{\prod_i (s - p_i)}, \qquad \mathrm{Re}(p_i) < 0,$$
 
-excitado por uma **senoide** $u(t) = A\,\mathrm{sen}(\omega t)$. O que acontece com a saída?
+excitado por uma **senoide** $u(t) = A\mathrm{sen}(\omega t)$. O que acontece com a saída?
 
 **Dedução.** Escrevendo a senoide como $u(t) = \dfrac{A}{2j}\left(e^{j\omega t} - e^{-j\omega t}\right)$ e expandindo $Y(s) = G(s)U(s)$ em frações parciais, aparecem: (i) os termos associados aos polos $p_i$ de $G$ — que, sendo o sistema estável, **morrem com o tempo** ($e^{p_i t} \to 0$); e (ii) os termos associados aos polos da entrada, em $s = \pm j\omega$. O resíduo do termo em $s = j\omega$ é
 
-$$a_0 = \lim_{s \to j\omega} (s - j\omega)\,G(s)\,\frac{A}{2j}\left(\frac{1}{s - j\omega} - \frac{1}{s + j\omega}\right) = \frac{A\,G(j\omega)}{2j}.$$
+$$a_0 = \lim_{s \to j\omega} (s - j\omega)G(s)\frac{A}{2j}\left(\frac{1}{s - j\omega} - \frac{1}{s + j\omega}\right) = \frac{AG(j\omega)}{2j}.$$
 
 Sobrando apenas os termos que não morrem (o **regime permanente senoidal**):
 
-$$y(t) = a_0 e^{j\omega t} + \bar{a}_0 e^{-j\omega t} = \frac{A\,|G(j\omega)|}{2j}\left(e^{j(\omega t + \angle G(j\omega))} - e^{-j(\omega t + \angle G(j\omega))}\right)$$
+$$y(t) = a_0 e^{j\omega t} + \bar{a}_0 e^{-j\omega t} = \frac{A|G(j\omega)|}{2j}\left(e^{j(\omega t + \angle G(j\omega))} - e^{-j(\omega t + \angle G(j\omega))}\right)$$
 
 $$\boxed{\;y(t) = |G(j\omega)|\;A\;\mathrm{sen}\big(\omega t + \angle G(j\omega)\big)\;}$$
 
@@ -40,7 +40,7 @@ $$\boxed{\;y(t) = |G(j\omega)|\;A\;\mathrm{sen}\big(\omega t + \angle G(j\omega)
 
 > ⚠️ **Por que "regime permanente"?** No início da resposta há também o transitório (os termos que morrem). Como o sistema é estável, basta esperar "alguns $t_s$" e sobra só a senoide de regime. É por isso que o ensaio experimental funciona: injeta-se a senoide, espera-se o transitório morrer, mede-se amplitude e defasagem.
 
-**Exemplo-âncora (circuito RC).** $G(s) = \dfrac{1}{0{,}1034\,s + 1}$ ($R = 470\,\mathrm{k}\Omega$, $C = 220\,\mathrm{nF}$). Avaliando em três frequências:
+**Exemplo-âncora (circuito RC).** $G(s) = \dfrac{1}{0{,}1034s + 1}$ ($R = 470\mathrm{k}\Omega$, $C = 220\mathrm{nF}$). Avaliando em três frequências:
 
 | $\omega$ (rad/s) | $\|G(j\omega)\|$ | $\angle G(j\omega)$ | saída em regime (entrada de amplitude 1) |
 |---|---|---|---|
@@ -56,7 +56,7 @@ O circuito é um **filtro passa-baixas**: frequências baixas passam, altas são
 
 ### 3.1.3 Da medição ao diagrama de Bode
 
-Num ensaio experimental, injetamos $u(t) = A\,\mathrm{sen}(\omega t)$ e medimos, em regime:
+Num ensaio experimental, injetamos $u(t) = A\mathrm{sen}(\omega t)$ e medimos, em regime:
 
 - **módulo:** $|G(j\omega)| = \dfrac{\text{amplitude da saída}}{\text{amplitude da entrada}}$;
 - **fase:** medimos o atraso $\Delta t$ entre os picos da saída e da entrada e usamos a **regra de três** $\dfrac{\Delta t}{T} = \dfrac{|\angle G(j\omega)|}{360°}$ (um período $T$ corresponde a $360°$).
@@ -65,7 +65,7 @@ Repetindo para muitas frequências, obtemos uma tabela — e dela, um gráfico. 
 
 1. **as frequências de interesse cobrem várias ordens de grandeza** (de 0,01 a 1000 rad/s, por exemplo) → eixo de frequências **logarítmico**;
 2. **o módulo também varia por ordens de grandeza** → módulo em **decibéis**:
-$$\boxed{|G(j\omega)|_{\mathrm{dB}} = 20\,\log_{10}|G(j\omega)|}$$
+$$\boxed{|G(j\omega)|_{\mathrm{dB}} = 20\log_{10}|G(j\omega)|}$$
 
 O **diagrama de Bode** é o par de gráficos: **módulo em dB × $\log_{10}\omega$** e **fase em graus × $\log_{10}\omega$**.
 
@@ -75,7 +75,7 @@ O **diagrama de Bode** é o par de gráficos: **módulo em dB × $\log_{10}\omeg
 
 Se conhecemos $G(s)$, não precisamos medir nada: basta **substituir $s$ por $j\omega$** e calcular módulo e fase. Para o RC:
 
-$$G(j\omega) = \frac{1}{0{,}1034\,j\omega + 1} \;\Rightarrow\; |G(j\omega)| = \frac{1}{\sqrt{(0{,}1034\,\omega)^2 + 1}}, \qquad \angle G(j\omega) = -\mathrm{arctg}(0{,}1034\,\omega).$$
+$$G(j\omega) = \frac{1}{0{,}1034j\omega + 1} \;\Rightarrow\; |G(j\omega)| = \frac{1}{\sqrt{(0{,}1034\omega)^2 + 1}}, \qquad \angle G(j\omega) = -\mathrm{arctg}(0{,}1034\omega).$$
 
 Em altas frequências ($\omega \gg 1/0{,}1034$): $|G|_{\mathrm{dB}} \approx -20\log_{10}(0{,}1034) - 20\log_{10}\omega$ — uma **reta** no eixo log, que cai 20 dB por década. E a fase tende a $-90°$. Esse comportamento "de retas" é geral — e é a base dos esboços assintóticos.
 
@@ -88,19 +88,19 @@ Seja $G(s) = \dfrac{K}{s - p_1}$, $p_1 < 0$. Temos $|G(j\omega)| = \dfrac{|K|}{\
 - $\omega \ll |p_1|$: $|G|_{\mathrm{dB}} \approx 20\log|K| - 20\log|p_1|$ (**reta horizontal**);
 - $\omega \gg |p_1|$: $|G|_{\mathrm{dB}} \approx 20\log|K| - 20\log\omega$ (**reta de −20 dB/déc**).
 
-**Erro máximo:** na quebra, o valor exato é $|G(j|p_1|)| = \dfrac{|K|}{\sqrt{2}\,|p_1|}$, ou seja, **−3 dB abaixo da assíntota** — o maior erro do esboço de módulo. ($1/\sqrt{2} = 0{,}707 \leftrightarrow -3{,}01$ dB.)
+**Erro máximo:** na quebra, o valor exato é $|G(j|p_1|)| = \dfrac{|K|}{\sqrt{2}|p_1|}$, ou seja, **−3 dB abaixo da assíntota** — o maior erro do esboço de módulo. ($1/\sqrt{2} = 0{,}707 \leftrightarrow -3{,}01$ dB.)
 
 **Fase — convenção do curso:** a fase exata é $-\mathrm{arctg}(\omega/|p_1|)$, que vai de $0°$ a $-90°$ passando por **−45° na quebra**. Esboçamos por três segmentos:
 
 - $0°$ para $\omega < |p_1|/5$;
-- **reta de $|p_1|/5$ a $5\,|p_1|$** (no eixo log), passando por −45° na quebra — **tangente à curva exata**;
-- $-90°$ para $\omega > 5\,|p_1|$.
+- **reta de $|p_1|/5$ a $5|p_1|$** (no eixo log), passando por −45° na quebra — **tangente à curva exata**;
+- $-90°$ para $\omega > 5|p_1|$.
 
-A reta tem inclinação de $90°/\log_{10}(25) = 64{,}4°$/década. **Erro máximo da fase: ≈ 11° (0,19 rad)**, nos pontos $|p_1|/5$ e $5\,|p_1|$.
+A reta tem inclinação de $90°/\log_{10}(25) = 64{,}4°$/década. **Erro máximo da fase: ≈ 11° (0,19 rad)**, nos pontos $|p_1|/5$ e $5|p_1|$.
 
 ![Bode assintótico × exato de 1ª ordem](https://github.com/fabiobento/lab-cont-2026-2/blob/main/imagens/m3_fig02_bode_1a_ordem.png)
 
-> 📌 **Convenção, não erro:** em alguns textos a reta da fase vai de $\omega_q/10$ a $10\,\omega_q$ ("uma década antes e depois", erro máx. 5,7°). **Neste curso usamos $\omega_q/5$ a $5\,\omega_q$** — é a construção que usaremos em todos os esboços e projetos, e é ela que dá o erro máximo de ≈ 11°.
+> 📌 **Convenção, não erro:** em alguns textos a reta da fase vai de $\omega_q/10$ a $10\omega_q$ ("uma década antes e depois", erro máx. 5,7°). **Neste curso usamos $\omega_q/5$ a $5\omega_q$** — é a construção que usaremos em todos os esboços e projetos, e é ela que dá o erro máximo de ≈ 11°.
 
 **Zero de 1ª ordem:** $G(s) = K(s - z_1)$, $z_1 < 0$ — o efeito é o **oposto**: módulo sobe +20 dB/déc após a quebra em $|z_1|$; fase sobe de $0°$ a $+90°$ pela mesma reta de $|z_1|/5$ a $5|z_1|$.
 
@@ -113,11 +113,11 @@ $$|G|_{\mathrm{dB}} = 20\log|K| - 20\log|s-p_1|\Big|_{s=j\omega} - 20\log|s-p_2|
 e a fase também: $\angle G = \angle K - \mathrm{arctg}(\omega/|p_1|) - \mathrm{arctg}(\omega/|p_2|)$. Logo:
 
 - **módulo:** plano → **−20 dB/déc** após a 1ª quebra → **−40 dB/déc** após a 2ª;
-- **fase:** $0°$ → **−90°** → **−180°**, com uma reta de $\omega_q/5$ a $5\,\omega_q$ por polo (se as retas se sobrepuserem, somam-se as contribuições em cada frequência).
+- **fase:** $0°$ → **−90°** → **−180°**, com uma reta de $\omega_q/5$ a $5\omega_q$ por polo (se as retas se sobrepuserem, somam-se as contribuições em cada frequência).
 
 ![Bode de 2ª ordem com polos reais](https://github.com/fabiobento/lab-cont-2026-2/blob/main/imagens/m3_fig03_bode_2a_polos_reais.png)
 
-Na figura, com quebras separadas por 2 décadas ($p_2 = 100\,p_1$), o erro máximo da fase é ≈ **11,4°** — duas vezes o erro de um polo só nas vizinhanças das quebras. Como sempre confrontamos o esboço com a simulação, esse erro é mais do que aceitável para projeto.
+Na figura, com quebras separadas por 2 décadas ($p_2 = 100p_1$), o erro máximo da fase é ≈ **11,4°** — duas vezes o erro de um polo só nas vizinhanças das quebras. Como sempre confrontamos o esboço com a simulação, esse erro é mais do que aceitável para projeto.
 
 > ✏️ **Pense:** e se fosse um zero e um polo, $|z_1| < |p_1|$? O módulo subiria +20 dB/déc e depois voltaria a cair, ficando plano; a fase subiria e retornaria a 0°. Guarde essa imagem — ela **é** o compensador de avanço de fase do §3.4.
 
@@ -165,32 +165,32 @@ $$\mathrm{PM} = \mathrm{arctg}\left(\frac{2\zeta}{\sqrt{\sqrt{1+4\zeta^4} - 2\ze
 
 Traçando PM × $\zeta$, a curva é **praticamente uma reta até $\zeta \approx 0{,}65$** (erro de ~5°):
 
-$$\boxed{\mathrm{PM} \approx 100\,\zeta}$$
+$$\boxed{\mathrm{PM} \approx 100\zeta}$$
 
-E, com $\omega_n \approx \omega_c$ (confronte: $\omega_c/\omega_n = \sqrt{\sqrt{1+4\zeta^4}-2\zeta^2}$ varia só entre 1 e 0,79 para $\zeta \in [0{,}3;\,1]$), temos o **kit de tradução frequência ↔ tempo**:
+E, com $\omega_n \approx \omega_c$ (confronte: $\omega_c/\omega_n = \sqrt{\sqrt{1+4\zeta^4}-2\zeta^2}$ varia só entre 1 e 0,79 para $\zeta \in [0{,}3;1]$), temos o **kit de tradução frequência ↔ tempo**:
 
-$$\mathrm{PM} \approx 100\,\zeta, \qquad \omega_n \approx \omega_c, \qquad \text{e daí } M_p,\ t_p,\ t_r,\ t_s \text{ pelas fórmulas do Módulo 01.}$$
+$$\mathrm{PM} \approx 100\zeta, \qquad \omega_n \approx \omega_c, \qquad \text{e daí } M_p,\ t_p,\ t_r,\ t_s \text{ pelas fórmulas do Módulo 01.}$$
 
 ![PM × ξ](https://github.com/fabiobento/lab-cont-2026-2/blob/main/imagens/m3_fig06_pm_x_zeta.png)
 
-**Exemplo numérico.** $G(s) = \dfrac{1}{s(s+1)}$ ($\omega_n = 1$, $\zeta = 0{,}5$): $\omega_c = 0{,}786$ rad/s, PM = 51,8° → $\zeta \approx 0{,}5$ → $M_p \approx 16\,\%$ ✔ (simulação: 16,3 %). Triplicando o ganho ($3G$): $\omega_c = 1{,}594$ rad/s, PM = 32,1° → $\zeta \approx 0{,}32$ → $M_p \approx 35\,\%$ (simulação: 38,8 % — a aproximação já cobra seu preço; veremos a folga que resolve isso).
+**Exemplo numérico.** $G(s) = \dfrac{1}{s(s+1)}$ ($\omega_n = 1$, $\zeta = 0{,}5$): $\omega_c = 0{,}786$ rad/s, PM = 51,8° → $\zeta \approx 0{,}5$ → $M_p \approx 16\%$ ✔ (simulação: 16,3 %). Triplicando o ganho ($3G$): $\omega_c = 1{,}594$ rad/s, PM = 32,1° → $\zeta \approx 0{,}32$ → $M_p \approx 35\%$ (simulação: 38,8 % — a aproximação já cobra seu preço; veremos a folga que resolve isso).
 
 ### 3.1.10 Projeto do ganho P pela margem de fase (1º projeto do módulo)
 
-**Receita.** Requisito de overshoot $M_p$ → $\zeta$ (pela inversa da fórmula do overshoot) → **PM alvo = $100\,\zeta$** → no diagrama de Bode (medido ou calculado) da malha aberta:
+**Receita.** Requisito de overshoot $M_p$ → $\zeta$ (pela inversa da fórmula do overshoot) → **PM alvo = $100\zeta$** → no diagrama de Bode (medido ou calculado) da malha aberta:
 
 1. encontre a frequência $\omega$ em que a **fase** vale $\mathrm{PM}_{alvo} - 180°$ — ela será o novo $\omega_c$;
 2. faça o módulo valer 1 nessa frequência: $\boxed{K = 1/|G(j\omega)|}$ (em dB: $K_{\mathrm{dB}} = -|G(j\omega)|_{\mathrm{dB}}$).
 
 **Folga de segurança (regra prática do curso):** as aproximações ($\mathrm{PM} \approx 100\zeta$, $\omega_n \approx \omega_c$, sistema não é 2ª ordem exata) custam alguns graus e alguns pontos percentuais. Como requisitos de $M_p$ são **desigualdades** ("$M_p \leq X$"), projetamos com **5–10° a mais** de PM: $\mathrm{PM}_{proj} = 100\zeta + (5°\text{ a }10°)$. PM a mais nunca estraga um requisito de overshoot máximo.
 
-**Exemplo-âncora.** $G(s) = \dfrac{10}{s(s+2)}$, requisito $M_p \leq 20\,\%$ (± alguns pontos).
+**Exemplo-âncora.** $G(s) = \dfrac{10}{s(s+2)}$, requisito $M_p \leq 20\%$ (± alguns pontos).
 
-- Com $K = 1$: simulação mostra $M_p = 35{,}1\,\%$ ✗;
-- $M_p = 20\,\% \Rightarrow \zeta = 0{,}456 \Rightarrow$ PM alvo $= 45°$ → fase alvo $= -135°$;
+- Com $K = 1$: simulação mostra $M_p = 35{,}1\%$ ✗;
+- $M_p = 20\% \Rightarrow \zeta = 0{,}456 \Rightarrow$ PM alvo $= 45°$ → fase alvo $= -135°$;
 - no Bode: fase $= -135{,}0°$ em $\omega = 2$ rad/s, onde $|G(j2)| = 1{,}77$ (4,95 dB);
 - $K = 1/1{,}77 = 0{,}56$ → novo $\omega_c = 2$ rad/s, PM = 45°;
-- **simulação: $M_p = 23{,}3\,\%$** — um pouco acima dos 20 %, exatamente o custo das aproximações (com folga de +5°, teríamos ficado abaixo).
+- **simulação: $M_p = 23{,}3\%$** — um pouco acima dos 20 %, exatamente o custo das aproximações (com folga de +5°, teríamos ficado abaixo).
 
 ![Projeto de P pela PM](https://github.com/fabiobento/lab-cont-2026-2/blob/main/imagens/m3_fig07_projeto_P_pm.png)
 
@@ -224,9 +224,9 @@ Repare na ponte que se desenha: $M_p$ (tempo) ↔ $\zeta$ ↔ $M_r$ (frequência
 
 A pergunta central da seção: **conhecendo a resposta em frequência de malha aberta $G(j\omega)$, qual é a de malha fechada $T(j\omega) = \dfrac{G(j\omega)}{1 + G(j\omega)}$?**
 
-Se temos $G(j\omega)$ tabelado (ensaio experimental!), podemos calcular ponto a ponto. Escrevendo $G(j\omega) = |G|(\cos\varphi + j\,\mathrm{sen}\,\varphi)$:
+Se temos $G(j\omega)$ tabelado (ensaio experimental!), podemos calcular ponto a ponto. Escrevendo $G(j\omega) = |G|(\cos\varphi + j\mathrm{sen}\varphi)$:
 
-$$|T(j\omega)| = \frac{|G|}{\sqrt{(1 + |G|\cos\varphi)^2 + (|G|\,\mathrm{sen}\,\varphi)^2}}, \qquad \angle T(j\omega) = \varphi - \mathrm{arctg}\left(\frac{|G|\,\mathrm{sen}\,\varphi}{1 + |G|\cos\varphi}\right).$$
+$$|T(j\omega)| = \frac{|G|}{\sqrt{(1 + |G|\cos\varphi)^2 + (|G|\mathrm{sen}\varphi)^2}}, \qquad \angle T(j\omega) = \varphi - \mathrm{arctg}\left(\frac{|G|\mathrm{sen}\varphi}{1 + |G|\cos\varphi}\right).$$
 
 Funciona — mas é tedioso (nos anos 1940, muito tedioso). Dois casos limites ajudam a intuir:
 
@@ -279,42 +279,42 @@ Descartamos $\zeta = 0{,}92$ (a fórmula de $M_r$ exige $\zeta \leq 0{,}707$ —
 
 $$t_r = \frac{\pi - \arccos(0{,}38)}{1{,}3\sqrt{1-0{,}38^2}} \approx 1{,}5\ \mathrm{s}.$$
 
-**Conferindo na simulação:** $M_p = 26{,}7\,\%$ (previsto 27 %!) e $t_r = 1{,}38$ s (previsto ~1,5 s — erro < 10 %).
+**Conferindo na simulação:** $M_p = 26{,}7\%$ (previsto 27 %!) e $t_r = 1{,}38$ s (previsto ~1,5 s — erro < 10 %).
 
 ![Mr e ωr ≈ ωc na carta](https://github.com/fabiobento/lab-cont-2026-2/blob/main/imagens/m3_fig11_nb_mr_wc.png)
 
 **O kit de tradução completo (agora com dois caminhos para $\zeta$):**
 
-$$\mathrm{PM} \approx 100\,\zeta \quad\text{ou}\quad M_r = \frac{1}{2\zeta\sqrt{1-\zeta^2}}; \qquad \omega_n \approx \omega_r \approx \omega_c; \qquad \text{fórmulas de } M_p, t_r, t_p, t_s.$$
+$$\mathrm{PM} \approx 100\zeta \quad\text{ou}\quad M_r = \frac{1}{2\zeta\sqrt{1-\zeta^2}}; \qquad \omega_n \approx \omega_r \approx \omega_c; \qquad \text{fórmulas de } M_p, t_r, t_p, t_s.$$
 
 ### 3.2.6 Até onde vão as traduções? (2ª ordem tipo 0 e 3ª ordem)
 
 As relações acima foram deduzidas para 2ª ordem **tipo 1** sem zeros. Será que valem para outros sistemas? Vamos testar a cara e a coragem — aplicando-as onde "não deveriam" valer.
 
-**Teste 1 — 2ª ordem tipo 0:** $G(s) = \dfrac{3}{(s+0{,}02)(s+1)}$. Do Bode: $\omega_c = 1{,}6$ rad/s, fase = −147° → **PM = 33°**. Fingindo que valem as relações: $\zeta \approx 0{,}33$, $\omega_n \approx 1{,}6$ → $M_p \approx 33\,\%$, $t_r \approx 1{,}2$ s. **Simulação: $M_p = 38{,}1\,\%$, $t_r = 1{,}13$ s** — boa aproximação! (Na carta, a curva fica entre os lugares de 3 e 6 dB → $M_r \approx 5$ dB → $\zeta \approx 0{,}3$ → $M_p \approx 37\,\%$ — coerente pelo segundo caminho.)
+**Teste 1 — 2ª ordem tipo 0:** $G(s) = \dfrac{3}{(s+0{,}02)(s+1)}$. Do Bode: $\omega_c = 1{,}6$ rad/s, fase = −147° → **PM = 33°**. Fingindo que valem as relações: $\zeta \approx 0{,}33$, $\omega_n \approx 1{,}6$ → $M_p \approx 33\%$, $t_r \approx 1{,}2$ s. **Simulação: $M_p = 38{,}1\%$, $t_r = 1{,}13$ s** — boa aproximação! (Na carta, a curva fica entre os lugares de 3 e 6 dB → $M_r \approx 5$ dB → $\zeta \approx 0{,}3$ → $M_p \approx 37\%$ — coerente pelo segundo caminho.)
 
-**Teste 2 — 3ª ordem:** $G(s) = \dfrac{60}{(s+0{,}02)(s+1)(s+15)}$. Do Bode: $\omega_c = 1{,}9$ rad/s, **PM = 22°** → $\zeta \approx 0{,}22$, $\omega_n \approx 1{,}9$ → $M_p \approx 49\,\%$, $t_r \approx 1$ s. **Simulação: $M_p = 54{,}5\,\%$, $t_r = 0{,}97$ s** — ainda muito razoável!
+**Teste 2 — 3ª ordem:** $G(s) = \dfrac{60}{(s+0{,}02)(s+1)(s+15)}$. Do Bode: $\omega_c = 1{,}9$ rad/s, **PM = 22°** → $\zeta \approx 0{,}22$, $\omega_n \approx 1{,}9$ → $M_p \approx 49\%$, $t_r \approx 1$ s. **Simulação: $M_p = 54{,}5\%$, $t_r = 0{,}97$ s** — ainda muito razoável!
 
 ![Extensão das relações](https://github.com/fabiobento/lab-cont-2026-2/blob/main/imagens/m3_fig12_extensao_relacoes.png)
 
-> 📌 **Regra de tradução (com carimbo de honestidade):** as relações $\mathrm{PM} \approx 100\,\zeta$, $M_r \leftrightarrow \zeta$ e $\omega_n \approx \omega_c$ **valem, com algum cuidado, para qualquer sistema** — 2ª ordem tipo 0, 3ª ordem, ordens maiores. A precisão cai conforme o sistema se afasta do "par dominante de 2ª ordem", e é por isso que projetamos com **folga de 5–10° na PM** e sempre **conferimos por simulação**. É o preço honesto de projetar sem modelo.
+> 📌 **Regra de tradução (com carimbo de honestidade):** as relações $\mathrm{PM} \approx 100\zeta$, $M_r \leftrightarrow \zeta$ e $\omega_n \approx \omega_c$ **valem, com algum cuidado, para qualquer sistema** — 2ª ordem tipo 0, 3ª ordem, ordens maiores. A precisão cai conforme o sistema se afasta do "par dominante de 2ª ordem", e é por isso que projetamos com **folga de 5–10° na PM** e sempre **conferimos por simulação**. É o preço honesto de projetar sem modelo.
 
 ### 3.2.7 Projeto com requisito de sobressinal (3ª ordem)
 
-**Problema:** $G(s) = \dfrac{60}{(s+0{,}02)(s+1)(s+15)}$ (o sistema do Teste 2, com $M_p = 54\,\%$). **Requisito: $M_p < 30\,\%$.**
+**Problema:** $G(s) = \dfrac{60}{(s+0{,}02)(s+1)(s+15)}$ (o sistema do Teste 2, com $M_p = 54\%$). **Requisito: $M_p < 30\%$.**
 
-1. $M_p = 30\,\% \Rightarrow \zeta = 0{,}36$; folga: escolhemos $\zeta = 0{,}40$ ($M_p = 25\,\%$) → **PM alvo = 40° + 5° de folga = 45°** → fase alvo = −135°;
+1. $M_p = 30\% \Rightarrow \zeta = 0{,}36$; folga: escolhemos $\zeta = 0{,}40$ ($M_p = 25\%$) → **PM alvo = 40° + 5° de folga = 45°** → fase alvo = −135°;
 2. no Bode: fase = −135° em $\omega = 0{,}9$ rad/s, onde $|G| = 9{,}9$ dB;
 3. $K = -9{,}9$ dB $\approx 0{,}32$;
-4. previsão: $M_p \approx 25\,\%$; $t_r \approx \dfrac{\pi - \arccos(0{,}45)}{0{,}9\sqrt{1-0{,}45^2}} \approx 2{,}5$ s.
+4. previsão: $M_p \approx 25\%$; $t_r \approx \dfrac{\pi - \arccos(0{,}45)}{0{,}9\sqrt{1-0{,}45^2}} \approx 2{,}5$ s.
 
-**Simulação com $K = 0{,}32$: $M_p = 24{,}4\,\%$ ✔ (previsto 25 %!); $t_r = 2{,}0$ s** (previsto 2,5 s — a estimativa de $\omega_n$ foi a mais frouxa desta vez; mesmo assim, útil e conservadora).
+**Simulação com $K = 0{,}32$: $M_p = 24{,}4\%$ ✔ (previsto 25 %!); $t_r = 2{,}0$ s** (previsto 2,5 s — a estimativa de $\omega_n$ foi a mais frouxa desta vez; mesmo assim, útil e conservadora).
 
 ![Projeto com requisito de Mp](https://github.com/fabiobento/lab-cont-2026-2/blob/main/imagens/m3_fig13_projeto_3a_mp.png)
 
 ### 3.2.8 Projeto com requisito de instante de pico — e o limite do ganho puro
 
-**Problema:** $G(s) = \dfrac{0{,}005}{(s+0{,}03)(s+0{,}1)(s+0{,}5)}$. Com $K = 1$: $M_p = 17{,}8\,\%$, $t_p = 34{,}2$ s. **Requisito: $t_p \leq 25$ s.**
+**Problema:** $G(s) = \dfrac{0{,}005}{(s+0{,}03)(s+0{,}1)(s+0{,}5)}$. Com $K = 1$: $M_p = 17{,}8\%$, $t_p = 34{,}2$ s. **Requisito: $t_p \leq 25$ s.**
 
 Agora o requisito é de **velocidade**, não de overshoot — a tradução é por $\omega_n$:
 
@@ -322,7 +322,7 @@ Agora o requisito é de **velocidade**, não de overshoot — a tradução é po
 2. o novo cruzamento deve acontecer em $\omega_c = 0{,}13$ → lemos no Bode: $|G(j0{,}13)| = -7{,}3$ dB → **$K = +7{,}3$ dB $\approx 2{,}3$**;
 3. nessa frequência a fase é −144° → **PM = 36°** → $\zeta \approx 0{,}35$ → conferindo: $\omega_d = 0{,}13\sqrt{1-0{,}35^2} = 0{,}12$ (levemente abaixo do pedido — aceitável com a folga) e **$M_p$ previsto ≈ 31 %**.
 
-**Simulação com $K = 2{,}3$: $t_p = 23{,}1$ s ✔ (< 25 s); $M_p = 40{,}8\,\%$** — bem acima dos 31 % previstos.
+**Simulação com $K = 2{,}3$: $t_p = 23{,}1$ s ✔ (< 25 s); $M_p = 40{,}8\%$** — bem acima dos 31 % previstos.
 
 ![Projeto com requisito de tp](https://github.com/fabiobento/lab-cont-2026-2/blob/main/imagens/m3_fig14_projeto_wn.png)
 
@@ -379,7 +379,7 @@ Queremos saber se a **malha fechada** tem polos no **semiplano direito** (SPD). 
 - fechado por uma **semicircunferência de raio $R \to \infty$** pela direita;
 - percorrido no **sentido horário** (convenção do curso).
 
-Aplicamos o princípio do argumento à função $1 + KG(s)$: seus **zeros** são exatamente os **polos de malha fechada** (raízes de $\mathrm{den}_G + K\,\mathrm{num}_G = 0$) e seus **polos** são os **polos de malha aberta**. E "voltas de $1 + KG$ em torno da origem" = "voltas de $KG$ em torno do ponto $-1$" = **voltas de $G$ em torno de $-1/K$** (dividindo por $K$). Resultado — o **critério de Nyquist**:
+Aplicamos o princípio do argumento à função $1 + KG(s)$: seus **zeros** são exatamente os **polos de malha fechada** (raízes de $\mathrm{den}_G + K\mathrm{num}_G = 0$) e seus **polos** são os **polos de malha aberta**. E "voltas de $1 + KG$ em torno da origem" = "voltas de $KG$ em torno do ponto $-1$" = **voltas de $G$ em torno de $-1/K$** (dividindo por $K$). Resultado — o **critério de Nyquist**:
 
 $$\boxed{Z = N + P}$$
 
@@ -399,7 +399,7 @@ O contorno cobre **todo** o eixo imaginário ($\omega$ de $-\infty$ a $+\infty$)
 
 **Simetria (FTs com coeficientes reais):** $G(-j\omega) = \overline{G(j\omega)}$ — a metade $\omega < 0$ é a **reflexão da metade $\omega > 0$ no eixo real**. Basta traçar o polar ($\omega: 0 \to +\infty$) e espelhar.
 
-**E a semicircunferência de raio infinito?** Parametrizando $s = R\,e^{j\theta}$, $\theta: +90° \to -90°$:
+**E a semicircunferência de raio infinito?** Parametrizando $s = Re^{j\theta}$, $\theta: +90° \to -90°$:
 
 - FT **estritamente própria** (grau do numerador < grau do denominador): $|G| \sim R^{g_{num} - g_{den}} \to 0$ — toda a semicircunferência mapeia **na origem**, e a curva chega lá com ângulo $(g_{num} - g_{den}) \times 90°$;
 - FT **própria** (graus iguais): mapeia num ponto finito do eixo real.
@@ -419,9 +419,9 @@ O contorno cobre **todo** o eixo imaginário ($\omega$ de $-\infty$ a $+\infty$)
 
 > 📌 **Moral:** com planta instável de 1ª ordem, existe **ganho MÍNIMO** ($K > |p_1|$) — ao contrário da intuição de que "ganho menor é sempre mais seguro". O LGR do Módulo 02 mostrava o mesmo (o ramo sai do polo instável e só cruza para o SPE quando $K$ é grande o suficiente); o Nyquist mostra **por voltas** — e funciona também quando nem LGR nem Routh se aplicam com facilidade.
 
-**Exemplo 3 — tipo 1: $G(s) = \dfrac{1}{s(s+1)(s+2)}$:** aqui entra a **indentação**. O desvio $s = r\,e^{j\theta}$, $\theta: -90° \to +90°$, mapeia em $G \approx \dfrac{1}{2r\,e^{j\theta}}$ — uma **semicircunferência de raio infinito**, percorrida de $+90°$ a $-90°$ (sentido horário), que "fecha" o diagrama pelo lado direito do plano-G. O polar em si: fase de $-90°$ ($\omega \to 0^+$, módulo $\to \infty$) a $-270°$ ($\omega \to \infty$, origem), **cruzando o eixo real negativo** onde a fase é $-180°$:
+**Exemplo 3 — tipo 1: $G(s) = \dfrac{1}{s(s+1)(s+2)}$:** aqui entra a **indentação**. O desvio $s = re^{j\theta}$, $\theta: -90° \to +90°$, mapeia em $G \approx \dfrac{1}{2re^{j\theta}}$ — uma **semicircunferência de raio infinito**, percorrida de $+90°$ a $-90°$ (sentido horário), que "fecha" o diagrama pelo lado direito do plano-G. O polar em si: fase de $-90°$ ($\omega \to 0^+$, módulo $\to \infty$) a $-270°$ ($\omega \to \infty$, origem), **cruzando o eixo real negativo** onde a fase é $-180°$:
 
-$$\angle G(j\omega) = -90° - \mathrm{arctg}\,\omega - \mathrm{arctg}(\omega/2) = -180° \;\Rightarrow\; \omega = \sqrt{2}, \quad |G(j\sqrt{2})| = \frac{1}{\sqrt{2}\,\sqrt{3}\,\sqrt{6}} = \frac{1}{6}.$$
+$$\angle G(j\omega) = -90° - \mathrm{arctg}\omega - \mathrm{arctg}(\omega/2) = -180° \;\Rightarrow\; \omega = \sqrt{2}, \quad |G(j\sqrt{2})| = \frac{1}{\sqrt{2}\sqrt{3}\sqrt{6}} = \frac{1}{6}.$$
 
 A curva cruza o eixo real em $-1/6$. Contando voltas:
 
@@ -456,19 +456,19 @@ Conferindo por Routh: $(s+1)(s-5) + K(s+2) = s^2 + (K-4)s + (2K-5)$ → estável
 
 O **atraso de transporte** (tempo morto) é o intervalo entre a ação e o início da reação: $y(t) = u(t - \delta)$. Pela propriedade do deslocamento temporal de Laplace (Módulo 01):
 
-$$Y(s) = e^{-\delta s}\,U(s) \;\Rightarrow\; \boxed{G(s) = G_n(s)\,e^{-\delta s}}$$
+$$Y(s) = e^{-\delta s}U(s) \;\Rightarrow\; \boxed{G(s) = G_n(s)e^{-\delta s}}$$
 
 onde $G_n(s)$ é a parte racional. No Módulo 02, tratamos o atraso **no plano-s** com a **aproximação de Padé** (uma FT racional que "imita" $e^{-\delta s}$). Na frequência, não precisamos de aproximação — o atraso tem resposta em frequência **exata e simplicíssima**:
 
-$$e^{-j\delta\omega} = \cos(\delta\omega) - j\,\mathrm{sen}(\delta\omega) \;\Rightarrow\; \left|e^{-j\delta\omega}\right| = 1, \qquad \angle e^{-j\delta\omega} = -\delta\omega.$$
+$$e^{-j\delta\omega} = \cos(\delta\omega) - j\mathrm{sen}(\delta\omega) \;\Rightarrow\; \left|e^{-j\delta\omega}\right| = 1, \qquad \angle e^{-j\delta\omega} = -\delta\omega.$$
 
 **Leitura:** o atraso **não altera o módulo** (nem por 1 dB) e **subtrai fase linearmente com $\omega$** — no eixo logarítmico do Bode, uma queda cada vez mais vertiginosa, **que nunca converge**.
 
-**Exemplo-âncora.** $G(s) = \dfrac{4}{(s+0{,}1)(s+1)}\,e^{-0{,}2s}$:
+**Exemplo-âncora.** $G(s) = \dfrac{4}{(s+0{,}1)(s+1)}e^{-0{,}2s}$:
 
-- sem atraso: $\omega_c = 1{,}9$ rad/s, **PM = 31°** → $\zeta \approx 0{,}31$ → $M_p \approx 36\,\%$ (simulação: 41,2 %, $t_r = 0{,}95$ s);
-- com atraso: $\omega_c$ **inalterado** (o módulo não mudou!), mas a fase em $\omega_c$ cai de $\delta\omega_c = 0{,}2 \times 1{,}9 = 0{,}38$ rad $\approx 22°$ → **PM ≈ 9,6°** → $\zeta \approx 0{,}10$ → $M_p$ previsto $\approx 73\,\%$;
-- **simulação com atraso (Padé ordem 8): $M_p = 78{,}8\,\%$, $t_r = 1{,}05$ s** — o atraso de 0,2 s quase **dobrou** o overshoot.
+- sem atraso: $\omega_c = 1{,}9$ rad/s, **PM = 31°** → $\zeta \approx 0{,}31$ → $M_p \approx 36\%$ (simulação: 41,2 %, $t_r = 0{,}95$ s);
+- com atraso: $\omega_c$ **inalterado** (o módulo não mudou!), mas a fase em $\omega_c$ cai de $\delta\omega_c = 0{,}2 \times 1{,}9 = 0{,}38$ rad $\approx 22°$ → **PM ≈ 9,6°** → $\zeta \approx 0{,}10$ → $M_p$ previsto $\approx 73\%$;
+- **simulação com atraso (Padé ordem 8): $M_p = 78{,}8\%$, $t_r = 1{,}05$ s** — o atraso de 0,2 s quase **dobrou** o overshoot.
 
 ![Atraso no Bode](https://github.com/fabiobento/lab-cont-2026-2/blob/main/imagens/m3_fig21_atraso_bode.png)
 
@@ -480,7 +480,7 @@ O remédio imediato (quando não se pode projetar compensador): **reduzir o ganh
 
 Fechando o tópico com a imagem mais importante sobre atrasos. O sistema $G_n(s) = \dfrac{4}{(s+0{,}1)(s+1)}$ tem fase que vai de $0°$ a $-180°$: seu Nyquist **nunca cruza o eixo real negativo** → **estável para todo $K > 0$** (margem de ganho infinita!).
 
-Com o atraso $e^{-0{,}2s}$: a fase passa a ser $\angle G_n - 0{,}2\,\omega$ — **decresce sem limite** — enquanto o módulo continua indo a zero. A curva passa de "arco que morre na origem" para uma **espiral com infinitas voltas** em torno da origem: cruza o eixo real negativo **infinitas vezes**, cada vez mais perto da origem.
+Com o atraso $e^{-0{,}2s}$: a fase passa a ser $\angle G_n - 0{,}2\omega$ — **decresce sem limite** — enquanto o módulo continua indo a zero. A curva passa de "arco que morre na origem" para uma **espiral com infinitas voltas** em torno da origem: cruza o eixo real negativo **infinitas vezes**, cada vez mais perto da origem.
 
 ![Espiral de Nyquist](https://github.com/fabiobento/lab-cont-2026-2/blob/main/imagens/m3_fig22_atraso_nyquist.png)
 
@@ -499,7 +499,7 @@ No §3.2.8 vimos o limite do ganho puro: um botão só (o cruzamento) não atend
 Seja $G(s) = G_n(s)(s - z_1)$, $z_1 < 0$. Somando as contribuições (§3.1.5):
 
 - **módulo:** +$20\log|z_1|$ em baixas frequências e **+20 dB/déc** acima da quebra em $|z_1|$;
-- **fase:** sobe de $0°$ a **+90°**, pela reta de $|z_1|/5$ a $5|z_1|$ (+45° em $|z_1|$; equação da reta: $\varphi = 90°\,\dfrac{\log(5\omega/|z_1|)}{\log 25}$).
+- **fase:** sobe de $0°$ a **+90°**, pela reta de $|z_1|/5$ a $5|z_1|$ (+45° em $|z_1|$; equação da reta: $\varphi = 90°\dfrac{\log(5\omega/|z_1|)}{\log 25}$).
 
 **Adicionar um zero aumenta a fase — logo, aumenta a PM** onde a quebra estiver. Ótimo! Só há um problema: um elemento com **zero puro** é uma FT **imprópria** (grau do numerador > grau do denominador) — o "sistema adivinho" do Módulo 02 — **não realizável** na prática. Precisamos casá-lo com um polo.
 
@@ -515,12 +515,12 @@ Se zero e polo estiverem **na mesma frequência**, seus efeitos se cancelam — 
 
 ### 3.4.3 Zero e depois polo ($|z_1| < |p_1|$): o avanço de fase
 
-Considere o par $G_n(s)\,\dfrac{s - z_1}{s - p_1}$ com $|z_1| < |p_1|$ (zero **antes** do polo — por exemplo, 2 décadas de separação, $|z_1| = 1$, $|p_1| = 100$):
+Considere o par $G_n(s)\dfrac{s - z_1}{s - p_1}$ com $|z_1| < |p_1|$ (zero **antes** do polo — por exemplo, 2 décadas de separação, $|z_1| = 1$, $|p_1| = 100$):
 
 - **módulo:** em baixas frequências o par custa $20\log(|z_1|/|p_1|) = -40$ dB; entre as quebras, sobe +20 dB/déc; depois do polo, **estaciona em 0 dB** (zero e polo se cancelam);
 - **fase:** sobe com o zero, desce com o polo — um **"morro"** com **máximo na média geométrica** das quebras:
 
-$$\boxed{\omega_{máx} = \sqrt{|z_1|\,|p_1|}} \qquad \text{(média aritmética no eixo log!)}$$
+$$\boxed{\omega_{máx} = \sqrt{|z_1||p_1|}} \qquad \text{(média aritmética no eixo log!)}$$
 
 Se zero e polo estiverem longe um do outro, o pico se aproxima de +90°; próximos, o pico é menor. Esse elemento — que **adianta a fase** numa faixa de frequências escolhida — é o **compensador de avanço de fase** (em inglês, *lead*).
 
@@ -532,9 +532,9 @@ Parametrizamos o compensador (com ganho unitário em altas frequências) como
 
 $$C_a(s) = \frac{Ts + 1}{\alpha Ts + 1}, \qquad \alpha < 1 \;\; (\Leftrightarrow |z_1| = 1/T < 1/(\alpha T) = |p_1|).$$
 
-**Fase máxima e onde ela ocorre.** A fase exata é $\varphi(\omega) = \mathrm{arctg}(T\omega) - \mathrm{arctg}(\alpha T\omega)$. O máximo ocorre em $\omega_{máx} = \dfrac{1}{T\sqrt{\alpha}}$ (a média geométrica — confira derivando!). Substituindo e usando $\mathrm{tg}(a-b) = \dfrac{\mathrm{tg}\,a - \mathrm{tg}\,b}{1 + \mathrm{tg}\,a\,\mathrm{tg}\,b}$:
+**Fase máxima e onde ela ocorre.** A fase exata é $\varphi(\omega) = \mathrm{arctg}(T\omega) - \mathrm{arctg}(\alpha T\omega)$. O máximo ocorre em $\omega_{máx} = \dfrac{1}{T\sqrt{\alpha}}$ (a média geométrica — confira derivando!). Substituindo e usando $\mathrm{tg}(a-b) = \dfrac{\mathrm{tg}a - \mathrm{tg}b}{1 + \mathrm{tg}a\mathrm{tg}b}$:
 
-$$\mathrm{tg}\,\varphi_{máx} = \frac{\sqrt{1/\alpha} - \sqrt{\alpha}}{2} \;\Rightarrow\; \cos\varphi_{máx} = \sqrt{1 - \mathrm{sen}^2\varphi_{máx}} \;\Rightarrow\; \boxed{\mathrm{sen}\,\varphi_{máx} = \frac{1-\alpha}{1+\alpha}} \;\Leftrightarrow\; \boxed{\alpha = \frac{1 - \mathrm{sen}\,\varphi_{máx}}{1 + \mathrm{sen}\,\varphi_{máx}}}$$
+$$\mathrm{tg}\varphi_{máx} = \frac{\sqrt{1/\alpha} - \sqrt{\alpha}}{2} \;\Rightarrow\; \cos\varphi_{máx} = \sqrt{1 - \mathrm{sen}^2\varphi_{máx}} \;\Rightarrow\; \boxed{\mathrm{sen}\varphi_{máx} = \frac{1-\alpha}{1+\alpha}} \;\Leftrightarrow\; \boxed{\alpha = \frac{1 - \mathrm{sen}\varphi_{máx}}{1 + \mathrm{sen}\varphi_{máx}}}$$
 
 **Ganho do compensador em $\omega_{máx}$:** $|C_a(j\omega_{máx})| = \sqrt{\dfrac{1 + T^2\omega_{máx}^2}{1 + \alpha^2T^2\omega_{máx}^2}} = \dfrac{1}{\sqrt{\alpha}}$ (em dB: $-10\log\alpha > 0$). O compensador "de brinde" **levanta o módulo** onde adianta a fase — precisamos contabilizar isso no ganho $K$.
 
@@ -547,25 +547,25 @@ $$\mathrm{tg}\,\varphi_{máx} = \frac{\sqrt{1/\alpha} - \sqrt{\alpha}}{2} \;\Rig
 1. **Traduzir** os requisitos: PM e $\omega_c$ alvos (com a folga).
 2. **Medir** no Bode da planta (experimental ou calculado) a fase e o módulo em $\omega_c$: PM atual $= \angle G(j\omega_c) + 180°$.
 3. **Decidir:** se a PM atual já for suficiente — **só ganho resolve** ("se dá com controlador mais simples, por que complicar?"; excesso de PM é bom, pois requisitos de $M_p$ são desigualdades).
-4. Senão, a fase que falta: $\varphi_{máx} = \mathrm{PM}_{desejada} - \angle G(j\omega_c) - 180°$ e $\alpha = \dfrac{1 - \mathrm{sen}\,\varphi_{máx}}{1 + \mathrm{sen}\,\varphi_{máx}}$.
+4. Senão, a fase que falta: $\varphi_{máx} = \mathrm{PM}_{desejada} - \angle G(j\omega_c) - 180°$ e $\alpha = \dfrac{1 - \mathrm{sen}\varphi_{máx}}{1 + \mathrm{sen}\varphi_{máx}}$.
 5. **Posicionar** o pico em $\omega_c$: $T = \dfrac{1}{\omega_c\sqrt{\alpha}}$.
-6. **Corrigir o ganho:** em $\omega_c$, o par introduz $1/\sqrt{\alpha}$; para fazer $|C\,G(j\omega_c)| = 1$: $\boxed{K = \frac{\sqrt{\alpha}}{|G(j\omega_c)|}}$ — ou, em dB, $\boxed{K_{\mathrm{dB}} = 10\log\alpha - |G(j\omega_c)|_{\mathrm{dB}}}$.
+6. **Corrigir o ganho:** em $\omega_c$, o par introduz $1/\sqrt{\alpha}$; para fazer $|CG(j\omega_c)| = 1$: $\boxed{K = \frac{\sqrt{\alpha}}{|G(j\omega_c)|}}$ — ou, em dB, $\boxed{K_{\mathrm{dB}} = 10\log\alpha - |G(j\omega_c)|_{\mathrm{dB}}}$.
 
-**Controlador final:** $C(s) = K\,\dfrac{Ts+1}{\alpha Ts + 1}$. Depois: **simular e conferir** (e iterar, se preciso).
+**Controlador final:** $C(s) = K\dfrac{Ts+1}{\alpha Ts + 1}$. Depois: **simular e conferir** (e iterar, se preciso).
 
 ### 3.4.6 Exemplo-âncora de avanço (completo, passo a passo)
 
-**Planta:** $G(s) = \dfrac{0{,}005}{s(s+0{,}05)}$. **Requisitos:** $t_r \leq 18$ s e $M_p \leq 30\,\%$.
+**Planta:** $G(s) = \dfrac{0{,}005}{s(s+0{,}05)}$. **Requisitos:** $t_r \leq 18$ s e $M_p \leq 30\%$.
 
-1. **Tradução:** $M_p = 30\,\% \Rightarrow \zeta = 0{,}358$ → usamos $\zeta = 0{,}35$: PM $\geq 35°$; com folga de +5°: **PM alvo = 40°**. Velocidade: $t_r = \dfrac{\pi - \arccos(0{,}35)}{\omega_n\sqrt{1-0{,}35^2}} \leq 18 \Rightarrow \omega_n \geq 0{,}11$ → **$\omega_c$ alvo = 0,11 rad/s**.
+1. **Tradução:** $M_p = 30\% \Rightarrow \zeta = 0{,}358$ → usamos $\zeta = 0{,}35$: PM $\geq 35°$; com folga de +5°: **PM alvo = 40°**. Velocidade: $t_r = \dfrac{\pi - \arccos(0{,}35)}{\omega_n\sqrt{1-0{,}35^2}} \leq 18 \Rightarrow \omega_n \geq 0{,}11$ → **$\omega_c$ alvo = 0,11 rad/s**.
 2. **Medida:** em $\omega = 0{,}11$: $|G| \approx -9{,}2$ dB (0,35), fase $\approx -157°$ → **PM atual = 23°** ✗ (e não adianta só ganho: para cruzar em 0,11 precisaríamos de $K = 1/0{,}35$ e a PM ficaria nos mesmos 23°).
-3. **Fase que falta:** $\varphi_{máx} = 40° + 157° - 180° = 17°$ → $\alpha = \dfrac{1 - \mathrm{sen}\,17°}{1 + \mathrm{sen}\,17°} = 0{,}54$.
+3. **Fase que falta:** $\varphi_{máx} = 40° + 157° - 180° = 17°$ → $\alpha = \dfrac{1 - \mathrm{sen}17°}{1 + \mathrm{sen}17°} = 0{,}54$.
 4. **Posicionamento:** $T = \dfrac{1}{0{,}11\sqrt{0{,}54}} = 12$ → $\alpha T = 6{,}5$.
 5. **Ganho:** $K_{\mathrm{dB}} = 10\log(0{,}54) - (-9{,}2) = -2{,}7 + 9{,}2 = 6{,}5$ dB → $K = 2{,}1$.
 
-$$\boxed{C(s) = 2{,}1\,\frac{12s + 1}{6{,}5s + 1}}$$
+$$\boxed{C(s) = 2{,}1\frac{12s + 1}{6{,}5s + 1}}$$
 
-**Conferência:** sistema compensado com $\omega_c = 0{,}115$ rad/s e **PM = 40,9°** ✔; simulação da malha fechada: **$M_p = 29{,}6\,\%$** (≤ 30 % ✔), **$t_r = 15{,}5$ s** (≤ 18 s ✔). Projeto aprovado de primeira — guardando este compensador: ele volta no §3.5.2, numa comparação reveladora com o PD.
+**Conferência:** sistema compensado com $\omega_c = 0{,}115$ rad/s e **PM = 40,9°** ✔; simulação da malha fechada: **$M_p = 29{,}6\%$** (≤ 30 % ✔), **$t_r = 15{,}5$ s** (≤ 18 s ✔). Projeto aprovado de primeira — guardando este compensador: ele volta no §3.5.2, numa comparação reveladora com o PD.
 
 ![Projeto de avanço](https://github.com/fabiobento/lab-cont-2026-2/blob/main/imagens/m3_fig28_projeto_avanco.png)
 
@@ -580,12 +580,12 @@ O problema agora é outro: suponha que o transitório já está bom ($\omega_c$ 
 
 **Nome e regra de posicionamento:** como o efeito colateral é **atrasar a fase** (comendo alguns graus de PM), posicionamos o par **bem abaixo** do cruzamento: **polo em $\omega_c/10$** (ou $\omega_c/20$, $\omega_c/200$ quando se quer ainda menos perturbação). É o **compensador de atraso de fase** (em inglês, *lag*).
 
-**Exemplo-âncora.** $G(s) = \dfrac{10}{(s+1)(s+2)}$ (tipo 0): $k_p = G(0) = 5$ → $e_{ss} = \dfrac{1}{1+5} = 16{,}7\,\%$. **Requisito: $e_{ss} \leq 10\,\%$.**
+**Exemplo-âncora.** $G(s) = \dfrac{10}{(s+1)(s+2)}$ (tipo 0): $k_p = G(0) = 5$ → $e_{ss} = \dfrac{1}{1+5} = 16{,}7\%$. **Requisito: $e_{ss} \leq 10\%$.**
 
-1. Folga: projetamos para a **metade** do erro: $e_{ss} = 1/12 = 8{,}3\,\%$ → $k_{p,c} = 11$ → precisamos multiplicar o ganho DC por $\dfrac{z}{p} = \dfrac{11}{5} = 2{,}2$.
+1. Folga: projetamos para a **metade** do erro: $e_{ss} = 1/12 = 8{,}3\%$ → $k_{p,c} = 11$ → precisamos multiplicar o ganho DC por $\dfrac{z}{p} = \dfrac{11}{5} = 2{,}2$.
 2. Do Bode: $\omega_c = 2{,}76$ rad/s → polo em $\omega_c/10$: $p = -0{,}27$; zero: $z = 2{,}2 \times 0{,}27 = 0{,}61$.
 $$\boxed{C(s) = \frac{s + 0{,}61}{s + 0{,}27}}$$
-3. **Conferência:** simulação da malha fechada — $e_{ss}$: $0{,}167 \to 0{,}081$ (**metade** ✔); $M_p$: $22{,}1\,\% \to 22{,}7\,\%$; $t_r$: $0{,}65 \to 0{,}67$ s — o transitório **quase não sentiu**.
+3. **Conferência:** simulação da malha fechada — $e_{ss}$: $0{,}167 \to 0{,}081$ (**metade** ✔); $M_p$: $22{,}1\% \to 22{,}7\%$; $t_r$: $0{,}65 \to 0{,}67$ s — o transitório **quase não sentiu**.
 
 ![Projeto de atraso](https://github.com/fabiobento/lab-cont-2026-2/blob/main/imagens/m3_fig29_projeto_atraso.png)
 
@@ -593,24 +593,24 @@ $$\boxed{C(s) = \frac{s + 0{,}61}{s + 0{,}27}}$$
 
 ### 3.4.8 Projeto completo: avanço + atraso
 
-**Planta:** $G(s) = \dfrac{1}{(s+5)(s+10)}$. **Requisitos:** $M_p < 10\,\%$, $t_r \leq 0{,}1$ s **e** $e_{ss} \leq 0{,}05$ — três requisitos simultâneos, o caso que o ganho puro não resolve.
+**Planta:** $G(s) = \dfrac{1}{(s+5)(s+10)}$. **Requisitos:** $M_p < 10\%$, $t_r \leq 0{,}1$ s **e** $e_{ss} \leq 0{,}05$ — três requisitos simultâneos, o caso que o ganho puro não resolve.
 
 **Etapa 1 — avanço (transitório):**
-1. Tradução: $M_p = 10\,\% \Rightarrow \zeta = 0{,}59$ → PM $\geq 59°$; $t_r \leq 0{,}1 \Rightarrow \omega_n \geq 27$ → **$\omega_c$ alvo = 27 rad/s**.
+1. Tradução: $M_p = 10\% \Rightarrow \zeta = 0{,}59$ → PM $\geq 59°$; $t_r \leq 0{,}1 \Rightarrow \omega_n \geq 27$ → **$\omega_c$ alvo = 27 rad/s**.
 2. Medida em 27 rad/s: fase = $-149{,}2°$ (PM atual = 31°), $|G| = -58{,}0$ dB.
 3. Fase que falta: $59° - 31° = 28°$ — **+ 5° prevendo a perda de fase que o compensador de atraso vai causar** → $\varphi = 33°$ → $\alpha = 0{,}30$.
 4. $T = \dfrac{1}{27\sqrt{0{,}3}} = 0{,}07$ ($\alpha T = 0{,}021$); $K_{\mathrm{dB}} = 10\log(0{,}3) + 58{,}0 = -5{,}3 + 58{,}0 = 52{,}5$ dB → $K = 420$.
-$$C_1(s) = 420\,\frac{0{,}07s + 1}{0{,}021s + 1}$$
+$$C_1(s) = 420\frac{0{,}07s + 1}{0{,}021s + 1}$$
 
-**Etapa 2 — atraso (regime):** com $C_1$: $k_p = \dfrac{420}{50} = 8{,}4$ → $e_{ss} = \dfrac{1}{9{,}4} = 10{,}6\,\%$ ✗ (requisito: 5 %).
+**Etapa 2 — atraso (regime):** com $C_1$: $k_p = \dfrac{420}{50} = 8{,}4$ → $e_{ss} = \dfrac{1}{9{,}4} = 10{,}6\%$ ✗ (requisito: 5 %).
 
 1. $e_{ss} = 0{,}05 = 1/20$ → $k_p = 19$ → razão necessária: $\dfrac{19}{8{,}4} \approx 2$ → $z/p = 2$ (o **dobro**).
 2. Polo bem longe: $p = -\omega_c/200 = -0{,}14$; zero: $z = 2p = -0{,}28$.
 $$C_2(s) = \frac{s + 0{,}28}{s + 0{,}14}$$
 
-**Controlador final:** $C(s) = C_1(s)\,C_2(s)$.
+**Controlador final:** $C(s) = C_1(s)C_2(s)$.
 
-**Conferência por simulação:** $M_p = 7{,}4\,\%$ ✔ (< 10 %), $t_r = 0{,}075$ s ✔ (≤ 0,1 s), $e_{ss} = 0{,}060 \approx 5\,\%$ ✔. **Os três requisitos atendidos** — e note como a etapa de atraso quase não perturbou o transitório (os 5° de previsão fizeram seu trabalho).
+**Conferência por simulação:** $M_p = 7{,}4\%$ ✔ (< 10 %), $t_r = 0{,}075$ s ✔ (≤ 0,1 s), $e_{ss} = 0{,}060 \approx 5\%$ ✔. **Os três requisitos atendidos** — e note como a etapa de atraso quase não perturbou o transitório (os 5° de previsão fizeram seu trabalho).
 
 ![Projeto avanço + atraso](https://github.com/fabiobento/lab-cont-2026-2/blob/main/imagens/m3_fig30_projeto_avanco_atraso.png)
 
@@ -619,7 +619,7 @@ $$C_2(s) = \frac{s + 0{,}28}{s + 0{,}14}$$
 As três curvas do exemplo anterior na carta contam a história inteira de uma vez:
 
 - **$G$ (azul):** nem cruza 0 dB nas frequências úteis → malha fechada lenta e com erro grande;
-- **$C_1G$ (verde):** o avanço **empurrou a curva para a direita e para cima** na região do cruzamento — PM ≈ 60°, $\omega_c \approx 27$ — comportamento de 2ª ordem subamortecido ($M_p \approx 10\,\%$), mas o ganho em baixas continuou baixo;
+- **$C_1G$ (verde):** o avanço **empurrou a curva para a direita e para cima** na região do cruzamento — PM ≈ 60°, $\omega_c \approx 27$ — comportamento de 2ª ordem subamortecido ($M_p \approx 10\%$), mas o ganho em baixas continuou baixo;
 - **$C_1C_2G$ (vermelha):** o atraso **levantou só as baixas frequências**; perto do cruzamento, **vermelha e verde se unem** — PM e $\omega_c$ preservados, erro corrigido.
 
 ![Avanço e atraso na carta](https://github.com/fabiobento/lab-cont-2026-2/blob/main/imagens/m3_fig31_avanco_atraso_nb.png)
@@ -636,18 +636,18 @@ No Módulo 02, projetamos PD, PI e PID **no plano-s** (pelo LGR). Agora os reenc
 
 Se um zero puro já aumenta a fase onde queremos (§3.4.1), o controlador mais simples possível com essa propriedade é
 
-$$C(s) = k_p + k_d\,s = k_p\left(1 + \frac{k_d}{k_p}s\right) \qquad \text{(PD: proporcional + derivada do erro).}$$
+$$C(s) = k_p + k_ds = k_p\left(1 + \frac{k_d}{k_p}s\right) \qquad \text{(PD: proporcional + derivada do erro).}$$
 
 **Projeto (dedução das fórmulas diretas).** Requisitos traduzidos em PM e $\omega_c$ alvos; seja $\varphi$ a fase que falta: $\varphi = \mathrm{PM}_{desejada} - \angle G(j\omega_c) - 180°$.
 
-1. **Fase do PD em $\omega_c$:** $\angle C(j\omega_c) = \mathrm{arctg}\left(\dfrac{k_d\,\omega_c}{k_p}\right) = \varphi$ → $\dfrac{k_d}{k_p} = \dfrac{\mathrm{tg}\,\varphi}{\omega_c}$ (o zero fica em $z_1 = -\dfrac{k_p}{k_d} = -\dfrac{\omega_c}{\mathrm{tg}\,\varphi}$).
+1. **Fase do PD em $\omega_c$:** $\angle C(j\omega_c) = \mathrm{arctg}\left(\dfrac{k_d\omega_c}{k_p}\right) = \varphi$ → $\dfrac{k_d}{k_p} = \dfrac{\mathrm{tg}\varphi}{\omega_c}$ (o zero fica em $z_1 = -\dfrac{k_p}{k_d} = -\dfrac{\omega_c}{\mathrm{tg}\varphi}$).
 2. **Módulo 1 em $\omega_c$:** $|C(j\omega_c)| = \sqrt{k_p^2 + k_d^2\omega_c^2} = \dfrac{1}{|G(j\omega_c)|}$. Dividindo as duas condições e usando $1 + \mathrm{tg}^2\varphi = 1/\cos^2\varphi$, saem as **fórmulas diretas**:
 
-$$\boxed{k_p = \frac{\cos\varphi}{|G(j\omega_c)|} \qquad\qquad k_d = \frac{\mathrm{sen}\,\varphi}{\omega_c\,|G(j\omega_c)|}}$$
+$$\boxed{k_p = \frac{\cos\varphi}{|G(j\omega_c)|} \qquad\qquad k_d = \frac{\mathrm{sen}\varphi}{\omega_c|G(j\omega_c)|}}$$
 
 **O problema da realizabilidade (e a solução-padrão):** o PD ideal é **impróprio**. Comparando com o avanço $C_a = \dfrac{Ts+1}{\alpha Ts+1}$: quando $\alpha \to 0$, o polo $-1/(\alpha T) \to -\infty$ e o avanço **degenera num PD** — *o PD é um avanço com o polo no infinito*. A solução prática é trazer o polo de volta do infinito, mas **longe o bastante para não atrapalhar**: o **polo de filtragem** em
 
-$$p_1 = -100\,\omega_c \qquad \Rightarrow \qquad C'(s) = \frac{k_p + k_d\,s}{s/p_1 + 1}.$$
+$$p_1 = -100\omega_c \qquad \Rightarrow \qquad C'(s) = \frac{k_p + k_ds}{s/p_1 + 1}.$$
 
 Custo: em $\omega = p_1/100$, o módulo do filtro é $\approx 1$ e a fase é $-\mathrm{arctg}(0{,}01) \approx -0{,}6°$ — desprezível.
 
@@ -655,13 +655,13 @@ Custo: em $\omega = p_1/100$, o módulo do filtro é $\approx 1$ e a fase é $-\
 
 ### 3.5.2 O lado sombrio do PD: sinais com variação abrupta
 
-Vamos projetar o PD para **exatamente o mesmo problema do exemplo-âncora de avanço** (§3.4.6): $G(s) = \dfrac{0{,}005}{s(s+0{,}05)}$, $M_p \leq 30\,\%$, $t_r \leq 18$ s → PM = 40°, $\omega_c = 0{,}11$ rad/s, $|G(j\omega_c)| = 0{,}35$, $\varphi = 17°$:
+Vamos projetar o PD para **exatamente o mesmo problema do exemplo-âncora de avanço** (§3.4.6): $G(s) = \dfrac{0{,}005}{s(s+0{,}05)}$, $M_p \leq 30\%$, $t_r \leq 18$ s → PM = 40°, $\omega_c = 0{,}11$ rad/s, $|G(j\omega_c)| = 0{,}35$, $\varphi = 17°$:
 
-$$k_p = \frac{\cos 17°}{0{,}35} = 2{,}7, \qquad k_d = \frac{\mathrm{sen}\,17°}{0{,}11 \times 0{,}35} = 7{,}6, \qquad p_1 = -100\,\omega_c = -110$$
+$$k_p = \frac{\cos 17°}{0{,}35} = 2{,}7, \qquad k_d = \frac{\mathrm{sen}17°}{0{,}11 \times 0{,}35} = 7{,}6, \qquad p_1 = -100\omega_c = -110$$
 
-$$C'(s) = \frac{2{,}7 + 7{,}6\,s}{s/110 + 1}$$
+$$C'(s) = \frac{2{,}7 + 7{,}6s}{s/110 + 1}$$
 
-**Simulação da malha fechada:** $M_p = 29{,}3\,\%$, $t_r = 15{,}1$ s — **praticamente idênticos** aos do avanço ($M_p = 29{,}6\,\%$, $t_r = 15{,}5$ s). No gráfico, as duas respostas se confundem. Então tanto faz usar um ou outro? **Não.** Olhemos o **sinal de controle** $u(t)$ (a tensão que o controlador injeta na planta):
+**Simulação da malha fechada:** $M_p = 29{,}3\%$, $t_r = 15{,}1$ s — **praticamente idênticos** aos do avanço ($M_p = 29{,}6\%$, $t_r = 15{,}5$ s). No gráfico, as duas respostas se confundem. Então tanto faz usar um ou outro? **Não.** Olhemos o **sinal de controle** $u(t)$ (a tensão que o controlador injeta na planta):
 
 - **avanço:** pico de **3,9** (unidades de tensão);
 - **PD:** pico de **836** — **≈ 215 vezes maior!**
@@ -676,7 +676,7 @@ A razão está na cara do controlador: a derivada de um degrau é (idealmente) u
 
 Se o PD é o avanço limite (polo no ∞), qual é o **atraso limite**? Levando o polo do par $|p_1| < |z_1|$ para **zero**:
 
-$$C(s) = \frac{s - z_1}{s} = k_p\,\frac{s - z_1}{s} = k_p - \frac{k_p z_1}{s} = k_p + \frac{k_i}{s} \qquad (k_i = -k_p z_1)$$
+$$C(s) = \frac{s - z_1}{s} = k_p\frac{s - z_1}{s} = k_p - \frac{k_p z_1}{s} = k_p + \frac{k_i}{s} \qquad (k_i = -k_p z_1)$$
 
 — a forma canônica do **PI** (proporcional + integral do erro)! O **PI é um atraso de fase com o polo em zero**. E o que o polo em zero traz de novo? **Ganho DC infinito** → sistema **tipo 1** → **erro nulo em regime permanente** ao degrau (não só reduzido: **zero**).
 
@@ -690,22 +690,22 @@ $$|z_1| = \frac{k_i}{k_p} \leq \frac{\omega_c}{10}.$$
 
 O PID conjuga os dois mundos — **PD cuidando do transitório** (em $\omega_c$) **e PI cuidando do regime** (ganho infinito em baixas):
 
-$$C(s) = \underbrace{\frac{k_p + k_d\,s}{s/p_1 + 1}}_{\text{PD com filtro}} \times \underbrace{\frac{s - z_1}{s}}_{\text{PI}}$$
+$$C(s) = \underbrace{\frac{k_p + k_ds}{s/p_1 + 1}}_{\text{PD com filtro}} \times \underbrace{\frac{s - z_1}{s}}_{\text{PI}}$$
 
 A resposta em frequência do PID é a **soma** (em dB e em graus) das respostas do PD e do PI: o PD dá a PM em $\omega_c$, $k_p$ acerta o cruzamento, e o zero do PI fica lá embaixo ($|z_1| \leq \omega_c/10$) custando só alguns graus — que já estavam previstos na folga.
 
-**Exemplo-âncora (completo, passo a passo).** **Planta:** $G(s) = \dfrac{0{,}01}{(s+0{,}05)(s+0{,}07)}$. **Requisitos:** $M_p \leq 10\,\%$, $t_r \leq 15$ s, $e_{ss} = 0$.
+**Exemplo-âncora (completo, passo a passo).** **Planta:** $G(s) = \dfrac{0{,}01}{(s+0{,}05)(s+0{,}07)}$. **Requisitos:** $M_p \leq 10\%$, $t_r \leq 15$ s, $e_{ss} = 0$.
 
-1. **Tradução:** $M_p = 10\,\% \Rightarrow \zeta = 0{,}59$ → PM $= 59°$; com +5° de folga (que absorve também o efeito do PI): **PM alvo = 64°**. Velocidade: $t_r \leq 15 \Rightarrow \omega_n \geq 0{,}18$ → **$\omega_c$ alvo = 0,18 rad/s**.
+1. **Tradução:** $M_p = 10\% \Rightarrow \zeta = 0{,}59$ → PM $= 59°$; com +5° de folga (que absorve também o efeito do PI): **PM alvo = 64°**. Velocidade: $t_r \leq 15 \Rightarrow \omega_n \geq 0{,}18$ → **$\omega_c$ alvo = 0,18 rad/s**.
 2. **Medida:** em $\omega = 0{,}18$: $|G| = -11{,}2$ dB ($0{,}275$), fase $= -143{,}2°$ → PM atual $= 36{,}8°$.
 3. **Fase que falta (PD):** $\varphi = 64° - 36{,}8° \approx 28°$ (arredondamos de 27,2°).
-4. **Ganhos do PD:** $k_p = \dfrac{\cos 28°}{0{,}275} = 3{,}2$; $k_d = \dfrac{\mathrm{sen}\,28°}{0{,}18 \times 0{,}275} = 9{,}5$.
-5. **Polo de filtragem:** $p_1 = -100\,\omega_c = -180$.
+4. **Ganhos do PD:** $k_p = \dfrac{\cos 28°}{0{,}275} = 3{,}2$; $k_d = \dfrac{\mathrm{sen}28°}{0{,}18 \times 0{,}275} = 9{,}5$.
+5. **Polo de filtragem:** $p_1 = -100\omega_c = -180$.
 6. **Zero do PI:** $|z_1| = \omega_c/10 = 0{,}018$.
 
-$$\boxed{C(s) = \frac{3{,}2 + 9{,}5\,s}{s/180 + 1}\cdot\frac{s + 0{,}018}{s}}$$
+$$\boxed{C(s) = \frac{3{,}2 + 9{,}5s}{s/180 + 1}\cdot\frac{s + 0{,}018}{s}}$$
 
-**Conferência:** malha aberta compensada com $\omega_c = 0{,}181$ rad/s e PM $= 59°$ (o PI custou ~5°, como previsto); **simulação da malha fechada: $M_p = 11{,}2\,\%$** (≈ 10 % ✔), **$t_r = 11{,}1$ s** ✔ (≤ 15 s), **$e_{ss} = 0$** ✔. Três requisitos, três ✔.
+**Conferência:** malha aberta compensada com $\omega_c = 0{,}181$ rad/s e PM $= 59°$ (o PI custou ~5°, como previsto); **simulação da malha fechada: $M_p = 11{,}2\%$** (≈ 10 % ✔), **$t_r = 11{,}1$ s** ✔ (≤ 15 s), **$e_{ss} = 0$** ✔. Três requisitos, três ✔.
 
 ![Projeto PID](https://github.com/fabiobento/lab-cont-2026-2/blob/main/imagens/m3_fig35_projeto_pid.png)
 

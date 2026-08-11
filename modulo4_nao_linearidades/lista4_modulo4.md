@@ -87,7 +87,7 @@ Um sistema $G(s) = \dfrac{4}{s(s+1)(s+2)}$ é realimentado por um relé ideal de
 
 a) Determine a frequência $\omega_c$ para a qual $\angle G(j\omega_c) = -180°$ e calcule $|G(j\omega_c)|$.
 
-b) Com a função descritiva do relé, $N(A) = \dfrac{4d}{\pi A}$, determine a **amplitude $A$ e a frequência** do ciclo-limite previsto, resolvendo $1 + N(A)\,G(j\omega) = 0$.
+b) Com a função descritiva do relé, $N(A) = \dfrac{4d}{\pi A}$, determine a **amplitude $A$ e a frequência** do ciclo-limite previsto, resolvendo $1 + N(A)G(j\omega) = 0$.
 
 c) Mostre que o ganho crítico previsto pelo experimento do relé, $K_u = \dfrac{4d}{\pi A}$, **coincide exatamente** com o ganho crítico obtido pelo critério de Routh-Hurwitz para a malha com controlador proporcional $K$ no lugar do relé. Explique por que essa coincidência não é acidental.
 
@@ -129,7 +129,7 @@ Um relé com histerese ($d = 1$, $h = 0{,}2$) controla $G(s) = \dfrac{1}{(s+1)^2
 
 a) Mostre que o lugar geométrico de $-1/N(A)$ é uma **semirreta horizontal** em $\mathrm{Im} = -\dfrac{\pi h}{4d}$, e calcule esse valor.
 
-b) Mostre que $\mathrm{Im}\,G(j\omega) = -\dfrac{2\omega}{(1+\omega^2)^2}$ atinge esse valor em **duas** frequências ($\omega \approx 0{,}08$ e $\omega \approx 2{,}02$ rad/s), mas que apenas **uma** delas satisfaz o balanço harmônico completo (módulo **e** fase). Identifique o erro de raciocinar apenas pela parte imaginária.
+b) Mostre que $\mathrm{Im}G(j\omega) = -\dfrac{2\omega}{(1+\omega^2)^2}$ atinge esse valor em **duas** frequências ($\omega \approx 0{,}08$ e $\omega \approx 2{,}02$ rad/s), mas que apenas **uma** delas satisfaz o balanço harmônico completo (módulo **e** fase). Identifique o erro de raciocinar apenas pela parte imaginária.
 
 c) Determine a amplitude e o período do ciclo-limite previsto pela função descritiva.
 

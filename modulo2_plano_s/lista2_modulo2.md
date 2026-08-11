@@ -8,14 +8,14 @@
 
 ## Questão 1 — Regiões de desempenho (§2.1.3–§2.1.6)
 
-Requisitos: $M_p \leq 10\,\%$, $t_p \leq 2$ s, $t_s(5\,\%) \leq 3$ s e $t_r(10\text{–}90\,\%) \leq 0{,}4$ s.
+Requisitos: $M_p \leq 10\%$, $t_p \leq 2$ s, $t_s(5\%) \leq 3$ s e $t_r(10\text{–}90\%) \leq 0{,}4$ s.
 
 a) Traduza cada requisito para uma fronteira no plano-s ($\beta$, $\omega_d$, $\sigma$, $\omega_n$) e esboce a região combinada.
 b) Verifique se um par de polos em $-1{,}5 \pm 2j$ atende **todos** os requisitos. Se algum falhar, diga qual.
 
 ## Questão 2 — Aproximação de 3ª por 2ª ordem (§2.1.8)
 
-Seja $T(s) = \dfrac{4\,p_3}{(s^2+2s+4)(s+p_3)}$.
+Seja $T(s) = \dfrac{4p_3}{(s^2+2s+4)(s+p_3)}$.
 
 a) Para $p_3 = 12$: a regra dos 5× autoriza a aproximação? Estime $M_p$ e $t_p$.
 b) Para $p_3 = 2$: o que você espera qualitativamente para o overshoot? Justifique pelo conceito de dominância.
@@ -40,7 +40,7 @@ d) Para que faixa de $k$ o sistema de malha fechada é estável?
 
 ## Questão 5 — Projeto de avanço de fase (§2.3.3–§2.3.5)
 
-Seja $G(s) = \dfrac{1}{s(s+2)}$. Requisitos: $M_p = 16{,}3\,\%$ e $t_p \approx 0{,}63$ s ($\omega_d = 5$ rad/s).
+Seja $G(s) = \dfrac{1}{s(s+2)}$. Requisitos: $M_p = 16{,}3\%$ e $t_p \approx 0{,}63$ s ($\omega_d = 5$ rad/s).
 
 a) Determine $\zeta$, $\omega_n$ e o polo desejado $\square_d$.
 b) Calcule a contribuição de fase necessária do controlador.
@@ -49,7 +49,7 @@ d) Estime $M_p$ e $t_p$ do sistema compensado. A ordem do sistema compensado aju
 
 ## Questão 6 — Projeto de atraso de fase (§2.4.2–§2.4.3)
 
-Seja $G(s) = \dfrac{1}{s(s+4)}$ com controle proporcional $k = 20$ (polos de MF: $-2 \pm 4j$; $M_p \approx 20{,}8\,\%$).
+Seja $G(s) = \dfrac{1}{s(s+4)}$ com controle proporcional $k = 20$ (polos de MF: $-2 \pm 4j$; $M_p \approx 20{,}8\%$).
 
 a) Calcule $k_v$ e o erro em regime para rampa unitária.
 b) Projete um atraso de fase que **reduza o erro à metade**, com o zero seguindo a regra do 1/10. Escreva $C(s)$.
@@ -58,7 +58,7 @@ d) Onde estará o terceiro polo de malha fechada, aproximadamente? Qual é o efe
 
 ## Questão 7 — PI para planta tipo 0 (§2.4.4)
 
-Seja $G(s) = \dfrac{4}{(s+2)(s+6)}$. Requisitos: $M_p \approx 16\,\%$ ($\zeta = 0{,}5$), $\omega_d = 3$ rad/s e $e_{ss}(\text{degrau}) = 0$.
+Seja $G(s) = \dfrac{4}{(s+2)(s+6)}$. Requisitos: $M_p \approx 16\%$ ($\zeta = 0{,}5$), $\omega_d = 3$ rad/s e $e_{ss}(\text{degrau}) = 0$.
 
 a) Explique por que o atraso de fase comum **não** atende e o PI é obrigatório.
 b) Com $\square_d = -1{,}73 + 3j$, calcule a posição do zero do PI (soma de fases = $-180°$) e o ganho $k$.

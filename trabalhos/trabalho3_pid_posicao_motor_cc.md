@@ -31,11 +31,11 @@ $$G_v(s) = \frac{K}{\tau s + 1} \qquad [\text{velocidade}/\text{PWM}].$$
 
 **Passo 2 — Modelo de posição.** A posição é a integral da velocidade, com um ganho de conversão $k'$ (unidades do encoder → graus ou radianos):
 
-$$G_p(s) = \frac{K\,k'}{s(\tau s + 1)}.$$
+$$G_p(s) = \frac{Kk'}{s(\tau s + 1)}.$$
 
-Para medir $k'$: aplique um **PWM fixo de amplitude $A$** e grave o gráfico **ângulo × tempo**. Em regime, a velocidade é constante e o ângulo cresce linearmente com coeficiente angular $a = \dfrac{y_2 - y_1}{x_2 - x_1}$ (dois pontos da reta). Igualando $K\,k'\,A = a$:
+Para medir $k'$: aplique um **PWM fixo de amplitude $A$** e grave o gráfico **ângulo × tempo**. Em regime, a velocidade é constante e o ângulo cresce linearmente com coeficiente angular $a = \dfrac{y_2 - y_1}{x_2 - x_1}$ (dois pontos da reta). Igualando $Kk'A = a$:
 
-$$k' = \frac{a}{K\,A}.$$
+$$k' = \frac{a}{KA}.$$
 
 **Passo 3 — Sintonia do PID.** Com $G_p(s)$ identificada, sintonize o PID usando **os métodos do curso** — não há especificações impostas, mas o "bom" resultado deve ser **justificado**. Rotas aceitas (escolha uma principal e cite as demais):
 

@@ -1,7 +1,7 @@
 # Módulo 02 — Controle de Sistemas no Plano-s (Teoria)
 
 > Texto teórico dos tópicos 2.1 a 2.5.
-> Convenções do curso (Módulo 01): sistemas **SISO**; estabilidade = **BIBO**; malha padrão com realimentação unitária; $t_p = \pi/\omega_d$; $M_p = e^{-\zeta\pi/\sqrt{1-\zeta^2}}$; $t_s(5\,\%) = 3/\sigma$.
+> Convenções do curso (Módulo 01): sistemas **SISO**; estabilidade = **BIBO**; malha padrão com realimentação unitária; $t_p = \pi/\omega_d$; $M_p = e^{-\zeta\pi/\sqrt{1-\zeta^2}}$; $t_s(5\%) = 3/\sigma$.
 > **Novidades deste módulo:** o **plano-s** como palco do projeto; o **Lugar Geométrico das Raízes (LGR)**; os controladores de **avanço de fase**, **atraso de fase**, **PD**, **PI**, **PID** e **avanço-atraso**; e o **atraso de transporte** (aproximação de Padé).
 > **Notação geométrica:** chamamos de **quadradinho** ($\square$) um candidato a polo de malha fechada, e de **quadradinho desejado** ($\square_d$) o polo de malha fechada que atende aos requisitos (sempre o de parte imaginária positiva — o conjugado vem de graça). Geometria do polo: $\beta = \arccos\zeta$, $\sigma = \zeta\omega_n$, $\omega_d = \omega_n\sqrt{1-\zeta^2}$, $\omega_n$ = distância do polo à origem.
 
@@ -17,9 +17,9 @@ $$G(s) = \frac{\omega_n^2}{s^2 + 2\zeta\omega_n s + \omega_n^2},$$
 
 é completamente caracterizada por quatro grandezas, calculadas por:
 
-$$M_p = e^{-\zeta\pi/\sqrt{1-\zeta^2}}, \qquad t_p = \frac{\pi}{\omega_d} = \frac{\pi}{\omega_n\sqrt{1-\zeta^2}}, \qquad t_r = \frac{\pi - \arccos\zeta}{\omega_n\sqrt{1-\zeta^2}}, \qquad t_s(5\,\%) \approx \frac{3}{\sigma} = \frac{3}{\zeta\omega_n}.$$
+$$M_p = e^{-\zeta\pi/\sqrt{1-\zeta^2}}, \qquad t_p = \frac{\pi}{\omega_d} = \frac{\pi}{\omega_n\sqrt{1-\zeta^2}}, \qquad t_r = \frac{\pi - \arccos\zeta}{\omega_n\sqrt{1-\zeta^2}}, \qquad t_s(5\%) \approx \frac{3}{\sigma} = \frac{3}{\zeta\omega_n}.$$
 
-**Exemplo numérico.** Para $\zeta = 0{,}45$ e $\omega_n = 2$ rad/s: $M_p = e^{-0{,}45\pi/\sqrt{1-0{,}45^2}} = 20{,}5\,\%$; $t_p = \pi/1{,}786 = 1{,}76$ s; $t_r = (\pi - 1{,}104)/1{,}786 = 1{,}14$ s; $t_s = 3/0{,}9 = 3{,}33$ s.
+**Exemplo numérico.** Para $\zeta = 0{,}45$ e $\omega_n = 2$ rad/s: $M_p = e^{-0{,}45\pi/\sqrt{1-0{,}45^2}} = 20{,}5\%$; $t_p = \pi/1{,}786 = 1{,}76$ s; $t_r = (\pi - 1{,}104)/1{,}786 = 1{,}14$ s; $t_s = 3/0{,}9 = 3{,}33$ s.
 
 > ⚠️ **Lembrete:** as três primeiras fórmulas são **exatas**; a do $t_s$ é uma **aproximação pessimista** (pela envoltória exponencial). O valor medido na simulação pode ser um pouco menor — e isso é bom: projetamos com folga.
 
@@ -53,7 +53,7 @@ $$\cos\beta = \frac{\sigma}{\omega_n} = \frac{\zeta\omega_n}{\omega_n} = \zeta \
 
 onde $\beta$ é o **ângulo que o polo faz com o eixo real negativo**.
 
-**Exemplo.** Requisito $M_p \leq 10\,\%$ → $\zeta \geq 0{,}59$ (pela inversa; vamos usar $\zeta = 0{,}6$, que dá $M_p = 9{,}48\,\%$) → $\beta \leq \arccos(0{,}6) = 53{,}13°$.
+**Exemplo.** Requisito $M_p \leq 10\%$ → $\zeta \geq 0{,}59$ (pela inversa; vamos usar $\zeta = 0{,}6$, que dá $M_p = 9{,}48\%$) → $\beta \leq \arccos(0{,}6) = 53{,}13°$.
 
 A **região de desempenho** é o **setor angular** do semiplano esquerdo delimitado pelas retas de ângulo $\pm\beta$: qualquer polo dentro do setor tem fator de amortecimento maior que o mínimo exigido. Quanto **menor** o $\beta$, **menor** o overshoot.
 
@@ -69,7 +69,7 @@ Normalmente o requisito de instante de pico é de tempo **máximo**: picos mais 
 
 **Tempo de acomodação.** Como $t_s$ depende só de $\sigma$ (o módulo da **parte real** do polo), o requisito $t_s \leq Y$ se traduz em valor mínimo de $\sigma$:
 
-$$t_s(5\,\%) = \frac{3}{\sigma}, \qquad t_s(2\,\%) = \frac{4}{\sigma}, \qquad t_s(1\,\%) = \frac{4{,}6}{\sigma} \qquad\Rightarrow\qquad \sigma \geq \frac{3}{Y}\ \text{(5 %)},\ \frac{4}{Y}\ \text{(2 %)},\ \frac{4{,}6}{Y}\ \text{(1 %)}$$
+$$t_s(5\%) = \frac{3}{\sigma}, \qquad t_s(2\%) = \frac{4}{\sigma}, \qquad t_s(1\%) = \frac{4{,}6}{\sigma} \qquad\Rightarrow\qquad \sigma \geq \frac{3}{Y}\ \text{(5 %)},\ \frac{4}{Y}\ \text{(2 %)},\ \frac{4{,}6}{Y}\ \text{(1 %)}$$
 
 Região: semiplano **à esquerda da reta vertical** $\mathrm{Re} = -3/Y$ (ou $-4/Y$, $-4{,}6/Y$).
 
@@ -81,11 +81,11 @@ Aqui temos um problema prático: a fórmula exata $t_r = (\pi - \arccos\zeta)/(\
 
 **Troca de convenção:** em vez de $t_r$ de 0–100 %, podemos usar o **tempo de subida de 10–90 %** do valor final, que admite boas aproximações polinomiais em $\zeta$ (são as minhas "aproximações aproximadas" — você pode encontrar coeficientes ligeiramente diferentes em outros textos):
 
-$$t_r(10\text{–}90\,\%) \approx \frac{1{,}8\zeta^3 - 0{,}4\zeta^2 + \zeta + 1}{\omega_n} \approx \frac{2{,}3\zeta^2 - 0{,}08\zeta + 1{,}1}{\omega_n} \approx \frac{2\zeta + 0{,}65}{\omega_n} \approx \frac{1{,}6}{\omega_n}$$
+$$t_r(10\text{–}90\%) \approx \frac{1{,}8\zeta^3 - 0{,}4\zeta^2 + \zeta + 1}{\omega_n} \approx \frac{2{,}3\zeta^2 - 0{,}08\zeta + 1{,}1}{\omega_n} \approx \frac{2\zeta + 0{,}65}{\omega_n} \approx \frac{1{,}6}{\omega_n}$$
 
 E se o requisito for mesmo de 0–100 %:
 
-$$t_r(0\text{–}100\,\%) \approx \frac{3\zeta + 1}{\omega_n} \approx \frac{2{,}4}{\omega_n}$$
+$$t_r(0\text{–}100\%) \approx \frac{3\zeta + 1}{\omega_n} \approx \frac{2{,}4}{\omega_n}$$
 
 ![Aproximações do tempo de subida](https://github.com/fabiobento/lab-cont-2026-2/blob/main/imagens/m2_fig06_tr_aproximacoes.png)
 
@@ -93,7 +93,7 @@ No gráfico $t_r \cdot \omega_n \times \zeta$ (que independe de $\omega_n$, pois
 
 **Para desenhar a região no plano-s, usamos as aproximações constantes** — e fingimos que elas valem para $\zeta$ entre 0 e 1:
 
-$$t_r(10\text{–}90\,\%) \leq X \Rightarrow \omega_n \geq \frac{1{,}6}{X}; \qquad t_r(0\text{–}100\,\%) \leq Y \Rightarrow \omega_n \geq \frac{2{,}4}{Y}$$
+$$t_r(10\text{–}90\%) \leq X \Rightarrow \omega_n \geq \frac{1{,}6}{X}; \qquad t_r(0\text{–}100\%) \leq Y \Rightarrow \omega_n \geq \frac{2{,}4}{Y}$$
 
 Como $\omega_n$ é a **distância do polo à origem**, a região é o **semiplano esquerdo fora do círculo de raio $Z$ centrado na origem**. Quanto mais afastado o polo, menor o tempo de subida.
 
@@ -101,17 +101,17 @@ Como $\omega_n$ é a **distância do polo à origem**, a região é o **semiplan
 
 ### 2.1.6 Regiões combinadas
 
-Requisitos simultâneos ⇒ **interseção** das regiões. **Exemplo-âncora:** $M_p \leq 20\,\%$, $t_p \leq 3{,}14$ s e $t_s(2\,\%) \leq 8$ s:
+Requisitos simultâneos ⇒ **interseção** das regiões. **Exemplo-âncora:** $M_p \leq 20\%$, $t_p \leq 3{,}14$ s e $t_s(2\%) \leq 8$ s:
 
-- $M_p \leq 20\,\% \Rightarrow \zeta \geq 0{,}456 \Rightarrow \beta \leq \arccos(0{,}456) = 62{,}9°$;
+- $M_p \leq 20\% \Rightarrow \zeta \geq 0{,}456 \Rightarrow \beta \leq \arccos(0{,}456) = 62{,}9°$;
 - $t_p \leq 3{,}14 \Rightarrow \omega_d \geq \pi/3{,}14 \approx 1$;
-- $t_s(2\,\%) \leq 8 \Rightarrow \sigma \geq 4/8 = 0{,}5$.
+- $t_s(2\%) \leq 8 \Rightarrow \sigma \geq 4/8 = 0{,}5$.
 
 ![Região combinada dos três requisitos](https://github.com/fabiobento/lab-cont-2026-2/blob/main/imagens/m2_fig04_regiao_combinada.png)
 
 Se o polo de malha fechada estiver na região sombreada, os três requisitos serão atendidos — **com as aproximações de sempre** (2ª ordem sem zeros, fórmula pessimista do $t_s$). Daqui a pouco aprenderemos a colocar o polo lá dentro.
 
-> ✏️ **Pense:** um colega propõe atender $t_p \leq 3{,}14$ s colocando o polo em $-0{,}6 + 1{,}2j$. Ele está na região de $t_p$? E na de $t_s(2\,\%) \leq 8$ s? E na de $M_p \leq 20\,\%$? (Resposta: $\omega_d = 1{,}2 \geq 1$ ✓; $\sigma = 0{,}6 \geq 0{,}5$ ✓; $\beta = \arctan(1{,}2/0{,}6) = 63{,}4° > 62{,}9°$ ✗ — falha no overshoot por muito pouco!)
+> ✏️ **Pense:** um colega propõe atender $t_p \leq 3{,}14$ s colocando o polo em $-0{,}6 + 1{,}2j$. Ele está na região de $t_p$? E na de $t_s(2\%) \leq 8$ s? E na de $M_p \leq 20\%$? (Resposta: $\omega_d = 1{,}2 \geq 1$ ✓; $\sigma = 0{,}6 \geq 0{,}5$ ✓; $\beta = \arctan(1{,}2/0{,}6) = 63{,}4° > 62{,}9°$ ✗ — falha no overshoot por muito pouco!)
 
 ### 2.1.7 Aproximação de 2ª ordem por 1ª ordem
 
@@ -131,7 +131,7 @@ O mesmo espírito: $G(s) = \dfrac{20}{(s+1)(s+2)(s+10)} \approx \dfrac{2}{(s+1)(
 
 ![Aproximação de 3ª ordem por 2ª ordem](https://github.com/fabiobento/lab-cont-2026-2/blob/main/imagens/m2_fig08_aprox_3por2.png)
 
-Na figura, o sistema de 2ª ordem com $\zeta = 0{,}5$ tem $M_p = 16{,}3\,\%$. Acrescentando um polo real em $-10$: $M_p$ cai para 15,9 % — aproximação ótima. Em $-3$: $M_p = 12{,}2\,\%$ — já sente. Em $-1$ ou mais perto: **o overshoot morre** — o polo real lento domina a resposta, mesmo com o par complexo de $\zeta = 0{,}5$ presente.
+Na figura, o sistema de 2ª ordem com $\zeta = 0{,}5$ tem $M_p = 16{,}3\%$. Acrescentando um polo real em $-10$: $M_p$ cai para 15,9 % — aproximação ótima. Em $-3$: $M_p = 12{,}2\%$ — já sente. Em $-1$ ou mais perto: **o overshoot morre** — o polo real lento domina a resposta, mesmo com o par complexo de $\zeta = 0{,}5$ presente.
 
 **Regra prática (dominância):** a aproximação por 2ª ordem é válida quando
 
@@ -169,9 +169,9 @@ flowchart LR
     y --> S
 ```
 
-$$T(s) = \frac{kG(s)}{1 + kG(s)} = \frac{k\,N(s)}{D(s) + k\,N(s)}$$
+$$T(s) = \frac{kG(s)}{1 + kG(s)} = \frac{kN(s)}{D(s) + kN(s)}$$
 
-Os polos de malha fechada são as raízes de $D(s) + k\,N(s) = 0$ — e **mudam com $k$**. Como muda o comportamento da resposta? Vamos investigar os casos simples.
+Os polos de malha fechada são as raízes de $D(s) + kN(s) = 0$ — e **mudam com $k$**. Como muda o comportamento da resposta? Vamos investigar os casos simples.
 
 **1ª ordem sem zero:** $G = \dfrac{1}{s+a} \Rightarrow T = \dfrac{k}{s + a + k}$ → polo de MF em $\boxed{-a-k}$: sai de $-a$ e caminha para $-\infty$ à medida que $k$ cresce. O sistema só fica mais rápido — nunca desestabiliza.
 
@@ -231,12 +231,12 @@ onde $A$ é o **ganho da forma fatorada** de $G(s) = A\dfrac{\prod(s+z_i)}{\prod
 
 ### 2.2.5 Exemplo de projeto de controle proporcional no plano-s
 
-**Enunciado-âncora:** $G(s) = \dfrac{10}{s(s+10)}$, requisito $M_p \leq 5\,\%$ **com o menor $t_p$ possível**.
+**Enunciado-âncora:** $G(s) = \dfrac{10}{s(s+10)}$, requisito $M_p \leq 5\%$ **com o menor $t_p$ possível**.
 
-1. $M_p \leq 5\,\% \Rightarrow \zeta \geq 0{,}69 \Rightarrow \beta \leq \arccos(0{,}69) = 46{,}37°$;
-2. O LGR de $\dfrac{1}{s(s+10)}$ é a vertical em $-5$ (após o encontro em $k = 25$): podemos subir até o limite do ângulo — polos escolhidos $-5 \pm j\,5\,\mathrm{tg}(46{,}37°) = -5 \pm 5{,}25j$;
+1. $M_p \leq 5\% \Rightarrow \zeta \geq 0{,}69 \Rightarrow \beta \leq \arccos(0{,}69) = 46{,}37°$;
+2. O LGR de $\dfrac{1}{s(s+10)}$ é a vertical em $-5$ (após o encontro em $k = 25$): podemos subir até o limite do ângulo — polos escolhidos $-5 \pm j5\mathrm{tg}(46{,}37°) = -5 \pm 5{,}25j$;
 3. Condição de módulo: $k = \dfrac{|\square_d|\cdot|\square_d+10|}{10} = \dfrac{7{,}25 \times 7{,}25}{10} \approx 5{,}26$;
-4. Verificação: $T(s) = \dfrac{52{,}6}{s^2+10s+52{,}6}$, $\omega_d = 5{,}25$ → $t_p = \pi/5{,}25 \approx 0{,}6$ s; simulação: $M_p = 5{,}0\,\%$ ✓.
+4. Verificação: $T(s) = \dfrac{52{,}6}{s^2+10s+52{,}6}$, $\omega_d = 5{,}25$ → $t_p = \pi/5{,}25 \approx 0{,}6$ s; simulação: $M_p = 5{,}0\%$ ✓.
 
 ![Projeto de controle P no plano-s](https://github.com/fabiobento/lab-cont-2026-2/blob/main/imagens/m2_fig14_projeto_P_planos.png)
 
@@ -296,12 +296,12 @@ $$\theta_{\text{partida}} = 180° + \sum \angle(\text{zeros} \to p) - \sum \angl
 
 ### 2.3.1 A impossibilidade do controle proporcional
 
-**Enunciado-âncora:** $G(s) = \dfrac{4}{s(s+4)}$. Seu LGR é a vertical em $-2$ (após o encontro). Agora suponha o requisito $t_s(5\,\%) \leq 1$ s ⇒ $\sigma \geq 3$: **impossível com P** — o LGR nunca passa à esquerda de $-2$; não há como o polo ir para lá.
+**Enunciado-âncora:** $G(s) = \dfrac{4}{s(s+4)}$. Seu LGR é a vertical em $-2$ (após o encontro). Agora suponha o requisito $t_s(5\%) \leq 1$ s ⇒ $\sigma \geq 3$: **impossível com P** — o LGR nunca passa à esquerda de $-2$; não há como o polo ir para lá.
 
-E mesmo requisitos "alcançáveis" podem ser **conflitantes**: $M_p \leq 5\,\%$ **e** $t_p \leq 1$ s:
+E mesmo requisitos "alcançáveis" podem ser **conflitantes**: $M_p \leq 5\%$ **e** $t_p \leq 1$ s:
 
-- Para $M_p = 5\,\%$: $\zeta = 0{,}69 \Rightarrow \beta = 46{,}4°$ → polos $-2 \pm 2{,}1j$ → $k \approx 2{,}1$ → mas $\omega_d = 2{,}1$ ⇒ $t_p \approx 1{,}5$ s ✗;
-- Para $t_p = 1$ s: $\omega_d = \pi$ → polos $-2 \pm 3{,}14j$ → $k = 3{,}47$ → $\zeta = 0{,}54$ ⇒ $M_p = 13\,\%$ ✗.
+- Para $M_p = 5\%$: $\zeta = 0{,}69 \Rightarrow \beta = 46{,}4°$ → polos $-2 \pm 2{,}1j$ → $k \approx 2{,}1$ → mas $\omega_d = 2{,}1$ ⇒ $t_p \approx 1{,}5$ s ✗;
+- Para $t_p = 1$ s: $\omega_d = \pi$ → polos $-2 \pm 3{,}14j$ → $k = 3{,}47$ → $\zeta = 0{,}54$ ⇒ $M_p = 13\%$ ✗.
 
 ![Impossibilidade do P](https://github.com/fabiobento/lab-cont-2026-2/blob/main/imagens/m2_fig20_impossibilidade.png)
 
@@ -332,7 +332,7 @@ $$\angle G(\square_d) = -205° \;\Rightarrow\; \text{contribuição necessária}
 Um par zero-polo $(s+a)/(s+b)$ contribui $\angle(\square_d + a) - \angle(\square_d + b) = 25°$ — **uma equação, duas incógnitas: infinitas soluções** (ex.: $b = 12 \Rightarrow a = 7{,}55$; $b = 75 \Rightarrow a = 16{,}8$). As três soluções-padrão do curso:
 
 1. **Zero embaixo de $\square_d$** ($a = 5$): o ângulo do zero é $90°$ → o polo precisa contribuir $65°$ → $\mathrm{tg}(65°) = \dfrac{7}{b-5}$ → $b = 5 + \dfrac{7}{\mathrm{tg}(65°)} = 8{,}3$;
-2. **Bissetriz:** traça-se a bissetriz do ângulo entre o eixo real e a reta origem→$\square_d$; zero e polo ficam simétricos em torno dela → $a = 5 - 7\,\mathrm{tg}(12{,}5°) = 3{,}4$ e $b = 5 + 7\,\mathrm{tg}(12{,}5°) = 6{,}6$;
+2. **Bissetriz:** traça-se a bissetriz do ângulo entre o eixo real e a reta origem→$\square_d$; zero e polo ficam simétricos em torno dela → $a = 5 - 7\mathrm{tg}(12{,}5°) = 3{,}4$ e $b = 5 + 7\mathrm{tg}(12{,}5°) = 6{,}6$;
 3. **Zero cancela um polo da planta** (o $-10$ ou o $-20$ — **nunca o polo na origem**: cancelar o integrador derrubaria o tipo do sistema e o erro à rampa divergiria).
 
 ![Soluções-padrão para o avanço de fase](https://github.com/fabiobento/lab-cont-2026-2/blob/main/imagens/m2_fig22_tres_solucoes.png)
@@ -350,11 +350,11 @@ Verificando $T(s) = \dfrac{CG}{1+CG}$: os polos de malha fechada incluem $-5 \pm
 
 Definição formal do **controlador de avanço de fase**:
 
-$$\boxed{C(s) = k\,\frac{s+a}{s+b}, \qquad 0 < a < b}$$
+$$\boxed{C(s) = k\frac{s+a}{s+b}, \qquad 0 < a < b}$$
 
 (zero mais perto da origem que o polo — contribuição de fase **positiva**: $\angle(\square+a) > \angle(\square+b)$.)
 
-**Caso-limite $b \to \infty$: o PD (Proporcional-Diferencial).** $C(s) = k(s+a) = ka + ks = k_p + k_d\,s$, com $k_p = k\cdot a$ e $k_d = k$. Exemplo: $C(s) = 0{,}37(s+20) = 7{,}4 + 0{,}37\,s$.
+**Caso-limite $b \to \infty$: o PD (Proporcional-Diferencial).** $C(s) = k(s+a) = ka + ks = k_p + k_ds$, com $k_p = k\cdot a$ e $k_d = k$. Exemplo: $C(s) = 0{,}37(s+20) = 7{,}4 + 0{,}37s$.
 
 **Problema físico do derivador puro:** a derivada de um degrau é um **impulso**. Uma mudança abrupta na referência produz um pico gigantesco no sinal de controle — numa simulação típica com filtro muito distante, o pico chega à casa dos **trilhões de volts**. Nenhum atuador do mundo real entrega isso: o sinal satura, e o comportamento real nada tem a ver com o simulado.
 
@@ -366,11 +366,11 @@ $$\boxed{C(s) = k\,\frac{s+a}{s+b}, \qquad 0 < a < b}$$
 
 **Enunciado-âncora:** $G(s) = \dfrac{10}{s(s+10)}$ (a mesma da §2.2.5 — reciclagem de exemplos é bom para o meio ambiente).
 
-**Estágio 1 — P para $M_p \leq 20\,\%$:** $\zeta = 0{,}456 \Rightarrow \beta = 62{,}9°$ → polos $-5 \pm 9{,}8j$ → $k = 12{,}1$. Resposta: $M_p = 20\,\%$, $t_p \approx 0{,}32$ s.
+**Estágio 1 — P para $M_p \leq 20\%$:** $\zeta = 0{,}456 \Rightarrow \beta = 62{,}9°$ → polos $-5 \pm 9{,}8j$ → $k = 12{,}1$. Resposta: $M_p = 20\%$, $t_p \approx 0{,}32$ s.
 
 **Estágio 2 — avanço para dobrar a velocidade:** dobrar $\sigma$ e $\omega_d$ → $\square_d = -10 + 19{,}6j$. Fase da planta: $\angle G(\square_d) = -207°$ → contribuição necessária $27°$. Solução adotada: **zero cancela o polo $-10$** → o polo do controlador precisa de $90° - 27° = 63°$ → $b = 20$. Ganho: $k = 48{,}4$.
 
-$$C(s) = 48{,}4\,\frac{s+10}{s+20}, \qquad T(s) = \frac{484}{s^2 + 20s + 484}$$
+$$C(s) = 48{,}4\frac{s+10}{s+20}, \qquad T(s) = \frac{484}{s^2 + 20s + 484}$$
 
 Note: o cancelamento **zerou a 3ª ordem** — o sistema compensado é de 2ª ordem exata, $\omega_n = 22$, $\zeta = 0{,}455$: **mesmo overshoot, metade dos tempos** ($t_p = 0{,}16$ s).
 
@@ -378,12 +378,12 @@ Note: o cancelamento **zerou a 3ª ordem** — o sistema compensado é de 2ª or
 
 ### 2.3.8 Exemplo de projeto: sistema de 3ª ordem e a regra dos 40°
 
-**Enunciado-âncora:** $G(s) = \dfrac{20(s+15)}{s(s+10)(s+20)}$, requisitos $M_p = 25\,\%$ e $t_p = 150$ ms.
+**Enunciado-âncora:** $G(s) = \dfrac{20(s+15)}{s(s+10)(s+20)}$, requisitos $M_p = 25\%$ e $t_p = 150$ ms.
 
 1. $\zeta = 0{,}404$; $\omega_d = \pi/0{,}15 = 21$ → $\square_d = -9{,}3 + 21j$;
 2. $\angle G(\square_d) = -190{,}2°$ → contribuição $10{,}2°$ (pequena!);
 3. Solução por **bissetriz**: $a = 7{,}4$, $b = 11{,}2$; ganho $k = 26{,}1$ → $C(s) = 26{,}1\dfrac{s+7{,}4}{s+11{,}2}$;
-4. Simulação: **$M_p$ medido $= 23{,}2\,\%$** (projeto: 25 %) e **$t_p = 148$ ms** — diferença pequena, fruto das aproximações (3º polo + zeros).
+4. Simulação: **$M_p$ medido $= 23{,}2\%$** (projeto: 25 %) e **$t_p = 148$ ms** — diferença pequena, fruto das aproximações (3º polo + zeros).
 
 ![Projeto de avanço para sistema de 3ª ordem](https://github.com/fabiobento/lab-cont-2026-2/blob/main/imagens/m2_fig25_avanco_3a_ordem.png)
 
@@ -395,9 +395,9 @@ Note: o cancelamento **zerou a 3ª ordem** — o sistema compensado é de 2ª or
 
 ### 2.4.1 Por que não corrigir o erro em regime pelo ganho
 
-**Exemplo 1:** $G(s) = \dfrac{10}{(s+2)(s+5)}$ (tipo 0). Projeto para $M_p = 30\,\%$ → $\zeta = 0{,}36$ → $k = 8{,}45$ → $k_p = 8{,}45$ → $e_{ss}$(degrau) $= 1/(1+8{,}45) = 0{,}1058$. Para $e_{ss} = 0{,}05$ seria preciso $k = 19$ — mas com $k = 19$ os polos de MF mudam e $M_p$ vai a **44,7 %**: inaceitável.
+**Exemplo 1:** $G(s) = \dfrac{10}{(s+2)(s+5)}$ (tipo 0). Projeto para $M_p = 30\%$ → $\zeta = 0{,}36$ → $k = 8{,}45$ → $k_p = 8{,}45$ → $e_{ss}$(degrau) $= 1/(1+8{,}45) = 0{,}1058$. Para $e_{ss} = 0{,}05$ seria preciso $k = 19$ — mas com $k = 19$ os polos de MF mudam e $M_p$ vai a **44,7 %**: inaceitável.
 
-**Exemplo 2:** $G(s) = \dfrac{1}{s(s+2)}$ com avanço projetado para $\square_d = -1{,}6+2{,}2j$ ($\zeta = 0{,}59$): $C(s) = 6{,}75\dfrac{s+1{,}6}{s+2{,}66}$ (contribuição $\approx 25{,}7°$; ângulo do polo $64{,}3°$). Resultado: $k_v = \dfrac{6{,}75 \times 1{,}6}{2 \times 2{,}66} \approx 2 \Rightarrow e_{ss}$(rampa) $= 0{,}5$. Tentando corrigir multiplicando o ganho por 10: polos migram para $-1{,}54 \pm 8{,}1j$ → $M_p = 55\,\%$.
+**Exemplo 2:** $G(s) = \dfrac{1}{s(s+2)}$ com avanço projetado para $\square_d = -1{,}6+2{,}2j$ ($\zeta = 0{,}59$): $C(s) = 6{,}75\dfrac{s+1{,}6}{s+2{,}66}$ (contribuição $\approx 25{,}7°$; ângulo do polo $64{,}3°$). Resultado: $k_v = \dfrac{6{,}75 \times 1{,}6}{2 \times 2{,}66} \approx 2 \Rightarrow e_{ss}$(rampa) $= 0{,}5$. Tentando corrigir multiplicando o ganho por 10: polos migram para $-1{,}54 \pm 8{,}1j$ → $M_p = 55\%$.
 
 **Moral:** erro em regime **não** se corrige pelo ganho — o ganho foi escolhido para o transitório. Corrige-se com um **par polo-zero colado na origem**: o **controlador de atraso de fase**.
 
@@ -407,7 +407,7 @@ Note: o cancelamento **zerou a 3ª ordem** — o sistema compensado é de 2ª or
 
 $$T(s) = \frac{7{,}4}{s^2 + 3{,}2s + 7{,}4} \;\Rightarrow\; \text{polos } -1{,}6 \pm 2{,}2j,\ \zeta = 0{,}59,\ \omega_n = 2{,}72$$
 
-$M_p = 10\,\%$, $t_r = 1$ s, $t_s(2\,\%) = 2{,}5$ s, $t_p = 1{,}43$ s — ótimo transitório. Mas $k_v = 7{,}4/3{,}2 \approx 2{,}31 \Rightarrow e_{ss}$(rampa) $\approx 0{,}43$. **Objetivo: duplicar $k_v$ sem mover os polos.**
+$M_p = 10\%$, $t_r = 1$ s, $t_s(2\%) = 2{,}5$ s, $t_p = 1{,}43$ s — ótimo transitório. Mas $k_v = 7{,}4/3{,}2 \approx 2{,}31 \Rightarrow e_{ss}$(rampa) $\approx 0{,}43$. **Objetivo: duplicar $k_v$ sem mover os polos.**
 
 **Proposta:** trocar o P por $C(s) = 7{,}4\dfrac{s + 2b}{s + b}$ — com isso $k_v$ dobra (de $2{,}31$ para $\approx 4{,}6$) e o erro cai pela metade. Mas o novo par polo-zero **deforma o LGR** — a não ser que sua contribuição de módulo **e** de fase no polo de MF seja desprezível. Analisando em $\square = -1{,}6 + 2{,}2j$:
 
@@ -427,7 +427,7 @@ $M_p = 10\,\%$, $t_r = 1$ s, $t_s(2\,\%) = 2{,}5$ s, $t_p = 1{,}43$ s — ótimo
 
 Definição formal do **controlador de atraso de fase**:
 
-$$\boxed{C(s) = k\,\frac{s+a}{s+b}, \qquad a > b > 0}$$
+$$\boxed{C(s) = k\frac{s+a}{s+b}, \qquad a > b > 0}$$
 
 (polo **mais perto da origem** que o zero — contribuição de fase **negativa**, porém pequena.)
 
@@ -445,7 +445,7 @@ $$\boxed{C(s) = k\,\frac{s+a}{s+b}, \qquad a > b > 0}$$
 
 **Caso-limite do atraso com $b \to 0$ (polo na origem): o PI (Proporcional-Integral).**
 
-$$\boxed{C(s) = k\,\frac{s+a}{s} = k + \frac{ka}{s} = k_p + \frac{k_i}{s}}$$
+$$\boxed{C(s) = k\frac{s+a}{s} = k + \frac{ka}{s} = k_p + \frac{k_i}{s}}$$
 
 Efeito principal: **aumenta o tipo do sistema em 1** — é a **única** forma de zerar o erro ao degrau de um sistema **tipo 0** sem ganho infinito (o integrador acumula o erro até que ele desapareça: é a "memória" do controlador).
 
@@ -453,25 +453,25 @@ O preço: além da convergência lenta do erro (o rabo do par polo-zero), o polo
 
 ### 2.4.5 Exemplo de projeto literal: sistema de 2ª ordem do tipo 1
 
-**Enunciado-âncora (literal — vale para qualquer $a$ e $b$):** $G(s) = \dfrac{b}{s(s+a)}$, requisito $M_p = 15\,\%$.
+**Enunciado-âncora (literal — vale para qualquer $a$ e $b$):** $G(s) = \dfrac{b}{s(s+a)}$, requisito $M_p = 15\%$.
 
-1. $\zeta = 0{,}517$ → pela fórmula do Módulo 01, $k = \dfrac{a^2}{4\zeta^2 b} = \dfrac{a^2}{1{,}07\,b}$;
-2. $k_v = \dfrac{k\,b}{a} = \dfrac{a}{1{,}07} \Rightarrow e_{ss}$(rampa) $= \dfrac{1{,}07}{a} = \dfrac{4\zeta^2}{a}$;
+1. $\zeta = 0{,}517$ → pela fórmula do Módulo 01, $k = \dfrac{a^2}{4\zeta^2 b} = \dfrac{a^2}{1{,}07b}$;
+2. $k_v = \dfrac{kb}{a} = \dfrac{a}{1{,}07} \Rightarrow e_{ss}$(rampa) $= \dfrac{1{,}07}{a} = \dfrac{4\zeta^2}{a}$;
 3. **Objetivo: reduzir o erro a 1/4** → fator 4 → zero em $a/20$ (regra do 1/10 de $\sigma = a/2$):
 
-$$C(s) = \frac{a^2}{1{,}07\,b}\cdot\frac{s + a/20}{s + a/80}$$
+$$C(s) = \frac{a^2}{1{,}07b}\cdot\frac{s + a/20}{s + a/80}$$
 
-**Variante com $M_p = 10\,\%$:** $\zeta = 0{,}59$ → fator necessário $5{,}3$ → zero em $d = a/106$ — note como o fator grande **exige** o par muito colado na origem, com a convergência do erro cada vez mais lenta.
+**Variante com $M_p = 10\%$:** $\zeta = 0{,}59$ → fator necessário $5{,}3$ → zero em $d = a/106$ — note como o fator grande **exige** o par muito colado na origem, com a convergência do erro cada vez mais lenta.
 
 ### 2.4.6 Exemplo de projeto: PI para sistema de 3ª ordem do tipo 0
 
-**Enunciado-âncora:** $G(s) = \dfrac{20}{(s+1)(s+2)(s+10)}$, requisitos $M_p = 16{,}3\,\%$ **e erro nulo ao degrau**.
+**Enunciado-âncora:** $G(s) = \dfrac{20}{(s+1)(s+2)(s+10)}$, requisitos $M_p = 16{,}3\%$ **e erro nulo ao degrau**.
 
 Tipo 0 ⇒ **só o PI zera o erro**. Primeiro o transitório, com P — por **casamento de coeficientes**: queremos o denominador de MF igual a $(s^2 + 2\zeta\omega_n s + \omega_n^2)(s - p_3)$, com $\zeta = 0{,}5$ e $p_3$ não dominante:
 
 $$s^3 + 13s^2 + 32s + 20 + 20k = (s^2 + 2\cdot0{,}5\cdot\omega_n s + \omega_n^2)(s - p_3) \;\Rightarrow\; \omega_n = 2{,}46,\quad p_3 = -10{,}54,\quad k = 2{,}19$$
 
-Com o PI, zero pela regra do 1/10: $C(s) = 2{,}19\dfrac{s+0{,}123}{s} = 2{,}19 + \dfrac{0{,}27}{s}$ → erro nulo ✓, mas convergência lenta. Afastando o zero para $-0{,}73$: **mantém** $M_p = 16{,}3\,\%$ com convergência bem mais rápida.
+Com o PI, zero pela regra do 1/10: $C(s) = 2{,}19\dfrac{s+0{,}123}{s} = 2{,}19 + \dfrac{0{,}27}{s}$ → erro nulo ✓, mas convergência lenta. Afastando o zero para $-0{,}73$: **mantém** $M_p = 16{,}3\%$ com convergência bem mais rápida.
 
 ![PI para sistema de 3ª ordem tipo 0](https://github.com/fabiobento/lab-cont-2026-2/blob/main/imagens/m2_fig28_pi_3a_ordem.png)
 
@@ -505,23 +505,23 @@ Chegamos ao projeto completo: transitório (avanço) **e** regime (atraso) ao me
 
 ### 2.5.2 Exemplo de projeto: avanço e atraso de fase
 
-**Enunciado-âncora:** $G(s) = \dfrac{200}{s(s+10)(s+20)}$ (reciclando o exemplo da §2.2.7), requisitos **$M_p = 16{,}3\,\%$, $t_r(0\text{–}100\,\%) = 300$ ms e $e_{ss}$(rampa) $= 0{,}02$**.
+**Enunciado-âncora:** $G(s) = \dfrac{200}{s(s+10)(s+20)}$ (reciclando o exemplo da §2.2.7), requisitos **$M_p = 16{,}3\%$, $t_r(0\text{–}100\%) = 300$ ms e $e_{ss}$(rampa) $= 0{,}02$**.
 
-**Parêntese — e se $\angle G(\square_d) > -180°$?** Significa que o LGR já passa pela região de desempenho: **aperte os requisitos** (exija menos overshoot e tempos menores). Ex.: $t_p = 360$ ms, $t_s(5\,\%) = 1$ s → $\square_d = -3+5j$ → $\angle G = -172{,}9°$ (folga) → apertando para $\square_d = -3{,}3+5{,}5j$: $\angle G = -178{,}6°$, perto o bastante → $k \approx 4{,}9$ → $T = \dfrac{980}{s^3+30s^2+200s+980}$, polos $-23{,}3$ e $-3{,}4 \pm 5{,}54j$ — melhores que o desejado.
+**Parêntese — e se $\angle G(\square_d) > -180°$?** Significa que o LGR já passa pela região de desempenho: **aperte os requisitos** (exija menos overshoot e tempos menores). Ex.: $t_p = 360$ ms, $t_s(5\%) = 1$ s → $\square_d = -3+5j$ → $\angle G = -172{,}9°$ (folga) → apertando para $\square_d = -3{,}3+5{,}5j$: $\angle G = -178{,}6°$, perto o bastante → $k \approx 4{,}9$ → $T = \dfrac{980}{s^3+30s^2+200s+980}$, polos $-23{,}3$ e $-3{,}4 \pm 5{,}54j$ — melhores que o desejado.
 
 **Projeto principal.** Dos requisitos: $\zeta = 0{,}5$, $\omega_d = 7$ (pois $t_r = (\pi - \arccos 0{,}5)/\omega_d = 0{,}3$), $k_v = 50$ → $\square_d = -4{,}04 + 7j$.
 
 **Avanço:** $\angle G(\square_d) = -193{,}3°$ → contribuição $13{,}3°$. **Zero cancela o polo $-10$** (não o da origem — senão o sistema vira tipo 0 e o erro à rampa diverge; depois você pode tentar cancelar o $-20$). Fase do zero: $49{,}6°$ → fase do polo: $36{,}3°$ → $\mathrm{tg}(36{,}3°) = \dfrac{7}{b - 4{,}04}$ → $b = 13{,}57$; ganho $k = 8{,}33$:
 
-$$C_{av}(s) = 8{,}33\,\frac{s+10}{s+13{,}57} \;\Rightarrow\; \text{simulação: } M_p = 15{,}3\,\%,\ t_r = 344\text{ ms (3º polo em } -25{,}49\text{ deixa mais lento)}$$
+$$C_{av}(s) = 8{,}33\frac{s+10}{s+13{,}57} \;\Rightarrow\; \text{simulação: } M_p = 15{,}3\%,\ t_r = 344\text{ ms (3º polo em } -25{,}49\text{ deixa mais lento)}$$
 
 **Atraso:** $k_v = 8{,}33 \times \dfrac{10}{13{,}57} \approx 6{,}14$ → fator $50/6{,}14 = 8{,}14$ → zero em $-0{,}4$ (1/10 de $4{,}04$), polo em $-0{,}05$:
 
-$$C(s) = 8{,}33\,\frac{s+10}{s+13{,}57}\cdot\frac{s+0{,}4}{s+0{,}05} \;\Rightarrow\; \text{simulação: } M_p = 22\,\%,\ t_r = 328\text{ ms — o atraso estragou o overshoot!}$$
+$$C(s) = 8{,}33\frac{s+10}{s+13{,}57}\cdot\frac{s+0{,}4}{s+0{,}05} \;\Rightarrow\; \text{simulação: } M_p = 22\%,\ t_r = 328\text{ ms — o atraso estragou o overshoot!}$$
 
-**Compensação com avanço adicional (a arte do projeto):** em vez de aproximar o atraso da origem (o que tornaria o erro ainda mais lento), **reprojetamos o avanço com folga**: $M_p \approx 12\,\%$ ($\zeta = 0{,}56$) e $t_r = 275$ ms → $\omega_d = 7{,}9$ → $\square_d = -5{,}34 + 7{,}87j$ → $\angle G = -211{,}8°$ → avanço $31{,}8°$ → cancelando o $-10$: fase do polo $= 27{,}6°$ → $b = 20{,}4$, $k = 13{,}4$ → $k_v = 6{,}6$ → mantemos o mesmo atraso:
+**Compensação com avanço adicional (a arte do projeto):** em vez de aproximar o atraso da origem (o que tornaria o erro ainda mais lento), **reprojetamos o avanço com folga**: $M_p \approx 12\%$ ($\zeta = 0{,}56$) e $t_r = 275$ ms → $\omega_d = 7{,}9$ → $\square_d = -5{,}34 + 7{,}87j$ → $\angle G = -211{,}8°$ → avanço $31{,}8°$ → cancelando o $-10$: fase do polo $= 27{,}6°$ → $b = 20{,}4$, $k = 13{,}4$ → $k_v = 6{,}6$ → mantemos o mesmo atraso:
 
-$$C(s) = 13{,}4\,\frac{s+10}{s+20{,}4}\cdot\frac{s+0{,}4}{s+0{,}05} \;\Rightarrow\; \textbf{simulação final: } M_p = 16{,}9\,\%,\ t_r = 300\text{ ms} \checkmark$$
+$$C(s) = 13{,}4\frac{s+10}{s+20{,}4}\cdot\frac{s+0{,}4}{s+0{,}05} \;\Rightarrow\; \textbf{simulação final: } M_p = 16{,}9\%,\ t_r = 300\text{ ms} \checkmark$$
 
 ![Projeto de avanço e atraso de fase](https://github.com/fabiobento/lab-cont-2026-2/blob/main/imagens/m2_fig30_avanco_atraso.png)
 
@@ -533,7 +533,7 @@ Note a **estrutura do avanço-atraso**: o par polo-zero **afastado** da origem �
 
 O **PID** combina PI + PD: $C(s) = k\dfrac{(s+z_1)(s+z_2)}{s}$ — um zero para o "avanço" (PD) e outro para o "atraso" (PI), com o polo do PI na origem e o polo do PD no infinito. Na prática: **PI-Lead** (§2.5.4 do PID real).
 
-**Enunciado-âncora:** $G(s) = \dfrac{2}{(s+2)(s+5)}$ (2ª ordem, tipo 0 — para facilitar as contas; a receita é a mesma para qualquer planta), requisitos $M_p = 16{,}3\,\%$, $t_p = 400$ ms, $e_{ss}$(degrau) $= 0$.
+**Enunciado-âncora:** $G(s) = \dfrac{2}{(s+2)(s+5)}$ (2ª ordem, tipo 0 — para facilitar as contas; a receita é a mesma para qualquer planta), requisitos $M_p = 16{,}3\%$, $t_p = 400$ ms, $e_{ss}$(degrau) $= 0$.
 
 1. $\zeta = 0{,}5$, $\omega_d = \pi/0{,}4 \approx 7{,}85 \to 7{,}9$ → $\square_d = -4{,}6 + 7{,}9j$;
 2. $\angle G(\square_d) = -195{,}3°$ → avanço $15{,}3°$;
@@ -541,7 +541,7 @@ O **PID** combina PI + PD: $C(s) = k\dfrac{(s+z_1)(s+z_2)}{s}$ — um zero para 
 4. Ganho (com os dois zeros e o polo na origem): $k = 1{,}1$;
 5. Zero do PI: chute inicial $0{,}46$ (1/10 de $4{,}6$):
 
-$$C(s) = 1{,}1\,\frac{(s+33{,}4)(s+0{,}46)}{s} = 1{,}1s + 37{,}25 + \frac{16{,}9}{s} \;\Rightarrow\; k_p = 37{,}25,\ k_i = 16{,}9,\ k_d = 1{,}1$$
+$$C(s) = 1{,}1\frac{(s+33{,}4)(s+0{,}46)}{s} = 1{,}1s + 37{,}25 + \frac{16{,}9}{s} \;\Rightarrow\; k_p = 37{,}25,\ k_i = 16{,}9,\ k_d = 1{,}1$$
 
 **Simulação:** overshoot menor que o projetado, mas **convergência lenta** para 1 (zero do PI colado na origem). Ajustes:
 
@@ -555,7 +555,7 @@ $$C(s) = 1{,}1\,\frac{(s+33{,}4)(s+0{,}46)}{s} = 1{,}1s + 37{,}25 + \frac{16{,}9
 
 **Implementação real do PID:** nenhum ambiente sério implementa o PID "puro" — do mesmo modo que não implementa PD puro. A forma implementada é
 
-$$C(s) = P + \frac{I}{s} + D\,\frac{N}{1 + N/s}$$
+$$C(s) = P + \frac{I}{s} + D\frac{N}{1 + N/s}$$
 
 — o derivador tem um **polo de filtro em $-N$**: na verdade é um **avanço**, não um derivador. Ou seja: **PID real = PI-Lead**.
 
@@ -571,15 +571,15 @@ Nem todo atraso é de transporte: **reações químicas** precisam de tempo de a
 
 **Modelagem.** O atraso pode estar na entrada, na saída, ou em ambos. Para o efeito sobre o **overshoot**, a posição não importa; para os **tempos** de resposta, importa (veremos no exemplo). Considere $G(s) = \dfrac{1}{s+a}$, cuja EDO é $\dot y + ay = u$. Com entrada atrasada $u(t) = u_1(t - \tau_u)$ e saída medida atrasada $y_1(t) = y(t - \tau_y)$: substituindo $y(t) = y_1(t + \tau_y)$ na EDO e aplicando Laplace:
 
-$$\dot y_1(t+\tau_y) + a\,y_1(t+\tau_y) = u_1(t-\tau_u) \;\Rightarrow\; (s+a)Y_1(s)e^{s\tau_y} = U_1(s)e^{-s\tau_u}$$
+$$\dot y_1(t+\tau_y) + ay_1(t+\tau_y) = u_1(t-\tau_u) \;\Rightarrow\; (s+a)Y_1(s)e^{s\tau_y} = U_1(s)e^{-s\tau_u}$$
 
-$$\boxed{G_a(s) = G(s)\,e^{-s\tau}, \qquad \tau = \tau_u + \tau_y}$$
+$$\boxed{G_a(s) = G(s)e^{-s\tau}, \qquad \tau = \tau_u + \tau_y}$$
 
-**Problema:** em malha fechada, $T(s) = \dfrac{kN\,e^{-s\tau}}{D + kN\,e^{-s\tau}}$ — a exponencial foi parar no **denominador**. Onde estão os polos desse sistema? Trabalhar com $e^{-s\tau}$ é possível, mas… que tal simplificar a nossa vida? Se $e^{-s\tau}$ fosse uma razão de polinômios, saberíamos tratar o atraso, não saberíamos?
+**Problema:** em malha fechada, $T(s) = \dfrac{kNe^{-s\tau}}{D + kNe^{-s\tau}}$ — a exponencial foi parar no **denominador**. Onde estão os polos desse sistema? Trabalhar com $e^{-s\tau}$ é possível, mas… que tal simplificar a nossa vida? Se $e^{-s\tau}$ fosse uma razão de polinômios, saberíamos tratar o atraso, não saberíamos?
 
 **A aproximação de Padé.** Seus problemas acabaram, eu garanto: existe uma aproximação que aproxima qualquer função por uma função racional — e não é a aproximação de *Tabajara*, nem a do seu *Creysson*: é a aproximação de **Padé**, do matemático francês **Henri Padé**. Ela aproxima uma função qualquer por uma razão de polinômios, com graus do numerador e do denominador à nossa escolha. Para o controle de sistemas lineares, a **Padé de 1ª ordem** normalmente basta:
 
-$$e^{x} \approx \frac{2+x}{2-x} \;\Rightarrow\; e^{-s\tau} \approx \frac{2 - s\tau}{2 + s\tau} = \boxed{-\,\frac{s - 2/\tau}{s + 2/\tau}}$$
+$$e^{x} \approx \frac{2+x}{2-x} \;\Rightarrow\; e^{-s\tau} \approx \frac{2 - s\tau}{2 + s\tau} = \boxed{-\frac{s - 2/\tau}{s + 2/\tau}}$$
 
 Note o **zero no semiplano direito** em $+2/\tau$ — o atraso torna o sistema de **fase não mínima** (lembra do undershoot, §2.1.9?). Agora podemos escrever $G_a(s) = G(s)\cdot\left(-\dfrac{s-2/\tau}{s+2/\tau}\right)$ e usar **todas** as ferramentas do curso: polos, LGR, Routh, projeto.
 
@@ -593,15 +593,15 @@ $$T_a(s) = \frac{k(-s+2/\tau)}{(s+a)(s+2/\tau) + k(-s+2/\tau)} \;\Rightarrow\; \
 
 ![Atraso de transporte: Padé e estabilidade](https://github.com/fabiobento/lab-cont-2026-2/blob/main/imagens/m2_fig32_pade.png)
 
-**Exemplo de análise:** $\tau = 0{,}1$ s, $G(s) = \dfrac{2}{s(s+4)}$ → $G_a = \dfrac{2}{s(s+4)}\cdot\dfrac{-s+20}{s+20}$. Sem atraso, com $k = 10$: $T = \dfrac{20}{s^2+4s+20}$, $\zeta \approx 0{,}447$, $M_p = 20{,}8\,\%$. **Com** o atraso e o mesmo ganho:
+**Exemplo de análise:** $\tau = 0{,}1$ s, $G(s) = \dfrac{2}{s(s+4)}$ → $G_a = \dfrac{2}{s(s+4)}\cdot\dfrac{-s+20}{s+20}$. Sem atraso, com $k = 10$: $T = \dfrac{20}{s^2+4s+20}$, $\zeta \approx 0{,}447$, $M_p = 20{,}8\%$. **Com** o atraso e o mesmo ganho:
 
 $$T_a(s) = \frac{20(-s+20)}{s(s+4)(s+20) + 20(-s+20)} = \frac{20(-s+20)}{s^3 + 24s^2 + 60s + 400}$$
 
-Polos: $-22{,}1$ e $-0{,}95 \pm 4{,}1j$ → $\zeta = 0{,}223$ → **$M_p = 48{,}7\,\%$** (simulação com atraso "de verdade": **49,5 %** — a pequena diferença vem do zero em $+20$, parcialmente cancelado pelo polo em $-22{,}1$, e da própria aproximação de Padé).
+Polos: $-22{,}1$ e $-0{,}95 \pm 4{,}1j$ → $\zeta = 0{,}223$ → **$M_p = 48{,}7\%$** (simulação com atraso "de verdade": **49,5 %** — a pequena diferença vem do zero em $+20$, parcialmente cancelado pelo polo em $-22{,}1$, e da própria aproximação de Padé).
 
 **Exercício de simulação:** coloque o atraso em diferentes pontos da malha (na malha direta, na realimentação, ou dividido $0{,}05/0{,}05$). Você notará que **o overshoot é sempre o mesmo**, não importa a posição — mas **os tempos de resposta mudam**. (E não aumente o atraso demais, ou o sistema ficará instável.)
 
-**Projeto de avanço compensando o atraso.** Mantendo o exemplo: queremos $t_r(0\text{–}100\,\%) = 0{,}5$ s e $M_p = 15\,\%$ (o sistema sem atraso tinha $M_p \approx 20\,\%$ e $t_r \approx 0{,}5$ s com $k = 10$).
+**Projeto de avanço compensando o atraso.** Mantendo o exemplo: queremos $t_r(0\text{–}100\%) = 0{,}5$ s e $M_p = 15\%$ (o sistema sem atraso tinha $M_p \approx 20\%$ e $t_r \approx 0{,}5$ s com $k = 10$).
 
 1. $\zeta = 0{,}517$, $\omega_d = 4{,}23$ → $\square_d = -2{,}6 + 4{,}2j$;
 2. Avanço **sem** atraso: $\angle G(\square_d) = -193{,}4°$ → $13{,}4°$;
@@ -611,7 +611,7 @@ $$\angle e^{-0{,}1\square_d} = -0{,}1 \times 4{,}2\ \mathrm{rad} = -24{,}1° \qq
 5. Cancelando o polo $-4$: fase do zero $= 71{,}6°$ → fase do polo $= 34{,}1°$ → $\mathrm{tg}(34{,}1°) = \dfrac{4{,}2}{b - 2{,}6}$ → $b = 8{,}8$ (a essa altura, você já calcula $b$ sem a minha ajuda, não?);
 6. Ganho (pelo módulo da exponencial ou da Padé — mesmo resultado): $k = 14{,}26$.
 
-$$C(s) = 14{,}26\,\frac{s+4}{s+8{,}8} \;\Rightarrow\; \textbf{simulação com atraso: } M_p = 14{,}3\,\%,\ t_r = 0{,}5\text{ s} \checkmark$$
+$$C(s) = 14{,}26\frac{s+4}{s+8{,}8} \;\Rightarrow\; \textbf{simulação com atraso: } M_p = 14{,}3\%,\ t_r = 0{,}5\text{ s} \checkmark$$
 
 ![Projeto de avanço com atraso de transporte](https://github.com/fabiobento/lab-cont-2026-2/blob/main/imagens/m2_fig33_projeto_com_atraso.png)
 
@@ -629,4 +629,4 @@ Isso se o atraso estiver **na realimentação**. Se estiver **entre a entrada e 
 | Avanço | $C = k(s+a)/(s+b)$, $a < b$; $\angle C(\square_d) = -\angle G(\square_d) - 180°$; **≤ 40°**; 3 soluções-padrão; PD = avanço com $b \to \infty$ (implementar com filtro!) |
 | Atraso | $C = k(s+a)/(s+b)$, $a > b$; par colado na origem; fator $= K_{e,desej}/K_e = a/b$; zero a $-\mathrm{Re}(\square_d)/10$; PI = atraso com $b \to 0$ (único que zera erro de tipo 0; "só se necessário") |
 | Avanço-atraso / PID | receita de 10 passos; avanço compensa o efeito do atraso no overshoot; PID real = PI-Lead |
-| Atraso de transporte | $G_a = G\,e^{-s\tau}$; Padé 1ª ordem: $e^{-s\tau} \approx -(s-2/\tau)/(s+2/\tau)$; instável se $k > a + 2/\tau$; incluir a fase do atraso no projeto do avanço |
+| Atraso de transporte | $G_a = Ge^{-s\tau}$; Padé 1ª ordem: $e^{-s\tau} \approx -(s-2/\tau)/(s+2/\tau)$; instável se $k > a + 2/\tau$; incluir a fase do atraso no projeto do avanço |

@@ -1,7 +1,7 @@
 # Módulo 04 — Análise de Não Linearidades em Malhas de Controle (Teoria)
 
 > Texto teórico dos tópicos 4.1 a 4.3 — **módulo autônomo** que cobre a Unidade III do PPC (análise de não linearidades em malhas de controle: zona morta, histerese, saturação).
-> Convenções do curso (Módulos 01–03): sistemas **SISO**; estabilidade = **BIBO**; malha padrão com realimentação unitária; $M_p = e^{-\zeta\pi/\sqrt{1-\zeta^2}}$; $t_s(5\,\%) = 3/\sigma$; $dB = 20\log_{10}|G|$; $\mathrm{PM} \approx 100\,\zeta$.
+> Convenções do curso (Módulos 01–03): sistemas **SISO**; estabilidade = **BIBO**; malha padrão com realimentação unitária; $M_p = e^{-\zeta\pi/\sqrt{1-\zeta^2}}$; $t_s(5\%) = 3/\sigma$; $dB = 20\log_{10}|G|$; $\mathrm{PM} \approx 100\zeta$.
 > **Novidades deste módulo:** as **não linearidades estáticas** clássicas (saturação, zona morta, histerese) e seus efeitos na malha; o **windup** do integrador e as estratégias de **anti-windup**; os **ciclos-limite**; o método da **função descritiva** $N(A)$; e o **experimento do relé** para sintonia de PID ($K_u = 4d/\pi a$) — a ponte entre este módulo e o projeto final.
 
 ---
@@ -32,7 +32,7 @@ Organizando o zoológico:
 
 É a não linearidade **mais importante** da prática: todo atuador satura. A característica estática é linear de ganho $k$ até o nível $s$ e constante a partir daí:
 
-$$u = \begin{cases} k\,e, & |e| \leq s \\ +u_{max}, & e > s \\ -u_{max}, & e < -s \end{cases} \qquad u_{max} = k\,s$$
+$$u = \begin{cases} ke, & |e| \leq s \\ +u_{max}, & e > s \\ -u_{max}, & e < -s \end{cases} \qquad u_{max} = ks$$
 
 ![Característica estática da saturação](https://github.com/fabiobento/lab-cont-2026-2/blob/main/imagens/m4_fig01_saturacao.png)
 
@@ -49,7 +49,7 @@ $$u = \begin{cases} k\,e, & |e| \leq s \\ +u_{max}, & e > s \\ -u_{max}, & e < -
 
 A saída é **zero** enquanto $|e| \leq d$ e cresce linearmente a partir daí:
 
-$$u = \begin{cases} 0, & |e| \leq d \\ k\,(e - d\,\mathrm{sinal}(e)), & |e| > d \end{cases}$$
+$$u = \begin{cases} 0, & |e| \leq d \\ k(e - d\mathrm{sinal}(e)), & |e| > d \end{cases}$$
 
 ![Zona morta e histerese](https://github.com/fabiobento/lab-cont-2026-2/blob/main/imagens/m4_fig02_zona_morta_histerese.png)
 
@@ -147,11 +147,11 @@ Em palavras: se o atuador está saturado em $+u_{max}$ **e** o erro é positivo 
 
 Estratégia clássica dos manuais de PID: mede-se a **diferença entre o pedido e o entregue**, $e_s = u - u_{PI}$, e realimenta-se essa diferença à entrada do integrador através de um ganho $1/T_t$:
 
-$$\frac{d\,x_i}{dt} = e + \frac{1}{T_t}\,(u - u_{PI})$$
+$$\frac{dx_i}{dt} = e + \frac{1}{T_t}(u - u_{PI})$$
 
 Quando não há saturação, $u = u_{PI}$ e o integrador funciona normalmente. Quando satura, o termo de realimentação **descarrega o integrador** até que $u_{PI}$ se aproxime do teto — o integrador fica "sempre pronto para sair da saturação". A constante $T_t$ (*tracking time constant*) rege a velocidade dessa descarga; regra prática usual:
 
-$$\boxed{\;T_t \approx \sqrt{T_i\,T_d} \quad \text{(PID)} \qquad \text{ou} \qquad T_t \approx T_i \quad \text{(PI)}\;}$$
+$$\boxed{\;T_t \approx \sqrt{T_iT_d} \quad \text{(PID)} \qquad \text{ou} \qquad T_t \approx T_i \quad \text{(PI)}\;}$$
 
 ```mermaid
 flowchart LR
@@ -194,13 +194,13 @@ As perguntas de engenharia são: **qual a amplitude? qual a frequência? é est�
 
 ### 4.3.2 A ideia da função descritiva: um "ganho que depende da amplitude"
 
-Suponha que a malha já está oscilando e que a entrada da não linearidade é aproximadamente senoidal: $e(t) = A\,\mathrm{sen}(\omega t)$. A saída de uma não linearidade alimentada por senoide **não é senoidal** (saturação → senoide "achatada"; relé → onda quadrada) — mas é **periódica**, e portanto tem série de Fourier:
+Suponha que a malha já está oscilando e que a entrada da não linearidade é aproximadamente senoidal: $e(t) = A\mathrm{sen}(\omega t)$. A saída de uma não linearidade alimentada por senoide **não é senoidal** (saturação → senoide "achatada"; relé → onda quadrada) — mas é **periódica**, e portanto tem série de Fourier:
 
-$$u(t) = U_0 + \sum_{n=1}^{\infty} M_n\,\mathrm{sen}(n\omega t + \phi_n)$$
+$$u(t) = U_0 + \sum_{n=1}^{\infty} M_n\mathrm{sen}(n\omega t + \phi_n)$$
 
 Aqui entra a **hipótese de filtragem**: a planta $G(s)$ — quase sempre **passa-baixas** — atenua fortemente os harmônicos $n \geq 2$ (que estão em frequências $2\omega, 3\omega, \dots$). Fechando a malha, o que "volta" à entrada da não linearidade é essencialmente o **primeiro harmônico**. Logo, para análise da oscilação, só o primeiro harmônico importa — e definimos a **função descritiva** como o ganho complexo entre a senoide de entrada e o primeiro harmônico da saída:
 
-$$\boxed{\;N(A) = \frac{M_1\,\angle \phi_1}{A} = \frac{a_1 + j\,b_1}{A}\;}, \qquad a_1 = \frac{2}{T}\int_0^T u\,\mathrm{sen}(\omega t)\,dt, \;\; b_1 = \frac{2}{T}\int_0^T u\,\mathrm{cos}(\omega t)\,dt$$
+$$\boxed{\;N(A) = \frac{M_1\angle \phi_1}{A} = \frac{a_1 + jb_1}{A}\;}, \qquad a_1 = \frac{2}{T}\int_0^T u\mathrm{sen}(\omega t)dt, \;\; b_1 = \frac{2}{T}\int_0^T u\mathrm{cos}(\omega t)dt$$
 
 **Leituras importantes:**
 
@@ -211,9 +211,9 @@ $$\boxed{\;N(A) = \frac{M_1\,\angle \phi_1}{A} = \frac{a_1 + j\,b_1}{A}\;}, \qqu
 
 ### 4.3.3 As funções descritivas clássicas (com deduções)
 
-**Relé ideal** ($u = \pm d$). Com $e(t) = A\,\mathrm{sen}(\omega t)$, a saída é uma onda quadrada de amplitude $d$, em fase com a entrada. Por simetria, $b_1 = 0$ e:
+**Relé ideal** ($u = \pm d$). Com $e(t) = A\mathrm{sen}(\omega t)$, a saída é uma onda quadrada de amplitude $d$, em fase com a entrada. Por simetria, $b_1 = 0$ e:
 
-$$a_1 = \frac{2}{T}\int_0^T u\,\mathrm{sen}(\omega t)\,dt = \frac{4}{T}\int_0^{T/2} d\,\mathrm{sen}(\omega t)\,dt = \frac{4d}{T}\cdot\frac{T}{\pi} = \frac{4d}{\pi}$$
+$$a_1 = \frac{2}{T}\int_0^T u\mathrm{sen}(\omega t)dt = \frac{4}{T}\int_0^{T/2} d\mathrm{sen}(\omega t)dt = \frac{4d}{T}\cdot\frac{T}{\pi} = \frac{4d}{\pi}$$
 
 $$\boxed{\;N(A) = \frac{4d}{\pi A} \quad \text{(relé ideal)}\;}$$
 
@@ -221,13 +221,13 @@ Note: ganho **decrescente com $A$** — quanto maior a oscilação, menor o "gan
 
 **Saturação** (ganho $k$, nível $s$). Para $A \leq s$, o sinal passa intacto: $N = k$. Para $A > s$, a senoide "acha" no teto: aplicando a definição à senoide recortada (integral em quatro trechos, usando o ângulo $\alpha = \mathrm{arcsen}(s/A)$ em que a entrada atinge o teto):
 
-$$\boxed{\;N(A) = \frac{2k}{\pi}\left[\mathrm{arcsen}\!\left(\frac{s}{A}\right) + \frac{s}{A}\sqrt{1 - \left(\frac{s}{A}\right)^2}\,\right], \quad A > s\;}$$
+$$\boxed{\;N(A) = \frac{2k}{\pi}\left[\mathrm{arcsen}\!\left(\frac{s}{A}\right) + \frac{s}{A}\sqrt{1 - \left(\frac{s}{A}\right)^2}\right], \quad A > s\;}$$
 
 Verificações saudáveis: $A \to s^+$ → $N \to k$ (continuidade ✓); $A \to \infty$ → $N \approx \dfrac{2k}{\pi}\cdot\dfrac{2s}{A} = \dfrac{4ks}{\pi A}$ → decai como $1/A$, como o relé ✓ (faz sentido: saturada "quase sempre", a saturação vira um relé de nível $ks$).
 
 **Zona morta** (ganho $k$, largura $d$). Para $A \leq d$, nada passa: $N = 0$. Para $A > d$, conta análoga (a senoide só "liga" acima do limiar):
 
-$$\boxed{\;N(A) = k - \frac{2k}{\pi}\left[\mathrm{arcsen}\!\left(\frac{d}{A}\right) + \frac{d}{A}\sqrt{1 - \left(\frac{d}{A}\right)^2}\,\right], \quad A > d\;}$$
+$$\boxed{\;N(A) = k - \frac{2k}{\pi}\left[\mathrm{arcsen}\!\left(\frac{d}{A}\right) + \frac{d}{A}\sqrt{1 - \left(\frac{d}{A}\right)^2}\right], \quad A > d\;}$$
 
 crescendo de $0$ a $k$ conforme a amplitude vence a zona morta.
 
@@ -243,7 +243,7 @@ $$\boxed{\;N(A) = \frac{4d}{\pi A}\;\angle\!\left(-\mathrm{arcsen}\frac{h}{A}\ri
 
 Feche a malha: a não linearidade $N(A)$ em série com a planta $G(j\omega)$, realimentação unitária negativa. Para que exista uma oscilação **auto-sustentada** (sem entrada externa, $r = 0$), o sinal deve "dar a volta na malha e voltar igual a si mesmo" — mesmo módulo, mesma fase:
 
-$$N(A)\,G(j\omega) = -1 \qquad\Longleftrightarrow\qquad \boxed{\;1 + N(A)\,G(j\omega) = 0\;}$$
+$$N(A)G(j\omega) = -1 \qquad\Longleftrightarrow\qquad \boxed{\;1 + N(A)G(j\omega) = 0\;}$$
 
 É a **condição de balanço harmônico** — a versão não linear da condição de Barkhausen do Módulo 03 ($L(j\omega) = -1$ na fronteira de estabilidade). A solução $(A, \omega)$ dessa equação (duas equações reais — módulo e fase — duas incógnitas) **prevê a amplitude e a frequência do ciclo-limite**.
 
@@ -261,13 +261,13 @@ Para o **relé ideal**: $-\dfrac{1}{N(A)} = -\dfrac{\pi A}{4d}$ — é o **semi-
 
 **Passo 1 — onde o Nyquist cruza o eixo real?** Calculamos $G(j\omega)$:
 
-$$G(j\omega) = \frac{1}{j\omega\,(1 + j\omega)(2 + j\omega)} = \frac{1}{-3\omega^2 + j\omega(2 - \omega^2)}$$
+$$G(j\omega) = \frac{1}{j\omega(1 + j\omega)(2 + j\omega)} = \frac{1}{-3\omega^2 + j\omega(2 - \omega^2)}$$
 
 A parte imaginária zera quando $2 - \omega^2 = 0$, ou seja, $\boxed{\omega = \sqrt{2} \approx 1{,}41\ \mathrm{rad/s}}$ (período $T = 2\pi/\sqrt{2} \approx 4{,}44$ s). Substituindo:
 
 $$G(j\sqrt{2}) = \frac{1}{-3\cdot 2} = -\frac{1}{6}$$
 
-**Passo 2 — balanço harmônico.** $N(A)\,G(j\sqrt{2}) = -1 \Rightarrow \dfrac{4}{\pi A}\cdot\left(-\dfrac{1}{6}\right) = -1 \Rightarrow \boxed{A = \dfrac{4}{6\pi} \approx 0{,}212}$.
+**Passo 2 — balanço harmônico.** $N(A)G(j\sqrt{2}) = -1 \Rightarrow \dfrac{4}{\pi A}\cdot\left(-\dfrac{1}{6}\right) = -1 \Rightarrow \boxed{A = \dfrac{4}{6\pi} \approx 0{,}212}$.
 
 **Passo 3 — leitura gráfica.** O Nyquist de $G(j\omega)$ cruza o semi-eixo real negativo (a curva $-1/N$ do relé) exatamente em $-1/6$:
 
@@ -279,7 +279,7 @@ $$G(j\sqrt{2}) = \frac{1}{-3\cdot 2} = -\frac{1}{6}$$
 
 A oscilação decai da condição inicial e **estaciona** em amplitude $A \approx 0{,}220$ e $\omega \approx 1{,}38$ rad/s — contra $0{,}212$ e $1{,}41$ previstos. Erros de ~4 % e ~2 %: é a precisão típica do método (a hipótese de filtragem é boa, não exata — a saída do relé tem harmônicos que a planta não elimina por completo).
 
-> 🔗 **Fecho genial com o Módulo 03:** reorganizando o balanço harmônico, $N(A) = 6$ é o **ganho que levaria a malha linear à fronteira de estabilidade** — e de fato, o critério de Routh para $1 + K\,G(s)$ dá $s^3 + 3s^2 + 2s + K$ estável apenas para $K < 6$ (Lab 12!). Ou seja: **$K_u = 4d/(\pi A) = 6$** — o ganho último de Ziegler-Nichols **sai do experimento do relé**. Guardem este número; voltamos a ele em §4.3.7.
+> 🔗 **Fecho genial com o Módulo 03:** reorganizando o balanço harmônico, $N(A) = 6$ é o **ganho que levaria a malha linear à fronteira de estabilidade** — e de fato, o critério de Routh para $1 + KG(s)$ dá $s^3 + 3s^2 + 2s + K$ estável apenas para $K < 6$ (Lab 12!). Ou seja: **$K_u = 4d/(\pi A) = 6$** — o ganho último de Ziegler-Nichols **sai do experimento do relé**. Guardem este número; voltamos a ele em §4.3.7.
 
 ### 4.3.6 Estabilidade do ciclo-limite (critério de Loeb)
 
@@ -307,7 +307,7 @@ flowchart LR
 
 A malha entra em ciclo-limite **sozinha e com amplitude controlada** (o relé limita a energia injetada: a oscilação não "explode"). Mede-se na saída a **amplitude** $a$ e o **período** $P_u$. Pelo balanço harmônico com o relé ideal:
 
-$$N(a)\,|G(j\omega_u)| = 1 \;\Rightarrow\; \frac{4d}{\pi a}\cdot\frac{1}{K_u} = 1 \;\Rightarrow\; \boxed{\;K_u = \frac{4d}{\pi a}\;}$$
+$$N(a)|G(j\omega_u)| = 1 \;\Rightarrow\; \frac{4d}{\pi a}\cdot\frac{1}{K_u} = 1 \;\Rightarrow\; \boxed{\;K_u = \frac{4d}{\pi a}\;}$$
 
 pois, no ponto de oscilação, $|G(j\omega_u)| = 1/K_u$ (definição do ganho último: o ganho que levaria a malha à fronteira). E o período medido **é** o $P_u$: $\omega_u = 2\pi/P_u$ é onde a fase de $G$ vale $-180°$.
 
@@ -319,9 +319,9 @@ Com $K_u$ e $P_u$ medidos, aplica-se a tabela clássica de Ziegler-Nichols (malh
 
 | Controlador | $k_p$ | $T_i$ | $T_d$ |
 |---|---|---|---|
-| P | $0{,}5\,K_u$ | — | — |
-| PI | $0{,}45\,K_u$ | $P_u/1{,}2$ | — |
-| PID | $0{,}6\,K_u$ | $P_u/2$ | $P_u/8$ |
+| P | $0{,}5K_u$ | — | — |
+| PI | $0{,}45K_u$ | $P_u/1{,}2$ | — |
+| PID | $0{,}6K_u$ | $P_u/2$ | $P_u/8$ |
 
 **Exemplo-âncora numérico** (a mesma planta do ciclo-limite, $G = 1/[s(s+1)(s+2)]$, relé $d = 1$): medimos $a = 0{,}212$ (previsão) ou $a \approx 0{,}22$ (simulação) e $P_u = 4{,}44$ s:
 

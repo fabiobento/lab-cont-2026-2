@@ -10,7 +10,7 @@
 1. Excitar a planta (motor CC + ponte H + encoder magnético) com um sinal **PRBS** (*Pseudo-Random Binary Sequence*);
 2. Coletar os sinais de entrada (PWM) e saída (velocidade) da planta;
 3. Estimar um modelo que descreva a dinâmica da planta:
-   - modelo de **1ª ordem com atraso** (FOPDT): $G(s) = \dfrac{K\,e^{-Ls}}{\tau s + 1}$;
+   - modelo de **1ª ordem com atraso** (FOPDT): $G(s) = \dfrac{Ke^{-Ls}}{\tau s + 1}$;
    - aproximação de **Padé** do atraso (1ª e 10ª ordens);
 4. Comparar os modelos com a resposta da planta real;
 5. Discutir a **origem física do atraso** observado.
