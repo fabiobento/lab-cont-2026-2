@@ -398,7 +398,6 @@ Para $D$, substituímos $E$ e $F$ na igualdade e comparamos os numeradores (faç
 
 $$Y(s) = \frac{-2}{s+1} + \frac{2}{(s+1)^2} + \frac{2}{s+2} \Longrightarrow y(t) = -2e^{-t} + 2te^{-t} + 2e^{-2t}$$
 
-(Se optássemos pela expansão em 2 frações, $\frac{A s + B}{(s+1)^2} + \frac{C}{s+2}$, o truque daria apenas $C = F = 2$; multiplicando por $(s+1)^2$ e fazendo $s = -1$ chegaríamos só a $B - A = 2$ — insuficiente. Seria preciso o MMC mesmo, chegando a $A = -2$, $B = 0$. Note a identidade: $-\frac{2}{s+1} + \frac{2}{(s+1)^2} = -\frac{2s}{(s+1)^2}$.)
 
 **Recapitulando:** você sempre pode obter as frações parciais escrevendo numeradores literais, calculando o MMC e igualando os numeradores — o truque dos resíduos apenas acelera o processo.
 
