@@ -356,7 +356,7 @@ Essa transformada não está na tabela. Existe uma fórmula para a transformada 
 
 $$\frac{2}{s(s+1)(s+2)} = \frac{A}{s} + \frac{B}{s+1} + \frac{C}{s+2}$$
 
-Somando as frações (MMC $= s(s+1)(s+2)$) e igualando os numeradores:
+Somando as frações (MMC $`= s(s+1)(s+2)`$) e igualando os numeradores:
 
 $$2 = A(s+1)(s+2) + Bs(s+2) + Cs(s+1) = (A+B+C)s^2 + (3A+2B+C)s + 2A$$
 
