@@ -16,7 +16,7 @@ b) Determine o polo e o valor de regime y(∞) para u degrau unitário.
 
 c) Esboce y(t) e indique no gráfico a constante de tempo τ.
 
-## Questão 2 — Laplace e frações parciais (§1.2.4)
+## Questão 2 — Laplace e frações parciais (§1.2.3)
 
 Seja ÿ + 4ẏ + 3y = 6u, com u degrau unitário e condições iniciais nulas.
 
