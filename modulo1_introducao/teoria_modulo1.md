@@ -680,6 +680,11 @@ Resumindo na tabela clássica (erro em regime, malha fechada):
 
 ### 1.4.1 Por que a resposta ao degrau? Por que 2ª ordem?
 
+
+> **OBSERVAÇÃO**
+>
+> Os slides dessa seção estão em [nesse link](https://github.com/fabiobento/lab-cont-2026-2/raw/main/modulo1_introducao/resposta-degrau-2a-ordem.pdf).
+
 **Resposta ao degrau** = saída do sistema quando a entrada é um degrau (normalmente unitário).
 
 **Por que o degrau?** Três motivos:
