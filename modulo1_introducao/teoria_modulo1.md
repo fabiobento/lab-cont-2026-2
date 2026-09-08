@@ -580,6 +580,10 @@ Casos-limite: **$k = 60$** → polinômio $s^3 + 6s^2 + 11s + 60 = (s + 6)(s^2 +
 E **nem sempre é possível estabilizar**: tente achar $k$ que estabilize $T(s) = \dfrac{k}{s^2 - s - 6 + ks - 1}$ (não existe — verifique!).
 
 ### 1.3.5 Erro em regime permanente — malha aberta
+> **OBSERVAÇÃO**
+>
+> Os slides dessa seção estão em [nesse link](https://github.com/fabiobento/lab-cont-2026-2/raw/main/modulo1_introducao/erro_em_regime_em_malha_aberta.pdf).
+
 
 Um dos requisitos clássicos é o **erro em regime permanente** ($e_{ss}$, de *steady state*): queremos que a saída acompanhe a referência perfeitamente ou com erro muito pequeno. As entradas de interesse são:
 
