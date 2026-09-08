@@ -625,6 +625,9 @@ Em cascata: coeficientes de $s^0$ iguais ⇒ erro nulo ao degrau; coeficientes d
 ![Erro em regime: degrau e rampa nos exemplos 1 e 2](https://github.com/fabiobento/lab-cont-2026-2/blob/main/imagens/m1_fig13_erro_regime.png)
 
 ### 1.3.6 Erro em regime permanente — malha fechada
+> **OBSERVAÇÃO**
+>
+> Os slides dessa seção estão em [nesse link](https://github.com/fabiobento/lab-cont-2026-2/raw/main/modulo1_introducao/erro_em_regime_em_malha_fechada.pdf).
 
 Malha aberta e malha fechada são conceitos relativos: se você já tem $T(s)$, sabe calcular o erro (ela é "a malha aberta" entre $R$ e $Y$). Mas dá para ir direto da **FT de malha aberta**, sem calcular $T(s)$. Com controle proporcional, defina a **Função de Transferência de Malha**:
 
