@@ -498,6 +498,10 @@ Sempre os elementos da primeira coluna ($a_1$, $b_1$) cruzados com a coluna segu
 
 ### 1.3.3 Função de transferência de malha fechada e as vantagens da realimentação
 
+> **OBSERVAÇÃO**
+>
+> Os slides dessa seção estão em [nesse link](https://github.com/fabiobento/lab-cont-2026-2/raw/main/modulo1_introducao/restricoes_sobre_parametros_para_a_estabilidade.pdf).
+
 *Convenção: como neste curso só tratamos da BIBO estabilidade, daqui em diante "estável" = "BIBO estável".*
 
 **FTMF.** Considere o sistema em malha fechada com **controle proporcional** (ganho $k$) e realimentação unitária:
@@ -541,6 +545,10 @@ flowchart LR
 **E por que nem sempre usar malha fechada?** Porque ela exige um **componente a mais**: o **sensor**, para medir a saída continuamente. Sensores podem ser caros e adicionar complexidade desnecessária. Se o sistema é estável em malha aberta e os efeitos de erros e perturbações são toleráveis, malha aberta pode ser mais vantajosa. E atenção: **ganho inadequado pode inclusive desestabilizar** a malha fechada de um sistema estável em malha aberta — é o que veremos a seguir.
 
 ### 1.3.4 Faixa de estabilidade
+> **OBSERVAÇÃO**
+>
+> Os slides dessa seção estão em [nesse link](https://github.com/fabiobento/lab-cont-2026-2/raw/main/modulo1_introducao/vantagens_da_realimentacao.pdf).
+
 
 Se o denominador tiver um **parâmetro ajustável** (um ganho, por exemplo), construímos a tabela de Routh **carregando o parâmetro literalmente** e impomos as condições para que a primeira coluna não troque de sinal — como nos exemplos literais. Saber a faixa de valores estáveis é muito útil: projetamos o controlador **longe da instabilidade** e, em testes, sabemos quais valores evitar.
 
