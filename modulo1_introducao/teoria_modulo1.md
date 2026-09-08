@@ -500,7 +500,7 @@ Sempre os elementos da primeira coluna ($a_1$, $b_1$) cruzados com a coluna segu
 
 > **OBSERVAÇÃO**
 >
-> Os slides dessa seção estão em [nesse link](https://github.com/fabiobento/lab-cont-2026-2/raw/main/modulo1_introducao/restricoes_sobre_parametros_para_a_estabilidade.pdf).
+> Os slides dessa seção estão em [nesse link](https://github.com/fabiobento/lab-cont-2026-2/raw/main/modulo1_introducao/vantagens_da_realimentacao.pdf).
 
 *Convenção: como neste curso só tratamos da BIBO estabilidade, daqui em diante "estável" = "BIBO estável".*
 
@@ -547,7 +547,7 @@ flowchart LR
 ### 1.3.4 Faixa de estabilidade
 > **OBSERVAÇÃO**
 >
-> Os slides dessa seção estão em [nesse link](https://github.com/fabiobento/lab-cont-2026-2/raw/main/modulo1_introducao/vantagens_da_realimentacao.pdf).
+> Os slides dessa seção estão em [nesse link](https://github.com/fabiobento/lab-cont-2026-2/raw/main/modulo1_introducao/restricoes_sobre_parametros_para_a_estabilidade.pdf).
 
 
 Se o denominador tiver um **parâmetro ajustável** (um ganho, por exemplo), construímos a tabela de Routh **carregando o parâmetro literalmente** e impomos as condições para que a primeira coluna não troque de sinal — como nos exemplos literais. Saber a faixa de valores estáveis é muito útil: projetamos o controlador **longe da instabilidade** e, em testes, sabemos quais valores evitar.
