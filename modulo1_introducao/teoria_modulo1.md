@@ -713,6 +713,11 @@ As respostas ao degrau, sobrepostas, são **muito próximas** (o polo extra em $
 
 ### 1.4.2 As diferentes respostas ao degrau de 2ª ordem
 
+> **OBSERVAÇÃO**
+>
+> Os slides dessa seção estão em [nesse link](https://github.com/fabiobento/lab-cont-2026-2/raw/main/modulo1_introducao/As diferentes respostas ao degrau.pdf).
+
+
 Dependendo dos polos da FT, há **3 tipos de resposta** (para nós, essa divisão basta):
 
 | Tipo | Polos | Resposta ao degrau |
