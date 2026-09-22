@@ -715,7 +715,7 @@ As respostas ao degrau, sobrepostas, são **muito próximas** (o polo extra em $
 
 > **OBSERVAÇÃO**
 >
-> Os slides dessa seção estão em [nesse link](https://github.com/fabiobento/lab-cont-2026-2/blob/main/modulo1_introducao/as_diferentes_respostas_ao_degrau.pdf).
+> Os slides dessa seção estão em [nesse link](https://github.com/fabiobento/lab-cont-2026-2/blob/main/modulo1_introducao/as_diferentes_respostas_ao_degrau.pdf.pdf).
 
 
 Dependendo dos polos da FT, há **3 tipos de resposta** (para nós, essa divisão basta):
