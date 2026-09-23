@@ -1,7 +1,7 @@
 # Lista 1 — Módulo 01: Introdução aos Sistemas de Controle
 
 > **Laboratório de Controle Automático** — Engenharia Elétrica, Ifes Campus Guarapari.
-> Material do aluno. Consulte a teoria em `teoria_modulo1.md` (as questões indicam a seção de apoio) e os exercícios resolvidos em `exercicios_resolvidos_modulo1.md`.
+> Material do aluno. Consulte a teoria em `teoria_modulo1.md` (as questões indicam a seção de apoio).
 > Entrega: conforme cronograma (semana 6). Resolva à mão e confira numericamente quando indicado.
 
 ---
@@ -35,6 +35,7 @@ a) s² + 2s + 5
 b) s² − 2s + 5
 
 c) s³ + 2s² + 3s + 4
+
 d) s³ + 2s² + 3s + 12
 
 e) s⁴ + 3s³ + s² + 6s + 2
