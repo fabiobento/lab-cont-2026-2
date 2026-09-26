@@ -757,7 +757,7 @@ Como todas são definidas **relativamente ao valor final**, obtemos os mesmos $t
 
 ### 1.4.4 A parametrização ζ e ωn
 
-Os requisitos costumam ser dados — ou traduzidos da linguagem do usuário — em função dessas características ("quero uma resposta **rápida** e **confortável**" → $t_r$, $t_p$,  $t_s$ máximos e $M_p$ máximo). Precisamos relacioná-las aos **coeficientes da FT de 2ª ordem**.
+Os requisitos costumam ser dados — ou traduzidos da linguagem do usuário — em função dessas características ("quero uma resposta **rápida** e **confortável**" → $t_r$ / $t_p$ / $t_s$ máximos e $M_p$ máximo). Precisamos relacioná-las aos **coeficientes da FT de 2ª ordem**.
 
 Considere a FT de 2ª ordem **sem zeros** e com **erro nulo em regime** para o degrau (se houver zeros — outros cursos; se o erro não for nulo, pouco muda: as características são relativas ao valor final):
 
