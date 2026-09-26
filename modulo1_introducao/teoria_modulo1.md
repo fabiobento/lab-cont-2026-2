@@ -734,6 +734,10 @@ Nosso interesse está na **subamortecida**: é a que vai **mais rápido** para o
 
 ### 1.4.3 As características da resposta subamortecida
 
+> **OBSERVAÇÃO**
+>
+> Os slides dessa seção estão em [nesse link](https://github.com/fabiobento/lab-cont-2026-2/blob/main/modulo1_introducao/características_da_resposta_subamortecida.pdf).
+
 Considere as respostas ao degrau de três sistemas subamortecidos:
 
 $$G_A(s) = \frac{1}{s^2+s+1}, \qquad G_B(s) = \frac{64}{s^2+12s+64}, \qquad G_C(s) = \frac{25}{s^2+4s+25}$$
