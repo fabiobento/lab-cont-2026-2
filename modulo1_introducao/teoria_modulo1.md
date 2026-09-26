@@ -756,6 +756,9 @@ Como diferenciá-las? Lembre dos requisitos de desempenho: **velocidade** e **os
 Como todas são definidas **relativamente ao valor final**, obtemos os mesmos $t_r$, $t_s$ e $M_p$ **independentemente da amplitude do degrau e do erro em regime**.
 
 ### 1.4.4 A parametrização ζ e ωn
+> **OBSERVAÇÃO**
+>
+> Os slides dessa seção estão em [nesse link](https://github.com/fabiobento/lab-cont-2026-2/blob/main/modulo1_introducao/parametrizacao_sistemas_segunda_ordem.pdf).
 
 Os requisitos costumam ser dados — ou traduzidos da linguagem do usuário — em função dessas características ("quero uma resposta **rápida** e **confortável**" → $t_r$ / $t_p$ / $t_s$ máximos e $M_p$ máximo). Precisamos relacioná-las aos **coeficientes da FT de 2ª ordem**.
 
