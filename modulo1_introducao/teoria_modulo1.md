@@ -788,6 +788,11 @@ ou seja, **os polos são $-\sigma \pm j\omega_d$** (não acredita? Use Bhaskara 
 
 ### 1.4.5 As fórmulas da resposta de 2ª ordem
 
+> **OBSERVAÇÃO**
+>
+> Os slides dessa seção estão em [nesse link](https://github.com/fabiobento/lab-cont-2026-2/blob/main/modulo1_introducao/formulas_da_resposta_de_segunda_ordem.pdf).
+
+
 Você pode apenas acreditar no que segue — ou derivar $y(t)$ e conferir. Das expressões acima:
 
 **Instante de pico.** Derivando $y(t)$ e igualando a zero, o primeiro máximo ocorre em:
