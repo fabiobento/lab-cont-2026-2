@@ -500,7 +500,7 @@ Sempre os elementos da primeira coluna ($a_1$, $b_1$) cruzados com a coluna segu
 
 > **OBSERVAÇÃO**
 >
-> Os slides dessa seção estão em [nesse link](https://github.com/fabiobento/lab-cont-2026-2/raw/main/modulo1_introducao/vantagens_da_realimentacao.pdf).
+> Os slides dessa seção estão [nesse link](https://github.com/fabiobento/lab-cont-2026-2/raw/main/modulo1_introducao/vantagens_da_realimentacao.pdf).
 
 *Convenção: como neste curso só tratamos da BIBO estabilidade, daqui em diante "estável" = "BIBO estável".*
 
@@ -547,7 +547,7 @@ flowchart LR
 ### 1.3.4 Faixa de estabilidade
 > **OBSERVAÇÃO**
 >
-> Os slides dessa seção estão em [nesse link](https://github.com/fabiobento/lab-cont-2026-2/raw/main/modulo1_introducao/restricoes_sobre_parametros_para_a_estabilidade.pdf).
+> Os slides dessa seção estão [nesse link](https://github.com/fabiobento/lab-cont-2026-2/raw/main/modulo1_introducao/restricoes_sobre_parametros_para_a_estabilidade.pdf).
 
 
 Se o denominador tiver um **parâmetro ajustável** (um ganho, por exemplo), construímos a tabela de Routh **carregando o parâmetro literalmente** e impomos as condições para que a primeira coluna não troque de sinal — como nos exemplos literais. Saber a faixa de valores estáveis é muito útil: projetamos o controlador **longe da instabilidade** e, em testes, sabemos quais valores evitar.
@@ -582,7 +582,7 @@ E **nem sempre é possível estabilizar**: tente achar $k$ que estabilize $T(s) 
 ### 1.3.5 Erro em regime permanente — malha aberta
 > **OBSERVAÇÃO**
 >
-> Os slides dessa seção estão em [nesse link](https://github.com/fabiobento/lab-cont-2026-2/raw/main/modulo1_introducao/erro_em_regime_em_malha_aberta.pdf).
+> Os slides dessa seção estão [nesse link](https://github.com/fabiobento/lab-cont-2026-2/raw/main/modulo1_introducao/erro_em_regime_em_malha_aberta.pdf).
 
 
 Um dos requisitos clássicos é o **erro em regime permanente** ($e_{ss}$, de *steady state*): queremos que a saída acompanhe a referência perfeitamente ou com erro muito pequeno. As entradas de interesse são:
@@ -627,7 +627,7 @@ Em cascata: coeficientes de $s^0$ iguais ⇒ erro nulo ao degrau; coeficientes d
 ### 1.3.6 Erro em regime permanente — malha fechada
 > **OBSERVAÇÃO**
 >
-> Os slides dessa seção estão em [nesse link](https://github.com/fabiobento/lab-cont-2026-2/raw/main/modulo1_introducao/erro_em_regime_em_malha_fechada.pdf).
+> Os slides dessa seção estão [nesse link](https://github.com/fabiobento/lab-cont-2026-2/raw/main/modulo1_introducao/erro_em_regime_em_malha_fechada.pdf).
 
 Malha aberta e malha fechada são conceitos relativos: se você já tem $T(s)$, sabe calcular o erro (ela é "a malha aberta" entre $R$ e $Y$). Mas dá para ir direto da **FT de malha aberta**, sem calcular $T(s)$. Com controle proporcional, defina a **Função de Transferência de Malha**:
 
@@ -683,7 +683,7 @@ Resumindo na tabela clássica (erro em regime, malha fechada):
 
 > **OBSERVAÇÃO**
 >
-> Os slides dessa seção estão em [nesse link](https://github.com/fabiobento/lab-cont-2026-2/raw/main/modulo1_introducao/pq_estudar_resposta_degrau_segunda_ordem.pdf).
+> Os slides dessa seção estão [nesse link](https://github.com/fabiobento/lab-cont-2026-2/raw/main/modulo1_introducao/pq_estudar_resposta_degrau_segunda_ordem.pdf).
 
 **Resposta ao degrau** = saída do sistema quando a entrada é um degrau (normalmente unitário).
 
@@ -715,7 +715,7 @@ As respostas ao degrau, sobrepostas, são **muito próximas** (o polo extra em $
 
 > **OBSERVAÇÃO**
 >
-> Os slides dessa seção estão em [nesse link](https://github.com/fabiobento/lab-cont-2026-2/blob/main/modulo1_introducao/as_diferentes_respostas_ao_degrau.pdf.pdf).
+> Os slides dessa seção estão [nesse link](https://github.com/fabiobento/lab-cont-2026-2/blob/main/modulo1_introducao/as_diferentes_respostas_ao_degrau.pdf.pdf).
 
 
 Dependendo dos polos da FT, há **3 tipos de resposta** (para nós, essa divisão basta):
@@ -736,7 +736,7 @@ Nosso interesse está na **subamortecida**: é a que vai **mais rápido** para o
 
 > **OBSERVAÇÃO**
 >
-> Os slides dessa seção estão em [nesse link](https://github.com/fabiobento/lab-cont-2026-2/blob/main/modulo1_introducao/características_da_resposta_subamortecida.pdf).
+> Os slides dessa seção estão [nesse link](https://github.com/fabiobento/lab-cont-2026-2/blob/main/modulo1_introducao/características_da_resposta_subamortecida.pdf).
 
 Considere as respostas ao degrau de três sistemas subamortecidos:
 
@@ -758,7 +758,7 @@ Como todas são definidas **relativamente ao valor final**, obtemos os mesmos $t
 ### 1.4.4 A parametrização ζ e ωn
 > **OBSERVAÇÃO**
 >
-> Os slides dessa seção estão em [nesse link](https://github.com/fabiobento/lab-cont-2026-2/blob/main/modulo1_introducao/parametrizacao_sistemas_segunda_ordem.pdf).
+> Os slides dessa seção estão [nesse link](https://github.com/fabiobento/lab-cont-2026-2/blob/main/modulo1_introducao/parametrizacao_sistemas_segunda_ordem.pdf).
 
 Os requisitos costumam ser dados — ou traduzidos da linguagem do usuário — em função dessas características ("quero uma resposta **rápida** e **confortável**" → $t_r$ / $t_p$ / $t_s$ máximos e $M_p$ máximo). Precisamos relacioná-las aos **coeficientes da FT de 2ª ordem**.
 
@@ -790,7 +790,7 @@ ou seja, **os polos são $-\sigma \pm j\omega_d$** (não acredita? Use Bhaskara 
 
 > **OBSERVAÇÃO**
 >
-> Os slides dessa seção estão em [nesse link](https://github.com/fabiobento/lab-cont-2026-2/blob/main/modulo1_introducao/formulas_da_resposta_de_segunda_ordem.pdf).
+> Os slides dessa seção estão [nesse link](https://github.com/fabiobento/lab-cont-2026-2/blob/main/modulo1_introducao/formulas_da_resposta_de_segunda_ordem.pdf).
 
 
 Você pode apenas acreditar no que segue — ou derivar $y(t)$ e conferir. Das expressões acima:
@@ -849,7 +849,7 @@ $$t_r = \frac{\pi - \arccos 0{,}4}{5\sqrt{1-0{,}4^2}} = 0{,}43\ \text{s} \qquad 
 
 > **OBSERVAÇÃO**
 >
-> Os slides dessa seção estão em [nesse link](https://github.com/fabiobento/lab-cont-2026-2/blob/main/modulo1_introducao/projeto_para_requisito_de_overshoot.pdf).
+> Os slides dessa seção estão [nesse link](https://github.com/fabiobento/lab-cont-2026-2/blob/main/modulo1_introducao/projeto_para_requisito_de_overshoot.pdf).
 
 Finalmente, o projeto! **Problema:** seja
 
