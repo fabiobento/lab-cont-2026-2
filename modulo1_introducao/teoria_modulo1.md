@@ -891,6 +891,10 @@ Dado o requisito de overshoot, substituímos $\zeta^2$ diretamente (nem precisam
 
 ### 1.4.7 Projeto de controle proporcional para requisito de instante de pico
 
+> **OBSERVAÇÃO**
+>
+> Os slides dessa seção estão [nesse link](https://github.com/fabiobento/lab-cont-2026-2/blob/main/modulo1_introducao/projeto_para_requisito_de_instante_de_pico.pdf).
+
 O procedimento é o mesmo, trocando a fórmula. **Problema:** mesma planta $G(s) = \dfrac{1}{s(s+1)}$, requisito $t_p = 3{,}14$ s.
 
 De $t_p = \pi/\omega_d$: $\omega_d = \dfrac{\pi}{t_p} = \dfrac{3{,}14}{3{,}14} = 1$ rad/s. Com $\omega_n = \sqrt{k}$ e $\zeta = 0{,}5/\sqrt{k}$:
