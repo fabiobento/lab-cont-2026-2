@@ -847,6 +847,10 @@ $$t_r = \frac{\pi - \arccos 0{,}4}{5\sqrt{1-0{,}4^2}} = 0{,}43\ \text{s} \qquad 
 
 ### 1.4.6 Projeto de controle proporcional para requisito de overshoot
 
+> **OBSERVAÇÃO**
+>
+> Os slides dessa seção estão em [nesse link](https://github.com/fabiobento/lab-cont-2026-2/blob/main/modulo1_introducao/projeto_para_requisito_de_overshoot.pdf).
+
 Finalmente, o projeto! **Problema:** seja
 
 $$G(s) = \frac{1}{s(s+1)}$$
