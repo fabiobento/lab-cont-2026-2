@@ -96,7 +96,7 @@ b) Projete k para tp = 1,57 s e determine o Mp resultante.
 
 c) É possível atender (a) e (b) simultaneamente com um único k? Justifique geometricamente (posição dos polos).
 
-## Questão 10 — Dominância (§1.4.1)
+## Questão 10 — Dominância (§1.4.1) (OPCIONAL)
 
 Considere T₁(s) = 20/[(s² + 2s + 2)(s + 10)] e T₂(s) = 2/[(s² + 2s + 2)(s + 1)].
 
