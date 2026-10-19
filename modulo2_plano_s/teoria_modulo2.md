@@ -17,7 +17,7 @@ $$G(s) = \frac{\omega_n^2}{s^2 + 2\zeta\omega_n s + \omega_n^2},$$
 
 é completamente caracterizada por quatro grandezas, calculadas por:
 
-$$M_p = e^{-\zeta\pi/\sqrt{1-\zeta^2}}, \qquad t_p = \frac{\pi}{\omega_d} = \frac{\pi}{\omega_n\sqrt{1-\zeta^2}}, \qquad t_r = \frac{\pi - \arccos\zeta}{\omega_n\sqrt{1-\zeta^2}}, \qquad t_s(5\%) \approx \frac{3}{\sigma} = \frac{3}{\zeta\omega_n}.$$
+$`M_p = e^{-\zeta\pi/\sqrt{1-\zeta^2}}, \qquad t_p = \frac{\pi}{\omega_d} = \frac{\pi}{\omega_n\sqrt{1-\zeta^2}}, \qquad t_r = \frac{\pi - \arccos\zeta}{\omega_n\sqrt{1-\zeta^2}}, \qquad t_s(5\%) \approx \frac{3}{\sigma} = \frac{3}{\zeta\omega_n}.`$
 
 
 **Exemplo numérico.** Para $\zeta = 0{,}45$ e $\omega_n = 2$ rad/s: $M_p = e^{-0{,}45\pi/\sqrt{1-0{,}45^2}} = 20{,}5\%$; $t_p = \pi/1{,}786 = 1{,}76$ s; $t_r = (\pi - 1{,}104)/1{,}786 = 1{,}14$ s; $t_s = 3/0{,}9 = 3{,}33$ s.
