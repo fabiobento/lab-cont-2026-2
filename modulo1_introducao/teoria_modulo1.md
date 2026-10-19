@@ -815,17 +815,13 @@ $$M_p = e^{-\zeta\pi/\sqrt{1-\zeta^2}}$$
 
 **Tempo de subida.** Igualando $`y(t)`$ ao valor final (1) e tomando o primeiro instante:
 
-$$
-t_r^{0-100\\\%} = \frac{\pi - \beta}{\omega_d}\, \qquad \beta = \arccos\zeta
-$$
+$`t_r^{0-100\\\%} = \frac{\pi - \beta}{\omega_d}\, \qquad \beta = \arccos\zeta`$
 
 ($`\beta`$ é o mesmo ângulo $`\varphi`$ da expressão de $`y(t)`$: $`\mathrm{tg}\beta = \sqrt{1-\zeta^2}/\zeta`$, $`\cos\beta = \zeta`$. **Use β em radianos!**)
 
 **Tempo de acomodação.** Esta fórmula **não é exata** — é uma aproximação pela **envoltória** exponencial $e^{-\sigma t}$ que multiplica o seno: quando a envoltória entra na faixa de ±5 %, a oscilação está **garantidamente** confinada a ela. Por isso a fórmula é **pessimista** (o $t_s$ real costuma ser menor — ou ligeiramente diferente):
 
-$$
-t_s^{5\\\%} \approx \frac{3}{\sigma} = \frac{3}{\zeta\omega_n}
-$$
+$`t_s^{5\\\%} \approx \frac{3}{\sigma} = \frac{3}{\zeta\omega_n}`$
 
 **Os nomes dos parâmetros:**
 
@@ -840,10 +836,10 @@ $$
 \omega_n = \sqrt{25} = 5, \qquad \zeta = \frac{4}{2 \cdot 5} = 0{,}4
 $$
 
-$$M_p = e^{-0{,}4\pi/\sqrt{1-0{,}4^2}} = 25{,}4\% \qquad t_p = \frac{\pi}{5\sqrt{1-0{,}4^2}} = 0{,}69\ \text{s}$$
-$$t_r = \frac{\pi - \arccos 0{,}4}{5\sqrt{1-0{,}4^2}} = 0{,}43\ \text{s} \qquad t_s^{5\\\%} \approx \frac{3}{0{,}4 \cdot 5} = 1{,}5\ \text{s}$$
+$`M_p = e^{-0{,}4\pi/\sqrt{1-0{,}4^2}} = 25{,}4\% \qquad t_p = \frac{\pi}{5\sqrt{1-0{,}4^2}} = 0{,}69\ \text{s}`$
+$`t_r = \frac{\pi - \arccos 0{,}4}{5\sqrt{1-0{,}4^2}} = 0{,}43\ \text{s} \qquad t_s^{5\\\%} \approx \frac{3}{0{,}4 \cdot 5} = 1{,}5\ \text{s}`$
 
-(com $\pi \approx 3{,}14$ — parcimonioso.) Simulando a resposta ao degrau, obtemos exatamente esses valores ($M_p \approx 25\%$, $t_p \approx 0{,}7$ s, $t_r \approx 0{,}45$ s; o $t_s$ medido fica em torno de 1,5–1,7 s — lembre, a fórmula é uma aproximação pessimista).
+(com $\pi \approx 3{,}14$ — parcimonioso.) Simulando a resposta ao degrau, obtemos exatamente esses valores ($`M_p \approx 25\%`$, $t_p \approx 0{,}7$ s, $t_r \approx 0{,}45$ s; o $t_s$ medido fica em torno de 1,5–1,7 s — lembre, a fórmula é uma aproximação pessimista).
 
 ### 1.4.6 Projeto de controle proporcional para requisito de overshoot
 
@@ -861,7 +857,7 @@ A FTMF é $T(s) = \dfrac{k}{s^2 + s + k}$. Pela parametrização de 2ª ordem:
 
 $$\omega_n = \sqrt{k}, \qquad \zeta = \frac{1}{2\sqrt{k}}$$
 
-Lembre: quanto **maior** o ganho, **maior** a rejeição a perturbações (§1.3.3); quanto **menor** o $\zeta$, **maior** o overshoot. Portanto, o ganho procurado é **exatamente o que produz $M_p = 10\%$**: maior que isso, estoura o overshoot; menor, desperdiça rejeição.
+Lembre: quanto **maior** o ganho, **maior** a rejeição a perturbações (§1.3.3); quanto **menor** o $\zeta$, **maior** o overshoot. Portanto, o ganho procurado é **exatamente o que produz $`M_p = 10\%`$**: maior que isso, estoura o overshoot; menor, desperdiça rejeição.
 
 Duas rotas: chutar valores de $\zeta$ até acertar 10 % — ou **inverter a fórmula**. De $M_p = e^{-\zeta\pi/\sqrt{1-\zeta^2}}$, tirando o logaritmo natural dos dois lados, elevando ao quadrado para eliminar a raiz e isolando $\zeta$:
 
@@ -907,7 +903,7 @@ $$\sqrt{k - 0{,}25} = 1 \Longrightarrow k = 1{,}25 \Longrightarrow T(s) = \frac{
 
 Simulando: **$t_p \approx 3{,}15$ s** ✓ — e **overshoot de 20,8 %**.
 
-**Conflito de requisitos.** Note: com o controlador proporcional, **não é possível** atender simultaneamente $M_p = 10\%$ e $t_p = 3{,}14$ s nesta planta — o ganho que dá um não dá o outro. Requisitos conflitantes exigem **controladores mais elaborados** (Módulos 02 e 03). Aliás, com o P simples nem o $t_s$ podemos alterar aqui: $\sigma = \zeta\omega_n = 0{,}5$ **independentemente do ganho**.
+**Conflito de requisitos.** Note: com o controlador proporcional, **não é possível** atender simultaneamente $`M_p = 10\%`$ e $t_p = 3{,}14$ s nesta planta — o ganho que dá um não dá o outro. Requisitos conflitantes exigem **controladores mais elaborados** (Módulos 02 e 03). Aliás, com o P simples nem o $t_s$ podemos alterar aqui: $\sigma = \zeta\omega_n = 0{,}5$ **independentemente do ganho**.
 
 **Projeto literal.** Para $G(s) = \dfrac{1}{s(s+a)}$:
 

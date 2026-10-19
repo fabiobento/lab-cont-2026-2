@@ -57,7 +57,7 @@ e) Explique, em duas frases, por que o gráfico de Nyquist de um sistema com atr
 
 ## Questão 7 — Projeto de avanço de fase (§3.4.3–§3.4.5)
 
-Seja $G(s) = \dfrac{2}{s(s+1)}$. Requisitos: $M_p \leq 20\%$ e $t_r \leq 1{,}2$ s.
+Seja $G(s) = \dfrac{2}{s(s+1)}$. Requisitos: $`M_p \leq 20\%`$ e $t_r \leq 1{,}2$ s.
 
 a) Traduza os requisitos para PM alvo e $\omega_c$ alvo (com a folga de praxe).
 b) Calcule $\alpha$, $T$ e $K$ e escreva $C(s)$.
@@ -68,13 +68,13 @@ c) Estime o overshoot pela ponte PM $\approx 100\zeta$ e diga por que a simulaç
 Seja $G(s) = \dfrac{6}{(s+1)(s+3)}$ em malha fechada unitária.
 
 a) Calcule $e_{ss}$ ao degrau e a margem de fase atuais.
-b) Projete um compensador de atraso para $e_{ss} \leq 10\%$ (com folga), preservando a dinâmica. Escreva $C(s)$.
+b) Projete um compensador de atraso para $`e_{ss} \leq 10\%`$ (com folga), preservando a dinâmica. Escreva $C(s)$.
 c) Verifique a contribuição de fase do par na frequência de cruzamento. Ela ameaça a PM?
 d) Estime a constante de tempo da "cauda lenta" introduzida pelo compensador.
 
 ## Questão 9 — Projeto de PID na frequência (§3.5.1–§3.5.4)
 
-Seja $G(s) = \dfrac{0{,}5}{(s+0{,}5)(s+2)}$. Requisitos: $M_p \leq 15\%$, $t_r \leq 0{,}7$ s e $e_{ss} = 0$ ao degrau.
+Seja $G(s) = \dfrac{0{,}5}{(s+0{,}5)(s+2)}$. Requisitos: $`M_p \leq 15\%`$, $t_r \leq 0{,}7$ s e $e_{ss} = 0$ ao degrau.
 
 a) Escolha $\omega_c$ e a PM alvo justificando a folga adotada.
 b) Projete o estágio PD ($k_p$, $k_d$ e polo de filtragem).

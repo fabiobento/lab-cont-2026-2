@@ -34,7 +34,7 @@ Quem já entregou os Trabalhos 1 e 3 **reutiliza** os resultados (corrigindo o q
 Para o degrau de referência de 90° (posição angular do eixo):
 
 1. **Erro de regime nulo** ($|e_{ss}| < 2°$, resolução do encoder);
-2. **Sobressinal** $M_p \le 15\%$;
+2. **Sobressinal** $`M_p \le 15\%`$;
 3. **Tempo de estabelecimento** $t_s \le 2{,}5$ s (critério de ±5%);
 4. **Sem windup visível**: com o PWM saturando durante o degrau, o sobressinal não pode crescer mais que 5 pontos percentuais em relação ao ensaio sem saturação — o anti-windup deve estar ativo e demonstrado (ligado × desligado).
 
