@@ -70,7 +70,7 @@ Normalmente o requisito de instante de pico é de tempo **máximo**: picos mais 
 
 **Tempo de acomodação.** Como $t_s$ depende só de $\sigma$ (o módulo da **parte real** do polo), o requisito $t_s \leq Y$ se traduz em valor mínimo de $\sigma$:
 
-$`t_s(5\%) = \frac{3}{\sigma}, \qquad t_s(2\%) = \frac{4}{\sigma}, \qquad t_s(1\%) = \frac{4{,}6}{\sigma} \qquad\Rightarrow\qquad \sigma \geq \frac{3}{Y}\ \text{(5 %)},\ \frac{4}{Y}\ \text{(2 %)},\ \frac{4{,}6}{Y}\ \text{(1 %)}`$
+$`t_s(5\%) = \frac{3}{\sigma}, \qquad t_s(2\%) = \frac{4}{\sigma}, \qquad t_s(1\%) = \frac{4{,}6}{\sigma} \qquad\Rightarrow\qquad \sigma \geq \frac{3}{Y}\ \text{(5 \%)},\ \frac{4}{Y}\ \text{(2 \%)},\ \frac{4{,}6}{Y}\ \text{(1 \%)}`$
 
 Região: semiplano **à esquerda da reta vertical** $\mathrm{Re} = -3/Y$ (ou $-4/Y$, $-4{,}6/Y$).
 
