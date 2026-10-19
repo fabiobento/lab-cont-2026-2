@@ -20,7 +20,7 @@ $$G(s) = \frac{\omega_n^2}{s^2 + 2\zeta\omega_n s + \omega_n^2},$$
 $`M_p = e^{-\zeta\pi/\sqrt{1-\zeta^2}}, \qquad t_p = \frac{\pi}{\omega_d} = \frac{\pi}{\omega_n\sqrt{1-\zeta^2}}, \qquad t_r = \frac{\pi - \arccos\zeta}{\omega_n\sqrt{1-\zeta^2}}, \qquad t_s(5\%) \approx \frac{3}{\sigma} = \frac{3}{\zeta\omega_n}.`$
 
 
-**Exemplo numérico.** Para $\zeta = 0{,}45$ e $\omega_n = 2$ rad/s: $M_p = e^{-0{,}45\pi/\sqrt{1-0{,}45^2}} = 20{,}5\%$; $t_p = \pi/1{,}786 = 1{,}76$ s; $t_r = (\pi - 1{,}104)/1{,}786 = 1{,}14$ s; $t_s = 3/0{,}9 = 3{,}33$ s.
+**Exemplo numérico.** Para $\zeta = 0{,}45$ e $\omega_n = 2$ rad/s: $`M_p = e^{-0{,}45\pi/\sqrt{1-0{,}45^2}} = 20{,}5\%`$; $t_p = \pi/1{,}786 = 1{,}76$ s; $t_r = (\pi - 1{,}104)/1{,}786 = 1{,}14$ s; $t_s = 3/0{,}9 = 3{,}33$ s.
 
 > ⚠️ **Lembrete:** as três primeiras fórmulas são **exatas**; a do $t_s$ é uma **aproximação pessimista** (pela envoltória exponencial). O valor medido na simulação pode ser um pouco menor — e isso é bom: projetamos com folga.
 
@@ -54,7 +54,7 @@ $$\cos\beta = \frac{\sigma}{\omega_n} = \frac{\zeta\omega_n}{\omega_n} = \zeta \
 
 onde $\beta$ é o **ângulo que o polo faz com o eixo real negativo**.
 
-**Exemplo.** Requisito $M_p \leq 10\%$ → $\zeta \geq 0{,}59$ (pela inversa; vamos usar $\zeta = 0{,}6$, que dá $M_p = 9{,}48\%$) → $\beta \leq \arccos(0{,}6) = 53{,}13°$.
+**Exemplo.** Requisito $`M_p \leq 10\%`$ → $\zeta \geq 0{,}59$ (pela inversa; vamos usar $\zeta = 0{,}6$, que dá $M_p = 9{,}48\%$) → $\beta \leq \arccos(0{,}6) = 53{,}13°$.
 
 A **região de desempenho** é o **setor angular** do semiplano esquerdo delimitado pelas retas de ângulo $\pm\beta$: qualquer polo dentro do setor tem fator de amortecimento maior que o mínimo exigido. Quanto **menor** o $\beta$, **menor** o overshoot.
 
