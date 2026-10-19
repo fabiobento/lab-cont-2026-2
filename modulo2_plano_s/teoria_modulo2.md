@@ -1,7 +1,7 @@
 # Módulo 02 — Controle de Sistemas no Plano-s (Teoria)
 
 > Texto teórico dos tópicos 2.1 a 2.5.
-> Convenções do curso (Módulo 01): sistemas **SISO**; estabilidade = **BIBO**; malha padrão com realimentação unitária; $t_p = \pi/\omega_d$; $M_p = e^{-\zeta\pi/\sqrt{1-\zeta^2}}$; $t_s(5\%) = 3/\sigma$.
+> Convenções do curso (Módulo 01): sistemas **SISO**; estabilidade = **BIBO**; malha padrão com realimentação unitária; $t_p = \pi/\omega_d$; $M_p = e^{-\zeta\pi/\sqrt{1-\zeta^2}}$; $`t_s(5\%) = 3/\sigma`$.
 > **Novidades deste módulo:** o **plano-s** como palco do projeto; o **Lugar Geométrico das Raízes (LGR)**; os controladores de **avanço de fase**, **atraso de fase**, **PD**, **PI**, **PID** e **avanço-atraso**; e o **atraso de transporte** (aproximação de Padé).
 > **Notação geométrica:** chamamos de **quadradinho** ($\square$) um candidato a polo de malha fechada, e de **quadradinho desejado** ($\square_d$) o polo de malha fechada que atende aos requisitos (sempre o de parte imaginária positiva — o conjugado vem de graça). Geometria do polo: $\beta = \arccos\zeta$, $\sigma = \zeta\omega_n$, $\omega_d = \omega_n\sqrt{1-\zeta^2}$, $\omega_n$ = distância do polo à origem.
 
@@ -18,6 +18,7 @@ $$G(s) = \frac{\omega_n^2}{s^2 + 2\zeta\omega_n s + \omega_n^2},$$
 é completamente caracterizada por quatro grandezas, calculadas por:
 
 $$M_p = e^{-\zeta\pi/\sqrt{1-\zeta^2}}, \qquad t_p = \frac{\pi}{\omega_d} = \frac{\pi}{\omega_n\sqrt{1-\zeta^2}}, \qquad t_r = \frac{\pi - \arccos\zeta}{\omega_n\sqrt{1-\zeta^2}}, \qquad t_s(5\%) \approx \frac{3}{\sigma} = \frac{3}{\zeta\omega_n}.$$
+
 
 **Exemplo numérico.** Para $\zeta = 0{,}45$ e $\omega_n = 2$ rad/s: $M_p = e^{-0{,}45\pi/\sqrt{1-0{,}45^2}} = 20{,}5\%$; $t_p = \pi/1{,}786 = 1{,}76$ s; $t_r = (\pi - 1{,}104)/1{,}786 = 1{,}14$ s; $t_s = 3/0{,}9 = 3{,}33$ s.
 
