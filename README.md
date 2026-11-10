@@ -211,9 +211,9 @@ apresentação de trabalhos. Neste curso, tomam a forma:
 
 | Instrumento | Cobre | Como é entregue |
 |---|---|---|
-| Listas de exercícios (4) | Módulos 1–4 | Individuais, nos prazos indicados em aula|
-| Trabalho 1 — identificação PRBS/FOPDT | Unidade I | Integrado ao projeto final: roteiros das Aulas 1–2, avaliado **por bancada** no checkpoint de 18/11 — 15 pontos |
-| Trabalho 2 — PID de posição no motor CC | Unidade IV | Integrado ao projeto final: roteiros das Aulas 3–4, avaliado **por bancada** no checkpoint de 03/12 — 28 pontos |
+| Listas de exercícios e laboratórios | Módulo 1 | Individuais, nos prazos indicados em aula |
+| Trabalho 1 — identificação PRBS/FOPDT | Unidade I | Integrado ao projeto final: roteiros das Aulas 1–2, avaliado **por bancada** no checkpoint de 18/11 |
+| Trabalho 2 — PID de posição no motor CC | Unidade IV | Integrado ao projeto final: roteiros das Aulas 3–4, avaliado **por bancada** no checkpoint de 03/12 |
 | Projeto final — servo de posição | Unidades I–IV | 5 aulas com roteiros; avaliado **por bancada** (5 roteiros + apresentação em 10/12); integra os Trabalhos 1 e 2; rubrica em `projeto_final/` |
 
 ### Pesos dos instrumentos
@@ -222,9 +222,9 @@ A composição da nota semestral segue o plano de ensino da turma:
 
 | Instrumento | Peso |
 |---|---|
-| Listas de exercícios | 30% |
-| Trabalho 1 | 20% |
-| Trabalho 2 | 20% |
+| Listas de exercícios e laboratórios (apenas Módulo 1) | 50% |
+| Trabalho 1 | 10% |
+| Trabalho 2 | 10% |
 | Projeto final | 30% |
 | **Total** | **100 %** |
 

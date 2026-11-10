@@ -1,7 +1,7 @@
 # Trabalho 1 — Identificação de Sistemas de 1ª Ordem com Atraso usando PRBS
 
 **Laboratório de Controle Automático — Engenharia Elétrica — Ifes Campus Guarapari**
-**Realização:** Aulas 1 e 2 do projeto final (11/11 e 18/11) · **Avaliação:** por bancada, no checkpoint de 18/11 · **Valor:** 15 pontos
+**Realização:** Aulas 1 e 2 do projeto final (11/11 e 18/11) · **Avaliação:** por bancada, no checkpoint de 18/11 · **Peso:** 10 % da nota semestral
 
 ---
 

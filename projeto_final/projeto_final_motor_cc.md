@@ -59,7 +59,7 @@ Para o **degrau de 90°** do perfil (0° → 90°):
 
 | # | Especificação | Valor |
 |---|---|---|
-| 1 | erro de regime | $\|e_{ss}\| < 2°$ |
+| 1 | erro de regime | $|e_{ss}| < 2°$ |
 | 2 | sobressinal | $`M_p \le 15\%`$ |
 | 3 | tempo de acomodação (critério de ±5 %) | $t_s \le 2{,}5$ s |
 | 4 | sem *windup* visível | com o PWM limitado a ±80, o sobressinal cresce no máximo **5 pontos percentuais** em relação ao ensaio nominal, com o anti-windup ligado |
@@ -101,11 +101,11 @@ sempre o mesmo computador ou levem a pasta junto.
 
 ## 6. Avaliação (por bancada)
 
-| Nota | O que é avaliado | Quando |
+| Nota (peso na média semestral) | O que é avaliado | Quando |
 |---|---|---|
-| **Trabalho 1** | roteiros das Aulas 1 e 2: firmware e teste de sentido, calibração, FOPDT com e sem desvio, modelo de posição, zona morta e atrito, gêmeo validado, iteração 1 e a explicação da falha | Checkpoint 2 (18/11) |
-| **Trabalho 2** | roteiros das Aulas 3 e 4: PID pelo lugar das raízes, relé e Ziegler-Nichols, compensação e robustez, especificações 1–4 na bancada, medido × simulado | Checkpoint 4 (03/12) |
-| **Projeto final** | os 5 roteiros completos + apresentação e arguição | Aula 5 (10/12) |
+| **Trabalho 1** (10 %) | roteiros das Aulas 1 e 2: firmware e teste de sentido, calibração, FOPDT com e sem desvio, modelo de posição, zona morta e atrito, gêmeo validado, iteração 1 e a explicação da falha | Checkpoint 2 (18/11) |
+| **Trabalho 2** (10 %) | roteiros das Aulas 3 e 4: PID pelo lugar das raízes, relé e Ziegler-Nichols, compensação e robustez, especificações 1–4 na bancada, medido × simulado | Checkpoint 4 (03/12) |
+| **Projeto final** (30 %) | os 5 roteiros completos + apresentação e arguição | Aula 5 (10/12) |
 
 **Critérios em cada nota:**
 
