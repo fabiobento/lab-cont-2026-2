@@ -12,7 +12,7 @@ Este repositório está organizado como uma apostila de laboratório: cada módu
 
 **Ferramenta computacional:** [python-control](https://python-control.readthedocs.io/) **0.10.2** (Python + Jupyter)
 
-**Bancada:** Arduino + ponte H + motor CC + encoder magnético (Trabalhos 1 e 3, projeto final)
+**Bancada:** Arduino + ponte H + motor CC + encoder magnético (Trabalhos 1 e 2, projeto final)
 
 ## Objetivos
 
@@ -55,7 +55,7 @@ As quatro unidades do PPC e sua carga horária:
 | Frente | Onde | Plataforma |
 |---|---|---|
 | Simulação e projeto | Todos os módulos (Labs 01–16) | **python-control 0.10.2** em notebooks Jupyter |
-| Bancada (planta real) | Trabalhos 1 e 3, projeto final | **Arduino** + ponte H (L298N) + **motor CC** + **encoder magnético** |
+| Bancada (planta real) | Trabalhos 1 e 2, projeto final | **Arduino** + ponte H (L298N) + **motor CC** + **encoder magnético** |
 | Aquisição de dados | Bancada | `firmware/telemetry.py` (pyserial → CSV) |
 
 ## Estrutura
@@ -73,8 +73,8 @@ lab-cont-2026-2/
 │    ├── listaN_moduloN.md
 │    ├── labs/                         ← notebooks Jupyter (.ipynb)
 │    └── slides/                       ← apresentação da aula
-├── trabalhos/                         ← Trabalhos 1 e 3 (bancada motor CC)
-├── projeto_final/                     ← enunciado, especificações e rubrica do projeto
+├── trabalhos/                         ← Trabalhos 1 e 2 (bancada motor CC)
+├── projeto_final/                     ← enunciado, ferramentas (gêmeo digital) e notebook-modelo do projeto
 ├── firmware/                          ← sketches Arduino + telemetria Python
 └── imagens/                           ← figuras geradas (m1_*, m2_*, m3_*, m4_*)
 ```
@@ -88,12 +88,17 @@ Detalhando cada item:
   com referência ao ponto exato da teoria em cada questão ("Consulte: teoria §X.Y");
 - `moduloN/labs/` — **16 notebooks** computacionais (Lab 01–16), autocontidos e executados com 0 erros;
 - `trabalhos/` — [Trabalho 1](trabalhos/trabalho1_identificacao_prbs_fopdt.md) (identificação
-  PRBS/FOPDT, semanas 5–7) e [Trabalho 2](trabalhos/trabalho3_pid_posicao_motor_cc.md) (PID de
-  posição, semanas 14–15);
-- `projeto_final/` — [enunciado do projeto final](projeto_final/projeto_final_motor_cc.md):
-  servo de posição que integra os Trabalhos 1 e 3, com especificações, rubrica e cronograma;
-- `firmware/` — `prbs_aquisicao/` (PRBS + telemetria), `pid_motor/` (PID ISA 2DOF, derivada
-  filtrada, anti-windup por clamping) e `telemetry.py` (coleta serial → CSV);
+  PRBS/FOPDT — integrado ao projeto final e avaliado no seu Marco 1, semana 12) e [Trabalho 2](trabalhos/trabalho3_pid_posicao_motor_cc.md) (PID de
+  posição — agora integrado ao projeto final e avaliado no seu Marco 3, semana 14);
+- `projeto_final/` — [enunciado do projeto final](projeto_final/projeto_final_motor_cc.md)
+  (servo de posição que integra os Trabalhos 1 e 2: etapas E0–E8, especificações, marcos semanais
+  e rubrica), [`ferramentas_projeto.py`](projeto_final/ferramentas_projeto.py) (métricas oficiais e
+  **gêmeo digital** — simulador idêntico ao firmware) e o
+  [notebook-modelo](projeto_final/modelo_projeto_final.ipynb) que cada aluno preenche;
+- `firmware/` — para o kit do laboratório (MOTOR_REV07: L298N em D9/D10, encoder em D2/D4, OLED):
+  `prbs_aquisicao/` (PRBS + telemetria), `pid_motor/` (**v2**: 4 modos de ensaio —
+  calibração, malha aberta, relé e PID —, PID 2DOF em graus com derivada filtrada, anti-windup
+  por clamping ou back-calculation, compensação de zona morta) e `telemetry.py` (coleta serial → CSV);
 - `imagens/` — figuras geradas para a apostila (ver "Sobre as figuras", ao final);
 - `00_planejamento/` — plano de ensino completo e mapas de conteúdo (documentos do professor).
 
@@ -123,14 +128,14 @@ jupyter notebook modulo1_introducao/labs/lab01_sistemas_e_modelos.ipynb
 | 2 | [Sistemas de controle e modelos matemáticos](modulo1_introducao/teoria_modulo1.md) (§1.1) | [Lab 01 — sistemas e modelos](modulo1_introducao/labs/lab01_sistemas_e_modelos.ipynb) |
 | 3 | Laplace e função de transferência (§1.2) | [Lab 02 — Laplace e FT](modulo1_introducao/labs/lab02_laplace_e_ft.ipynb) |
 | 4 | Estabilidade e erro em regime (§1.3) | [Lab 03 — estabilidade e erro](modulo1_introducao/labs/lab03_estabilidade_e_erro.ipynb) |
-| 5 | Resposta de 2ª ordem e projeto P (§1.4) — **lançamento do Trabalho 1** | [Lab 04 — resposta ao degrau e projeto P](modulo1_introducao/labs/lab04_resposta_2a_ordem_e_projeto_P.ipynb) |
+| 5 | Resposta de 2ª ordem e projeto P (§1.4) | [Lab 04 — resposta ao degrau e projeto P](modulo1_introducao/labs/lab04_resposta_2a_ordem_e_projeto_P.ipynb) |
 
 **Módulo 2 — Projeto no plano-s (semanas 6–9)**
 
 | Semana | Teoria | Laboratório |
 |---|---|---|
 | 6 | [Regiões do plano-s e aproximações](modulo2_plano_s/teoria_modulo2.md) (§2.1) | [Lab 05 — plano-s e aproximações](modulo2_plano_s/labs/lab05_plano_s_e_aproximacoes.ipynb) |
-| 7 | Lugar das raízes (§2.2) — **entrega do Trabalho 1** | [Lab 06 — LGR](modulo2_plano_s/labs/lab06_lgr.ipynb) |
+| 7 | Lugar das raízes (§2.2) | [Lab 06 — LGR](modulo2_plano_s/labs/lab06_lgr.ipynb) |
 | 8 | Projeto de avanço de fase; PD (§2.3) | [Lab 07 — avanço de fase](modulo2_plano_s/labs/lab07_avanco_de_fase.ipynb) |
 | 9 | Atraso de fase, PI; avanço-atraso, PID e atraso de transporte (§2.4–2.5) | [Lab 08 — atraso e PI](modulo2_plano_s/labs/lab08_atraso_e_pi.ipynb) · [Lab 09 — PID e Padé](modulo2_plano_s/labs/lab09_pid_e_atraso.ipynb) |
 
@@ -140,9 +145,9 @@ jupyter notebook modulo1_introducao/labs/lab01_sistemas_e_modelos.ipynb
 |---|---|---|
 | 10 | [Resposta em frequência e Bode](modulo3_frequencia/teoria_modulo3.md) (§3.1) | [Lab 10 — Bode](modulo3_frequencia/labs/lab10_resposta_em_frequencia_e_bode.ipynb) |
 | 11 | Carta de Nichols-Black (§3.2) | [Lab 11 — Nichols-Black](modulo3_frequencia/labs/lab11_carta_de_nichols_black.ipynb) |
-| 12 | Nyquist e efeito do atraso (§3.3) | [Lab 12 — Nyquist](modulo3_frequencia/labs/lab12_nyquist_e_atraso.ipynb) |
+| 12 | Nyquist e efeito do atraso (§3.3) — **lançamento do projeto final** (a partir daqui, aulas de bancada; teoria e labs como consulta) | [Lab 12 — Nyquist](modulo3_frequencia/labs/lab12_nyquist_e_atraso.ipynb) |
 | 13 | Projeto de avanço e atraso na frequência (§3.4) | [Lab 13 — projeto na frequência](modulo3_frequencia/labs/lab13_projeto_avanco_e_atraso.ipynb) |
-| 14 | PD, PI e PID na frequência (§3.5) — **lançamento do Trabalho 2 / projeto final** | [Lab 14 — PD/PI/PID na frequência](modulo3_frequencia/labs/lab14_pd_pi_pid_na_frequencia.ipynb) |
+| 14 | PD, PI e PID na frequência (§3.5) — consulta para a Etapa E3 do projeto · **Marco 3 = Trabalho 2** | [Lab 14 — PD/PI/PID na frequência](modulo3_frequencia/labs/lab14_pd_pi_pid_na_frequencia.ipynb) |
 
 **Módulo 4 — Não linearidades em malhas de controle (semana 15, módulo autônomo)**
 
@@ -174,17 +179,17 @@ As unidades (U1–U4) seguem o PPC da disciplina.
 | 2 | U1 | Sistemas, sinais e modelos matemáticos (massa-mola, RLC, motor CC) — Lab 01 |
 | 3 | U1 | Transformada de Laplace e função de transferência — Lab 02 |
 | 4 | U2 | Estabilidade (BIBO, Routh), malha fechada e erro em regime — Lab 03 |
-| 5 | U2 | Resposta de 2ª ordem e projeto proporcional — Lab 04 · **Trabalho 1 lançado** |
+| 5 | U2 | Resposta de 2ª ordem e projeto proporcional — Lab 04 |
 | 6 | U4 | Regiões do plano-s e aproximações de polos dominantes — Lab 05 |
-| 7 | U4 | Lugar das raízes — Lab 06 · **Trabalho 1 entregue** |
+| 7 | U4 | Lugar das raízes — Lab 06 |
 | 8 | U4 | Projeto de avanço de fase; controlador PD — Lab 07 |
 | 9 | U4 | Atraso de fase, PI; avanço-atraso, PID e atraso de transporte (Padé) — Labs 08–09 |
 | 10 | U1/U4 | Resposta em frequência, diagrama de Bode e margens — Lab 10 |
 | 11 | U4 | Pico de ressonância e carta de Nichols-Black — Lab 11 |
-| 12 | U4 | Critério de Nyquist e efeito do atraso — Lab 12 |
-| 13 | U4 | Projeto de avanço e atraso na frequência — Lab 13 |
-| 14 | U4 | PD, PI e PID na frequência — Lab 14 · ** Trabalho 2/ projeto final lançados** |
-| 15 | U3/U4 | Não linearidades: saturação, zona morta, histerese; windup/anti-windup; ciclos-limite, função descritiva e experimento do relé — Labs 15–16 · **Lista 4** · **apresentações do projeto final** |
+| 12 | U1/U4 | **Projeto final lançado** — preparação do ambiente; bancada: calibração, identificação PRBS/FOPDT, ganho de posição e zona morta (Etapas S–E2, **Marco 1 = Trabalho 1**). Consulta: §3.3, Lab 12; M4 §4.1, Lab 15 |
+| 13 | U4 | Projeto final — projeto do PID (LGR/frequência/relé), realização digital e gêmeo digital (E3–E5, Marco 2). Consulta: §3.4–3.5, Labs 13–14; M4 §4.3, Lab 16 |
+| 14 | U3/U4 | Projeto final — validação na bancada e anti-windup (E6–E7, **Marco 3 = Trabalho 2**). Consulta: M4 §4.2, Lab 16 |
+| 15 | U3/U4 | Projeto final — não linearidades (E8) e **apresentações individuais** · **Lista 4** |
 
 ## Estratégias de aprendizagem
 
@@ -204,9 +209,9 @@ apresentação de trabalhos. Neste curso, tomam a forma:
 | Instrumento | Cobre | Como é entregue |
 |---|---|---|
 | Listas de exercícios (4) | Módulos 1–4 | Individuais, nos prazos indicados em aula|
-| Trabalho 1 — identificação PRBS/FOPDT | Unidade I | Em grupo (até 3), apresentação presencial, semana 7 — 15 pontos |
-| Trabalho 2 — PID de posição no motor CC | Unidade IV | Em grupo (até 2), apresentação presencial, semana 15 — 28 pontos |
-| Projeto final — servo de posição | Unidades I–IV | Em grupo; integra os Trabalhos 1 e 2; rubrica em `projeto_final/` |
+| Trabalho 1 — identificação PRBS/FOPDT | Unidade I | Integrado ao projeto final: avaliado no **Marco 1** (semana 12) — 15 pontos |
+| Trabalho 2 — PID de posição no motor CC | Unidade IV | Integrado ao projeto final: avaliado no **Marco 3** (semana 14) — 28 pontos |
+| Projeto final — servo de posição | Unidades I–IV | Bancadas em dupla (dados em comum), projeto e apresentação **individuais** (semana 15); integra os Trabalhos 1 e 2; rubrica em `projeto_final/` |
 
 ### Pesos dos instrumentos
 

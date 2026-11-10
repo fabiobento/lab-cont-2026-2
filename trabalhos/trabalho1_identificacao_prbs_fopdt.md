@@ -1,9 +1,16 @@
 # Trabalho 1 — Identificação de Sistemas de 1ª Ordem com Atraso usando PRBS
 
 **Laboratório de Controle Automático — Engenharia Elétrica — Ifes Campus Guarapari**
-**Lançamento:** semana 5 · **Entrega:** semana 7 · **Valor:** 15 pontos · **Grupos:** até 3 integrantes
+**Lançamento:** semana 12 (junto com o projeto final) · **Avaliação:** Marco 1 do projeto final (semana 12) · **Valor:** 15 pontos
 
 ---
+
+> 📌 **Atualização (semana 12):** este trabalho foi **incorporado ao
+> [projeto final](../projeto_final/projeto_final_motor_cc.md)** — ele é a Etapa E1 de lá. Siga os
+> Passos abaixo com as adaptações da E1 (sobretudo o ajuste com **desvio de entrada** $u_0$). A nota
+> do Trabalho 1 é atribuída no **Marco 1**, com os critérios da Seção 4 abaixo. O firmware
+> `prbs_aquisicao.ino` já está na pinagem do kit do laboratório (MOTOR_REV07) e o `telemetry.py`
+> grava um cabeçalho no CSV — por isso o `skiprows=1` do Passo 3 está certo.
 
 ## 1. Objetivos
 

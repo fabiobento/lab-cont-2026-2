@@ -1,9 +1,21 @@
 # Trabalho 2 — Controle PID de Posição Angular em Motor CC
 
 **Laboratório de Controle Automático — Engenharia Elétrica — Ifes Campus Guarapari**
-**Lançamento:** semana 14 · **Apresentações:** semana 15 · **Valor:** 28 pontos · **Grupos:** até 2 integrantes
+**Lançamento:** semana 12 (junto com o projeto final) · **Avaliação:** Marco 3 do projeto final (semana 14) · **Valor:** 28 pontos
 
 ---
+
+> 📌 **Atualização (semana 12):** este trabalho foi **incorporado ao
+> [projeto final](../projeto_final/projeto_final_motor_cc.md)** — siga o roteiro de lá (Etapas
+> E0–E7). A nota do Trabalho 2 é atribuída no **Marco 3**, com os critérios da Seção 4 abaixo.
+> Mudanças em relação ao roteiro original abaixo:
+> - o firmware `pid_motor.ino` agora é a **v2**: trabalha em **graus** (os ganhos projetados entram
+>   direto, sem converter para contas), tem modos de calibração, malha aberta e relé, e a
+>   telemetria tem 5 colunas (`t, r, angle, pwm, u_pid`);
+> - o ganho de posição é medido com **duas amplitudes de PWM em cada sentido** (Etapa E2 do
+>   projeto), porque a zona morta da ponte H + motor torna o método de uma amplitude
+>   ($k' = a/(KA)$, Passo 2) viesado;
+> - as apresentações são individuais (bancadas em dupla, com os dados de caracterização em comum).
 
 ## 1. Objetivos
 

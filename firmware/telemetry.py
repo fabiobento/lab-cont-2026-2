@@ -10,7 +10,11 @@ Uso:
     python telemetry.py --porta COM5 --saida ensaio_pid.csv --timeout 90
 
 O script ignora linhas de comentário (iniciadas com '#') e encerra quando
-receber "# fim do ensaio" ou estourar o tempo limite.
+receber "# fim do ensaio" ou estourar o tempo limite. A primeira linha do CSV
+é um cabeçalho com os nomes das colunas, deduzido do número de campos:
+    3 campos -> t,u,y                  (prbs_aquisicao)
+    5 campos -> t,r,angle,pwm,u_pid    (pid_motor v2)
+    4 campos -> t,r,angle,pwm          (pid_motor v1)
 
 Dependência: pip install pyserial
 """
@@ -33,6 +37,7 @@ def main() -> int:
 
     n_linhas = 0
     t_inicio = time.time()
+    cabecalhos = {3: "t,u,y", 4: "t,r,angle,pwm", 5: "t,r,angle,pwm,u_pid"}
 
     with serial.Serial(args.porta, args.baud, timeout=1.0) as ser, \
          open(args.saida, "w", encoding="utf-8") as f:
@@ -50,7 +55,7 @@ def main() -> int:
                     break
                 continue
 
-            # linha de dados CSV: t,u,y  ou  t,r,angle,pwm
+            # linha de dados CSV: t,u,y  ou  t,r,angle,pwm,u_pid
             campos = raw.split(",")
             try:
                 [float(c) for c in campos]
@@ -58,6 +63,9 @@ def main() -> int:
                 print(f"[telemetry] linha ignorada: {raw!r}", file=sys.stderr)
                 continue
 
+            if n_linhas == 0:
+                f.write(cabecalhos.get(len(campos),
+                                       ",".join(f"c{i}" for i in range(len(campos)))) + "\n")
             f.write(raw + "\n")
             n_linhas += 1
             if n_linhas % 250 == 0:
