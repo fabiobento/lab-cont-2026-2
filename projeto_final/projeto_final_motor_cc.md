@@ -37,10 +37,21 @@ O kit do laboratório: Arduino Uno com shield e display OLED, ponte H L298N, mot
 | `firmware/pid_motor/pid_motor.ino` | **o único firmware do projeto**: gravado **uma vez**, na Aula 1. Cada ensaio é configurado pelo notebook |
 | `projeto_final/ferramentas_projeto.py` | `coletar()` (ensaio na bancada), `simular()` (o mesmo ensaio no gêmeo digital), métricas oficiais, gráficos |
 | `projeto_final/aula1_…ipynb` a `aula5_…ipynb` | os **roteiros** das aulas |
+| `projeto_final/INSTALACAO_UBUNTU.md`, `instalar_ubuntu.sh`, `gravar_firmware.sh` | instalação no desktop da bancada e gravação do firmware pelo terminal |
 
-**Para rodar:** Python com `pip install "control==0.10.2" numpy scipy matplotlib jupyter pyserial`,
-e a Arduino IDE com a biblioteca *Adafruit SSD1306*. Os notebooks ficam em `projeto_final/` e
-salvam os dados em `projeto_final/dados/`.
+**Onde rodar: no desktop da bancada (Ubuntu 24.04), não no Google Colab.** O Colab roda num
+servidor do Google, que não enxerga a porta USB do Arduino. A instalação (≈ 10 min, uma vez por
+computador) está em [`INSTALACAO_UBUNTU.md`](INSTALACAO_UBUNTU.md) — o script
+`projeto_final/instalar_ubuntu.sh` faz tudo. Depois, todo dia:
+
+```bash
+cd ~/lab-cont-2026-2/projeto_final
+controle              # ativa o ambiente Python do curso
+jupyter notebook      # abre os roteiros no navegador
+```
+
+O firmware se grava com `bash gravar_firmware.sh` (numa segunda aba do Terminal). Os notebooks
+ficam em `projeto_final/` e salvam os dados em `projeto_final/dados/`.
 
 ## 3. Especificações
 
@@ -48,7 +59,7 @@ Para o **degrau de 90°** do perfil (0° → 90°):
 
 | # | Especificação | Valor |
 |---|---|---|
-| 1 | erro de regime | $\|e_{ss}\| < 2°$ |
+| 1 | erro de regime | $|e_{ss}| < 2°$ |
 | 2 | sobressinal | $`M_p \le 15\%`$ |
 | 3 | tempo de acomodação (critério de ±5 %) | $t_s \le 2{,}5$ s |
 | 4 | sem *windup* visível | com o PWM limitado a ±80, o sobressinal cresce no máximo **5 pontos percentuais** em relação ao ensaio nominal, com o anti-windup ligado |
@@ -114,8 +125,9 @@ com as saídas** e a pasta `dados/` completa, no local indicado pelo professor.
 
 | Sintoma | Causa provável | O que fazer |
 |---|---|---|
-| `coletar()` diz que o Arduino não respondeu | firmware antigo gravado; porta errada; Monitor Serial da IDE aberto | grave o `pid_motor.ino`; confira `PORTA`; feche o Monitor Serial |
-| erro de compilação na `Adafruit_SSD1306` | biblioteca não instalada | instale-a pelo Gerenciador de Bibliotecas, ou troque `#define USAR_OLED 1` por `0` |
+| `coletar()` diz que o Arduino não respondeu | firmware antigo gravado; porta errada; Monitor Serial da IDE aberto | `bash gravar_firmware.sh`; confira `PORTA`; feche o Monitor Serial |
+| `Permission denied: '/dev/ttyUSB0'`, porta que some, `ModuleNotFoundError` | ambiente do desktop incompleto | tabela da Seção 4 do `INSTALACAO_UBUNTU.md` |
+| erro de compilação na `Adafruit_SSD1306` | biblioteca não instalada | `arduino-cli lib install "Adafruit SSD1306"`, ou troque `#define USAR_OLED 1` por `0` |
 | no teste de sentido, a posição diminui | sentido do motor × sentido do encoder | desligue a fonte e inverta os fios do motor em OUT1/OUT2 (não troque C1/C2) |
 | em malha fechada, o motor dispara girando sem parar | realimentação positiva (o teste de sentido não foi feito ou foi desfeito) | desligue e refaça o teste de sentido |
 | o ângulo de 90° vira ≈ 45° ou 180° | `CPG` errado | refaça a calibração da Aula 1 |

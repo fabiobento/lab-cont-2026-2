@@ -94,7 +94,9 @@ Detalhando cada item:
   (servo de posição que integra os Trabalhos 1 e 2, em 5 aulas, avaliado por bancada), os **5
   roteiros de aula** em notebook (`aula1_…ipynb` a `aula5_…ipynb`, passo a passo, com a teoria
   embutida) e [`ferramentas_projeto.py`](projeto_final/ferramentas_projeto.py) (`coletar()` na
-  bancada, `simular()` no **gêmeo digital**, métricas oficiais);
+  bancada, `simular()` no **gêmeo digital**, métricas oficiais). O projeto roda **no desktop da
+  bancada (Ubuntu 24.04), não no Colab** — instalação em
+  [`projeto_final/INSTALACAO_UBUNTU.md`](projeto_final/INSTALACAO_UBUNTU.md);
 - `firmware/` — para o kit do laboratório (MOTOR_REV07: L298N em D9/D10, encoder em D2/D4, OLED):
   `pid_motor/` (**v3**: firmware único, gravado uma vez e configurado pelo notebook; modos de
   calibração, malha aberta, relé, PID, partida e PRBS; PID 2DOF em graus com derivada filtrada,

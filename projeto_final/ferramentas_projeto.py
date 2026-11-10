@@ -35,7 +35,7 @@ __all__ = [
     "imprime_metricas", "MotorSimulado", "simula_firmware", "simular", "coletar",
     "salvar_parametros", "carregar_parametros", "plota_ensaio", "linhas_firmware",
     "PERFIL_PADRAO", "ajusta_fopdt", "simula_fopdt", "inclinacao", "analisa_pid",
-    "desenha_lgr", "robustez", "veredito",
+    "desenha_lgr", "robustez", "veredito", "portas",
 ]
 
 # Perfil do firmware v2 (MODO 3): (instante [s], referência [graus])
@@ -358,6 +358,22 @@ def simular(planta, **cfg):
         amp=cfg.get("AMP", 80), tb=cfg.get("TB", 200) / 1000.0)
 
 
+def portas():
+    """Lista as portas seriais (Arduinos) conectadas. No Ubuntu: /dev/ttyUSB0 (clone CH340)
+    ou /dev/ttyACM0 (Uno original)."""
+    try:
+        from serial.tools import list_ports
+    except ImportError:
+        print("pyserial não instalado — veja projeto_final/INSTALACAO_UBUNTU.md")
+        return []
+    lista = [p for p in list_ports.comports() if "USB" in p.device or "ACM" in p.device or "COM" in p.device]
+    if not lista:
+        print("nenhum Arduino encontrado — confira o cabo USB (e o brltty: INSTALACAO_UBUNTU.md, §2.2)")
+    for p in lista:
+        print(f"  {p.device:15s} {p.description}")
+    return [p.device for p in lista]
+
+
 def _fmt(v):
     if isinstance(v, (list, tuple, np.ndarray)):
         return ",".join(_fmt(x) for x in v)
@@ -382,9 +398,18 @@ def coletar(nome, porta, dir_dados="dados", timeout=None, **cfg):
     try:
         import serial
     except ImportError as exc:
-        raise ImportError("instale o pyserial:  pip install pyserial") from exc
+        raise ImportError("pyserial não instalado — veja projeto_final/INSTALACAO_UBUNTU.md") from exc
     linhas = []
-    with serial.Serial(porta, 115200, timeout=0.5) as ser:
+    try:
+        ser_ = serial.Serial(porta, 115200, timeout=0.5)
+    except serial.SerialException as exc:
+        msg = str(exc)
+        if "Permission denied" in msg:
+            raise RuntimeError(f"Sem permissão para {porta}: o usuário precisa estar no grupo dialout "
+                               "(INSTALACAO_UBUNTU.md, §2.3) e sair/entrar da sessão.") from exc
+        raise RuntimeError(f"Não consegui abrir {porta}. Portas encontradas: {portas()} "
+                           "(feche a Arduino IDE / Monitor Serial se estiverem abertos).") from exc
+    with ser_ as ser:
         t0 = time.time()
         while True:
             txt = ser.readline().decode("utf-8", errors="ignore").strip()
