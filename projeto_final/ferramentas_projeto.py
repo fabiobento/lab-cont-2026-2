@@ -6,18 +6,19 @@ Utilitários para o projeto final. NÃO fazem o projeto por você: cuidam da
 "encanação" (ler CSV, medir métricas sempre do mesmo jeito, simular o laço
 digital EXATAMENTE como o firmware `firmware/pid_motor/pid_motor.ino` executa).
 
-Uso típico (no seu notebook, na mesma pasta deste arquivo):
+Uso típico (nos roteiros das aulas, na mesma pasta deste arquivo):
 
     from ferramentas_projeto import *
-    d = carregar_csv("dados/ensaio_nominal.csv")       # telemetria da bancada
-    for m in metricas_ensaio(d): print(m)
+    CFG = dict(MODO=3, CPG=1.3167, KP=2.7, KI=1.3, KD=0.15, N=30, ZM=33, EM=0.8)
+    d = coletar("mf_nominal_1", PORTA, **CFG)          # ensaio na BANCADA -> dados/mf_nominal_1.csv
+    s = simular(GEMEO, **CFG)                          # o MESMO ensaio no gêmeo digital
+    imprime_metricas(metricas_ensaio(d))
+    plota_ensaio(s, d, rotulos=["gêmeo", "bancada"])
 
-    planta = dict(Km=5.0, tau=0.12, L=0.02, Fc=40, cpg=1.04)   # SEU modelo
-    ctrl   = dict(kp=1.2, ki=0.6, kd=0.05, N=30, pwm_max=255, aw=1)
-    s = simula_firmware(planta, ctrl)                  # mesmo formato do CSV
-    plota_ensaio(s, d, titulo="simulação × bancada")
+    salvar_parametros(CPG=1.3167, Km=5.78)             # guarda em dados/parametros_bancada.json
+    P = carregar_parametros()                          # ... e recupera na aula seguinte
 
-Unidades (as mesmas do firmware v2):
+Unidades (as mesmas do firmware v3):
     ângulo em graus; PWM em [-255, 255]; tempo em segundos;
     Km   = ganho de velocidade em regime  [graus/s por unidade de PWM]
     kp   = [PWM/grau],  ki = [PWM/(grau·s)],  kd = [PWM·s/grau]
@@ -31,8 +32,10 @@ import numpy as np
 
 __all__ = [
     "carregar_csv", "reamostrar", "metricas_degrau", "metricas_ensaio",
-    "imprime_metricas", "MotorSimulado", "simula_firmware", "plota_ensaio",
-    "linhas_firmware", "PERFIL_PADRAO",
+    "imprime_metricas", "MotorSimulado", "simula_firmware", "simular", "coletar",
+    "salvar_parametros", "carregar_parametros", "plota_ensaio", "linhas_firmware",
+    "PERFIL_PADRAO", "ajusta_fopdt", "simula_fopdt", "inclinacao", "analisa_pid",
+    "desenha_lgr", "robustez", "veredito",
 ]
 
 # Perfil do firmware v2 (MODO 3): (instante [s], referência [graus])
@@ -224,14 +227,15 @@ class MotorSimulado:
 # ---------------------------------------------------------------------------
 def simula_firmware(planta, ctrl=None, modo="pid", perfil=None, T_fim=None,
                     pwm_ma=150, ma_ini=0.5, ma_fim=2.5,
-                    d_rele=120, h_rele=1.0, ref_rele=0.0, rele_fim=6.0):
+                    d_rele=120, h_rele=1.0, ref_rele=0.0, rele_fim=6.0,
+                    rampa=10.0, sinal=1, base=140, amp=80, tb=0.2):
     """Simula um ensaio completo, devolvendo um dicionário no MESMO formato do CSV
     da bancada: t, r, angle, pwm, u_pid.
 
     ctrl (só para modo='pid'): kp, ki, kd, N (padrão 30), Ts (padrão 0,02),
           pwm_max (255), aw (0 sem, 1 clamping, 2 back-calculation), Tt (0,2),
           zm_comp (0), e_morto (0)
-    modo: 'pid' | 'malha_aberta' | 'rele'
+    modo: 'pid' | 'malha_aberta' | 'rele' | 'partida' | 'prbs'
     """
     c = dict(kp=1.0, ki=0.0, kd=0.0, N=30.0, Ts=0.02, pwm_max=255, aw=1,
              Tt=0.2, zm_comp=0, e_morto=0.0)
@@ -241,11 +245,18 @@ def simula_firmware(planta, ctrl=None, modo="pid", perfil=None, T_fim=None,
     perfil = perfil or PERFIL_PADRAO
     if T_fim is None:
         T_fim = {"pid": T_FIM_PADRAO, "malha_aberta": ma_fim + 1.0,
-                 "rele": rele_fim}[modo]
+                 "rele": rele_fim, "partida": 15.0, "prbs": 30.0}[modo]
 
     m = MotorSimulado(planta)
     I = xf = 0.0
     u_rele = 0
+    lfsr = 0xA5
+    u_prbs = base + amp
+    t_bit = tb
+    c_prev = 0
+    moveu, t_moveu = False, 0.0
+    if modo == "prbs":
+        m.avanca(u_prbs, Ts)                 # o firmware aplica o 1º nível antes da 1ª amostra
     reg = {k: [] for k in ("t", "r", "angle", "pwm", "u_pid")}
     n_am = int(np.floor(T_fim / Ts + 1e-9))
     for k in range(1, n_am + 1):
@@ -265,6 +276,27 @@ def simula_firmware(planta, ctrl=None, modo="pid", perfil=None, T_fim=None,
             if u_rele == 0:
                 u_rele = d_rele
             u = u_pid = u_rele
+        elif modo == "partida":
+            c_ = m.contas()
+            if not moveu and abs(c_) >= 3:
+                moveu, t_moveu = True, t
+            if moveu:
+                u = 0
+                if t > t_moveu + 0.3 + 1e-9:
+                    break
+            else:
+                u = sinal * int(min(rampa * t, 150.0))
+            u_pid = u
+        elif modo == "prbs":
+            c_ = m.contas()
+            u_pid = float(c_ - c_prev)
+            c_prev = c_
+            if t >= t_bit - 1e-9:
+                b = ((lfsr >> 0) ^ (lfsr >> 2) ^ (lfsr >> 3) ^ (lfsr >> 4)) & 1
+                lfsr = ((lfsr >> 1) | (b << 7)) & 0xFF
+                u_prbs = base + amp if b else base - amp
+                t_bit += tb
+            u = u_prbs
         else:
             r = perfil[0][1]
             for ti, ri in perfil:
@@ -292,6 +324,165 @@ def simula_firmware(planta, ctrl=None, modo="pid", perfil=None, T_fim=None,
             reg[kk].append(v)
         m.avanca(u, Ts)
     return {k: np.array(v, dtype=float) for k, v in reg.items()}
+
+
+# ---------------------------------------------------------------------------
+# 4b) Mesmas chaves do firmware: simular() no gêmeo  ×  coletar() na bancada
+# ---------------------------------------------------------------------------
+_MODOS = {1: "malha_aberta", 2: "rele", 3: "pid", 4: "partida", 5: "prbs"}
+
+
+def simular(planta, **cfg):
+    """Simula no gêmeo digital um ensaio descrito com as MESMAS chaves de coletar()
+    (MODO, KP, KI, KD, N, PWM_MAX, AW, TT, ZM, EM, PWM_MA, MA_INI, MA_FIM, D, H, REF,
+    RAMPA, SINAL, BASE, AMP, TB, T, R, TR). CPG é ignorado: a quantização vem de
+    planta["cpg"]. Tempos em ms, como no firmware."""
+    modo = int(cfg.get("MODO", 3))
+    if modo not in _MODOS:
+        raise ValueError("MODO 0 (calibração) não se simula: é a sua mão girando a roda.")
+    ctrl = dict(kp=cfg.get("KP", 1.0), ki=cfg.get("KI", 0.0), kd=cfg.get("KD", 0.0),
+                N=cfg.get("N", 30.0), pwm_max=cfg.get("PWM_MAX", 255), aw=cfg.get("AW", 1),
+                Tt=cfg.get("TT", 0.2), zm_comp=cfg.get("ZM", 0), e_morto=cfg.get("EM", 0.0))
+    perfil = None
+    if "R" in cfg:
+        tr = cfg.get("TR", [0, 2000, 7000, 12000][:len(cfg["R"])])
+        perfil = [(t_ / 1000.0, r_) for t_, r_ in zip(tr, cfg["R"])]
+    T = cfg.get("T", 0)
+    return simula_firmware(
+        planta, ctrl, modo=_MODOS[modo], perfil=perfil, T_fim=(T / 1000.0 if T else None),
+        pwm_ma=cfg.get("PWM_MA", 100), ma_ini=cfg.get("MA_INI", 500) / 1000.0,
+        ma_fim=cfg.get("MA_FIM", 2500) / 1000.0, d_rele=cfg.get("D", 120),
+        h_rele=cfg.get("H", 1.0), ref_rele=cfg.get("REF", 0.0),
+        rele_fim=(T / 1000.0 if T else 6.0), rampa=cfg.get("RAMPA", 10.0),
+        sinal=1 if cfg.get("SINAL", 1) >= 0 else -1, base=cfg.get("BASE", 140),
+        amp=cfg.get("AMP", 80), tb=cfg.get("TB", 200) / 1000.0)
+
+
+def _fmt(v):
+    if isinstance(v, (list, tuple, np.ndarray)):
+        return ",".join(_fmt(x) for x in v)
+    if isinstance(v, (float, np.floating)):
+        return f"{float(v):.6g}"
+    return str(v)
+
+
+def coletar(nome, porta, dir_dados="dados", timeout=None, **cfg):
+    """Executa um ensaio NA BANCADA (firmware pid_motor v3) e salva dados/<nome>.csv.
+
+    Abrir a porta serial reinicia o Arduino; a função espera o "# pronto", envia a
+    configuração (mesmas chaves de simular()) e grava a telemetria até "# fim do ensaio".
+    Feche o Monitor Serial da Arduino IDE antes (a porta só pode ter um dono).
+    """
+    import os
+    import time
+    os.makedirs(dir_dados, exist_ok=True)
+    caminho = os.path.join(dir_dados, nome if nome.endswith(".csv") else nome + ".csv")
+    if str(porta).lower() == "virtual":
+        return _coletar_virtual(caminho, **cfg)
+    try:
+        import serial
+    except ImportError as exc:
+        raise ImportError("instale o pyserial:  pip install pyserial") from exc
+    linhas = []
+    with serial.Serial(porta, 115200, timeout=0.5) as ser:
+        t0 = time.time()
+        while True:
+            txt = ser.readline().decode("utf-8", errors="ignore").strip()
+            if txt.startswith("# pronto"):
+                break
+            if time.time() - t0 > 8:
+                raise RuntimeError(
+                    "O Arduino não respondeu. Confira: (1) o firmware gravado é o pid_motor v3; "
+                    "(2) a porta está certa; (3) o Monitor Serial da IDE está fechado.")
+        for k, v in cfg.items():
+            ser.write(f"{k}={_fmt(v)}\n".encode())
+            time.sleep(0.01)
+        ser.write(b"GO\n")
+        limite = time.time() + (timeout or 120)
+        while time.time() < limite:
+            txt = ser.readline().decode("utf-8", errors="ignore").strip()
+            if not txt:
+                continue
+            if txt.startswith("#"):
+                if "chave desconhecida" in txt or txt.startswith("# MODO"):
+                    print(txt)
+                if "fim do ensaio" in txt:
+                    break
+                continue
+            campos = txt.split(",")
+            if len(campos) == 5:
+                try:
+                    linhas.append([float(x) for x in campos])
+                except ValueError:
+                    pass
+        else:
+            print("atenção: tempo esgotado antes do fim do ensaio (aumente timeout=)")
+    with open(caminho, "w", encoding="utf-8") as f:
+        f.write("t,r,angle,pwm,u_pid\n")
+        for l_ in linhas:
+            f.write(",".join(f"{x:g}" for x in l_) + "\n")
+    print(f"{len(linhas)} amostras salvas em {caminho}")
+    return carregar_csv(caminho)
+
+
+def _coletar_virtual(caminho, **cfg):
+    """PORTA = "virtual": o ensaio roda na planta virtual do gabarito (material do
+    professor, pasta gabarito/), com o atrito sorteado em ±5 % a cada ensaio."""
+    import importlib.util
+    import os
+    arq_pv = os.path.join(os.path.dirname(os.path.abspath(__file__)), "gabarito", "planta_virtual.py")
+    if not os.path.exists(arq_pv):
+        raise RuntimeError("PORTA='virtual' só existe no material do professor. Use a porta do Arduino.")
+    spec = importlib.util.spec_from_file_location("planta_virtual", arq_pv)
+    pv = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(pv)
+    cpg_v = pv.CPG_VERDADEIRO
+    cpg_fw = float(cfg.get("CPG", 1.0))           # o que o "firmware" usa para converter
+    modo = int(cfg.get("MODO", 3))
+    if modo == 0:                                 # a "mão" gira a roda 5 voltas em ~14 s
+        T = cfg.get("T", 30000) / 1000.0
+        t = np.arange(0.02, T + 1e-9, 0.02)
+        th = 1800.0 * (1 - np.cos(np.pi * np.clip((t - 2) / 14, 0, 1))) / 2
+        c = np.floor(th * cpg_v)
+        d = dict(t=t, r=0 * t, angle=c / cpg_fw, pwm=0 * t, u_pid=c)
+    else:
+        d = simular(pv.planta_com_variacao(0.05), **cfg)
+        d["angle"] = np.round(d["angle"] * cpg_v) / cpg_fw     # contas / CPG do firmware
+    with open(caminho, "w", encoding="utf-8") as f:
+        f.write("t,r,angle,pwm,u_pid\n")
+        for linha in zip(d["t"], d["r"], d["angle"], d["pwm"], d["u_pid"]):
+            f.write(",".join(f"{x:g}" for x in linha) + "\n")
+    print(f"[bancada virtual] {len(d['t'])} amostras salvas em {caminho}")
+    return carregar_csv(caminho)
+
+
+def salvar_parametros(dir_dados="dados", **kw):
+    """Acrescenta/atualiza parâmetros da bancada em dados/parametros_bancada.json."""
+    import json
+    import os
+    os.makedirs(dir_dados, exist_ok=True)
+    arq_ = os.path.join(dir_dados, "parametros_bancada.json")
+    p = {}
+    if os.path.exists(arq_):
+        with open(arq_, encoding="utf-8") as f:
+            p = json.load(f)
+    p.update({k: (float(v) if isinstance(v, (np.floating, np.integer)) else v) for k, v in kw.items()})
+    with open(arq_, "w", encoding="utf-8") as f:
+        json.dump(p, f, indent=2, ensure_ascii=False)
+    print("parâmetros salvos:", ", ".join(kw))
+    return p
+
+
+def carregar_parametros(dir_dados="dados"):
+    """Lê dados/parametros_bancada.json (os resultados das aulas anteriores)."""
+    import json
+    import os
+    arq_ = os.path.join(dir_dados, "parametros_bancada.json")
+    if not os.path.exists(arq_):
+        print("ainda não há parâmetros salvos — rode as aulas anteriores primeiro")
+        return {}
+    with open(arq_, encoding="utf-8") as f:
+        return json.load(f)
 
 
 # ---------------------------------------------------------------------------
@@ -333,3 +524,120 @@ def linhas_firmware(kp, ki, kd, N=30.0):
     print(f"float ki = {ki:.4f};     // [PWM/(grau.s)]")
     print(f"float kd = {kd:.4f};     // [PWM.s/grau]")
     print(f"const float N_FILT = {N:.1f};   // [rad/s]")
+
+
+# ---------------------------------------------------------------------------
+# 6) Funções de apoio dos roteiros (aulas 1 a 5)
+# ---------------------------------------------------------------------------
+def simula_fopdt(p, t, u, Ts=0.02):
+    """Resposta do FOPDT  y = K e^{-Ls}/(tau s + 1) · (u − u0)  à entrada u (amostrada em Ts).
+    p = [K, tau, L] ou [K, tau, L, u0]."""
+    import control as ct
+    K, tau, L = p[:3]
+    u0 = p[3] if len(p) > 3 else 0.0
+    nd = int(round(L / Ts))
+    u_at = np.r_[np.full(nd, u[0]), u[:len(u) - nd]] - u0       # atraso = deslocar nd amostras
+    _, y = ct.forced_response(ct.tf([K], [tau, 1]), t - t[0], u_at)
+    return y
+
+
+def ajusta_fopdt(t, u, y, chute, Ts=0.02):
+    """Mínimos quadrados (Nelder-Mead) do FOPDT. chute = [K, tau, L] (sem desvio) ou
+    [K, tau, L, u0] (com desvio). Devolve (parâmetros, EQM)."""
+    from scipy.optimize import minimize
+
+    def custo(p):
+        if p[0] <= 0 or p[1] <= 1e-3 or p[2] < 0:
+            return 1e9
+        return float(np.mean((y - simula_fopdt(p, t, u, Ts)) ** 2))
+    r = minimize(custo, chute, method="Nelder-Mead",
+                 options=dict(maxiter=6000, xatol=1e-7, fatol=1e-9))
+    return r.x, r.fun
+
+
+def inclinacao(d, t1=1.5, t2=2.5):
+    """Inclinação [graus/s] da reta ajustada ao ângulo entre t1 e t2."""
+    m = (d["t"] >= t1) & (d["t"] < t2)
+    return float(np.polyfit(d["t"][m], d["angle"][m], 1)[0])
+
+
+def analisa_pid(G, L_ef, kp, ki, kd, N=30.0, gemeo=None, nome="", imprime=True, **extra):
+    """Margens (com atraso por Padé de 3ª ordem e filtro da derivada), degrau LINEAR de 90°
+    e, se `gemeo` for dado, o perfil completo no gêmeo digital (com as chaves extras
+    do firmware, ex.: ZM=33, EM=0.8)."""
+    import control as ct
+    s = ct.tf("s")
+    Pd = ct.tf(*ct.pade(L_ef, 3))
+    Cy = kp + ki / s + kd * N * s / (s + N)
+    gm, pm, _, wc = ct.margin(Cy * G * Pd)
+    T = ct.feedback(G * Pd, Cy) * (kp + ki / s)
+    tt = np.linspace(0, 6, 3001)
+    _, y = ct.step_response(90 * T, tt)
+    ml = metricas_degrau(np.r_[-1e-3, tt], np.r_[0, np.full_like(tt, 90)], np.r_[0, y], 0, 6)
+    res = dict(kp=kp, ki=ki, kd=kd, GM_dB=20 * np.log10(gm), PM=pm, wc=wc,
+               Mp_lin=ml["Mp"], ts_lin=ml["ts"], t_lin=tt, y_lin=y, T=T)
+    if gemeo is not None:
+        sim = simular(gemeo, MODO=3, KP=kp, KI=ki, KD=kd, N=N, **extra)
+        res["sim"] = sim
+        res["metricas_gemeo"] = metricas_ensaio(sim)
+    if imprime:
+        f = lambda x, n=2: f"{x:.{n}f}".replace(".", ",")
+        print(f"{nome}  kp = {f(kp,3)}  ki = {f(ki,3)}  kd = {f(kd,3)}")
+        print(f"   margens: GM = {f(res['GM_dB'],1)} dB · PM = {f(pm,1)}° · ωc = {f(wc,1)} rad/s")
+        print(f"   modelo LINEAR, degrau de 90°: Mp = {f(ml['Mp'],1)} % · ts = {f(ml['ts'])} s")
+        if gemeo is not None:
+            imprime_metricas(res["metricas_gemeo"], "   GÊMEO DIGITAL (com atrito, quantização, saturação):")
+    return res
+
+
+def desenha_lgr(Lmalha, sd=None, kmax=None, titulo="", xlim=(-40, 5), ylim=(-25, 25)):
+    """Lugar das raízes de 1 + k·Lmalha(s) (Lmalha com o atraso já por Padé), com s_d marcado."""
+    import matplotlib.pyplot as plt
+    num = np.array(Lmalha.num[0][0], float)
+    den = np.array(Lmalha.den[0][0], float)
+    num = np.r_[np.zeros(len(den) - len(num)), num]
+    ks = np.r_[0, np.logspace(-4, np.log10(kmax or 3.0), 3000)]
+    raizes = np.array([np.sort_complex(np.roots(den + k * num)) for k in ks])
+    fig, ax = plt.subplots(figsize=(6.4, 5))
+    for j in range(raizes.shape[1]):
+        ax.plot(raizes[:, j].real, raizes[:, j].imag, "b.", ms=1.2)
+    ax.plot(np.roots(den).real, np.roots(den).imag, "kx", ms=9, label="polos de malha aberta")
+    z = np.roots(num[np.argmax(num != 0):]) if np.count_nonzero(num) > 1 else []
+    if len(z):
+        ax.plot(np.real(z), np.imag(z), "go", mfc="none", ms=8, label="zeros de malha aberta")
+    if sd is not None:
+        ax.plot([sd.real, sd.real], [sd.imag, -sd.imag], "r*", ms=14, label="$s_d$ desejado")
+    ax.set_xlim(*xlim); ax.set_ylim(*ylim)
+    ax.set_xlabel("Re(s)"); ax.set_ylabel("Im(s)"); ax.legend(fontsize=8, loc="lower left")
+    ax.set_title(titulo or "Lugar das raízes")
+    fig.tight_layout()
+    return fig, ax
+
+
+def robustez(gemeo, n=20, variacao=0.15, semente=0, **cfg):
+    """Quantas de n plantas (atrito sorteado em ±variacao, Km ±8 %, tau ±10 %) atendem às
+    especificações 1–3 nos três degraus do perfil, com a configuração cfg do firmware."""
+    rng = np.random.default_rng(semente)
+    ok = 0
+    for _ in range(n):
+        p = dict(gemeo)
+        for k in ("Fc", "Fs", "Fc_neg", "Fs_neg"):
+            if k in p:
+                p[k] = gemeo[k] * (1 + variacao * rng.uniform(-1, 1))
+        p["Km"] = gemeo["Km"] * (1 + 0.08 * rng.uniform(-1, 1))
+        p["tau"] = gemeo["tau"] * (1 + 0.10 * rng.uniform(-1, 1))
+        if "Fs" in p:
+            p["Fs"] = max(p["Fs"], p.get("Fc", 0))
+        if "Fs_neg" in p:
+            p["Fs_neg"] = max(p["Fs_neg"], p.get("Fc_neg", 0))
+        ms = metricas_ensaio(simular(p, MODO=3, **cfg))
+        ok += all(m["Mp"] <= 15 and m["ts"] <= 2.5 and abs(m["ess"]) < 2 for m in ms)
+    return ok
+
+
+def veredito(m):
+    """Imprime ✅/❌ das especificações 1–3 para as métricas de UM degrau."""
+    f = lambda x, n=2: "—" if np.isnan(x) else f"{x:.{n}f}".replace(".", ",")
+    print(("✅" if abs(m["ess"]) < 2 else "❌") + f" 1. |e_ss| = {f(abs(m['ess']))}° < 2°")
+    print(("✅" if m["Mp"] <= 15 else "❌") + f" 2. Mp = {f(m['Mp'],1)} % ≤ 15 %")
+    print(("✅" if m["ts"] <= 2.5 else "❌") + f" 3. ts = {f(m['ts'])} s ≤ 2,5 s")

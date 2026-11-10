@@ -74,7 +74,7 @@ lab-cont-2026-2/
 │    ├── labs/                         ← notebooks Jupyter (.ipynb)
 │    └── slides/                       ← apresentação da aula
 ├── trabalhos/                         ← Trabalhos 1 e 2 (bancada motor CC)
-├── projeto_final/                     ← enunciado, ferramentas (gêmeo digital) e notebook-modelo do projeto
+├── projeto_final/                     ← enunciado, ferramentas (gêmeo digital) e os 5 roteiros de aula do projeto
 ├── firmware/                          ← sketches Arduino + telemetria Python
 └── imagens/                           ← figuras geradas (m1_*, m2_*, m3_*, m4_*)
 ```
@@ -88,17 +88,18 @@ Detalhando cada item:
   com referência ao ponto exato da teoria em cada questão ("Consulte: teoria §X.Y");
 - `moduloN/labs/` — **16 notebooks** computacionais (Lab 01–16), autocontidos e executados com 0 erros;
 - `trabalhos/` — [Trabalho 1](trabalhos/trabalho1_identificacao_prbs_fopdt.md) (identificação
-  PRBS/FOPDT — integrado ao projeto final e avaliado no seu Marco 1, semana 12) e [Trabalho 2](trabalhos/trabalho3_pid_posicao_motor_cc.md) (PID de
-  posição — agora integrado ao projeto final e avaliado no seu Marco 3, semana 14);
+  PRBS/FOPDT — integrado ao projeto final, Aulas 1–2) e [Trabalho 2](trabalhos/trabalho3_pid_posicao_motor_cc.md) (PID de
+  posição — integrado ao projeto final, Aulas 3–4);
 - `projeto_final/` — [enunciado do projeto final](projeto_final/projeto_final_motor_cc.md)
-  (servo de posição que integra os Trabalhos 1 e 2: etapas E0–E8, especificações, marcos semanais
-  e rubrica), [`ferramentas_projeto.py`](projeto_final/ferramentas_projeto.py) (métricas oficiais e
-  **gêmeo digital** — simulador idêntico ao firmware) e o
-  [notebook-modelo](projeto_final/modelo_projeto_final.ipynb) que cada aluno preenche;
+  (servo de posição que integra os Trabalhos 1 e 2, em 5 aulas, avaliado por bancada), os **5
+  roteiros de aula** em notebook (`aula1_…ipynb` a `aula5_…ipynb`, passo a passo, com a teoria
+  embutida) e [`ferramentas_projeto.py`](projeto_final/ferramentas_projeto.py) (`coletar()` na
+  bancada, `simular()` no **gêmeo digital**, métricas oficiais);
 - `firmware/` — para o kit do laboratório (MOTOR_REV07: L298N em D9/D10, encoder em D2/D4, OLED):
-  `prbs_aquisicao/` (PRBS + telemetria), `pid_motor/` (**v2**: 4 modos de ensaio —
-  calibração, malha aberta, relé e PID —, PID 2DOF em graus com derivada filtrada, anti-windup
-  por clamping ou back-calculation, compensação de zona morta) e `telemetry.py` (coleta serial → CSV);
+  `pid_motor/` (**v3**: firmware único, gravado uma vez e configurado pelo notebook; modos de
+  calibração, malha aberta, relé, PID, partida e PRBS; PID 2DOF em graus com derivada filtrada,
+  anti-windup e compensação de zona morta), `prbs_aquisicao/` (PRBS avulso, alternativa ao MODO 5)
+  e `telemetry.py` (coleta serial → CSV sem configuração);
 - `imagens/` — figuras geradas para a apostila (ver "Sobre as figuras", ao final);
 - `00_planejamento/` — plano de ensino completo e mapas de conteúdo (documentos do professor).
 
@@ -145,9 +146,9 @@ jupyter notebook modulo1_introducao/labs/lab01_sistemas_e_modelos.ipynb
 |---|---|---|
 | 10 | [Resposta em frequência e Bode](modulo3_frequencia/teoria_modulo3.md) (§3.1) | [Lab 10 — Bode](modulo3_frequencia/labs/lab10_resposta_em_frequencia_e_bode.ipynb) |
 | 11 | Carta de Nichols-Black (§3.2) | [Lab 11 — Nichols-Black](modulo3_frequencia/labs/lab11_carta_de_nichols_black.ipynb) |
-| 12 | Nyquist e efeito do atraso (§3.3) — **lançamento do projeto final** (a partir daqui, aulas de bancada; teoria e labs como consulta) | [Lab 12 — Nyquist](modulo3_frequencia/labs/lab12_nyquist_e_atraso.ipynb) |
+| 12 | Nyquist e efeito do atraso (§3.3) — **projeto final, Aula 1 (11/11)**; a partir daqui, aulas de bancada com roteiros; teoria e labs como consulta opcional | [Lab 12 — Nyquist](modulo3_frequencia/labs/lab12_nyquist_e_atraso.ipynb) |
 | 13 | Projeto de avanço e atraso na frequência (§3.4) | [Lab 13 — projeto na frequência](modulo3_frequencia/labs/lab13_projeto_avanco_e_atraso.ipynb) |
-| 14 | PD, PI e PID na frequência (§3.5) — consulta para a Etapa E3 do projeto · **Marco 3 = Trabalho 2** | [Lab 14 — PD/PI/PID na frequência](modulo3_frequencia/labs/lab14_pd_pi_pid_na_frequencia.ipynb) |
+| 14 | PD, PI e PID na frequência (§3.5) — consulta opcional | [Lab 14 — PD/PI/PID na frequência](modulo3_frequencia/labs/lab14_pd_pi_pid_na_frequencia.ipynb) |
 
 **Módulo 4 — Não linearidades em malhas de controle (semana 15, módulo autônomo)**
 
@@ -186,10 +187,10 @@ As unidades (U1–U4) seguem o PPC da disciplina.
 | 9 | U4 | Atraso de fase, PI; avanço-atraso, PID e atraso de transporte (Padé) — Labs 08–09 |
 | 10 | U1/U4 | Resposta em frequência, diagrama de Bode e margens — Lab 10 |
 | 11 | U4 | Pico de ressonância e carta de Nichols-Black — Lab 11 |
-| 12 | U1/U4 | **Projeto final lançado** — preparação do ambiente; bancada: calibração, identificação PRBS/FOPDT, ganho de posição e zona morta (Etapas S–E2, **Marco 1 = Trabalho 1**). Consulta: §3.3, Lab 12; M4 §4.1, Lab 15 |
-| 13 | U4 | Projeto final — projeto do PID (LGR/frequência/relé), realização digital e gêmeo digital (E3–E5, Marco 2). Consulta: §3.4–3.5, Labs 13–14; M4 §4.3, Lab 16 |
-| 14 | U3/U4 | Projeto final — validação na bancada e anti-windup (E6–E7, **Marco 3 = Trabalho 2**). Consulta: M4 §4.2, Lab 16 |
-| 15 | U3/U4 | Projeto final — não linearidades (E8) e **apresentações individuais** · **Lista 4** |
+| 12 | U1/U4 | **Projeto final — Aula 1 (11/11):** firmware, calibração, PRBS e modelo de velocidade · **Aula 2 (18/11):** modelo de posição, atrito, gêmeo digital e 1º projeto pelo lugar das raízes (**fim do Trabalho 1**) |
+| 13 | U4 | **Projeto final — Aula 3 (25/11):** PID pelo lugar das raízes, relé e Ziegler-Nichols, compensação da zona morta |
+| 14 | U3/U4 | **Projeto final — Aula 4 (03/12):** validação na bancada e anti-windup (**fim do Trabalho 2**) |
+| 15 | U3/U4 | **Projeto final — Aula 5 (10/12):** painel de resultados e **apresentações por bancada** |
 
 ## Estratégias de aprendizagem
 
@@ -209,9 +210,9 @@ apresentação de trabalhos. Neste curso, tomam a forma:
 | Instrumento | Cobre | Como é entregue |
 |---|---|---|
 | Listas de exercícios (4) | Módulos 1–4 | Individuais, nos prazos indicados em aula|
-| Trabalho 1 — identificação PRBS/FOPDT | Unidade I | Integrado ao projeto final: avaliado no **Marco 1** (semana 12) — 15 pontos |
-| Trabalho 2 — PID de posição no motor CC | Unidade IV | Integrado ao projeto final: avaliado no **Marco 3** (semana 14) — 28 pontos |
-| Projeto final — servo de posição | Unidades I–IV | Bancadas em dupla (dados em comum), projeto e apresentação **individuais** (semana 15); integra os Trabalhos 1 e 2; rubrica em `projeto_final/` |
+| Trabalho 1 — identificação PRBS/FOPDT | Unidade I | Integrado ao projeto final: roteiros das Aulas 1–2, avaliado **por bancada** no checkpoint de 18/11 — 15 pontos |
+| Trabalho 2 — PID de posição no motor CC | Unidade IV | Integrado ao projeto final: roteiros das Aulas 3–4, avaliado **por bancada** no checkpoint de 03/12 — 28 pontos |
+| Projeto final — servo de posição | Unidades I–IV | 5 aulas com roteiros; avaliado **por bancada** (5 roteiros + apresentação em 10/12); integra os Trabalhos 1 e 2; rubrica em `projeto_final/` |
 
 ### Pesos dos instrumentos
 
@@ -225,9 +226,9 @@ A composição da nota semestral segue o plano de ensino da turma:
 | Projeto final | 30% |
 | **Total** | **100 %** |
 
-Dentro do **projeto final**, a distribuição já está definida em sua rubrica: identificação e
-validação do modelo 20 %, projeto do controlador 25 %, atendimento às especificações na planta
-real 30 %, demonstração do anti-windup/não linearidades 15 % e apresentação 10 % — ver o
+Os Trabalhos 1 e 2 e o projeto final são avaliados **por bancada**, com a mesma rubrica (ensaios e
+dados 25 %, contas e código 25 %, respostas às perguntas dos roteiros 30 %, especificações 20 %; no
+projeto final, a apresentação e a arguição valem 30 % da nota) — ver o
 [enunciado](projeto_final/projeto_final_motor_cc.md).
 
 ## Convenções usadas no texto
