@@ -59,7 +59,7 @@ Para o **degrau de 90°** do perfil (0° → 90°):
 
 | # | Especificação | Valor |
 |---|---|---|
-| 1 | erro de regime | $|e_{ss}| < 2°$ |
+| 1 | erro de regime | $\|e_{ss}\| < 2°$ |
 | 2 | sobressinal | $`M_p \le 15\%`$ |
 | 3 | tempo de acomodação (critério de ±5 %) | $t_s \le 2{,}5$ s |
 | 4 | sem *windup* visível | com o PWM limitado a ±80, o sobressinal cresce no máximo **5 pontos percentuais** em relação ao ensaio nominal, com o anti-windup ligado |
