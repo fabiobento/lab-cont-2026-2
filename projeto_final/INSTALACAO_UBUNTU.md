@@ -21,6 +21,7 @@ dia.
 Abra um **Terminal** (Ctrl+Alt+T) e digite:
 
 ```bash
+cd
 git clone https://github.com/fabiobento/lab-cont-2026-2.git
 cd lab-cont-2026-2
 bash projeto_final/instalar_ubuntu.sh
@@ -29,8 +30,8 @@ bash projeto_final/instalar_ubuntu.sh
 O script pede a senha de administrador e faz tudo o que está na Seção 2. No fim, **saia da sessão
 e entre de novo** (ou reinicie): é isso que faz a permissão da porta serial valer.
 
-## 2. Instalação passo a passo (o que o script faz)
-
+## 2. Instalação passo a passo (só para você saber o que o script faz)
+Se você executou o script acima, não precisa executar as linhas dessa seção, pois só estou explicando o que ele faz.
 **2.1 Pacotes do sistema**
 ```bash
 sudo apt update
@@ -49,7 +50,7 @@ abrir `/dev/ttyUSB0`:
 ```bash
 sudo usermod -aG dialout $USER
 ```
-⚠️ Vale só depois de **sair da sessão e entrar de novo**.
+⚠️ As alterações acima só valerão depois de **sair da sessão e entrar de novo**.
 
 **2.4 Ambiente Python do curso** — o Ubuntu 24.04 não deixa instalar bibliotecas com `pip` no
 Python do sistema (erro *externally-managed-environment*); por isso criamos um **ambiente
