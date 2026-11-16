@@ -39,10 +39,13 @@ O kit do laboratório: Arduino Uno com shield e display OLED, ponte H L298N, mot
 | `projeto_final/aula1_…ipynb` a `aula5_…ipynb` | os **roteiros** das aulas |
 | `projeto_final/INSTALACAO_UBUNTU.md`, `instalar_ubuntu.sh`, `gravar_firmware.sh` | instalação no desktop da bancada e gravação do firmware pelo terminal |
 
-**Onde rodar: no desktop da bancada (Ubuntu 24.04), não no Google Colab.** O Colab roda num
+**Onde rodar: no desktop da bancada (Ubuntu 24.04), não no Google Colab.**
+- O Colab roda num
 servidor do Google, que não enxerga a porta USB do Arduino. A instalação (≈ 10 min, uma vez por
 computador) está em [`INSTALACAO_UBUNTU.md`](INSTALACAO_UBUNTU.md) — o script
-`projeto_final/instalar_ubuntu.sh` faz tudo. Depois, todo dia:
+`projeto_final/instalar_ubuntu.sh` faz tudo.
+
+Depois, execute todo dia:
 
 ```bash
 cd ~/lab-cont-2026-2/projeto_final
