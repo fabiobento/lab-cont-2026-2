@@ -44,6 +44,9 @@ const bool ENCODER_2X = true;   // as duas bordas de C1 (≈ 474 contas/volta)
 
 // Display: atualizar o SSD1306 leva dezenas de ms — só antes e depois do ensaio.
 // Se a biblioteca Adafruit_SSD1306 não estiver instalada, troque para 0.
+// RAM: o display 128x64 reserva 1024 dos 2048 bytes do Uno ao iniciar. Por isso todos os
+// textos ficam na memória de programa (F("...") e PSTR("...")): a IDE deve informar
+// "deixando" bem mais de 1200 bytes para variáveis locais, senão o display não liga.
 #define USAR_OLED 1
 
 const unsigned long Ts_us = 20000UL;   // período de amostragem (20 ms)
@@ -70,15 +73,17 @@ unsigned long TR_MS[MAX_DEG]  = { 0, 2000, 7000, 12000 };
 #include <Wire.h>
 #include <Adafruit_GFX.h>
 #include <Adafruit_SSD1306.h>
-Adafruit_SSD1306 display(128, 64, &Wire, -1);
-void oled(const char* l1, const char* l2) {
+Adafruit_SSD1306 display(128, 64, &Wire, -1);   // reserva 1024 bytes de RAM no begin()
+bool oled_ok = false;
+void oled(const __FlashStringHelper* l1, const char* l2) {
+  if (!oled_ok) return;
   display.clearDisplay(); display.setTextSize(2); display.setTextColor(WHITE);
   display.setCursor(0, 0);  display.println(l1);
   display.setCursor(0, 24); display.println(l2);
   display.display();
 }
 #else
-void oled(const char*, const char*) {}
+void oled(const __FlashStringHelper*, const char*) {}
 #endif
 
 volatile long enc_count = 0;
@@ -118,32 +123,32 @@ void le_lista_ul(char* v, unsigned long* dst) {
 }
 
 void aplica_cfg(const char* k, char* v) {
-  if      (!strcmp(k, "MODO"))    MODO = atoi(v);
-  else if (!strcmp(k, "CPG"))     CPG = atof(v);
-  else if (!strcmp(k, "KP"))      KP = atof(v);
-  else if (!strcmp(k, "KI"))      KI = atof(v);
-  else if (!strcmp(k, "KD"))      KD = atof(v);
-  else if (!strcmp(k, "N"))       NF = atof(v);
-  else if (!strcmp(k, "PWM_MAX")) PWM_MAX = atoi(v);
-  else if (!strcmp(k, "AW"))      AW = atoi(v);
-  else if (!strcmp(k, "TT"))      TT = atof(v);
-  else if (!strcmp(k, "ZM"))      ZM = atoi(v);
-  else if (!strcmp(k, "EM"))      EM = atof(v);
-  else if (!strcmp(k, "PWM_MA"))  PWM_MA = atoi(v);
-  else if (!strcmp(k, "MA_INI"))  MA_INI = strtoul(v, NULL, 10);
-  else if (!strcmp(k, "MA_FIM"))  MA_FIM = strtoul(v, NULL, 10);
-  else if (!strcmp(k, "D"))       D_RELE = atoi(v);
-  else if (!strcmp(k, "H"))       H_RELE = atof(v);
-  else if (!strcmp(k, "REF"))     REF_RELE = atof(v);
-  else if (!strcmp(k, "RAMPA"))   RAMPA = atof(v);
-  else if (!strcmp(k, "SINAL"))   SINAL = atoi(v) >= 0 ? 1 : -1;
-  else if (!strcmp(k, "BASE"))    BASE = atoi(v);
-  else if (!strcmp(k, "AMP"))     AMP = atoi(v);
-  else if (!strcmp(k, "TB"))      TB = strtoul(v, NULL, 10);
-  else if (!strcmp(k, "T"))       T_MS = strtoul(v, NULL, 10);
-  else if (!strcmp(k, "R"))       le_lista_float(v, R_DEG, &N_DEG);
-  else if (!strcmp(k, "TR"))      le_lista_ul(v, TR_MS);
-  else { Serial.print("# chave desconhecida: "); Serial.println(k); }
+  if      (!strcmp_P(k, PSTR("MODO")))    MODO = atoi(v);
+  else if (!strcmp_P(k, PSTR("CPG")))     CPG = atof(v);
+  else if (!strcmp_P(k, PSTR("KP")))      KP = atof(v);
+  else if (!strcmp_P(k, PSTR("KI")))      KI = atof(v);
+  else if (!strcmp_P(k, PSTR("KD")))      KD = atof(v);
+  else if (!strcmp_P(k, PSTR("N")))       NF = atof(v);
+  else if (!strcmp_P(k, PSTR("PWM_MAX"))) PWM_MAX = atoi(v);
+  else if (!strcmp_P(k, PSTR("AW")))      AW = atoi(v);
+  else if (!strcmp_P(k, PSTR("TT")))      TT = atof(v);
+  else if (!strcmp_P(k, PSTR("ZM")))      ZM = atoi(v);
+  else if (!strcmp_P(k, PSTR("EM")))      EM = atof(v);
+  else if (!strcmp_P(k, PSTR("PWM_MA")))  PWM_MA = atoi(v);
+  else if (!strcmp_P(k, PSTR("MA_INI")))  MA_INI = strtoul(v, NULL, 10);
+  else if (!strcmp_P(k, PSTR("MA_FIM")))  MA_FIM = strtoul(v, NULL, 10);
+  else if (!strcmp_P(k, PSTR("D")))       D_RELE = atoi(v);
+  else if (!strcmp_P(k, PSTR("H")))       H_RELE = atof(v);
+  else if (!strcmp_P(k, PSTR("REF")))     REF_RELE = atof(v);
+  else if (!strcmp_P(k, PSTR("RAMPA")))   RAMPA = atof(v);
+  else if (!strcmp_P(k, PSTR("SINAL")))   SINAL = atoi(v) >= 0 ? 1 : -1;
+  else if (!strcmp_P(k, PSTR("BASE")))    BASE = atoi(v);
+  else if (!strcmp_P(k, PSTR("AMP")))     AMP = atoi(v);
+  else if (!strcmp_P(k, PSTR("TB")))      TB = strtoul(v, NULL, 10);
+  else if (!strcmp_P(k, PSTR("T")))       T_MS = strtoul(v, NULL, 10);
+  else if (!strcmp_P(k, PSTR("R")))       le_lista_float(v, R_DEG, &N_DEG);
+  else if (!strcmp_P(k, PSTR("TR")))      le_lista_ul(v, TR_MS);
+  else { Serial.print(F("# chave desconhecida: ")); Serial.println(k); }
 }
 
 void recebe_configuracao() {
@@ -154,7 +159,7 @@ void recebe_configuracao() {
     if (n == 0) return;                    // ninguém mandou nada: usa os padrões
     buf[n] = 0;
     if (n > 0 && buf[n - 1] == '\r') buf[n - 1] = 0;
-    if (!strcmp(buf, "GO")) return;
+    if (!strcmp_P(buf, PSTR("GO"))) return;
     char* eq = strchr(buf, '=');
     if (eq) { *eq = 0; aplica_cfg(buf, eq + 1); }
   }
@@ -199,27 +204,28 @@ void setup() {
   Serial.begin(115200);
   while (!Serial) { ; }
 #if USAR_OLED
-  display.begin(SSD1306_SWITCHCAPVCC, 0x3C);
-  oled("PRONTO", "aguarda PC");
+  oled_ok = display.begin(SSD1306_SWITCHCAPVCC, 0x3C);
+  if (!oled_ok) Serial.println(F("# aviso: o display OLED nao iniciou (falta de RAM ou endereco I2C)"));
 #endif
-  Serial.println("# pronto pid_motor v3");
+  oled(F("PRONTO"), "aguarda PC");
+  Serial.println(F("# pronto pid_motor v3"));
   recebe_configuracao();
 
-  Serial.print("# MODO="); Serial.print(MODO);
-  Serial.print(" CPG="); Serial.print(CPG, 4);
-  Serial.print(" KP="); Serial.print(KP, 4);
-  Serial.print(" KI="); Serial.print(KI, 4);
-  Serial.print(" KD="); Serial.print(KD, 4);
-  Serial.print(" N="); Serial.print(NF, 1);
-  Serial.print(" PWM_MAX="); Serial.print(PWM_MAX);
-  Serial.print(" AW="); Serial.print(AW);
-  Serial.print(" ZM="); Serial.print(ZM);
-  Serial.print(" EM="); Serial.println(EM, 2);
-  Serial.println("# t[s],r[graus],angle[graus],pwm,u_pid");
+  Serial.print(F("# MODO=")); Serial.print(MODO);
+  Serial.print(F(" CPG=")); Serial.print(CPG, 4);
+  Serial.print(F(" KP=")); Serial.print(KP, 4);
+  Serial.print(F(" KI=")); Serial.print(KI, 4);
+  Serial.print(F(" KD=")); Serial.print(KD, 4);
+  Serial.print(F(" N=")); Serial.print(NF, 1);
+  Serial.print(F(" PWM_MAX=")); Serial.print(PWM_MAX);
+  Serial.print(F(" AW=")); Serial.print(AW);
+  Serial.print(F(" ZM=")); Serial.print(ZM);
+  Serial.print(F(" EM=")); Serial.println(EM, 2);
+  Serial.println(F("# t[s],r[graus],angle[graus],pwm,u_pid"));
   {
     char l2[12];
     snprintf(l2, sizeof(l2), "MODO %d", MODO);
-    oled("ENSAIO", l2);
+    oled(F("ENSAIO"), l2);
   }
 
   const float Ts = Ts_us / 1.0e6;
@@ -309,20 +315,20 @@ void setup() {
 
     aplica_pwm(u);
 
-    Serial.print((t_am - t0) / 1.0e6, 3); Serial.print(",");
-    Serial.print(r, 2);                   Serial.print(",");
-    Serial.print(y, 2);                   Serial.print(",");
-    Serial.print(u);                      Serial.print(",");
+    Serial.print((t_am - t0) / 1.0e6, 3); Serial.print(',');
+    Serial.print(r, 2);                   Serial.print(',');
+    Serial.print(y, 2);                   Serial.print(',');
+    Serial.print(u);                      Serial.print(',');
     Serial.println(u_pid, 1);
   }
 
   aplica_pwm(0);
-  Serial.println("# fim do ensaio");
+  Serial.println(F("# fim do ensaio"));
   {
     noInterrupts(); long c = enc_count; interrupts();
     char l2[16];
     snprintf(l2, sizeof(l2), "%ld cts", c);
-    oled("FIM", l2);
+    oled(F("FIM"), l2);
   }
 }
 

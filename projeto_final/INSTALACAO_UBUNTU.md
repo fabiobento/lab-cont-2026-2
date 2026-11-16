@@ -21,7 +21,6 @@ dia.
 Abra um **Terminal** (Ctrl+Alt+T) e digite:
 
 ```bash
-cd
 git clone https://github.com/fabiobento/lab-cont-2026-2.git
 cd lab-cont-2026-2
 bash projeto_final/instalar_ubuntu.sh
@@ -137,4 +136,5 @@ bash gravar_firmware.sh
 | `projeto: comando não encontrado` | atalho ainda não criado, ou Terminal aberto antes de criá-lo | 2.6, depois feche e abra o Terminal |
 | `arduino-cli: comando não encontrado` | `~/.local/bin` ainda não está no PATH | saia da sessão e entre de novo, ou use `~/.local/bin/arduino-cli` |
 | `coletar()` diz que o Arduino não respondeu | firmware antigo; porta errada; outro programa usando a porta | `bash gravar_firmware.sh`; confira `PORTA`; feche a Arduino IDE / Monitor Serial |
+| gravou ("Carregado"), mas o display não mostra **PRONTO** | firmware antigo, que deixava pouca RAM para o display (a IDE dizia "deixando 1065 bytes") | baixe o `pid_motor.ino` atualizado e grave de novo: a IDE deve dizer "deixando ≈ 1320 bytes". O aviso sobre `platform.txt` da Arduino IDE do Ubuntu pode ser ignorado |
 | erro `Adafruit_SSD1306.h: No such file` ao gravar | biblioteca não instalada | 2.5 (`lib install`) ou `#define USAR_OLED 0` no `pid_motor.ino` |
