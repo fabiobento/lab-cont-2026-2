@@ -26,7 +26,7 @@ O kit do laboratório: Arduino Uno com shield e display OLED, ponte H L298N, mot
 
 ![Bancada do projeto: motor CC com encoder e roda, ponte H L298N e Arduino Uno com display OLED](figuras/bancada_motor_cc.png)
 
-*Figura 1 — A bancada: motor CC com encoder e roda, ponte H (L298N) e Arduino Uno com shield e display OLED.*
+*Figura 1 — A bancada: motor CC com encoder e roda, ponte H (L298N) e Arduino Uno com shield e display OLED. Em amarelo, o borne OUT1/OUT2, onde entram os fios vermelho e branco do motor.*
 
 | Ligação | Pino do Arduino |
 |---|---|
@@ -133,7 +133,7 @@ com as saídas** e a pasta `dados/` completa, no local indicado pelo professor.
 | `Permission denied: '/dev/ttyUSB0'`, porta que some, `ModuleNotFoundError` | ambiente do desktop incompleto | tabela da Seção 4 do `INSTALACAO_UBUNTU.md` |
 | gravou, mas o display não mostra **PRONTO** | `pid_motor.ino` desatualizado (pouca RAM para o display) | grave a versão atual do repositório (a IDE deve informar "deixando ≈ 1320 bytes") |
 | erro de compilação na `Adafruit_SSD1306` | biblioteca não instalada | `arduino-cli lib install "Adafruit SSD1306"`, ou troque `#define USAR_OLED 1` por `0` |
-| no teste de sentido, a posição diminui | sentido do motor × sentido do encoder | desligue a fonte e inverta os fios do motor em OUT1/OUT2 (não troque C1/C2) |
+| no teste de sentido, a posição diminui | sentido do motor × sentido do encoder | desligue a fonte e inverta os fios vermelho e branco no borne de cima da ponte H (OUT1/OUT2, Figura 1); não troque C1/C2 |
 | em malha fechada, o motor dispara girando sem parar | realimentação positiva (o teste de sentido não foi feito ou foi desfeito) | desligue e refaça o teste de sentido |
 | o ângulo de 90° vira ≈ 45° ou 180° | `CPG` errado | refaça a calibração da Aula 1 |
 | erro de regime de vários graus | atrito/zona morta | é o assunto das Aulas 2 e 3 |
