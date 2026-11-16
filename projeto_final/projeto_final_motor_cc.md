@@ -45,7 +45,7 @@ servidor do Google, que não enxerga a porta USB do Arduino. A instalação (≈
 computador) está em [`INSTALACAO_UBUNTU.md`](INSTALACAO_UBUNTU.md) — o script
 `projeto_final/instalar_ubuntu.sh` faz tudo.
 
-Depois, execute todo dia:
+- Depois, execute todo dia:
 
 ```bash
 cd ~/lab-cont-2026-2/projeto_final
