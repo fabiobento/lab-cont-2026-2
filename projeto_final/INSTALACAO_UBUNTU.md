@@ -75,14 +75,24 @@ curl -fsSL https://raw.githubusercontent.com/arduino/arduino-cli/master/install.
 **Arduino Uno**, porta `/dev/ttyUSB0`, instale a biblioteca *Adafruit SSD1306* e clique em
 Carregar.)
 
-**2.6 Jupyter sem pedido de senha no Firefox do Ubuntu** — o Firefox do Ubuntu 24.04 é um pacote
-*snap* e não consegue ler o arquivo local que o Jupyter usa para abrir a página já com a chave de
-acesso (*token*). Resultado: a página abre pedindo **"Password or token"**. A linha abaixo faz o
-Jupyter abrir direto o endereço com a chave:
+**2.6 Jupyter sem pedido de senha** — o Firefox do Ubuntu 24.04 é um pacote *snap* e não
+consegue abrir a página do Jupyter já com a chave de acesso (*token*). Resultado: a página pede
+**"Password or token"**. Como o Jupyter atende só ao próprio computador (`localhost`), desligamos
+a chave e a senha:
 ```bash
 mkdir -p ~/.jupyter
-echo "c.ServerApp.use_redirect_file = False" >> ~/.jupyter/jupyter_server_config.py
+rm -f ~/.jupyter/jupyter_server_config.json ~/.jupyter/jupyter_notebook_config.json
+cat > ~/.jupyter/jupyter_server_config.py <<'EOF'
+c.ServerApp.ip = "localhost"
+c.ServerApp.use_redirect_file = False
+c.IdentityProvider.token = ""
+c.PasswordIdentityProvider.hashed_password = ""
+c.PasswordIdentityProvider.password_required = False
+EOF
+pkill -f jupyter    # encerra algum Jupyter antigo que ainda esteja rodando
 ```
+(Os arquivos `.json` removidos só existem se alguém rodou `jupyter notebook password`; eles têm
+prioridade sobre o `.py` e mantêm a senha.)
 E um atalho que faz tudo de uma vez (ativa o ambiente, entra na pasta e abre o Jupyter):
 ```bash
 echo "alias projeto='source ~/venv-controle/bin/activate && cd ~/lab-cont-2026-2/projeto_final && jupyter notebook'" >> ~/.bashrc
@@ -118,7 +128,7 @@ bash gravar_firmware.sh
 | `Permission denied: '/dev/ttyUSB0'` | usuário fora do grupo `dialout`, ou não saiu da sessão depois de entrar nele | 2.3 e sair/entrar da sessão |
 | a porta aparece e some; `ls /dev/ttyUSB*` vazio | `brltty` capturou o CH340 | 2.2 e desconectar/reconectar o USB |
 | `error: externally-managed-environment` | `pip` usado fora do ambiente virtual | `controle` antes do `pip`, ou use `~/venv-controle/bin/pip` |
-| a página do Jupyter pede **"Password or token"** | o Firefox (snap) do Ubuntu não abriu o endereço com a chave | **na hora:** no Terminal onde o Jupyter está rodando, segure Ctrl e clique no endereço `http://localhost:8888/tree?token=…` (ou copie-o para o navegador; `jupyter server list` mostra de novo). **De vez:** 2.6 e reabra o Jupyter |
+| a página do Jupyter pede **"Password or token"** | o Firefox (snap) do Ubuntu não abriu o endereço com a chave | **na hora:** no Terminal onde o Jupyter está rodando, segure Ctrl e clique no endereço `http://localhost:8888/tree?token=…` (ou copie-o para o navegador; `jupyter server list` mostra de novo). **De vez:** 2.6 e reabra o Jupyter. Se continuar: feche **todas** as abas do Jupyter, rode `pkill -f jupyter` e abra de novo — uma aba antiga (ex.: `localhost:8888`) pode estar apontando para outro Jupyter, ainda com chave |
 | `ModuleNotFoundError: No module named 'control'` no notebook | Jupyter aberto sem ativar o ambiente | feche, rode `controle` e depois `jupyter notebook` |
 | `ModuleNotFoundError: ferramentas_projeto` | notebook aberto fora da pasta `projeto_final/` | abra o Jupyter de dentro de `projeto_final/` |
 | `projeto: comando não encontrado` | atalho ainda não criado, ou Terminal aberto antes de criá-lo | 2.6, depois feche e abra o Terminal |

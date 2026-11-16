@@ -53,16 +53,25 @@ ACLI="$(command -v arduino-cli || echo "$BIN/arduino-cli")"
 "$ACLI" core install arduino:avr
 "$ACLI" lib install "Adafruit SSD1306"       # traz junto a Adafruit GFX e a BusIO
 
-echo "==> 6/6  Jupyter: abrir no Firefox (snap) do Ubuntu sem pedir senha"
-# O Firefox do Ubuntu 24.04 é um pacote snap e não consegue ler o arquivo local que o
-# Jupyter usa para abrir a página já com a chave de acesso (token) — por isso aparece a
-# tela pedindo "Password or token". Com use_redirect_file = False, o Jupyter abre direto
-# o endereço http://localhost:8888/tree?token=... e o navegador entra sem pedir nada.
+echo "==> 6/6  Jupyter: abrir sem pedir senha/token"
+# O Firefox do Ubuntu 24.04 (snap) não consegue abrir a página do Jupyter já com a chave de
+# acesso (token), e aparece a tela "Password or token". Como o Jupyter só atende a este
+# próprio computador (ip = localhost), desligamos a chave e a senha.
+# Um arquivo .json com senha (criado por "jupyter notebook password") teria prioridade
+# sobre o .py — por isso ele é renomeado.
 mkdir -p "$HOME/.jupyter"
 CFG="$HOME/.jupyter/jupyter_server_config.py"
-if ! grep -q "use_redirect_file" "$CFG" 2>/dev/null; then
-    echo "c.ServerApp.use_redirect_file = False" >> "$CFG"
-fi
+for f in "$CFG" "$HOME/.jupyter/jupyter_server_config.json" "$HOME/.jupyter/jupyter_notebook_config.json"; do
+    [ -f "$f" ] && mv "$f" "$f.bak-$(date +%Y%m%d%H%M%S)"
+done
+cat > "$CFG" <<'EOF'
+# Laboratório de Controle Automático — Jupyter só no próprio computador, sem senha/token
+c.ServerApp.ip = "localhost"
+c.ServerApp.use_redirect_file = False
+c.IdentityProvider.token = ""
+c.PasswordIdentityProvider.hashed_password = ""
+c.PasswordIdentityProvider.password_required = False
+EOF
 
 # atalhos no terminal:
 #   controle -> ativa o ambiente Python
