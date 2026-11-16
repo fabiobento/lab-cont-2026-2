@@ -24,6 +24,10 @@ Trabalho 2 (PID de posição) na Aula 4 (Seção 6).
 O kit do laboratório: Arduino Uno com shield e display OLED, ponte H L298N, motor JGA25-370 de
 6 V / 210 rpm com redução, encoder Hall e uma roda no eixo.
 
+![Bancada do projeto: motor CC com encoder e roda, ponte H L298N e Arduino Uno com display OLED](figuras/bancada_motor_cc.png)
+
+*Figura 1 — A bancada: motor CC com encoder e roda, ponte H (L298N) e Arduino Uno com shield e display OLED.*
+
 | Ligação | Pino do Arduino |
 |---|---|
 | L298N IN1 / IN2 (PWM; ENA com jumper) | D9 / D10 |
@@ -58,7 +62,7 @@ Para o **degrau de 90°** do perfil (0° → 90°):
 
 | # | Especificação | Valor |
 |---|---|---|
-| 1 | erro de regime | $`\|e_{ss}\| < 2°`$ |
+| 1 | erro de regime | $|e_{ss}| < 2°$ |
 | 2 | sobressinal | $`M_p \le 15\%`$ |
 | 3 | tempo de acomodação (critério de ±5 %) | $t_s \le 2{,}5$ s |
 | 4 | sem *windup* visível | com o PWM limitado a ±80, o sobressinal cresce no máximo **5 pontos percentuais** em relação ao ensaio nominal, com o anti-windup ligado |
@@ -127,6 +131,7 @@ com as saídas** e a pasta `dados/` completa, no local indicado pelo professor.
 | `coletar()` diz que o Arduino não respondeu | firmware antigo gravado; porta errada; Monitor Serial da IDE aberto | `bash gravar_firmware.sh`; confira `PORTA`; feche o Monitor Serial |
 | o Jupyter pede *"Password or token"* ou não aceita a senha | senha fixa do Jupyter não definida ou esquecida | `controle` → `jupyter server password` (`INSTALACAO_UBUNTU.md`, 2.6) |
 | `Permission denied: '/dev/ttyUSB0'`, porta que some, `ModuleNotFoundError` | ambiente do desktop incompleto | tabela da Seção 4 do `INSTALACAO_UBUNTU.md` |
+| gravou, mas o display não mostra **PRONTO** | `pid_motor.ino` desatualizado (pouca RAM para o display) | grave a versão atual do repositório (a IDE deve informar "deixando ≈ 1320 bytes") |
 | erro de compilação na `Adafruit_SSD1306` | biblioteca não instalada | `arduino-cli lib install "Adafruit SSD1306"`, ou troque `#define USAR_OLED 1` por `0` |
 | no teste de sentido, a posição diminui | sentido do motor × sentido do encoder | desligue a fonte e inverta os fios do motor em OUT1/OUT2 (não troque C1/C2) |
 | em malha fechada, o motor dispara girando sem parar | realimentação positiva (o teste de sentido não foi feito ou foi desfeito) | desligue e refaça o teste de sentido |
