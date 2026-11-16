@@ -57,7 +57,7 @@ virtual** só para o curso:
 ```bash
 python3 -m venv ~/venv-controle
 ~/venv-controle/bin/pip install --upgrade pip
-~/venv-controle/bin/pip install "control==0.10.2" numpy scipy matplotlib jupyter pyserial
+~/venv-controle/bin/pip install "control==0.10.2" numpy scipy matplotlib jupyter jupyterlab pyserial
 echo "alias controle='source ~/venv-controle/bin/activate'" >> ~/.bashrc
 ```
 
@@ -75,27 +75,27 @@ curl -fsSL https://raw.githubusercontent.com/arduino/arduino-cli/master/install.
 **Arduino Uno**, porta `/dev/ttyUSB0`, instale a biblioteca *Adafruit SSD1306* e clique em
 Carregar.)
 
-**2.6 Jupyter sem pedido de senha** — o Firefox do Ubuntu 24.04 é um pacote *snap* e não
-consegue abrir a página do Jupyter já com a chave de acesso (*token*). Resultado: a página pede
-**"Password or token"**. Como o Jupyter atende só ao próprio computador (`localhost`), desligamos
-a chave e a senha:
+**2.6 JupyterLab com senha fixa** — sem senha, o Jupyter cria a cada vez uma chave temporária
+(*token*) e a página pede **"Password or token"** quando o navegador não a recebe. Com uma senha
+fixa, o endereço é sempre `http://localhost:8888/lab` e basta digitar a senha.
 ```bash
+controle                                   # ativa o ambiente Python
 mkdir -p ~/.jupyter
-rm -f ~/.jupyter/jupyter_server_config.json ~/.jupyter/jupyter_notebook_config.json
 cat > ~/.jupyter/jupyter_server_config.py <<'EOF'
 c.ServerApp.ip = "localhost"
 c.ServerApp.use_redirect_file = False
-c.IdentityProvider.token = ""
-c.PasswordIdentityProvider.hashed_password = ""
-c.PasswordIdentityProvider.password_required = False
 EOF
-pkill -f jupyter    # encerra algum Jupyter antigo que ainda esteja rodando
+jupyter server password                    # digite a senha da bancada duas vezes
 ```
-(Os arquivos `.json` removidos só existem se alguém rodou `jupyter notebook password`; eles têm
-prioridade sobre o `.py` e mantêm a senha.)
-E um atalho que faz tudo de uma vez (ativa o ambiente, entra na pasta e abre o Jupyter):
+- `ip = "localhost"`: só o próprio computador acessa o Jupyter (ninguém da rede).
+- `jupyter server password` grava a senha (criptografada) em
+  `~/.jupyter/jupyter_server_config.json`. **Esqueceu a senha?** Rode o comando de novo e escolha
+  outra.
+
+E um atalho que faz tudo de uma vez (ativa o ambiente, entra na pasta e abre o JupyterLab):
 ```bash
-echo "alias projeto='source ~/venv-controle/bin/activate && cd ~/lab-cont-2026-2/projeto_final && jupyter notebook'" >> ~/.bashrc
+sed -i '/^alias projeto=/d' ~/.bashrc
+echo "alias projeto='source ~/venv-controle/bin/activate && cd ~/lab-cont-2026-2/projeto_final && jupyter lab'" >> ~/.bashrc
 ```
 (Ajuste o caminho `~/lab-cont-2026-2` se o repositório estiver em outro lugar. Vale para os
 próximos Terminais que abrir.)
@@ -109,7 +109,8 @@ projeto
 ```
 
 (É o mesmo que `cd ~/lab-cont-2026-2/projeto_final`, depois `controle` — que ativa o ambiente
-Python — e depois `jupyter notebook`.) O navegador abre com a lista de arquivos. Clique no roteiro
+Python — e depois `jupyter lab`.) O navegador abre o **JupyterLab**: digite a **senha do
+Jupyter** da bancada. À esquerda fica a lista de arquivos; dê dois cliques no roteiro
 da aula (`aula1_….ipynb` etc.). **Não feche o Terminal** enquanto estiver
 usando o notebook. Para gravar o firmware (Aula 1), abra **outra aba** do Terminal
 (Ctrl+Shift+T), vá para a mesma pasta e rode:
@@ -128,8 +129,9 @@ bash gravar_firmware.sh
 | `Permission denied: '/dev/ttyUSB0'` | usuário fora do grupo `dialout`, ou não saiu da sessão depois de entrar nele | 2.3 e sair/entrar da sessão |
 | a porta aparece e some; `ls /dev/ttyUSB*` vazio | `brltty` capturou o CH340 | 2.2 e desconectar/reconectar o USB |
 | `error: externally-managed-environment` | `pip` usado fora do ambiente virtual | `controle` antes do `pip`, ou use `~/venv-controle/bin/pip` |
-| a página do Jupyter pede **"Password or token"** | o Firefox (snap) do Ubuntu não abriu o endereço com a chave | **na hora:** no Terminal onde o Jupyter está rodando, segure Ctrl e clique no endereço `http://localhost:8888/tree?token=…` (ou copie-o para o navegador; `jupyter server list` mostra de novo). **De vez:** 2.6 e reabra o Jupyter. Se continuar: feche **todas** as abas do Jupyter, rode `pkill -f jupyter` e abra de novo — uma aba antiga (ex.: `localhost:8888`) pode estar apontando para outro Jupyter, ainda com chave |
-| `ModuleNotFoundError: No module named 'control'` no notebook | Jupyter aberto sem ativar o ambiente | feche, rode `controle` e depois `jupyter notebook` |
+| a página pede **"Password or token"** | a senha fixa não foi definida (o Jupyter usa uma chave temporária) | **na hora:** no Terminal do Jupyter, Ctrl+clique no endereço `http://localhost:8888/lab?token=…`. **De vez:** 2.6, `pkill -f jupyter` e `projeto` |
+| a senha do Jupyter não é aceita / foi esquecida | — | `controle`, depois `jupyter server password` (escolha outra), `pkill -f jupyter` e `projeto` |
+| `ModuleNotFoundError: No module named 'control'` no notebook | Jupyter aberto sem ativar o ambiente | feche, rode `projeto` (ou `controle` e depois `jupyter lab`) |
 | `ModuleNotFoundError: ferramentas_projeto` | notebook aberto fora da pasta `projeto_final/` | abra o Jupyter de dentro de `projeto_final/` |
 | `projeto: comando não encontrado` | atalho ainda não criado, ou Terminal aberto antes de criá-lo | 2.6, depois feche e abra o Terminal |
 | `arduino-cli: comando não encontrado` | `~/.local/bin` ainda não está no PATH | saia da sessão e entre de novo, ou use `~/.local/bin/arduino-cli` |

@@ -12,8 +12,8 @@
 #   3. dá ao usuário permissão de usar a porta serial (grupo dialout)
 #   4. cria o ambiente Python ~/venv-controle com as bibliotecas do curso
 #   5. instala o arduino-cli, o núcleo do Arduino Uno e a biblioteca do display
-#   6. configura o Jupyter para abrir no Firefox do Ubuntu sem pedir senha
-#      e cria o atalho "projeto" (abre os roteiros com um comando)
+#   6. define a senha fixa do JupyterLab e cria o atalho "projeto"
+#      (abre os roteiros com um comando)
 #
 # Pede a senha de administrador (sudo). Leva ≈ 5–10 min, conforme a internet.
 # Depois de rodar: SAIA DA SESSÃO E ENTRE DE NOVO (ou reinicie) — é o que faz
@@ -41,7 +41,7 @@ sudo usermod -aG dialout "$USER"
 echo "==> 4/6  Ambiente Python em $VENV"
 python3 -m venv "$VENV"
 "$VENV/bin/pip" install --upgrade pip
-"$VENV/bin/pip" install "control==0.10.2" numpy scipy matplotlib jupyter pyserial
+"$VENV/bin/pip" install "control==0.10.2" numpy scipy matplotlib jupyter jupyterlab pyserial
 
 echo "==> 5/6  arduino-cli, núcleo AVR (Arduino Uno) e biblioteca Adafruit SSD1306"
 mkdir -p "$BIN"
@@ -53,36 +53,35 @@ ACLI="$(command -v arduino-cli || echo "$BIN/arduino-cli")"
 "$ACLI" core install arduino:avr
 "$ACLI" lib install "Adafruit SSD1306"       # traz junto a Adafruit GFX e a BusIO
 
-echo "==> 6/6  Jupyter: abrir sem pedir senha/token"
-# O Firefox do Ubuntu 24.04 (snap) não consegue abrir a página do Jupyter já com a chave de
-# acesso (token), e aparece a tela "Password or token". Como o Jupyter só atende a este
-# próprio computador (ip = localhost), desligamos a chave e a senha.
-# Um arquivo .json com senha (criado por "jupyter notebook password") teria prioridade
-# sobre o .py — por isso ele é renomeado.
+echo "==> 6/6  JupyterLab com senha fixa e atalho \"projeto\""
+# Com uma senha fixa, o Jupyter deixa de usar a chave temporária (token) que muda a cada vez
+# e o endereço fica sempre http://localhost:8888/lab. ip = localhost: só este computador
+# acessa. use_redirect_file = False: o navegador abre o endereço http direto.
 mkdir -p "$HOME/.jupyter"
 CFG="$HOME/.jupyter/jupyter_server_config.py"
-for f in "$CFG" "$HOME/.jupyter/jupyter_server_config.json" "$HOME/.jupyter/jupyter_notebook_config.json"; do
-    [ -f "$f" ] && mv "$f" "$f.bak-$(date +%Y%m%d%H%M%S)"
-done
+[ -f "$CFG" ] && mv "$CFG" "$CFG.bak-$(date +%Y%m%d%H%M%S)"
 cat > "$CFG" <<'EOF'
-# Laboratório de Controle Automático — Jupyter só no próprio computador, sem senha/token
+# Laboratório de Controle Automático — Jupyter só neste computador
 c.ServerApp.ip = "localhost"
 c.ServerApp.use_redirect_file = False
-c.IdentityProvider.token = ""
-c.PasswordIdentityProvider.hashed_password = ""
-c.PasswordIdentityProvider.password_required = False
 EOF
+if grep -q "hashed_password" "$HOME/.jupyter/jupyter_server_config.json" 2>/dev/null; then
+    echo "    já existe uma senha do Jupyter neste usuário (para trocar: jupyter server password)"
+else
+    echo "    Escolha a SENHA DO JUPYTER desta bancada (será pedida ao abrir o JupyterLab)."
+    echo "    Ela não aparece enquanto você digita; digite duas vezes."
+    "$VENV/bin/jupyter" server password
+fi
 
 # atalhos no terminal:
 #   controle -> ativa o ambiente Python
-#   projeto  -> ativa o ambiente, entra em projeto_final/ e abre o Jupyter
+#   projeto  -> ativa o ambiente, entra em projeto_final/ e abre o JupyterLab
 REPO="$(pwd)"
 if ! grep -q "alias controle=" "$HOME/.bashrc"; then
     echo "alias controle='source $VENV/bin/activate'" >> "$HOME/.bashrc"
 fi
-if ! grep -q "alias projeto=" "$HOME/.bashrc"; then
-    echo "alias projeto='source $VENV/bin/activate && cd $REPO/projeto_final && jupyter notebook'" >> "$HOME/.bashrc"
-fi
+sed -i '/^alias projeto=/d' "$HOME/.bashrc"
+echo "alias projeto='source $VENV/bin/activate && cd $REPO/projeto_final && jupyter lab'" >> "$HOME/.bashrc"
 
 echo
 echo "==> Teste rápido das bibliotecas Python"
@@ -90,4 +89,5 @@ echo "==> Teste rápido das bibliotecas Python"
 echo
 echo "PRONTO. Agora SAIA DA SESSÃO E ENTRE DE NOVO (ou reinicie o computador)."
 echo "Depois, para trabalhar, abra um Terminal e digite apenas:"
-echo "    projeto             # ativa o ambiente e abre os roteiros no navegador"
+echo "    projeto             # ativa o ambiente e abre os roteiros no JupyterLab"
+echo "e entre com a senha do Jupyter que você acabou de escolher."
