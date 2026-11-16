@@ -1,7 +1,7 @@
 # Projeto Final — Servo de Posição com Motor CC
 
 **Laboratório de Controle Automático — Engenharia Elétrica — Ifes Campus Guarapari**
-**5 aulas de 1h40:** 11/11 · 18/11 · 25/11 · 03/12 · 10/12 · **Avaliação por bancada**
+**5 aulas de 1h40:** 18/11 (Aulas 1 e 2) · 25/11 · 02/12 · 10/12 · **Avaliação por bancada**
 
 ---
 
@@ -75,10 +75,10 @@ Para o **degrau de 90°** do perfil (0° → 90°):
 
 | Aula | Data | Roteiro | O que a bancada faz | Checkpoint |
 |---|---|---|---|---|
-| 1 | 11/11 | `aula1_bancada_e_modelo_de_velocidade.ipynb` | grava o firmware, testa o sentido, calibra o encoder, faz o ensaio PRBS e ajusta o modelo de velocidade (FOPDT) | ✅ 1 |
+| 1 | 18/11 | `aula1_bancada_e_modelo_de_velocidade.ipynb` | grava o firmware, testa o sentido, calibra o encoder, faz o ensaio PRBS e ajusta o modelo de velocidade (FOPDT) | ✅ 1 |
 | 2 | 18/11 | `aula2_modelo_de_posicao_e_primeiro_projeto.ipynb` | mede o modelo de posição, a zona morta e o atrito estático; monta o gêmeo digital; faz o 1º projeto pelo lugar das raízes e o testa na bancada | ✅ 2 — **fim do Trabalho 1** |
 | 3 | 25/11 | `aula3_pid_rele_e_compensacao.ipynb` | projeta o PID pelo lugar das raízes, confere com o relé (Ziegler-Nichols), escolhe a compensação de zona morta e faz o 1º ensaio do controlador final | ✅ 3 |
-| 4 | 03/12 | `aula4_validacao_e_antiwindup.ipynb` | 3 ensaios nominais (especificações 1–3), ensaios com e sem anti-windup (especificação 4), medido × simulado | ✅ 4 — **fim do Trabalho 2** |
+| 4 | 02/12 | `aula4_validacao_e_antiwindup.ipynb` | 3 ensaios nominais (especificações 1–3), ensaios com e sem anti-windup (especificação 4), medido × simulado | ✅ 4 — **fim do Trabalho 2** |
 | 5 | 10/12 | `aula5_fechamento_e_apresentacao.ipynb` | painel de resultados, tabela das não linearidades e **apresentação** | — |
 
 **Em cada roteiro:** ⏱️ tempo sugerido de cada parte · 📘 teoria para ler antes de fazer · 🔧
@@ -103,7 +103,7 @@ sempre o mesmo computador ou levem a pasta junto.
 | Nota (peso na média semestral) | O que é avaliado | Quando |
 |---|---|---|
 | **Trabalho 1** (10 %) | roteiros das Aulas 1 e 2: firmware e teste de sentido, calibração, FOPDT com e sem desvio, modelo de posição, zona morta e atrito, gêmeo validado, iteração 1 e a explicação da falha | Checkpoint 2 (18/11) |
-| **Trabalho 2** (10 %) | roteiros das Aulas 3 e 4: PID pelo lugar das raízes, relé e Ziegler-Nichols, compensação e robustez, especificações 1–4 na bancada, medido × simulado | Checkpoint 4 (03/12) |
+| **Trabalho 2** (10 %) | roteiros das Aulas 3 e 4: PID pelo lugar das raízes, relé e Ziegler-Nichols, compensação e robustez, especificações 1–4 na bancada, medido × simulado | Checkpoint 4 (02/12) |
 | **Projeto final** (30 %) | os 5 roteiros completos + apresentação e arguição | Aula 5 (10/12) |
 
 **Critérios em cada nota:**

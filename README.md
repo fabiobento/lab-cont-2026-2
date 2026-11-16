@@ -148,7 +148,7 @@ jupyter notebook modulo1_introducao/labs/lab01_sistemas_e_modelos.ipynb
 |---|---|---|
 | 10 | [Resposta em frequência e Bode](modulo3_frequencia/teoria_modulo3.md) (§3.1) | [Lab 10 — Bode](modulo3_frequencia/labs/lab10_resposta_em_frequencia_e_bode.ipynb) |
 | 11 | Carta de Nichols-Black (§3.2) | [Lab 11 — Nichols-Black](modulo3_frequencia/labs/lab11_carta_de_nichols_black.ipynb) |
-| 12 | Nyquist e efeito do atraso (§3.3) — **projeto final, Aula 1 (11/11)**; a partir daqui, aulas de bancada com roteiros; teoria e labs como consulta opcional | [Lab 12 — Nyquist](modulo3_frequencia/labs/lab12_nyquist_e_atraso.ipynb) |
+| 12 | Nyquist e efeito do atraso (§3.3) — **projeto final, Aula 1 (18/11)**; a partir daqui, aulas de bancada com roteiros; teoria e labs como consulta opcional | [Lab 12 — Nyquist](modulo3_frequencia/labs/lab12_nyquist_e_atraso.ipynb) |
 | 13 | Projeto de avanço e atraso na frequência (§3.4) | [Lab 13 — projeto na frequência](modulo3_frequencia/labs/lab13_projeto_avanco_e_atraso.ipynb) |
 | 14 | PD, PI e PID na frequência (§3.5) — consulta opcional | [Lab 14 — PD/PI/PID na frequência](modulo3_frequencia/labs/lab14_pd_pi_pid_na_frequencia.ipynb) |
 
@@ -189,9 +189,9 @@ As unidades (U1–U4) seguem o PPC da disciplina.
 | 9 | U4 | Atraso de fase, PI; avanço-atraso, PID e atraso de transporte (Padé) — Labs 08–09 |
 | 10 | U1/U4 | Resposta em frequência, diagrama de Bode e margens — Lab 10 |
 | 11 | U4 | Pico de ressonância e carta de Nichols-Black — Lab 11 |
-| 12 | U1/U4 | **Projeto final — Aula 1 (11/11):** firmware, calibração, PRBS e modelo de velocidade · **Aula 2 (18/11):** modelo de posição, atrito, gêmeo digital e 1º projeto pelo lugar das raízes (**fim do Trabalho 1**) |
+| 12 | U1/U4 | **Projeto final — Aula 1 (18/11):** firmware, calibração, PRBS e modelo de velocidade · **Aula 2 (18/11):** modelo de posição, atrito, gêmeo digital e 1º projeto pelo lugar das raízes (**fim do Trabalho 1**) |
 | 13 | U4 | **Projeto final — Aula 3 (25/11):** PID pelo lugar das raízes, relé e Ziegler-Nichols, compensação da zona morta |
-| 14 | U3/U4 | **Projeto final — Aula 4 (03/12):** validação na bancada e anti-windup (**fim do Trabalho 2**) |
+| 14 | U3/U4 | **Projeto final — Aula 4 (02/12):** validação na bancada e anti-windup (**fim do Trabalho 2**) |
 | 15 | U3/U4 | **Projeto final — Aula 5 (10/12):** painel de resultados e **apresentações por bancada** |
 
 ## Estratégias de aprendizagem
@@ -213,7 +213,7 @@ apresentação de trabalhos. Neste curso, tomam a forma:
 |---|---|---|
 | Listas de exercícios e laboratórios | Módulo 1 | Individuais, nos prazos indicados em aula |
 | Trabalho 1 — identificação PRBS/FOPDT | Unidade I | Integrado ao projeto final: roteiros das Aulas 1–2, avaliado **por bancada** no checkpoint de 18/11 |
-| Trabalho 2 — PID de posição no motor CC | Unidade IV | Integrado ao projeto final: roteiros das Aulas 3–4, avaliado **por bancada** no checkpoint de 03/12 |
+| Trabalho 2 — PID de posição no motor CC | Unidade IV | Integrado ao projeto final: roteiros das Aulas 3–4, avaliado **por bancada** no checkpoint de 02/12 |
 | Projeto final — servo de posição | Unidades I–IV | 5 aulas com roteiros; avaliado **por bancada** (5 roteiros + apresentação em 10/12); integra os Trabalhos 1 e 2; rubrica em `projeto_final/` |
 
 ### Pesos dos instrumentos
