@@ -666,3 +666,44 @@ def veredito(m):
     print(("✅" if abs(m["ess"]) < 2 else "❌") + f" 1. |e_ss| = {f(abs(m['ess']))}° < 2°")
     print(("✅" if m["Mp"] <= 15 else "❌") + f" 2. Mp = {f(m['Mp'],1)} % ≤ 15 %")
     print(("✅" if m["ts"] <= 2.5 else "❌") + f" 3. ts = {f(m['ts'])} s ≤ 2,5 s")
+
+
+# ---------------------------------------------------------------------------
+# Aviso amigável para lacunas ✏️ não completadas
+# ---------------------------------------------------------------------------
+# Nos roteiros, as linhas a completar vêm como  X = ...  (o "..." do Python vale Ellipsis).
+# Usar X numa conta dá um TypeError críptico ("unsupported format string passed to
+# ellipsis.__format__"). No Jupyter, trocamos essa mensagem por uma indicação clara.
+def _instala_aviso_lacunas():
+    try:
+        from IPython import get_ipython
+    except ImportError:
+        return
+    ip = get_ipython()
+    if ip is None:
+        return
+
+    def _aviso(shell, etype, value, tb, tb_offset=None):
+        if "ellipsis" not in str(value):
+            shell.showtraceback((etype, value, tb), tb_offset=tb_offset)
+            return None
+        import re
+        celula = (shell.user_ns.get("In") or [""])[-1]
+        aqui = re.findall(r"^\s*([A-Za-z_]\w*)\s*=\s*\.\.\.", celula, flags=re.M)
+        if aqui:
+            nomes = ", ".join(f"`{k}`" for k in aqui)
+            print("✏️  Falta completar a linha marcada com ✏️ nesta célula:\n"
+                  f"    {nomes} = ...  →  troque o `...` pela expressão pedida no comentário\n"
+                  "    e rode a célula de novo.")
+        else:
+            faltam = [k for k, v in shell.user_ns.items()
+                      if v is Ellipsis and not k.startswith("_")]
+            nomes = ", ".join(f"`{k}`" for k in faltam) if faltam else "uma variável"
+            print(f"✏️  {nomes} ainda vale `...`: falta completar a linha ✏️ numa célula\n"
+                  "    ANTERIOR. Complete-a, rode-a e depois rode esta de novo.")
+        return None
+
+    ip.set_custom_exc((TypeError,), _aviso)
+
+
+_instala_aviso_lacunas()
