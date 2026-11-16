@@ -107,10 +107,10 @@ Num Terminal, digite apenas:
 ```bash
 projeto
 ```
-
 (É o mesmo que `cd ~/lab-cont-2026-2/projeto_final`, depois `controle` — que ativa o ambiente
-Python — e depois `jupyter lab`.) O navegador abre o **JupyterLab**: digite a **senha do
-Jupyter** da bancada. À esquerda fica a lista de arquivos; dê dois cliques no roteiro
+Python — e depois `jupyter lab`.)
+
+O navegador abre o **JupyterLab**: digite a **senha do Jupyter** da bancada. À esquerda fica a lista de arquivos; dê dois cliques no roteiro
 da aula (`aula1_….ipynb` etc.). **Não feche o Terminal** enquanto estiver
 usando o notebook. Para gravar o firmware (Aula 1), abra **outra aba** do Terminal
 (Ctrl+Shift+T), vá para a mesma pasta e rode:
