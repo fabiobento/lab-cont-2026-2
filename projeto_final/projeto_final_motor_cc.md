@@ -39,18 +39,13 @@ O kit do laboratório: Arduino Uno com shield e display OLED, ponte H L298N, mot
 | `projeto_final/aula1_…ipynb` a `aula5_…ipynb` | os **roteiros** das aulas |
 | `projeto_final/INSTALACAO_UBUNTU.md`, `instalar_ubuntu.sh`, `gravar_firmware.sh` | instalação no desktop da bancada e gravação do firmware pelo terminal |
 
-**Onde rodar: no desktop da bancada (Ubuntu 24.04), não no Google Colab.**
-- O Colab roda num
+**Onde rodar: no desktop da bancada (Ubuntu 24.04), não no Google Colab.** O Colab roda num
 servidor do Google, que não enxerga a porta USB do Arduino. A instalação (≈ 10 min, uma vez por
 computador) está em [`INSTALACAO_UBUNTU.md`](INSTALACAO_UBUNTU.md) — o script
-`projeto_final/instalar_ubuntu.sh` faz tudo.
-
-- Depois, execute todo dia:
+`projeto_final/instalar_ubuntu.sh` faz tudo. Depois, todo dia, num Terminal:
 
 ```bash
-cd ~/lab-cont-2026-2/projeto_final
-controle              # ativa o ambiente Python do curso
-jupyter notebook      # abre os roteiros no navegador
+projeto               # ativa o ambiente Python, entra em projeto_final/ e abre os roteiros
 ```
 
 O firmware se grava com `bash gravar_firmware.sh` (numa segunda aba do Terminal). Os notebooks
@@ -129,6 +124,7 @@ com as saídas** e a pasta `dados/` completa, no local indicado pelo professor.
 | Sintoma | Causa provável | O que fazer |
 |---|---|---|
 | `coletar()` diz que o Arduino não respondeu | firmware antigo gravado; porta errada; Monitor Serial da IDE aberto | `bash gravar_firmware.sh`; confira `PORTA`; feche o Monitor Serial |
+| o Jupyter pede *"Password or token"* | Firefox do Ubuntu não abriu o endereço com a chave | Ctrl+clique no endereço `http://localhost:8888/tree?token=…` impresso no Terminal; de vez: `INSTALACAO_UBUNTU.md`, 2.6 |
 | `Permission denied: '/dev/ttyUSB0'`, porta que some, `ModuleNotFoundError` | ambiente do desktop incompleto | tabela da Seção 4 do `INSTALACAO_UBUNTU.md` |
 | erro de compilação na `Adafruit_SSD1306` | biblioteca não instalada | `arduino-cli lib install "Adafruit SSD1306"`, ou troque `#define USAR_OLED 1` por `0` |
 | no teste de sentido, a posição diminui | sentido do motor × sentido do encoder | desligue a fonte e inverta os fios do motor em OUT1/OUT2 (não troque C1/C2) |

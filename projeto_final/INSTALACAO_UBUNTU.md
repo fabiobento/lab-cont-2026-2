@@ -21,7 +21,6 @@ dia.
 Abra um **Terminal** (Ctrl+Alt+T) e digite:
 
 ```bash
-cd
 git clone https://github.com/fabiobento/lab-cont-2026-2.git
 cd lab-cont-2026-2
 bash projeto_final/instalar_ubuntu.sh
@@ -30,8 +29,8 @@ bash projeto_final/instalar_ubuntu.sh
 O script pede a senha de administrador e faz tudo o que está na Seção 2. No fim, **saia da sessão
 e entre de novo** (ou reinicie): é isso que faz a permissão da porta serial valer.
 
-## 2. Instalação passo a passo (só para você saber o que o script faz)
-Se você executou o script acima, não precisa executar as linhas dessa seção, pois só estou explicando o que ele faz.
+## 2. Instalação passo a passo (o que o script faz)
+
 **2.1 Pacotes do sistema**
 ```bash
 sudo apt update
@@ -50,7 +49,7 @@ abrir `/dev/ttyUSB0`:
 ```bash
 sudo usermod -aG dialout $USER
 ```
-⚠️ As alterações acima só valerão depois de **sair da sessão e entrar de novo**.
+⚠️ Vale só depois de **sair da sessão e entrar de novo**.
 
 **2.4 Ambiente Python do curso** — o Ubuntu 24.04 não deixa instalar bibliotecas com `pip` no
 Python do sistema (erro *externally-managed-environment*); por isso criamos um **ambiente
@@ -76,17 +75,32 @@ curl -fsSL https://raw.githubusercontent.com/arduino/arduino-cli/master/install.
 **Arduino Uno**, porta `/dev/ttyUSB0`, instale a biblioteca *Adafruit SSD1306* e clique em
 Carregar.)
 
+**2.6 Jupyter sem pedido de senha no Firefox do Ubuntu** — o Firefox do Ubuntu 24.04 é um pacote
+*snap* e não consegue ler o arquivo local que o Jupyter usa para abrir a página já com a chave de
+acesso (*token*). Resultado: a página abre pedindo **"Password or token"**. A linha abaixo faz o
+Jupyter abrir direto o endereço com a chave:
+```bash
+mkdir -p ~/.jupyter
+echo "c.ServerApp.use_redirect_file = False" >> ~/.jupyter/jupyter_server_config.py
+```
+E um atalho que faz tudo de uma vez (ativa o ambiente, entra na pasta e abre o Jupyter):
+```bash
+echo "alias projeto='source ~/venv-controle/bin/activate && cd ~/lab-cont-2026-2/projeto_final && jupyter notebook'" >> ~/.bashrc
+```
+(Ajuste o caminho `~/lab-cont-2026-2` se o repositório estiver em outro lugar. Vale para os
+próximos Terminais que abrir.)
+
 ## 3. Todo dia, para trabalhar
 
-Num Terminal:
+Num Terminal, digite apenas:
 
 ```bash
-cd ~/lab-cont-2026-2/projeto_final
-controle              # ativa o ambiente Python (aparece "(venv-controle)" no começo da linha)
-jupyter notebook      # abre o navegador com a lista de arquivos
+projeto
 ```
 
-Clique no roteiro da aula (`aula1_….ipynb` etc.). **Não feche o Terminal** enquanto estiver
+(É o mesmo que `cd ~/lab-cont-2026-2/projeto_final`, depois `controle` — que ativa o ambiente
+Python — e depois `jupyter notebook`.) O navegador abre com a lista de arquivos. Clique no roteiro
+da aula (`aula1_….ipynb` etc.). **Não feche o Terminal** enquanto estiver
 usando o notebook. Para gravar o firmware (Aula 1), abra **outra aba** do Terminal
 (Ctrl+Shift+T), vá para a mesma pasta e rode:
 
@@ -104,8 +118,10 @@ bash gravar_firmware.sh
 | `Permission denied: '/dev/ttyUSB0'` | usuário fora do grupo `dialout`, ou não saiu da sessão depois de entrar nele | 2.3 e sair/entrar da sessão |
 | a porta aparece e some; `ls /dev/ttyUSB*` vazio | `brltty` capturou o CH340 | 2.2 e desconectar/reconectar o USB |
 | `error: externally-managed-environment` | `pip` usado fora do ambiente virtual | `controle` antes do `pip`, ou use `~/venv-controle/bin/pip` |
+| a página do Jupyter pede **"Password or token"** | o Firefox (snap) do Ubuntu não abriu o endereço com a chave | **na hora:** no Terminal onde o Jupyter está rodando, segure Ctrl e clique no endereço `http://localhost:8888/tree?token=…` (ou copie-o para o navegador; `jupyter server list` mostra de novo). **De vez:** 2.6 e reabra o Jupyter |
 | `ModuleNotFoundError: No module named 'control'` no notebook | Jupyter aberto sem ativar o ambiente | feche, rode `controle` e depois `jupyter notebook` |
 | `ModuleNotFoundError: ferramentas_projeto` | notebook aberto fora da pasta `projeto_final/` | abra o Jupyter de dentro de `projeto_final/` |
+| `projeto: comando não encontrado` | atalho ainda não criado, ou Terminal aberto antes de criá-lo | 2.6, depois feche e abra o Terminal |
 | `arduino-cli: comando não encontrado` | `~/.local/bin` ainda não está no PATH | saia da sessão e entre de novo, ou use `~/.local/bin/arduino-cli` |
 | `coletar()` diz que o Arduino não respondeu | firmware antigo; porta errada; outro programa usando a porta | `bash gravar_firmware.sh`; confira `PORTA`; feche a Arduino IDE / Monitor Serial |
 | erro `Adafruit_SSD1306.h: No such file` ao gravar | biblioteca não instalada | 2.5 (`lib install`) ou `#define USAR_OLED 0` no `pid_motor.ino` |
