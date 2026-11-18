@@ -21,6 +21,7 @@ dia.
 Abra um **Terminal** (Ctrl+Alt+T) e digite:
 
 ```bash
+cd
 git clone https://github.com/fabiobento/lab-cont-2026-2.git
 cd lab-cont-2026-2
 bash projeto_final/instalar_ubuntu.sh
