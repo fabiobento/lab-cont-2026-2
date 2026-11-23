@@ -220,13 +220,15 @@ apresentação de trabalhos. Neste curso, tomam a forma:
 
 A composição da nota semestral segue o plano de ensino da turma:
 
-| Instrumento | Peso |
+| Instrumento | Nota máxima |
 |---|---|
-| Listas de exercícios e laboratórios (apenas Módulo 1) | 50% |
-| Trabalho 1 | 10% |
-| Trabalho 2 | 10% |
-| Projeto final | 30% |
-| **Total** | **100 %** |
+| Lista 1 — Módulo 01: Introdução aos Sistemas de Controle | 25 |
+| Lab 01 — Sistemas de Controle e Modelos Matemáticos | 15 |
+| Lab 02 — Transformada de Laplace e Função de Transferência | 15 |
+| Lab 03 — Estabilidade, Realimentação e Erro em Regime | 15 |
+| Lab de Revisão — A Resposta Subamortecida e suas Fórmulas | 10 |
+| Projeto Final — Servo de Posição com Motor CC (inclui os Trabalhos 1 e 2) | 20 |
+| **Total** | **100** |
 
 Os Trabalhos 1 e 2 e o projeto final são avaliados **por bancada**, com a mesma rubrica (ensaios e
 dados 25 %, contas e código 25 %, respostas às perguntas dos roteiros 30 %, especificações 20 %; no

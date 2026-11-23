@@ -1,7 +1,7 @@
 # Trabalho 2 — Controle PID de Posição Angular em Motor CC
 
 **Laboratório de Controle Automático — Engenharia Elétrica — Ifes Campus Guarapari**
-**Realização:** Aulas 3 e 4 do projeto final (25/11 e 02/12) · **Avaliação:** por bancada, no checkpoint de 02/12 · **Peso:** 10 % da nota semestral
+**Realização:** Aulas 3 e 4 do projeto final (25/11 e 02/12) · **Avaliação:** por bancada, no checkpoint de 02/12 · **Peso:** integra a nota do Projeto Final (20 pontos no semestre)
 
 ---
 
